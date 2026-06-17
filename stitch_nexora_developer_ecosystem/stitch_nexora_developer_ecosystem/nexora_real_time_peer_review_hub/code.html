@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Mission Review</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#201f1f",
+                      "tertiary-container": "#a15100",
+                      "on-error": "#690005",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-glass": "rgba(26, 26, 26, 0.8)",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-secondary": "#00344d",
+                      "inverse-on-surface": "#313030",
+                      "on-tertiary-container": "#ffe0cd",
+                      "surface-container-high": "#2a2a2a",
+                      "background": "#131313",
+                      "surface-dim": "#131313",
+                      "primary": "#d2bbff",
+                      "outline": "#958da1",
+                      "surface-variant": "#353534",
+                      "on-background": "#e5e2e1",
+                      "tertiary": "#ffb784",
+                      "deep-obsidian": "#050505",
+                      "silver-text": "#E2E2E2",
+                      "primary-fixed": "#eaddff",
+                      "primary-fixed-dim": "#d2bbff",
+                      "primary-container": "#7c3aed",
+                      "on-secondary-container": "#00344e",
+                      "electric-purple": "#A855F7",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-surface": "#e5e2e1",
+                      "surface-tint": "#d2bbff",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface-container-highest": "#353534",
+                      "outline-variant": "#4a4455",
+                      "on-secondary-fixed": "#001e2f",
+                      "secondary-container": "#00a2e6",
+                      "surface": "#131313",
+                      "on-surface-variant": "#ccc3d8",
+                      "on-primary": "#3f008e",
+                      "on-tertiary": "#4f2500",
+                      "error-container": "#93000a",
+                      "on-primary-container": "#ede0ff",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#1c1b1b",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "on-tertiary-fixed": "#301400",
+                      "inverse-primary": "#732ee4",
+                      "surface-bright": "#3a3939",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-primary-fixed": "#25005a",
+                      "error": "#ffb4ab",
+                      "secondary": "#89ceff",
+                      "tertiary-fixed": "#ffdcc6",
+                      "border-subtle": "rgba(255, 255, 255, 0.08)",
+                      "on-primary-fixed-variant": "#5a00c6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "label-xs": [
+                              "Geist"
+                      ],
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-xs": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body-md min-h-screen flex selection:bg-electric-purple selection:text-white">
+<nav class="hidden md:flex bg-deep-obsidian flex-col py-8 px-4 gap-6 fixed left-0 h-full w-64 z-40 border-r border-subtle transition-all duration-300 ease-in-out">
+<div class="flex flex-col gap-2 mb-8 px-4">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tighter">Nexora Prime</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant opacity-70">Lvl 4 Synergy</span>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-surface-container-high text-electric-purple border-l-2 border-electric-purple cursor-pointer transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-code-sm text-code-sm">Workspace</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface cursor-pointer transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">fingerprint</span>
+<span class="font-code-sm text-code-sm">Identity</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface cursor-pointer transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">architecture</span>
+<span class="font-code-sm text-code-sm">Craft</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface cursor-pointer transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">cyclone</span>
+<span class="font-code-sm text-code-sm">Flux</span>
+</a>
+</div>
+<button class="mt-auto flex items-center justify-center gap-2 w-full py-3 rounded-lg bg-gradient-to-r from-primary-container to-secondary-container border border-subtle text-white font-label-xs tracking-widest uppercase hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined">add</span>
+            New Mission
+        </button>
+<div class="flex flex-col gap-2 mt-4 pt-4 border-t border-subtle">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-code-sm text-code-sm">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">sensors</span>
+<span class="font-code-sm text-code-sm">Status</span>
+</a>
+</div>
+</nav>
+<main class="md:ml-64 flex-1 flex flex-col p-margin-mobile md:p-margin-desktop gap-gutter max-w-container-max mx-auto w-full">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-subtle">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 rounded bg-secondary-container/10 text-secondary border border-secondary-container/20 font-label-xs uppercase">In Review</span>
+<span class="flex items-center gap-1 font-code-sm text-code-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-electric-purple animate-pulse"></span>
+                        3 Team Members Active
+                    </span>
+</div>
+<h1 class="font-headline-lg text-headline-lg md:text-display-lg md:font-display-lg text-on-surface tracking-tighter">Mission Review: Architect Core Telemetry Bridge</h1>
+</div>
+<div class="flex items-center gap-[-8px]">
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-surface-variant overflow-hidden z-30" data-alt="A cinematic, high-contrast portrait of a tech professional illuminated by soft neon purple and blue lights. The background is a dark, abstract tech environment. The mood is focused and futuristic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBCmN2Blh64C2lOx20ULQkbp4aX4DEtL_Ah2QRy2ir5V6rea6NQwKN54grRHkWCpH32enJ5iuFfHsZth9o-D55rdUrrPM0I1ox3VcqEKf6jOvcXrUOGu423-DuwoOeyp-fcdMEHQYcWEPIsgoTw2odKNI3JKYpHLjbiKaWy1CVtCXfEMjBnivUZA7kMpE5bElGBEKYOf7Vc8kortIGIeloRa-Lnc2OLgWRm0426Rv_4TG5c1Z3guQmSR59ZJKfUgU3oeA_28R3V7zTA'); background-size: cover;"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-surface-variant overflow-hidden z-20 ml-[-12px]" data-alt="A moody, cyberpunk-inspired portrait of a male developer with sharp features. He is lit by a cool blue rim light against a deep obsidian background. The aesthetic is modern software engineering." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCO3VANlQw9ARGfzVWo3TSg_c8lUfAv6ZpzVHaPJXYPzFhhaSS8Njrc5np61aH0HppTPU4lhDIdHXjwcmj9Tat7JWcndLiv6jsP1tIaU5UgDWXsMvbFSUtOICI__81fnMSxRlDfdNtCMPJZ1q3IB5FtIYRvKe5lS3ZovAQodDDfAmZJS-HLWn9GwvF9tytB-UktVM3IxZsmlI7kBqCNdRK4f7pa6xZjyGXkdY2rrPwxdeVLGpjygl1zqt1U6HQcsb_o3QFYwOxw6UHQ'); background-size: cover;"></div>
+<div class="w-10 h-10 rounded-full border-2 border-surface-container-lowest bg-surface-variant overflow-hidden z-10 ml-[-12px] flex items-center justify-center font-code-sm text-code-sm text-electric-purple bg-surface-glass backdrop-blur-md">
+                    +1
+                </div>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<section class="bg-surface-glass backdrop-blur-md border border-subtle rounded-xl p-6 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-electric-purple to-secondary opacity-50"></div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-electric-purple">analytics</span>
+                        Contribution Intelligence
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<span class="font-label-xs text-on-surface-variant uppercase tracking-widest">Mission Goal</span>
+<p class="font-body-md text-on-surface">Establish real-time observability and resilient data pipelines across the distributed architecture.</p>
+</div>
+<div class="flex flex-col gap-2">
+<span class="font-label-xs text-on-surface-variant uppercase tracking-widest">Submitted Artifacts</span>
+<ul class="flex flex-col gap-2">
+<li class="flex items-center gap-2 font-code-sm text-code-sm bg-surface-container p-2 rounded border border-subtle">
+<span class="material-symbols-outlined text-outline text-sm">code</span>
+                                    src/backend/telemetry/bridge.rs
+                                </li>
+<li class="flex items-center gap-2 font-code-sm text-code-sm bg-surface-container p-2 rounded border border-subtle">
+<span class="material-symbols-outlined text-outline text-sm">description</span>
+                                    docs/api/v2/telemetry_events.md
+                                </li>
+</ul>
+</div>
+</div>
+<div class="mt-6 p-4 rounded-lg bg-primary-container/10 border border-primary/20 flex gap-4 items-start">
+<span class="material-symbols-outlined text-electric-purple mt-1">hub</span>
+<div>
+<h3 class="font-label-xs uppercase text-electric-purple mb-1">Synergy Insight</h3>
+<p class="font-body-md text-sm text-silver-text">This contribution successfully bridges the legacy event bus with the new Protocol Alpha-7 standard, increasing observability resolution by 40%.</p>
+</div>
+</div>
+</section>
+<section class="bg-surface-glass backdrop-blur-md border border-subtle rounded-xl flex flex-col h-[600px] overflow-hidden">
+<div class="p-4 border-b border-subtle flex items-center justify-between bg-surface-container-lowest">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">dashboard_customize</span>
+                            Universal Canvas
+                        </h2>
+<div class="flex gap-2">
+<button class="p-2 rounded hover:bg-surface-variant text-outline transition-colors"><span class="material-symbols-outlined text-sm">zoom_in</span></button>
+<button class="p-2 rounded hover:bg-surface-variant text-outline transition-colors"><span class="material-symbols-outlined text-sm">zoom_out</span></button>
+</div>
+</div>
+<div class="flex-1 p-6 relative overflow-auto bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')]">
+<div class="absolute top-10 left-10 w-[400px] bg-surface-container border border-subtle rounded-lg shadow-lg">
+<div class="p-2 bg-surface-container-high border-b border-subtle flex items-center gap-2 font-code-sm text-code-sm text-outline">
+<span class="material-symbols-outlined text-sm">code</span>
+                                bridge.rs
+                            </div>
+<pre class="p-4 font-code-sm text-code-sm text-silver-text overflow-x-auto"><code><span class="text-electric-purple">pub async fn</span> <span class="text-secondary">initialize_bridge</span>(
+    config: BridgeConfig,
+    metrics: Arc&lt;MetricsRegistry&gt;
+) -&gt; Result&lt;()&gt; {
+    <span class="text-outline-variant">// Initialize event loop</span>
+    <span class="text-primary">let</span> receiver = EventReceiver::new(&amp;config);
+    ...
+}</code></pre>
+<div class="absolute -right-6 top-12 transform translate-x-full w-64 bg-surface border border-subtle rounded-lg p-3 shadow-xl z-20">
+<div class="flex items-center gap-2 mb-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDgEBoDF5NhwCR08I622bURifNskQvOjkTwJZPIQagUvax8gOHBZqZ35GYdmt8_LMfp8kwFu0cvtvZ0l3Hd2rBq1vM6V4PjrbHgmaIGs5l5ZkrFFs2H-r2eVNGSMq2cPjM2F_4d4eD2xIA0dbDkXg2rbFzpW65_2HCCE2G6hz-Im1Jk8fxKE4TMZ8AsIc7kWIpGFoi6Ss7TwATn-nioBLhCqVrgBuxbU4vkZzQEIed-Ls1a0rUkP-YFZKo_3lvGgKyD13VcdyleFLUC'); background-size: cover;"></div>
+<span class="font-label-xs text-on-surface">David C.</span>
+<span class="font-code-sm text-xs text-outline ml-auto">Systems</span>
+</div>
+<p class="font-body-md text-sm mb-3">Consider using a bounded channel here to prevent backpressure issues under high load.</p>
+<button class="w-full py-1.5 rounded bg-surface-container-high border border-subtle text-xs font-label-xs uppercase hover:border-electric-purple transition-colors flex justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]">task</span> Convert to Task
+                                </button>
+</div>
+</div>
+<div class="absolute bottom-20 left-1/3 w-[350px] bg-surface border border-subtle rounded-lg shadow-xl p-4">
+<div class="flex items-center gap-2 mb-2 border-b border-subtle pb-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant overflow-hidden" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAn9UoMXDm79OgTkP5QbGrBJoMDihaPjNNr19g16uN4jCN0pABVGog3LtoGWkmKzVMM5WKW3t3soRf4iKfd2pIMYe3UXxjMqkaLjY64BrLbOLLikYjYTxB_scRwl1L42y_iA4n7xINiGdKrPkT7JyIuD0hXDf0q8GaAMkQ5gNyRwQU9hxJK6AuwtWAaipGCnhhX2MsN4S8WZ-uukFhko4nmHjSqsyOaL77D2e53ePkk-saQ-OaPpYK5oaG4gFSoHjZfFRDOMvdz6I2H'); background-size: cover;"></div>
+<span class="font-label-xs text-on-surface">Sarah J.</span>
+<span class="font-code-sm text-xs text-outline ml-auto">Frontend</span>
+</div>
+<p class="font-body-md text-sm mb-3">The payload structure in `telemetry_events.md` misaligns with the frontend ingestion schema. Can we normalize the timestamp field?</p>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 rounded bg-electric-purple/10 text-electric-purple border border-electric-purple/30 text-xs font-label-xs uppercase hover:bg-electric-purple/20 transition-colors">Acknowledge</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<section class="bg-surface-glass backdrop-blur-md border border-subtle rounded-xl p-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">dynamic_feed</span>
+                        Synergy Feed
+                    </h2>
+<div class="flex flex-col gap-4 relative before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container-high">
+<div class="flex gap-3 relative z-10">
+<div class="w-6 h-6 rounded-full bg-surface border border-subtle flex items-center justify-center mt-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+</div>
+<div>
+<p class="font-body-md text-sm"><span class="text-silver-text font-bold">Sarah</span> is typing a suggestion on API docs...</p>
+<span class="font-code-sm text-xs text-outline">Just now</span>
+</div>
+</div>
+<div class="flex gap-3 relative z-10">
+<div class="w-6 h-6 rounded-full bg-secondary-container/20 border border-secondary-container/50 flex items-center justify-center mt-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div>
+<p class="font-body-md text-sm"><span class="text-silver-text font-bold">David</span> approved System Architecture</p>
+<span class="font-code-sm text-xs text-outline">2 mins ago</span>
+</div>
+</div>
+<div class="flex gap-3 relative z-10">
+<div class="w-6 h-6 rounded-full bg-surface border border-subtle flex items-center justify-center mt-1 text-electric-purple">
+<span class="material-symbols-outlined text-[14px]">commit</span>
+</div>
+<div>
+<p class="font-body-md text-sm">New commit pushed: <span class="font-code-sm bg-surface-container px-1 rounded text-xs text-silver-text">a1b2c3d</span></p>
+<span class="font-code-sm text-xs text-outline">15 mins ago</span>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-glass backdrop-blur-md border border-subtle rounded-xl p-6">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">psychology</span>
+                        Post-Review Synthesis
+                    </h2>
+<div class="flex flex-col gap-4">
+<div class="p-3 rounded-lg bg-surface-container border border-subtle border-l-2 border-l-secondary">
+<span class="font-label-xs uppercase text-secondary block mb-1">Strengths</span>
+<p class="font-body-md text-sm text-silver-text">Modular Component Logic, Excellent Error Handling</p>
+</div>
+<div class="p-3 rounded-lg bg-surface-container border border-subtle border-l-2 border-l-tertiary">
+<span class="font-label-xs uppercase text-tertiary block mb-1">Growth Vectors</span>
+<p class="font-body-md text-sm text-silver-text">Memory Optimization in high-throughput loops.</p>
+</div>
+</div>
+</section>
+<section class="bg-surface-glass backdrop-blur-md border border-subtle rounded-xl p-6 relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-32 h-32 bg-electric-purple opacity-10 blur-3xl rounded-full"></div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-electric-purple">military_tech</span>
+                        Reputation Impact
+                    </h2>
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between font-code-sm text-sm border-b border-subtle pb-2">
+<span class="text-outline">Backend Synergy</span>
+<span class="text-electric-purple font-bold">+8</span>
+</div>
+<div class="flex items-center justify-between font-code-sm text-sm border-b border-subtle pb-2">
+<span class="text-outline">Code Integrity</span>
+<span class="text-secondary font-bold">+12</span>
+</div>
+<div class="mt-2 flex flex-col gap-1">
+<span class="font-label-xs uppercase text-silver-text flex justify-between">
+<span>Level 43 Architect</span>
+<span>85%</span>
+</span>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-electric-purple to-secondary w-[85%]"></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</body></html>

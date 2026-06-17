@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Propose New Decision</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#1c1b1b",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-surface": "#e5e2e1",
+                    "on-tertiary": "#4f2500",
+                    "on-primary-container": "#ede0ff",
+                    "on-tertiary-container": "#ffe0cd",
+                    "on-secondary-container": "#00344e",
+                    "surface-container-high": "#2a2a2a",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "primary-container": "#7c3aed",
+                    "border-subtle": "rgba(255, 255, 255, 0.08)",
+                    "secondary-container": "#00a2e6",
+                    "on-surface-variant": "#ccc3d8",
+                    "on-background": "#e5e2e1",
+                    "on-secondary-fixed-variant": "#004c6e",
+                    "on-secondary": "#00344d",
+                    "tertiary-fixed": "#ffdcc6",
+                    "on-primary": "#3f008e",
+                    "on-tertiary-fixed": "#301400",
+                    "tertiary": "#ffb784",
+                    "on-primary-fixed": "#25005a",
+                    "primary-fixed-dim": "#d2bbff",
+                    "deep-obsidian": "#050505",
+                    "surface-bright": "#3a3939",
+                    "inverse-on-surface": "#313030",
+                    "surface-variant": "#353534",
+                    "background": "#131313",
+                    "tertiary-container": "#a15100",
+                    "outline": "#958da1",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-error-container": "#ffdad6",
+                    "inverse-primary": "#732ee4",
+                    "surface-dim": "#131313",
+                    "on-error": "#690005",
+                    "primary-fixed": "#eaddff",
+                    "secondary": "#89ceff",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-tint": "#d2bbff",
+                    "secondary-fixed-dim": "#89ceff",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "surface-container-highest": "#353534",
+                    "surface-container": "#201f1f",
+                    "surface-glass": "#1A1A1A",
+                    "secondary-fixed": "#c9e6ff",
+                    "electric-purple": "#A855F7",
+                    "primary": "#d2bbff",
+                    "outline-variant": "#4a4455",
+                    "silver-text": "#E2E2E2",
+                    "error-container": "#93000a",
+                    "surface": "#131313",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": [
+                            "Geist"
+                    ],
+                    "code-sm": [
+                            "JetBrains Mono"
+                    ],
+                    "label-xs": [
+                            "Geist"
+                    ],
+                    "display-lg": [
+                            "Geist"
+                    ],
+                    "headline-lg": [
+                            "Geist"
+                    ],
+                    "body-md": [
+                            "Geist"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "code-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "letterSpacing": "0em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-xs": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap');
+        
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        .glow-button {
+            transition: all 0.3s ease;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+        }
+        
+        /* Custom Scrollbar for inner areas */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex selection:bg-electric-purple selection:text-white">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden md:flex flex-col py-8 px-4 gap-6 bg-deep-obsidian fixed left-0 h-full w-64 z-40 border-r border-subtle transition-all duration-300 ease-in-out">
+<div class="flex flex-col gap-4 mb-8">
+<div class="flex items-center gap-3 px-3">
+<img alt="Organization Logo" class="w-8 h-8 rounded bg-surface-container object-cover" data-alt="A minimalist, premium 3D rendered geometric logo for a high-tech software organization, featuring sharp metallic purple and deep obsidian tones, illuminated against a dark background. The lighting is studio-quality, emphasizing the precision engineering aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7srhQkYUAVhOBKgienOSkvFgyRFJUFQ33Dv1dMGLERETEOv73djOOz1vguyYUrgAUub9p6b2NmLg--hziTOa3NzNx09qeiBJvSB5Ra-6mglFbEi7rmpp0n5Mm7owzj2xqcr6gnzsffUS49RU_aIo4-IKyJCnLGnbZKmFD_cVj4eB8CqkBkNJLpm9vJX4yYVLghaXDWRQ8tbf5lfmD3HkLS0qsSXLKlBLutU3mQYApp10tj9cthVUHOIz_2yDzhX0hX06czbAspgpP"/>
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface" style="font-size: 18px;">Nexora Prime</h1>
+<p class="font-code-sm text-code-sm text-on-surface-variant text-[11px]">Lvl 4 Synergy</p>
+</div>
+</div>
+<button class="mx-3 mt-4 py-2 px-4 bg-gradient-to-r from-electric-purple to-secondary-container text-white rounded-lg font-label-xs text-label-xs flex items-center justify-center gap-2 border border-white/10 glow-button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                New Mission
+            </button>
+</div>
+<div class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-code-sm text-code-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+                Workspace
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-code-sm text-code-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">fingerprint</span>
+                Identity
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-code-sm text-code-sm bg-surface-container-high text-electric-purple border-l-2 border-electric-purple transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">architecture</span>
+                Craft
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg font-code-sm text-code-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">cyclone</span>
+                Flux
+            </a>
+</div>
+<div class="mt-auto flex flex-col gap-2 pt-4 border-t border-subtle">
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg font-code-sm text-code-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-lg font-code-sm text-code-sm text-on-surface-variant hover:bg-surface-variant hover:text-on-surface transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined text-[18px]">sensors</span>
+                Status
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col md:ml-64 min-h-screen">
+<!-- Top App Bar (Mobile Nav Alternative) -->
+<header class="md:hidden flex justify-between items-center px-4 h-16 w-full bg-surface-glass backdrop-blur-md border-b border-subtle sticky top-0 z-50">
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-bold tracking-tighter text-on-surface">Nexora</h1>
+<span class="material-symbols-outlined text-on-surface cursor-pointer">menu</span>
+</header>
+<div class="flex-1 p-margin-mobile md:p-gutter lg:p-margin-desktop max-w-container-max mx-auto w-full flex flex-col gap-8">
+<!-- Breadcrumbs & Header -->
+<section class="flex flex-col gap-2 pt-4">
+<nav class="flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Knowledge Archive</a>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-on-surface">Decisions</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary">Draft</span>
+</nav>
+<div class="flex justify-between items-end">
+<h2 class="font-display-lg text-headline-lg md:text-display-lg text-on-surface tracking-tighter">Propose New Decision</h2>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded font-label-xs text-label-xs border border-white/15 text-white bg-transparent hover:bg-white/5 transition-colors">Save Draft</button>
+<button class="px-4 py-2 rounded font-label-xs text-label-xs bg-gradient-to-r from-electric-purple to-secondary-container text-white border border-white/10 glow-button">Publish Proposal</button>
+</div>
+</div>
+</section>
+<!-- Main Workspace Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left Column (Core Inputs) -->
+<div class="lg:col-span-8 flex flex-col gap-6">
+<!-- Title & Metadata Card -->
+<div class="glass-panel p-6 rounded-xl flex flex-col gap-5 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-32 h-32 bg-electric-purple/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+<div class="flex flex-col gap-2">
+<label class="font-code-sm text-code-sm text-on-surface-variant">Decision Title</label>
+<input class="w-full bg-surface-container-lowest border border-subtle rounded-lg px-4 py-3 font-headline-lg text-[20px] text-on-surface focus:outline-none focus:border-electric-purple focus:ring-1 focus:ring-electric-purple transition-all placeholder:text-on-surface-variant/30" placeholder="e.g. Transition to Event-Driven Microservices" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="font-code-sm text-code-sm text-on-surface-variant">Categories</label>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded bg-surface-container-highest border border-subtle font-label-xs text-label-xs text-on-surface flex items-center gap-1 cursor-pointer hover:border-electric-purple transition-colors">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> Technical
+                                    </span>
+<span class="px-3 py-1 rounded bg-surface-container-highest border border-subtle font-label-xs text-label-xs text-on-surface flex items-center gap-1 cursor-pointer hover:border-electric-purple transition-colors">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span> Product
+                                    </span>
+<button class="px-3 py-1 rounded border border-dashed border-subtle font-label-xs text-label-xs text-on-surface-variant hover:text-on-surface transition-colors flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">add</span> Add
+                                    </button>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-code-sm text-code-sm text-on-surface-variant">Decision Owner</label>
+<div class="flex items-center gap-3 p-2 rounded-lg bg-surface-container-lowest border border-subtle w-fit">
+<img alt="Avatar" class="w-6 h-6 rounded-full object-cover" data-alt="A professional, high-contrast black and white portrait of a male software architect in his 30s. The lighting is dramatic, emphasizing a serious, contemplative expression suitable for a premium tech platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxOSTHnRjf6S_DYPiOzjqzcXQc3W8orB0mkRSadcujs48_b3-aFpA-KWwxUYzcastbPD742N-Cn_uupN98xX2PrfbYzHaJWfQLWvi2LtDvj8kb85wwarROOpBGzWvwI2oF5dpJ2Mxma8HzqpAqIE7GlOCANPu7LWVaMhxO_TxUYXQ_UR1KKrxryIX-0ret7gJ33bpiuAAngvYaElzcdhTFn8ymNsdOMc8Cfw9Xuukz1JJPAZbi_pCDTCXS4h-zABdwcW2Tu6uhX57x"/>
+<span class="font-code-sm text-code-sm text-on-surface">Alex Mercer</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Rationale Builder -->
+<div class="glass-panel p-6 rounded-xl flex flex-col gap-6">
+<div class="flex items-center justify-between border-b border-subtle pb-4">
+<h3 class="font-headline-lg-mobile text-[18px] text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-electric-purple">neurology</span>
+                                Rationale Builder
+                            </h3>
+<button class="text-on-surface-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">fullscreen</span>
+</button>
+</div>
+<!-- Problem Statement -->
+<div class="flex flex-col gap-3">
+<h4 class="font-code-sm text-code-sm text-silver-text uppercase tracking-wider">The Problem</h4>
+<textarea class="w-full bg-surface-container-lowest border border-subtle rounded-lg p-4 font-body-md text-on-surface focus:outline-none focus:border-electric-purple transition-all resize-none" placeholder="What specific issue are we solving? Provide metrics or pain points..." rows="3"></textarea>
+</div>
+<!-- Technical Context -->
+<div class="flex flex-col gap-3">
+<h4 class="font-code-sm text-code-sm text-silver-text uppercase tracking-wider">Technical Context</h4>
+<div class="border border-subtle rounded-lg bg-surface-container-lowest overflow-hidden">
+<div class="flex border-b border-subtle bg-surface-container-high px-2 py-1 gap-2">
+<button class="p-1 text-on-surface-variant hover:text-white"><span class="material-symbols-outlined text-[16px]">format_bold</span></button>
+<button class="p-1 text-on-surface-variant hover:text-white"><span class="material-symbols-outlined text-[16px]">format_italic</span></button>
+<button class="p-1 text-on-surface-variant hover:text-white"><span class="material-symbols-outlined text-[16px]">code</span></button>
+<button class="p-1 text-on-surface-variant hover:text-white"><span class="material-symbols-outlined text-[16px]">link</span></button>
+</div>
+<textarea class="w-full bg-transparent border-none p-4 font-body-md text-on-surface focus:ring-0 resize-y" placeholder="Describe the current architecture and why it necessitates this decision..." rows="4"></textarea>
+</div>
+</div>
+<!-- Options Analysis (Bento Grid) -->
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<h4 class="font-code-sm text-code-sm text-silver-text uppercase tracking-wider">Options Analysis</h4>
+<button class="text-electric-purple font-label-xs text-label-xs hover:underline flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1">add</span> Add Option
+                                </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Option A -->
+<div class="border border-subtle rounded-lg p-4 bg-surface-container-low flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<input class="bg-transparent border-none font-code-sm text-code-sm text-on-surface p-0 focus:ring-0 w-full" readonly="" type="text" value="Option A: RESTful Monolith Split"/>
+<button class="text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">more_vert</span></button>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#4ade80] text-[16px] mt-0.5">add_circle</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Lower immediate engineering overhead</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#f87171] text-[16px] mt-0.5">do_not_disturb_on</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Doesn't resolve tight coupling issues long-term</span>
+</div>
+</div>
+</div>
+<!-- Option B -->
+<div class="border border-electric-purple/50 rounded-lg p-4 bg-surface-container relative overflow-hidden flex flex-col gap-3">
+<div class="absolute top-0 right-0 w-16 h-16 bg-electric-purple/20 blur-xl pointer-events-none"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-electric-purple animate-pulse"></span>
+<input class="bg-transparent border-none font-code-sm text-code-sm text-on-surface p-0 focus:ring-0" readonly="" type="text" value="Option B: Event-Driven Kafka Bus"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#4ade80] text-[16px] mt-0.5">add_circle</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">True decoupling, high scalability</span>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#f87171] text-[16px] mt-0.5">do_not_disturb_on</span>
+<span class="font-body-md text-[13px] text-on-surface-variant">Steep learning curve, operational complexity</span>
+</div>
+</div>
+<div class="mt-2 text-right">
+<span class="font-label-xs text-[10px] text-electric-purple border border-electric-purple/30 px-2 py-1 rounded bg-electric-purple/10">Proposed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column (Sidebar Tools) -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Timeline View -->
+<div class="glass-panel p-5 rounded-xl border-l-2 border-l-secondary-container">
+<h3 class="font-headline-lg-mobile text-[16px] text-on-surface mb-4">Decision Lifecycle</h3>
+<div class="flex flex-col gap-0 relative">
+<div class="absolute left-[11px] top-2 bottom-2 w-px bg-surface-container-highest"></div>
+<div class="flex gap-4 items-start relative z-10 pb-6">
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center border-4 border-background mt-0.5">
+<span class="w-2 h-2 bg-white rounded-full"></span>
+</div>
+<div>
+<p class="font-code-sm text-code-sm text-on-surface">Draft Phase</p>
+<p class="font-label-xs text-[11px] text-on-surface-variant">Currently active</p>
+</div>
+</div>
+<div class="flex gap-4 items-start relative z-10 pb-6 opacity-50">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center border-4 border-background mt-0.5"></div>
+<div>
+<p class="font-code-sm text-code-sm text-on-surface">Under Discussion</p>
+<p class="font-label-xs text-[11px] text-on-surface-variant">Pending publication</p>
+</div>
+</div>
+<div class="flex gap-4 items-start relative z-10 pb-6 opacity-50">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center border-4 border-background mt-0.5"></div>
+<div>
+<p class="font-code-sm text-code-sm text-on-surface">Final Choice</p>
+<p class="font-label-xs text-[11px] text-on-surface-variant">Requires 3 approvals</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Integration & Impact -->
+<div class="glass-panel p-5 rounded-xl">
+<h3 class="font-headline-lg-mobile text-[16px] text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+                            Integration &amp; Impact
+                        </h3>
+<div class="flex flex-col gap-4">
+<div>
+<label class="font-code-sm text-[12px] text-silver-text uppercase tracking-wider mb-2 block">Project Milestone</label>
+<select class="w-full bg-surface-container-lowest border border-subtle rounded-lg px-3 py-2 font-code-sm text-code-sm text-on-surface focus:border-electric-purple focus:ring-1 focus:ring-electric-purple outline-none appearance-none">
+<option>Select Milestone...</option>
+<option>V1.2 Alpha (Q3)</option>
+<option>Infrastructure Overhaul</option>
+</select>
+</div>
+<div>
+<label class="font-code-sm text-[12px] text-silver-text uppercase tracking-wider mb-2 block">Connected Artifacts</label>
+<div class="border border-subtle border-dashed rounded-lg p-3 flex flex-col items-center justify-center gap-2 bg-surface-container-lowest/50 hover:bg-surface-container-lowest cursor-pointer transition-colors text-center">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">add_link</span>
+<p class="font-label-xs text-label-xs text-on-surface-variant">Link repos, docs, or Jira tickets</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

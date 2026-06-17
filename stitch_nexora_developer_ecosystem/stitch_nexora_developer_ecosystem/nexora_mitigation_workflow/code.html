@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora | Mitigation Workflow</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Geist & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from Style Guidance -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#2f3035",
+                    "surface": "#051424",
+                    "on-tertiary-container": "#272a30",
+                    "on-primary-container": "#3a0079",
+                    "primary": "#d6baff",
+                    "tertiary-fixed-dim": "#c4c6ce",
+                    "inverse-primary": "#7832d9",
+                    "surface-container": "#122131",
+                    "on-surface": "#d4e4fa",
+                    "secondary-fixed": "#e2e2e8",
+                    "on-tertiary": "#2d3037",
+                    "on-primary-fixed": "#280057",
+                    "outline": "#968da0",
+                    "surface-container-highest": "#273647",
+                    "on-tertiary-fixed": "#191c22",
+                    "primary-container": "#aa73ff",
+                    "inverse-on-surface": "#233143",
+                    "outline-variant": "#4b4454",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#e1e2ea",
+                    "on-secondary-fixed-variant": "#45474b",
+                    "surface-tint": "#d6baff",
+                    "surface-container-high": "#1c2b3c",
+                    "on-secondary-container": "#b7b8be",
+                    "background": "#051424",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#d6baff",
+                    "tertiary": "#c4c6ce",
+                    "surface-container-low": "#0d1c2d",
+                    "surface-container-lowest": "#010f1f",
+                    "surface-variant": "#273647",
+                    "surface-dim": "#051424",
+                    "secondary": "#c6c6cc",
+                    "on-tertiary-fixed-variant": "#44474d",
+                    "on-primary-fixed-variant": "#5f00c0",
+                    "surface-bright": "#2c3a4c",
+                    "on-background": "#d4e4fa",
+                    "secondary-container": "#47494e",
+                    "inverse-surface": "#d4e4fa",
+                    "on-secondary-fixed": "#1a1c20",
+                    "primary-fixed": "#ecdcff",
+                    "error": "#ffb4ab",
+                    "secondary-fixed-dim": "#c6c6cc",
+                    "on-surface-variant": "#cdc2d7",
+                    "on-primary": "#420089",
+                    "tertiary-container": "#8e9098"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "node-gap": "32px",
+                    "gutter": "16px",
+                    "unit": "4px",
+                    "sidebar-width": "280px",
+                    "margin-edge": "24px"
+            },
+            "fontFamily": {
+                    "display-command": [
+                            "Geist"
+                    ],
+                    "headline-analysis-mobile": [
+                            "Geist"
+                    ],
+                    "headline-analysis": [
+                            "Geist"
+                    ],
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "ai-insight-italic": [
+                            "Geist"
+                    ],
+                    "body-technical": [
+                            "Geist"
+                    ]
+            },
+            "fontSize": {
+                    "display-command": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-analysis-mobile": [
+                            "20px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-analysis": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-mono": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "ai-insight-italic": [
+                            "13px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-technical": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        /* Pulse Animation for Risk Indicator */
+        @keyframes pulse-risk {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .5; transform: scale(1.1); }
+        }
+        .animate-pulse-risk {
+            animation: pulse-risk 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        /* Glassmorphic Panel Styles */
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Subtle Glow Effects */
+        .glow-primary-subtle {
+            box-shadow: inset 0 0 20px rgba(214, 186, 255, 0.05);
+        }
+        .glow-amber-subtle {
+            box-shadow: inset 0 0 20px rgba(245, 158, 11, 0.05);
+        }
+        
+        /* Hexagon Shape (Approximation using clip-path) */
+        .hex-shape {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col md:flex-row overflow-x-hidden selection:bg-primary/30 selection:text-primary">
+<!-- SideNavBar (from JSON) -->
+<nav class="hidden md:flex flex-col h-full py-6 bg-surface-container-low fixed left-0 top-0 w-sidebar-width z-50 border-r border-outline-variant/20 flat no shadows">
+<!-- Header -->
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30 shrink-0 overflow-hidden">
+<img alt="Workspace Identity" class="w-full h-full object-cover" data-alt="A highly detailed, futuristic abstract representation of a digital workspace identity core. It features a glowing, deep purple geometric nucleus surrounded by intricate, obsidian-colored circuit patterns. The aesthetic is extremely high-tech, precise, and sophisticated, illuminated by a stark, cool white rim light against a completely black background. The overall mood is authoritative and highly secure, fitting a command-center interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaXa_D1DkwZAUAFbtbmGAJ_OjcWEMfWT2rzYmD1fhuXT3hqie2sDAYVVsyzuVuqH3hbZQnOV_HLeNOCEXROWQcM6c6cA6nuIN_b70l5LNweARwTNewL9EgeHP3uj5AqaDP1rNBJEWPaS35ywU2ouuX-QJ5Z_hNKIfnarK8jrJCZNDFlhK2jabXIaVpL0A5paZPt7CQrcFmwzpw8oNk4EHlNzWe5p2IV2fLLUCjBZe_Pt0cY98BVfyH56RyrEO7CupsJD96l7vpdRTJ"/>
+</div>
+<div>
+<h2 class="font-display-command text-display-command text-primary text-[18px] mb-1">Core_Workspace</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant">Active_Session_01</p>
+</div>
+</div>
+<!-- Main Navigation -->
+<ul class="flex-1 space-y-1">
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-3 px-4 font-label-mono text-label-mono hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">fingerprint</span>
+                    Identity
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-3 px-4 font-label-mono text-label-mono hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">architecture</span>
+                    Craft
+                </a>
+</li>
+<!-- Intelligence Tab is ACTIVE based on intent ("Risk Intelligence Header") -->
+<li>
+<a class="flex items-center gap-3 bg-primary/10 text-primary border-r-2 border-primary py-3 px-4 font-label-mono text-label-mono scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">psychology</span>
+                    Intelligence
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-3 px-4 font-label-mono text-label-mono hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">hub</span>
+                    Vectors
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-3 px-4 font-label-mono text-label-mono hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+                    Archive
+                </a>
+</li>
+</ul>
+<!-- Footer Navigation -->
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary text-on-primary py-2 px-4 rounded font-label-mono text-label-mono mb-6 hover:bg-primary/90 transition-colors">
+                New Deployment
+            </button>
+<ul class="space-y-1 border-t border-outline-variant/20 pt-4">
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-2 px-4 font-label-mono text-label-mono text-[11px]" href="#">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+                        Terminal
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface py-2 px-4 font-label-mono text-label-mono text-[11px]" href="#">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+                        Docs
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- TopNavBar (Mobile Only) -->
+<nav class="md:hidden flex justify-between items-center w-full px-margin-edge h-16 bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-40 border-b border-outline-variant/30 flat no shadows">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-display-command text-display-command text-primary uppercase tracking-tighter text-[20px]">OBSIDIAN FLUX</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A highly detailed portrait of a technical lead in a futuristic command center setting. The lighting is low-key, illuminated primarily by the soft purple glow of off-screen monitors, creating a dramatic and professional ambiance. The person looks focused, wearing dark, minimalist clothing. The background is slightly blurred, hinting at complex data visualizations and deep obsidian UI panels. The overall aesthetic is serious, precise, and high-tech." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0kbMmXwW0CyAT--gHWSGpLSXYxr5fmANmF4al6QIBbRWxnh4YQT5egwPY0xFfOXuhbpSfejrN93DR--N-Rg7faS4v2XKnxJ1F2p7F0W8FSd05NxzDdijLzLgrSe0qDzHqltEhkaBR0dh96b77Y9YF0ZDwXZdbOnVX9tG_CdL0eeRVvHXHsjlE2Qy-_A4Ic31MU6FhOJmFVfcsfvK-1086UcCT1aD8QOgAtqGKkk0h8CUe8BR2VMSw_6E10lToF1fvUVbvEVMS_qfJ"/>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 w-full md:pl-[280px] pt-16 md:pt-0 min-h-screen relative overflow-y-auto">
+<!-- Top App Bar Content (Web Only - replacing JSON TopNavBar as per Desktop rules to hide it and integrate header elements into canvas top) -->
+<header class="hidden md:flex justify-between items-center w-full px-8 h-20 bg-surface/80 backdrop-blur-xl sticky top-0 z-30 border-b border-outline-variant/10">
+<div class="flex items-center gap-6">
+<span class="font-display-command text-display-command text-primary uppercase tracking-tighter text-[24px]">OBSIDIAN FLUX</span>
+<div class="h-6 w-px bg-outline-variant/30"></div>
+<div class="flex gap-4">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors py-2" href="#">Network</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors py-2" href="#">Protocols</a>
+<a class="font-label-mono text-label-mono text-primary border-b-2 border-primary pb-1 py-2" href="#">Security</a>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant/20 focus-within:border-primary/50 transition-colors w-64">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-technical font-body-technical text-on-surface placeholder:text-on-surface-variant/50 w-full p-0 h-6" placeholder="Search parameters..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-amber-500 rounded-full border border-surface"></span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded border border-outline-variant/30 overflow-hidden cursor-pointer hover:border-primary transition-colors">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A highly detailed portrait of a technical lead in a futuristic command center setting. The lighting is low-key, illuminated primarily by the soft purple glow of off-screen monitors, creating a dramatic and professional ambiance. The person looks focused, wearing dark, minimalist clothing. The background is slightly blurred, hinting at complex data visualizations and deep obsidian UI panels. The overall aesthetic is serious, precise, and high-tech." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNCh2QNF_WfFGsJvxOrkLCYWm9biJgIBUMm5mam7abM8_-ldGs-0pg2I1d0DZAslQsL5N6iIuhUfWrz0nqhPABKcyiun3QyuZiuUkNXE8Vq9mXqo4c14k9lyYeod0jhGkIYlNWIqMchluUqglVeoenkzaZm8ucm2nCN1XrIjdJC8IpOGTCoLowddFBEw2uG9vpWofGSda9pqOS1TuHWDcosRaNHvRky8RncRZGrnSl12QEftSERr_LSxREsGfEAWzPYE0oar2HfB49"/>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<div class="p-6 md:p-8 max-w-[1600px] mx-auto space-y-gutter flex flex-col xl:flex-row gap-6">
+<!-- Left Column: Core Workflow -->
+<div class="flex-1 space-y-gutter flex flex-col min-w-0">
+<!-- 1. Risk Intelligence Header -->
+<section class="glass-panel rounded-xl p-6 glow-amber-subtle relative overflow-hidden border-amber-500/20">
+<!-- Decor background line -->
+<div class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-amber-500 to-transparent"></div>
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div class="space-y-4 max-w-2xl">
+<div class="flex items-center gap-3">
+<div class="relative flex items-center justify-center w-6 h-6">
+<span class="absolute inline-flex h-full w-full rounded-full bg-amber-500/30 animate-pulse-risk"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-amber-500"></span>
+</div>
+<h1 class="font-headline-analysis text-headline-analysis text-on-surface">
+                                    Risk Detected: Auth Architecture Pivot
+                                </h1>
+</div>
+<p class="font-body-technical text-body-technical text-on-surface-variant leading-relaxed">
+                                Critical API disconnect risk identified in transition to V2 Identity Module. Service interruption probability estimated at 84% during cutover phase without active session migration strategy.
+                            </p>
+<div class="flex items-center gap-4 pt-2">
+<span class="px-2 py-1 rounded bg-amber-500/10 text-amber-500 border border-amber-500/20 font-label-mono text-label-mono flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                                    SEVERITY: HIGH
+                                </span>
+<a class="font-label-mono text-label-mono text-primary hover:underline flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[14px]">link</span>
+                                    Source Decision (SCREEN_16)
+                                </a>
+</div>
+</div>
+<!-- 4. Active Lifecycle Tracker (Compact Header Version) -->
+<div class="md:w-64 bg-surface-container-low rounded-lg p-4 border border-outline-variant/10 shrink-0">
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-mono text-label-mono text-on-surface-variant">MITIGATION_STATUS</span>
+<span class="font-label-mono text-label-mono text-primary">PLANNING</span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full h-1 bg-surface-variant rounded-full mb-4 relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full bg-primary w-[35%] transition-all duration-500"></div>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-mono text-label-mono text-on-surface-variant/70 text-[10px] mb-1">CONFIDENCE_SCORE</span>
+<span class="font-headline-analysis text-headline-analysis text-on-surface">64%</span>
+</div>
+<span class="font-label-mono text-label-mono text-amber-400 bg-amber-400/10 px-1.5 py-0.5 rounded text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">trending_up</span>
+                                    Needs Actions
+                                </span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout for Sections 2 & 3 -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- 2. The Mitigation Matrix -->
+<section class="lg:col-span-7 glass-panel rounded-xl border-outline-variant/10 flex flex-col">
+<div class="px-5 py-4 border-b border-outline-variant/10 flex justify-between items-center bg-surface-container-low/50">
+<h2 class="font-label-mono text-label-mono text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[16px]">build</span>
+                                MITIGATION_MATRIX
+                            </h2>
+<button class="font-label-mono text-label-mono text-primary hover:text-primary-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">add</span>
+                                Add Action
+                            </button>
+</div>
+<div class="p-2 space-y-1 flex-1">
+<!-- Action Item 1 -->
+<div class="group flex items-center gap-4 p-3 rounded-lg hover:bg-surface-container-highest/30 border border-transparent hover:border-outline-variant/20 transition-all">
+<div class="w-8 h-8 hex-shape bg-primary/10 border border-primary/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[14px]">check</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-body-technical text-body-technical text-on-surface truncate mb-1">Establish Fallback JWT Verification</h3>
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">person</span> David C.
+                                        </span>
+<span class="font-label-mono text-label-mono text-amber-500 text-[10px] bg-amber-500/10 px-1.5 rounded">HIGH PRIORITY</span>
+</div>
+</div>
+<div class="flex -space-x-2 shrink-0">
+<img alt="David C" class="w-6 h-6 rounded-full border border-surface" data-alt="A highly detailed close-up portrait of a male software engineer looking slightly off-camera. The lighting is cinematic, utilizing deep shadows and an electric blue and purple rim light that highlights the edge of his face. The setting implies a dark, high-tech server room or command center. The aesthetic is modern, intense, and professional, aligning with a premium cyber-security application UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB6sovrkyJ2cHxHLSb8Y-Jwr-aPvTdASbSjV8uBqhzm2C7MtBJFnOZd55SmjvDHoVe4OfK51f033DOPxGRddBfM8fRkzOyaNcuJIFXg-3vqsT8_Tw5geo-Blohuy_BSnKcbR7lJ-ey03GVjTz3AU6qsfvNZQFxg5mVhFmUqMs99wYDAyPYorwdZD7pdhhaESdQpkglkvS9OsPNuVDk9g3TFU7BSfPQfAIrPSgASsmfstB_IwzCK6p5D6EQ_sYLWZ8L5KtgNBkQyKeg"/>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-on-surface p-1">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+<!-- Action Item 2 -->
+<div class="group flex items-center gap-4 p-3 rounded-lg bg-surface-container-highest/20 border border-outline-variant/10 transition-all">
+<div class="w-8 h-8 hex-shape bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-amber-500 text-[14px]">pending</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-body-technical text-body-technical text-on-surface truncate mb-1">Update JWT Secret Rotation Script</h3>
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">person</span> Sarah J.
+                                        </span>
+<span class="font-label-mono text-label-mono text-primary text-[10px] bg-primary/10 px-1.5 rounded">MEDIUM PRIORITY</span>
+</div>
+</div>
+<div class="flex -space-x-2 shrink-0">
+<img alt="Sarah J" class="w-6 h-6 rounded-full border border-surface" data-alt="A highly detailed portrait of a female system architect looking thoughtful. The image features a shallow depth of field, blurring the background which suggests complex, glowing UI panels in deep obsidian and emerald colors. The lighting is soft but dramatic, accentuating a professional and intelligent demeanor. The overall aesthetic perfectly matches a high-stakes, dark-mode risk management dashboard environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXBIVylhGr4RDLxOQzT7M6P22GbHO4esXCDm3R0vAOQfaUdbwBW75ELJDeefZ-LCyTnNrlY8BVKal8PeXLe6zThlCcjcE3eUsEkPW7SLKeMlc2aBeyl3TTq7oqQbIbiFwhKSuOX6w6iflfDUMmw8n6TVmWCYqDmu9jzoJKx_FNFLI_hjjqgBqCzUq9vf00-U7xn9SDQP1CiUQOC_MbIXGE0KU6A0nNqtEnp7oMx3XOaw4jVi3UaUWmHRMJv51sInNXN50Iw4X6Uc_s"/>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-on-surface p-1">
+<span class="material-symbols-outlined text-[16px]">more_vert</span>
+</button>
+</div>
+<!-- Action Item 3 -->
+<div class="group flex items-center gap-4 p-3 rounded-lg hover:bg-surface-container-highest/30 border border-transparent hover:border-outline-variant/20 transition-all opacity-50">
+<div class="w-8 h-8 hex-shape bg-outline-variant/20 border border-outline-variant/40 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant text-[14px]">schedule</span>
+</div>
+<div class="flex-1 min-w-0">
+<h3 class="font-body-technical text-body-technical text-on-surface-variant truncate mb-1">Verify Client-Side Token Refresh</h3>
+<div class="flex items-center gap-3">
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[10px] flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">person</span> Unassigned
+                                        </span>
+</div>
+</div>
+<button class="font-label-mono text-label-mono text-[10px] text-primary border border-primary/30 px-2 py-1 rounded hover:bg-primary/10 transition-colors">
+                                    ASSIGN
+                                </button>
+</div>
+</div>
+</section>
+<!-- 3. Strategy Exploration -->
+<section class="lg:col-span-5 glass-panel rounded-xl border-outline-variant/10 glow-primary-subtle overflow-hidden flex flex-col">
+<div class="px-5 py-4 border-b border-outline-variant/10 bg-surface-container-low/80 backdrop-blur">
+<h2 class="font-label-mono text-label-mono text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">alt_route</span>
+                                DIVERGENT_APPROACHES
+                            </h2>
+</div>
+<div class="p-4 space-y-4 flex-1 bg-gradient-to-b from-surface-container-low/50 to-transparent">
+<!-- Option A (Selected) -->
+<div class="bg-primary/5 border border-primary/30 rounded-lg p-3 relative cursor-pointer hover:bg-primary/10 transition-colors">
+<div class="absolute top-0 right-0 w-1 h-full bg-primary rounded-r-lg"></div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-body-technical text-body-technical text-on-surface font-medium">A. Mitigate &amp; Proceed</h3>
+<span class="font-label-mono text-label-mono text-primary text-[10px] bg-primary/10 px-1.5 py-0.5 rounded">RECOMMENDED</span>
+</div>
+<div class="mt-3">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[10px]">Consensus Gauge</span>
+<span class="font-label-mono text-label-mono text-primary text-[10px]">85%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden flex">
+<div class="h-full bg-emerald-500 w-[60%]"></div>
+<div class="h-full bg-primary w-[25%]"></div>
+</div>
+</div>
+</div>
+<!-- Option B -->
+<div class="bg-surface-container border border-outline-variant/20 rounded-lg p-3 cursor-pointer hover:border-outline-variant/50 transition-colors">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-body-technical text-body-technical text-on-surface-variant font-medium">B. Revert to V1.4 Architecture</h3>
+</div>
+<div class="mt-3">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[10px]">Consensus Gauge</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[10px]">12%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden flex">
+<div class="h-full bg-amber-500 w-[12%]"></div>
+</div>
+</div>
+</div>
+<!-- Option C -->
+<div class="bg-surface-container border border-outline-variant/20 rounded-lg p-3 cursor-pointer hover:border-outline-variant/50 transition-colors opacity-70">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-body-technical text-body-technical text-on-surface-variant font-medium">C. Postpone Migration</h3>
+</div>
+<div class="mt-3">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[10px]">Consensus Gauge</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[10px]">3%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden flex">
+<div class="h-full bg-error w-[3%]"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Right Column: Context & Metadata -->
+<aside class="w-full xl:w-[320px] shrink-0 space-y-gutter flex flex-col">
+<!-- 5. Synergy Approval Board -->
+<section class="glass-panel rounded-xl border-outline-variant/10 p-5">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant flex items-center gap-2 mb-4 uppercase tracking-wider text-[11px]">
+<span class="material-symbols-outlined text-[14px]">fact_check</span>
+                        Synergy Sign-off
+                    </h2>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-2 rounded hover:bg-surface-container-highest/20 transition-colors">
+<div class="flex items-center gap-3">
+<img alt="Lead Architect" class="w-7 h-7 rounded bg-surface-container-high border border-outline-variant/30 object-cover" data-alt="A highly detailed close-up portrait of a senior male executive looking resolute. The lighting features a strong side light that casts sharp, dramatic shadows, emphasizing authority. The background is a stark, pure obsidian black with very faint, blurry hints of glowing terminal text. The aesthetic is strictly dark mode, premium, and commanding, suitable for an enterprise risk software dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdncMmLXwRcmyvY79Z9G_upIdFVhWSyu3Eefby7L6K2aT9ek5XweJbJYdoILEktJ9x-zIWxao8MbbhcZ9lQRulUGGl62pqn6I1ofTmVo2rdVHv3cFIvPtKRQxgjR6PSbce-78FcdGu9awrhaXTt3lf1Aq-Hy8TBscoc1o8eQ-QZHsToEJtRUThJLznqWO58XjE1JH1y_WW9Hy7ToKd96iIWK6ldlpONwDS3QyP_N5RzdxSbGxeSzUFDy7F_ml_pPu_qdHYPvNt7D5_"/>
+<div class="flex flex-col">
+<span class="font-body-technical text-body-technical text-on-surface text-[13px]">Marcus T.</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[9px]">Lead Architect</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-emerald-400 text-[16px]">verified</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded hover:bg-surface-container-highest/20 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center text-on-surface-variant font-label-mono text-[10px]">
+                                    EY
+                                </div>
+<div class="flex flex-col">
+<span class="font-body-technical text-body-technical text-on-surface-variant text-[13px]">Elena Y.</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[9px]">SecOps Lead</span>
+</div>
+</div>
+<span class="font-label-mono text-label-mono text-amber-500 text-[9px] border border-amber-500/30 px-1.5 py-0.5 rounded">PENDING</span>
+</div>
+<div class="pt-3 mt-3 border-t border-outline-variant/10">
+<button class="w-full bg-transparent border border-outline-variant/30 text-on-surface hover:border-primary hover:text-primary py-2 rounded font-label-mono text-label-mono text-[11px] transition-all flex justify-center items-center gap-2">
+                                Request Review
+                             </button>
+</div>
+</div>
+</section>
+<!-- 6. Post-Mortem Connector -->
+<section class="glass-panel rounded-xl border-outline-variant/10 flex flex-col flex-1 relative overflow-hidden group">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-surface/0 to-surface/0 z-0 opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<div class="p-5 flex-1 flex flex-col relative z-10">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant flex items-center gap-2 mb-3 uppercase tracking-wider text-[11px]">
+<span class="material-symbols-outlined text-[14px]">auto_stories</span>
+                            Learning Vault Setup
+                        </h2>
+<div class="bg-surface-container-lowest border border-outline-variant/10 rounded-lg p-3 flex-1 flex flex-col justify-between">
+<p class="font-ai-insight-italic text-ai-insight-italic text-on-surface-variant/80 mb-4 leading-relaxed">
+                                "The resolution steps for this Auth pivot will automatically generate a blueprint for future V2 migrations."
+                            </p>
+<div class="flex items-center gap-2 mt-auto">
+<span class="material-symbols-outlined text-primary text-[18px]">folder_special</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-mono text-label-mono text-primary truncate text-[11px]">Project_Knowledge_Archive</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant text-[9px]">Target: SCREEN_18</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Global Action Button -->
+<button class="w-full bg-primary text-on-primary font-label-mono text-label-mono py-3 rounded-lg shadow-[0_0_15px_rgba(214,186,255,0.2)] hover:shadow-[0_0_25px_rgba(214,186,255,0.4)] transition-all flex justify-center items-center gap-2 group mt-auto">
+                    EXECUTE MITIGATION
+                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</aside>
+</div>
+</main>
+</body></html>

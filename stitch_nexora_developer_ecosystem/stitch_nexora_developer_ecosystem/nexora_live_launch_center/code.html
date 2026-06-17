@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora | Live Launch Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#ede0ff",
+                        "surface-glass": "#1A1A1A",
+                        "primary-container": "#7c3aed",
+                        "surface-dim": "#131313",
+                        "secondary-fixed-dim": "#89ceff",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-secondary-container": "#00344e",
+                        "on-secondary": "#00344d",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary": "#4f2500",
+                        "primary": "#d2bbff",
+                        "border-subtle": "rgba(255, 255, 255, 0.08)",
+                        "on-background": "#e5e2e1",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "tertiary-container": "#a15100",
+                        "on-surface-variant": "#ccc3d8",
+                        "inverse-on-surface": "#313030",
+                        "outline-variant": "#4a4455",
+                        "primary-fixed": "#eaddff",
+                        "silver-text": "#E2E2E2",
+                        "surface-container-highest": "#353534",
+                        "secondary-container": "#00a2e6",
+                        "tertiary": "#ffb784",
+                        "outline": "#958da1",
+                        "surface-variant": "#353534",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "surface": "#131313",
+                        "on-tertiary-container": "#ffe0cd",
+                        "surface-container-high": "#2a2a2a",
+                        "electric-purple": "#A855F7",
+                        "surface-tint": "#d2bbff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary": "#3f008e",
+                        "surface-container": "#201f1f",
+                        "on-tertiary-fixed": "#301400",
+                        "on-primary-fixed": "#25005a",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed": "#ffdcc6",
+                        "secondary-fixed": "#c9e6ff",
+                        "inverse-primary": "#732ee4",
+                        "on-secondary-fixed": "#001e2f",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "on-surface": "#e5e2e1",
+                        "error": "#ffb4ab",
+                        "deep-obsidian": "#050505",
+                        "secondary": "#89ceff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Geist"],
+                        "label-xs": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "body-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "code-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-xs": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #A855F7 0%, #89ceff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden selection:bg-electric-purple selection:text-white">
+<!-- TopNavBar (Mobile Only) -->
+<nav class="md:hidden flex justify-between items-center px-margin-mobile w-full sticky top-0 z-50 bg-surface-glass/80 backdrop-blur-xl border-b border-border-subtle shadow-sm h-16">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-electric-purple">
+            Nexora
+        </div>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</nav>
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-screen flex-col py-8 z-40 bg-surface-dim border-r border-border-subtle docked left-0 h-full w-64">
+<div class="px-6 mb-8 flex flex-col gap-1">
+<h1 class="font-headline-lg text-headline-lg font-bold text-electric-purple">Nexora</h1>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Developer Workspace</span>
+</div>
+<nav class="flex-1 flex flex-col gap-2 px-2">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-body-md text-body-md">Home</span>
+</a>
+<a class="flex items-center gap-3 bg-primary-container/20 text-primary border-r-2 border-primary px-4 py-3 rounded-DEFAULT translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span class="font-body-md text-body-md font-semibold">My Projects</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined">apps</span>
+<span class="font-body-md text-body-md">Applications</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-body-md text-body-md">Growth</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-white/5 hover:text-on-surface transition-all rounded-DEFAULT" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-gradient-to-r from-primary-container to-electric-purple text-white font-body-md text-body-md py-3 rounded-lg border border-white/10 hover:shadow-[0_0_20px_rgba(124,58,237,0.2)] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                    New Project
+                </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto w-full md:ml-64 bg-deep-obsidian relative">
+<!-- Atmospheric Gradient Background -->
+<div class="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-primary-container/10 to-transparent pointer-events-none z-0"></div>
+<div class="max-w-[container-max] mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 relative z-10 flex flex-col gap-gutter">
+<!-- Hero Section: The Pulse -->
+<section class="glass-panel rounded-xl overflow-hidden relative min-h-[400px] flex flex-col md:flex-row items-center p-8 gap-8 glow-hover transition-all">
+<div class="flex-1 z-10 space-y-6">
+<div class="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full font-code-sm text-code-sm">
+<div class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></div>
+                            Status: LIVE
+                        </div>
+<h2 class="font-display-lg text-display-lg md:text-[64px] text-headline-lg-mobile">
+                            Your product is <span class="gradient-text">live 🚀</span>
+</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+<div class="flex flex-col gap-1 border-l border-border-subtle pl-4">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Project</span>
+<span class="font-body-md text-body-md font-semibold text-silver-text">Nexora Project</span>
+</div>
+<div class="flex flex-col gap-1 border-l border-border-subtle pl-4">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Release</span>
+<span class="font-code-sm text-code-sm font-semibold text-primary">v1.0.0</span>
+</div>
+<div class="flex flex-col gap-1 border-l border-border-subtle pl-4">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Deployment</span>
+<span class="font-body-md text-body-md font-semibold text-silver-text">Global Edge</span>
+</div>
+<div class="flex flex-col gap-1 border-l border-border-subtle pl-4">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Uptime</span>
+<span class="font-code-sm text-code-sm font-semibold text-emerald-400">99.99%</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 h-[300px] relative rounded-lg overflow-hidden border border-border-subtle bg-black/50">
+<!-- STITCH_THREEJS_START:ANIMATION_29 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_29" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_29');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  (function() {
+  const container = document.getElementById('threejs-container-LIVE_PULSE');
+  if (!container) return;
+
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
+
+  const pointLight = new THREE.PointLight(0x7c3aed, 2, 10);
+  pointLight.position.set(5, 5, 5);
+  scene.add(pointLight);
+
+  // Geometry: A central sphere (the product) with a pulse ring (the live status)
+  const productGeom = new THREE.SphereGeometry(1, 32, 32);
+  const productMat = new THREE.MeshStandardMaterial({
+    color: 0x7c3aed,
+    emissive: 0x7c3aed,
+    emissiveIntensity: 0.5,
+    roughness: 0.1,
+    metalness: 0.9
+  });
+  const product = new THREE.Mesh(productGeom, productMat);
+  scene.add(product);
+
+  const ringGeom = new THREE.TorusGeometry(1.5, 0.02, 16, 100);
+  const ringMat = new THREE.MeshBasicMaterial({ color: 0x10b981, transparent: true, opacity: 0.6 });
+  const ring = new THREE.Mesh(ringGeom, ringMat);
+  ring.rotation.x = Math.PI / 2;
+  scene.add(ring);
+
+  // Particles for "Live" traffic
+  const particlesCount = 100;
+  const particlesGeom = new THREE.BufferGeometry();
+  const posArray = new Float32Array(particlesCount * 3);
+
+  for(let i = 0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 10;
+  }
+  particlesGeom.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+  const particlesMat = new THREE.PointsMaterial({ size: 0.05, color: 0x7c3aed, transparent: true, opacity: 0.8 });
+  const particles = new THREE.Points(particlesGeom, particlesMat);
+  scene.add(particles);
+
+  camera.position.z = 5;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    product.rotation.y += 0.005;
+    ring.scale.setScalar(1 + Math.sin(Date.now() * 0.003) * 0.1);
+    ring.material.opacity = 0.5 + Math.sin(Date.now() * 0.003) * 0.3;
+    
+    particles.rotation.y += 0.001;
+    particles.rotation.x += 0.0005;
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+})();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_29 -->
+</div>
+</section>
+<!-- Analytics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<!-- Metrics Array -->
+<div class="md:col-span-3 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="glass-panel p-6 rounded-lg flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-emerald-500/50 transform origin-left scale-x-100 transition-transform"></div>
+<span class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">health_and_safety</span> Health
+                            </span>
+<span class="font-headline-lg text-headline-lg text-emerald-400">100%</span>
+</div>
+<div class="glass-panel p-6 rounded-lg flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary/50 transform origin-left scale-x-100 transition-transform"></div>
+<span class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">speed</span> Latency
+                            </span>
+<span class="font-headline-lg text-headline-lg text-secondary">42ms</span>
+</div>
+<div class="glass-panel p-6 rounded-lg flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-electric-purple/50 transform origin-left scale-x-100 transition-transform"></div>
+<span class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">group</span> Active
+                            </span>
+<span class="font-headline-lg text-headline-lg text-electric-purple">1.2k</span>
+</div>
+<div class="glass-panel p-6 rounded-lg flex flex-col gap-2 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-on-surface-variant/50 transform origin-left scale-x-100 transition-transform"></div>
+<span class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">bug_report</span> Errors
+                            </span>
+<span class="font-headline-lg text-headline-lg text-silver-text">0.01%</span>
+</div>
+</div>
+<!-- Roadmap Teaser -->
+<div class="glass-panel p-6 rounded-lg flex flex-col justify-between glow-hover">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="font-label-xs text-label-xs tracking-widest text-on-surface-variant uppercase">Next Up</span>
+<span class="material-symbols-outlined text-primary text-[18px]">route</span>
+</div>
+<h3 class="font-body-md text-body-md font-semibold text-silver-text">v1.1: WebSockets integration</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-2">Real-time sync capabilities scheduled for Q3.</p>
+</div>
+<button class="mt-4 text-primary font-code-sm text-code-sm text-left hover:text-white transition-colors flex items-center gap-1">
+                            View Roadmap <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Timeline & Squad Row -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Release Timeline -->
+<div class="glass-panel p-8 rounded-xl flex flex-col gap-6">
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">linear_scale</span>
+                            Release Pipeline
+                        </h3>
+<div class="relative flex-1 flex flex-col justify-center py-4">
+<!-- Track line -->
+<div class="absolute left-[28px] md:left-auto md:top-1/2 md:-translate-y-1/2 md:left-0 md:w-full w-0.5 h-full md:h-0.5 bg-border-subtle z-0"></div>
+<div class="absolute left-[28px] md:left-auto md:top-1/2 md:-translate-y-1/2 md:left-0 md:w-full w-0.5 h-full md:h-0.5 bg-primary/40 z-0"></div>
+<div class="flex flex-col md:flex-row justify-between relative z-10 gap-8 md:gap-4">
+<!-- Step 1 -->
+<div class="flex md:flex-col items-center gap-4 group">
+<div class="w-14 h-14 rounded-full bg-surface-dim border-2 border-primary flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">code</span>
+</div>
+<div class="text-left md:text-center">
+<div class="font-code-sm text-code-sm font-semibold text-silver-text">Development</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant opacity-60">Completed</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex md:flex-col items-center gap-4 group">
+<div class="w-14 h-14 rounded-full bg-surface-dim border-2 border-primary flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+<div class="text-left md:text-center">
+<div class="font-code-sm text-code-sm font-semibold text-silver-text">Testing</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant opacity-60">Completed</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex md:flex-col items-center gap-4 group">
+<div class="w-14 h-14 rounded-full bg-surface-dim border-2 border-primary flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<div class="text-left md:text-center">
+<div class="font-code-sm text-code-sm font-semibold text-silver-text">Launch</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant opacity-60">Completed</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="flex md:flex-col items-center gap-4 group">
+<div class="w-14 h-14 rounded-full bg-primary-container border-2 border-primary flex items-center justify-center text-white shadow-[0_0_15px_rgba(124,58,237,0.5)]">
+<span class="material-symbols-outlined">check_circle</span>
+</div>
+<div class="text-left md:text-center">
+<div class="font-code-sm text-code-sm font-bold text-white">LIVE</div>
+<div class="font-code-sm text-code-sm text-emerald-400">Now Active</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Launch Squad -->
+<div class="glass-panel p-8 rounded-xl flex flex-col gap-6">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">group_work</span>
+                                Launch Squad
+                            </h3>
+<span class="font-label-xs text-label-xs bg-surface-dim px-3 py-1 rounded-full border border-border-subtle text-on-surface-variant">Core Team</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Member 1 -->
+<div class="flex items-center gap-4 p-3 rounded-lg border border-border-subtle bg-surface-dim/50 hover:bg-surface-dim transition-colors">
+<img alt="Avatar" class="w-12 h-12 rounded-full border border-primary/30" data-alt="A futuristic UI avatar portrait of a female developer with subtle purple neon edge lighting against a dark obsidian background. High tech aesthetic, sharp focus, digital art style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsbdHoJ-fs90XCtkQUkYGFXQ0P6D-Lgc4a1mevP7hbLyWTavh5Jxbhnrj4pTrZcGlWlMksxilTO7PHh0fbKyDrAfv0QqYwWzxMHJ0qsYJxq_oOniHuONjS9lucdaaBH8sdLlMIC7fkz_RaDT0aDcGqHbhn76uAls2IFzU5MZwW2w3abUW849aB5mrK8Vc1ja_w4HjuizNb-2QHU1Hef_tzZeR1HrfMBuFp4TkDoyCZHIBDvdjvfaaC-ZmCA3nKBVVxZpvk1gPMEwJA"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-silver-text">Sarah J.</span>
+<span class="font-code-sm text-code-sm text-primary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">shield</span> Zero-Bug Deploy</span>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="flex items-center gap-4 p-3 rounded-lg border border-border-subtle bg-surface-dim/50 hover:bg-surface-dim transition-colors">
+<img alt="Avatar" class="w-12 h-12 rounded-full border border-secondary/30" data-alt="A futuristic UI avatar portrait of a male engineer with blue holographic accents against a deep dark grey background. Cyberpunk clean aesthetic, professional, 8k resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkYQrfoyPCvqBXUo08imRImVnx2AjIqpLannSEjK1Oz6dORj6cQbZ5GnRZbIerfuliSSiTxE65aO20ymrBzgXQnOj2yaYslK-878whBSjxzEva3Y7oGJu9d9Aei7c6behq3rt3qKWUaeFZyU4EtypVGyh-26Pt1R-QyjYxQmq_N3iF9zNBl1wMvpoyoqTXcVGvcGMrNeLrMVKetLsIteSWcZj2aUDG9iad1blUj9gmQevGA8-Gi4a5pRS9yXPSMPV9WH3BjYLOQMQq"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-silver-text">Mike T.</span>
+<span class="font-code-sm text-code-sm text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">bolt</span> Traffic Surge</span>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="flex items-center gap-4 p-3 rounded-lg border border-border-subtle bg-surface-dim/50 hover:bg-surface-dim transition-colors">
+<img alt="Avatar" class="w-12 h-12 rounded-full border border-emerald-500/30" data-alt="A modern professional avatar of a female product manager in a minimalist dark UI setting, illuminated by a soft green ambient glow. Crisp, vector-like rendering, elegant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_Znq793KqGAdZmgGPN8JgrqAoKhAsggzHwC5ZjAd9RRwkcSP0pU0Et9eWp-gwu-9EF_h20JJSTfkmjm79fci_6cZ0W_MG8OU8Xn7XujfbQHdyvjboPRXdzIFHVOpM6tnp9lc_RXtRvTm9cM3k5cWm4-tR49-nmOPrN47pVV3VFewUNApwusMsMNWhlave3Nh-Yk2a1KuWMJoRveet-3CBynXC7Z3G9Eq3donLpsZuEb6J6KIEMMqAkJRImBtZun4JDf8X0u4m-lnk"/>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md font-semibold text-silver-text">Elena R.</span>
+<span class="font-code-sm text-code-sm text-emerald-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">campaign</span> Comms Lead</span>
+</div>
+</div>
+<!-- Add Member -->
+<div class="flex items-center gap-4 p-3 rounded-lg border border-dashed border-border-subtle bg-transparent hover:bg-white/5 transition-colors cursor-pointer justify-center">
+<span class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined">add</span> View All</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Feedback Loop Section -->
+<section class="glass-panel p-8 rounded-xl flex flex-col gap-6 mb-8">
+<h3 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">forum</span>
+                        Community Signals
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Feedback Card 1 -->
+<div class="p-5 rounded-lg bg-surface-dim border border-border-subtle flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-code-sm text-code-sm">U1</div>
+<span class="font-code-sm text-code-sm text-silver-text">@dev_ninja</span>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant">2m ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">"The new API response times are insane. Dropped from 120ms to 40ms. Great work team!"</p>
+<div class="flex gap-2 mt-auto pt-2">
+<span class="px-2 py-1 rounded bg-white/5 text-primary font-code-sm text-code-sm text-[11px]">Performance</span>
+</div>
+</div>
+<!-- Feedback Card 2 -->
+<div class="p-5 rounded-lg bg-surface-dim border border-border-subtle flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary/20 flex items-center justify-center text-secondary font-code-sm text-code-sm">U2</div>
+<span class="font-code-sm text-code-sm text-silver-text">@sysadmin_jane</span>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant">15m ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">"Dashboard UI is much cleaner. Feature request: Can we get dark mode toggles per project?"</p>
+<div class="flex gap-2 mt-auto pt-2">
+<span class="px-2 py-1 rounded bg-white/5 text-secondary font-code-sm text-code-sm text-[11px]">Feature Request</span>
+</div>
+</div>
+<!-- Feedback Card 3 -->
+<div class="p-5 rounded-lg bg-surface-dim border border-border-subtle flex flex-col gap-3 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-16 h-16 bg-electric-purple/20 blur-xl rounded-full"></div>
+<div class="flex justify-between items-start z-10">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 font-code-sm text-code-sm">U3</div>
+<span class="font-code-sm text-code-sm text-silver-text">@tech_lead</span>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant">1h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant z-10">"Seamless migration from v0.9. No downtime experienced during the global rollout."</p>
+<div class="flex gap-2 mt-auto pt-2 z-10">
+<span class="px-2 py-1 rounded bg-white/5 text-emerald-400 font-code-sm text-code-sm text-[11px]">Praise</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+</body></html>

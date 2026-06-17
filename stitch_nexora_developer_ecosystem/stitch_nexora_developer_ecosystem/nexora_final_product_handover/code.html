@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora | Final Product Handover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#1c1b1b",
+                        "surface": "#131313",
+                        "on-secondary": "#00344d",
+                        "electric-purple": "#A855F7",
+                        "on-secondary-fixed": "#001e2f",
+                        "secondary-fixed-dim": "#89ceff",
+                        "tertiary": "#ffb784",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#301400",
+                        "secondary": "#89ceff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "on-primary": "#3f008e",
+                        "on-surface-variant": "#ccc3d8",
+                        "secondary-fixed": "#c9e6ff",
+                        "surface-dim": "#131313",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-tertiary": "#4f2500",
+                        "inverse-primary": "#732ee4",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "outline": "#958da1",
+                        "surface-bright": "#3a3939",
+                        "on-background": "#e5e2e1",
+                        "background": "#131313",
+                        "outline-variant": "#4a4455",
+                        "silver-text": "#E2E2E2",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "primary-container": "#7c3aed",
+                        "on-tertiary-container": "#ffe0cd",
+                        "surface-variant": "#353534",
+                        "secondary-container": "#00a2e6",
+                        "inverse-on-surface": "#313030",
+                        "surface-glass": "#1A1A1A",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#d2bbff",
+                        "inverse-surface": "#e5e2e1",
+                        "on-surface": "#e5e2e1",
+                        "on-primary-container": "#ede0ff",
+                        "on-secondary-container": "#00344e",
+                        "surface-container-high": "#2a2a2a",
+                        "primary": "#d2bbff",
+                        "on-primary-fixed": "#25005a",
+                        "surface-container": "#201f1f",
+                        "tertiary-container": "#a15100",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "error-container": "#93000a",
+                        "border-subtle": "rgba(255, 255, 255, 0.08)",
+                        "surface-container-highest": "#353534",
+                        "surface-tint": "#d2bbff",
+                        "deep-obsidian": "#050505",
+                        "primary-fixed": "#eaddff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "label-xs": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "label-xs": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #050505; color: #e5e2e1; }
+        .glass-panel { background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-card { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow-hover:hover { box-shadow: 0 0 20px rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.5); }
+        .table-row-hover:hover { background-color: rgba(255, 255, 255, 0.03); }
+        .bg-grid-pattern {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden selection:bg-electric-purple/30 selection:text-white">
+<!-- TopNavBar Component -->
+<header class="bg-surface-glass/80 backdrop-blur-md text-primary font-body-md text-body-md fixed top-0 w-full z-50 border-b border-border-subtle shadow-sm flex justify-between items-center px-gutter h-16 w-full hidden md:flex">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-electric-purple tracking-tighter">Nexora</span>
+<div class="h-6 w-px bg-border-subtle mx-2"></div>
+<span class="text-on-surface-variant font-code-sm text-code-sm">Final Product Handover</span>
+</div>
+<div class="flex-1 flex justify-start pl-8 max-w-md hidden lg:flex">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="w-full bg-surface-container-high border border-border-subtle rounded text-on-surface text-code-sm font-code-sm py-1.5 pl-9 pr-4 focus:outline-none focus:border-electric-purple focus:ring-1 focus:ring-electric-purple/50 transition-all placeholder:text-outline-variant" placeholder="Search project artifacts..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform flex items-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform flex items-center">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle overflow-hidden flex items-center justify-center">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A macro shot of a sleek, dark metallic surface with faint electric purple glowing lines intersecting to form a subtle grid, indicating a high-tech corporate identity environment. The lighting is low-key, creating an atmosphere of precision and depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_egNg2jD4ADrsiXja12OgxEpAmat4qOXFVIe-6OQadfvCrjdnN8qO_lp_me5FxtWlLCxvUB4yltTkF9Cpjteq3cD4kvIV5elXK5iln1otKh-47CdoEn0-rfAZc_3epqUM2NPE3IZavzFC_q2Isu_il906Glnus33Yy5R_QQp0sPiuJKZDYYWNtVINfAtKz1oVuMOc-ugtY9oICtabvR_N-4XiHMMBQLW82sUADwMUMpXdwvCddPdhcVoFAz7OvEfsaMW6G7IDnZLP"/>
+</div>
+</div>
+</header>
+<!-- Mobile Header Fallback (For demonstration, usually hidden on md+) -->
+<header class="flex md:hidden bg-surface-glass/80 backdrop-blur-md fixed top-0 w-full z-50 h-16 items-center px-4 justify-between border-b border-border-subtle">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-electric-purple tracking-tighter">Nexora</span>
+<button class="text-on-surface-variant"><span class="material-symbols-outlined">menu</span></button>
+</header>
+<div class="flex h-screen pt-16">
+<!-- SideNavBar Component -->
+<nav class="bg-surface-container-lowest text-primary font-code-sm text-code-sm fixed left-0 top-0 h-full w-64 z-40 border-r border-border-subtle flex flex-col pt-20 pb-8 px-4 h-full hidden md:flex">
+<div class="mb-8 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded border border-border-subtle bg-surface-container-high flex items-center justify-center text-electric-purple">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<div>
+<h2 class="font-bold text-on-surface">Nexora Dev</h2>
+<p class="text-outline text-xs">Enterprise Tier</p>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:bg-surface-container-high transition-all cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+                    Workspace
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:bg-surface-container-high transition-all cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">fingerprint</span>
+                    Identity
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:bg-surface-container-high transition-all cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+                    Craft
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:bg-surface-container-high transition-all cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">waves</span>
+                    Flux
+                </a>
+<!-- Active Nav Item based on Intent -->
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-primary-container/20 text-primary border-r-2 border-primary cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">psychology</span>
+                    Intelligence
+                </a>
+</div>
+<div class="mt-auto border-t border-border-subtle pt-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:bg-surface-container-high transition-all cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface hover:bg-surface-container-high transition-all cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">sensors</span>
+                    Status
+                </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 w-full md:ml-64 overflow-y-auto bg-deep-obsidian bg-grid-pattern pb-24">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-8 md:py-12">
+<!-- Hero Briefing -->
+<section class="glass-panel rounded-xl p-8 mb-12 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-electric-purple/10 to-transparent pointer-events-none"></div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 relative z-10">
+<div>
+<div class="flex items-center gap-3 mb-4">
+<span class="px-2 py-1 bg-surface-container-low border border-border-subtle rounded font-label-xs text-label-xs text-silver-text uppercase tracking-widest flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-electric-purple animate-pulse"></span>
+                                    Status: Delivered
+                                </span>
+<span class="font-code-sm text-code-sm text-outline">v2.4.0-RC1</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg font-bold text-white mb-2 leading-tight">
+                                Nexora Healthcare<br/>Platform
+                            </h1>
+<p class="text-on-surface-variant max-w-2xl font-body-md text-body-md">
+                                Final product handover and architectural debrief. All primary objectives achieved with 99.9% uptime SLA verified across staging and production clusters.
+                            </p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container border border-border-subtle text-silver-text px-4 py-2 rounded font-label-xs text-label-xs hover:bg-surface-container-high transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                                Archive Repo
+                            </button>
+<button class="bg-gradient-to-r from-electric-purple to-secondary-container border border-white/10 text-white px-6 py-2 rounded font-label-xs text-label-xs hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+                                Sign Off Delivery
+                            </button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10 border-t border-border-subtle pt-8 relative z-10">
+<div>
+<p class="font-code-sm text-code-sm text-outline mb-1">Codebase Size</p>
+<p class="font-headline-lg text-headline-lg text-white">428<span class="text-xl text-outline-variant">k</span></p>
+<p class="text-xs text-secondary-fixed-dim mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span> Lines of Code</p>
+</div>
+<div>
+<p class="font-code-sm text-code-sm text-outline mb-1">Test Coverage</p>
+<p class="font-headline-lg text-headline-lg text-white">94.2<span class="text-xl text-outline-variant">%</span></p>
+<p class="text-xs text-secondary-fixed-dim mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">done_all</span> Passed CI/CD</p>
+</div>
+<div>
+<p class="font-code-sm text-code-sm text-outline mb-1">Core Features</p>
+<p class="font-headline-lg text-headline-lg text-white">124</p>
+<p class="text-xs text-secondary-fixed-dim mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">check_circle</span> Delivered</p>
+</div>
+<div>
+<p class="font-code-sm text-code-sm text-outline mb-1">Delivery Timeline</p>
+<p class="font-headline-lg text-headline-lg text-white">8<span class="text-xl text-outline-variant">mo</span></p>
+<p class="text-xs text-tertiary-fixed-dim mt-1 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 2 weeks ahead</p>
+</div>
+</div>
+</section>
+<!-- Grid Layout below Hero -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<!-- Technical Handover Package (Bento Style) -->
+<div class="lg:col-span-8 space-y-6">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-electric-purple text-xl">architecture</span>
+<h2 class="font-headline-lg text-headline-lg-mobile font-bold text-white">Technical Handover Package</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Card 1 -->
+<div class="glass-card rounded-lg p-5 glow-hover transition-all cursor-pointer flex flex-col h-full group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-electric-purple/10 rounded-bl-full blur-2xl group-hover:bg-electric-purple/20 transition-all"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded bg-surface-container border border-border-subtle flex items-center justify-center text-secondary-fixed-dim">
+<span class="material-symbols-outlined">library_books</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-white transition-colors">arrow_outward</span>
+</div>
+<h3 class="font-bold text-white mb-2">Product Overview</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex-grow">Comprehensive functional specifications, user journey maps, and business logic definitions.</p>
+<div class="flex items-center justify-between border-t border-border-subtle pt-3 mt-auto">
+<span class="font-code-sm text-xs text-outline">12 Documents</span>
+<span class="text-xs text-secondary-fixed-dim bg-secondary-fixed-dim/10 px-2 py-0.5 rounded">Verified</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card rounded-lg p-5 glow-hover transition-all cursor-pointer flex flex-col h-full group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/10 rounded-bl-full blur-2xl group-hover:bg-tertiary/20 transition-all"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded bg-surface-container border border-border-subtle flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">account_tree</span>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-white transition-colors">arrow_outward</span>
+</div>
+<h3 class="font-bold text-white mb-2">System Architecture</h3>
+<p class="text-on-surface-variant text-sm mb-4 flex-grow">Microservices topology, database schemas, and cloud infrastructure layout (AWS/Terraform).</p>
+<div class="flex items-center justify-between border-t border-border-subtle pt-3 mt-auto">
+<span class="font-code-sm text-xs text-outline">v4.0 Final</span>
+<span class="text-xs text-secondary-fixed-dim bg-secondary-fixed-dim/10 px-2 py-0.5 rounded">Verified</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-card rounded-lg p-5 glow-hover transition-all cursor-pointer flex flex-col h-full group relative overflow-hidden md:col-span-2">
+<div class="absolute top-0 right-0 w-full h-24 bg-gradient-to-b from-primary-container/5 to-transparent blur-xl pointer-events-none"></div>
+<div class="flex flex-col md:flex-row gap-6 items-start md:items-center">
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-8 h-8 rounded bg-surface-container border border-border-subtle flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">api</span>
+</div>
+<h3 class="font-bold text-white">API Documentation</h3>
+</div>
+<p class="text-on-surface-variant text-sm mb-4">Fully annotated OpenAPI 3.0 specs, GraphQL schemas, and integration sandbox environments.</p>
+<div class="flex gap-2">
+<span class="font-code-sm text-xs text-outline bg-surface-container-high px-2 py-1 rounded">REST</span>
+<span class="font-code-sm text-xs text-outline bg-surface-container-high px-2 py-1 rounded">GraphQL</span>
+<span class="font-code-sm text-xs text-outline bg-surface-container-high px-2 py-1 rounded">WebSockets</span>
+</div>
+</div>
+<div class="hidden md:block w-px h-24 bg-border-subtle"></div>
+<div class="flex-1 w-full">
+<div class="bg-surface-container-low border border-border-subtle rounded p-3 font-code-sm text-xs text-silver-text">
+<div class="flex justify-between mb-2 text-outline"><span class="text-electric-purple">GET</span> <span>/api/v2/health</span></div>
+<div class="flex justify-between mb-2 text-outline"><span class="text-secondary-fixed-dim">POST</span> <span>/api/v2/auth/token</span></div>
+<div class="flex justify-between text-outline"><span class="text-tertiary">WS</span> <span>/stream/telemetry</span></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Team Legacy Report Side Column -->
+<div class="lg:col-span-4 flex flex-col h-full">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-outline-variant text-xl">groups</span>
+<h2 class="font-headline-lg text-headline-lg-mobile font-bold text-white">Team Legacy</h2>
+</div>
+<div class="glass-panel rounded-lg p-6 flex-1 flex flex-col border border-border-subtle relative overflow-hidden">
+<!-- Background accent -->
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-electric-purple/5 rounded-full blur-3xl"></div>
+<h3 class="text-white font-bold mb-4 z-10">Contributors &amp; Impact</h3>
+<div class="space-y-4 mb-6 z-10">
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle overflow-hidden">
+<img alt="Sarah J." class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all" data-alt="Portrait of a female software engineer working in a dimly lit, high-tech server room with glowing purple and blue LED lights reflecting off the glass panels around her. The mood is focused and technical, capturing the intense concentration required for system architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxvVtTBHHO_d1HduSQZELxRDyazWUpIrkZQEI3HrcnzSd0UJoU8OPpyav-XlY3zvqfQElQxyQH5Y8v90A_LDqIiveme3PLXIR3PlyM3BXfhh63VoEDrM5l09hgi63OuAyIiEeJWrH98tZJSNvaFwJNPDAcM2TQ75vFJ1HXtHmclheouXnCQ1As_xXFPR_LjPBK1oD4YZpHUmbegm7p0vxQI4UHWkk0u5KLSDc_t87ywnz_T8vE9YB-h__JtGISJmZOQY4emBgHbJZs"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Sarah Jenkins</p>
+<p class="text-xs text-outline font-code-sm">Lead Architect</p>
+</div>
+</div>
+<span class="text-xs text-electric-purple font-code-sm bg-electric-purple/10 px-2 py-0.5 rounded border border-electric-purple/20">Backend</span>
+</div>
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle overflow-hidden">
+<img alt="Marcus T." class="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all" data-alt="A male UI/UX designer reviewing code on a multi-monitor setup in a dark, modern design studio. Subtle backlighting from the screens highlights his face, while the room remains shrouded in a deep, cinematic dark-mode aesthetic with faint blue ambient light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH-9R26QCXFFyj52rJi7aeEX1KwGFekw-t0fXaDnjnmJvQbP1HIsCtplLoJ86mU8y69F-TJ-qC_fjo3Ghf5f_A1nditzjQrQc-kLax8SWitnT7g4oM1uASgNpzJBNTj8EcHPuG9N1SddXV8V39OVHRY_ehF6PqW8m6SIdzjoxa7rweu48-MJzkek5O3XXDxoTOuYNhzhT-CvTBU5i6JVIXW6S0DG8De6pZ9x5xRuq7W9HF5LwZ582-dCRGCtjBvUdrybxaPgC83vmY"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white">Marcus Trent</p>
+<p class="text-xs text-outline font-code-sm">Principal UI/UX</p>
+</div>
+</div>
+<span class="text-xs text-secondary-fixed-dim font-code-sm bg-secondary-fixed-dim/10 px-2 py-0.5 rounded border border-secondary-fixed-dim/20">Frontend</span>
+</div>
+</div>
+<div class="mt-auto border-t border-border-subtle pt-4 z-10">
+<h4 class="text-xs font-bold text-outline-variant mb-2 uppercase tracking-wider">Key Reputation Gains</h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container border border-border-subtle rounded text-xs text-silver-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-tertiary">bolt</span> High-Concurrency
+                                    </span>
+<span class="px-2 py-1 bg-surface-container border border-border-subtle rounded text-xs text-silver-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-electric-purple">security</span> HIPAA Compliant
+                                    </span>
+<span class="px-2 py-1 bg-surface-container border border-border-subtle rounded text-xs text-silver-text flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed-dim">speed</span> Sub-50ms Latency
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feature Inventory Ledger (Full Width Table) -->
+<div class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl">list_alt</span>
+<h2 class="font-headline-lg text-headline-lg-mobile font-bold text-white">Feature Inventory Ledger</h2>
+</div>
+<button class="text-xs font-code-sm text-outline hover:text-white transition-colors flex items-center gap-1">
+                            Export CSV <span class="material-symbols-outlined text-[16px]">download</span>
+</button>
+</div>
+<div class="glass-card rounded-lg border border-border-subtle overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-subtle bg-surface-container-low/50">
+<th class="py-3 px-4 font-label-xs text-label-xs text-outline-variant uppercase tracking-wider w-1/3">Feature Name</th>
+<th class="py-3 px-4 font-label-xs text-label-xs text-outline-variant uppercase tracking-wider">Status</th>
+<th class="py-3 px-4 font-label-xs text-label-xs text-outline-variant uppercase tracking-wider">Doc Coverage</th>
+<th class="py-3 px-4 font-label-xs text-label-xs text-outline-variant uppercase tracking-wider text-right">Lead</th>
+</tr>
+</thead>
+<tbody class="font-code-sm text-sm">
+<tr class="border-b border-border-subtle table-row-hover transition-colors">
+<td class="py-3 px-4 text-silver-text font-bold">Real-time Patient Telemetry</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-fixed-dim/10 text-secondary-fixed-dim text-xs border border-secondary-fixed-dim/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span> Production
+                                            </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden max-w-[100px]">
+<div class="bg-electric-purple w-full h-full"></div>
+</div>
+<span class="text-xs text-outline">100%</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right text-outline">S. Jenkins</td>
+</tr>
+<tr class="border-b border-border-subtle table-row-hover transition-colors">
+<td class="py-3 px-4 text-silver-text font-bold">Encrypted Audit Logs</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary-fixed-dim/10 text-secondary-fixed-dim text-xs border border-secondary-fixed-dim/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed-dim"></span> Production
+                                            </span>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-2">
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden max-w-[100px]">
+<div class="bg-electric-purple w-[90%] h-full"></div>
+</div>
+<span class="text-xs text-outline">90%</span>
+</div>
+</td>
+<td class="py-3 px-4 text-right text-outline">D. Chen</td>
+</tr>
+<tr class="border-b border-border-subtle table-row-hover transition-colors">
+<td class="py-3 px-4 text-silver-text font-bold text-on-surface-variant line-through opacity-70">Legacy API Wrapper</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-highest text-outline text-xs border border-border-subtle">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> Deprecated
+                                            </span>
+</td>
+<td class="py-3 px-4 text-outline text-xs italic">Archived</td>
+<td class="py-3 px-4 text-right text-outline opacity-50">-</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Footer / Future Evolution -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<div class="glass-card rounded-lg p-6 border border-border-subtle border-l-2 border-l-tertiary">
+<h3 class="font-bold text-white mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">build_circle</span>
+                            Future Evolution Guide
+                        </h3>
+<p class="text-sm text-on-surface-variant mb-4">Recommended path for the next 6-12 months. Focus on scaling the analytics cluster and deprecating v1 endpoints.</p>
+<ul class="space-y-2 text-sm text-silver-text font-code-sm">
+<li class="flex items-start gap-2"><span class="text-tertiary">→</span> Scale Redis cache nodes by Q3.</li>
+<li class="flex items-start gap-2"><span class="text-tertiary">→</span> Implement automated data retention policies.</li>
+<li class="flex items-start gap-2 text-outline"><span class="text-outline-variant">→</span> Monitor auth latency spikes (Known Issue #42).</li>
+</ul>
+</div>
+<div class="glass-panel rounded-lg p-6 border border-electric-purple/30 bg-electric-purple/5 flex flex-col justify-center items-center text-center relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-b from-transparent to-electric-purple/10 pointer-events-none"></div>
+<h3 class="font-headline-lg text-headline-lg-mobile font-bold text-white mb-2 relative z-10">Final Product Story</h3>
+<p class="text-sm text-on-surface-variant mb-6 max-w-sm relative z-10">Generate a polished, shareable portfolio asset detailing this project's journey, tech stack, and final impact.</p>
+<button class="bg-white text-deep-obsidian font-bold py-3 px-8 rounded-full hover:bg-silver-text transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)] flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined">auto_awesome</span> Generate Portfolio Summary
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

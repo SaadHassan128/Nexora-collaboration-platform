@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora | Automated Impact Analysis</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-surface-variant": "#cdc2d7",
+                      "secondary": "#c6c6cc",
+                      "on-primary-fixed-variant": "#5f00c0",
+                      "background": "#051424",
+                      "on-background": "#d4e4fa",
+                      "on-tertiary-fixed": "#191c22",
+                      "inverse-on-surface": "#233143",
+                      "error-container": "#93000a",
+                      "on-secondary-fixed": "#1a1c20",
+                      "secondary-fixed-dim": "#c6c6cc",
+                      "primary-fixed": "#ecdcff",
+                      "surface-tint": "#d6baff",
+                      "primary-fixed-dim": "#d6baff",
+                      "on-error": "#690005",
+                      "on-surface": "#d4e4fa",
+                      "outline-variant": "#4b4454",
+                      "surface-variant": "#273647",
+                      "tertiary-container": "#8e9098",
+                      "inverse-surface": "#d4e4fa",
+                      "surface-dim": "#051424",
+                      "inverse-primary": "#7832d9",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed": "#e2e2e8",
+                      "on-primary-fixed": "#280057",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#b7b8be",
+                      "surface-container": "#122131",
+                      "secondary-container": "#47494e",
+                      "primary-container": "#aa73ff",
+                      "surface-container-highest": "#273647",
+                      "surface-container-low": "#0d1c2d",
+                      "on-primary-container": "#3a0079",
+                      "tertiary": "#c4c6ce",
+                      "on-tertiary-container": "#272a30",
+                      "surface-container-lowest": "#010f1f",
+                      "on-tertiary": "#2d3037",
+                      "tertiary-fixed-dim": "#c4c6ce",
+                      "surface-container-high": "#1c2b3c",
+                      "on-secondary": "#2f3035",
+                      "tertiary-fixed": "#e1e2ea",
+                      "on-primary": "#420089",
+                      "primary": "#d6baff",
+                      "on-tertiary-fixed-variant": "#44474d",
+                      "surface-bright": "#2c3a4c",
+                      "on-secondary-fixed-variant": "#45474b",
+                      "outline": "#968da0",
+                      "surface": "#051424"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "sidebar-width": "280px",
+                      "margin-edge": "24px",
+                      "node-gap": "32px"
+              },
+              "fontFamily": {
+                      "headline-analysis-mobile": [
+                              "Geist"
+                      ],
+                      "body-technical": [
+                              "Geist"
+                      ],
+                      "display-command": [
+                              "Geist"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-analysis": [
+                              "Geist"
+                      ],
+                      "ai-insight-italic": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "headline-analysis-mobile": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-technical": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-command": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-analysis": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "ai-insight-italic": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0F1115; /* Obsidian Base */
+            color: #d4e4fa; /* on-background */
+        }
+        
+        .glass-panel {
+            background-color: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .ai-insight-glow {
+            box-shadow: inset 0 0 20px rgba(170, 115, 255, 0.05); /* Primary container glow */
+        }
+
+        .pulse-line {
+            stroke-dasharray: 4;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+        
+        .node-high-risk {
+            border-color: #fbbf24; /* Amber */
+        }
+        
+        .node-low-risk {
+            border-color: #34d399; /* Emerald */
+        }
+        
+        /* Thin scrollbar for technical dense feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="font-body-technical text-body-technical min-h-screen flex flex-col overflow-hidden">
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-surface-container-lowest/80 backdrop-blur-xl font-headline-analysis text-headline-analysis text-primary border-b border-outline-variant/30 flex justify-between items-center w-full px-margin-edge h-16 docked full-width top-0 z-50">
+<div class="flex items-center gap-gutter">
+<span class="font-display-command text-display-command text-primary tracking-tighter">Nexora</span>
+<div class="hidden md:flex ml-8 gap-6">
+<!-- Navigation Links -->
+<a class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary transition-colors duration-200" href="#">Explore</a>
+<a class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary transition-colors duration-200" href="#">Community</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-mono text-label-mono scale-95 opacity-80 transition-all" href="#">Documentation</a>
+<a class="text-on-surface-variant font-label-mono text-label-mono hover:text-primary transition-colors duration-200" href="#">Network</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search bar placeholder -->
+<div class="hidden lg:flex items-center bg-surface-variant/50 rounded px-3 py-1.5 border border-outline-variant/50">
+<span class="material-symbols-outlined text-secondary text-sm mr-2">search</span>
+<input class="bg-transparent border-none text-sm text-on-surface focus:ring-0 w-48 placeholder-secondary" placeholder="Search system..." type="text"/>
+</div>
+<!-- Trailing Icons -->
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">terminal</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings_input_component</span>
+</button>
+<!-- Trailing Action -->
+<button class="ml-2 px-4 py-1.5 bg-primary text-on-primary font-label-mono text-label-mono rounded hover:bg-primary-container transition-colors">
+                Deploy System
+            </button>
+<!-- Profile -->
+<div class="ml-2 w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant/50">
+<img alt="User technical profile" class="w-full h-full object-cover" data-alt="A close-up, high-contrast portrait of a technical professional working in a dark, neon-lit environment. The lighting features subtle purple and blue hues, reflecting off their face, indicative of a modern, high-tech command center. They appear focused and analytical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB91KB-Ev4gNGQGKq7wTNFDErGb-eSKT2t94uCJmjEElbAXx4VvcpBcr-Ah4oQHWj6KYd9xMgfyw3SOLCsStlZv77A4IWDsBJOsILFSGCbxMxxOoXwS3LyypxKGcbQ58t8vnqOQrKY-4iw8BIuBLQFy2wVsTGYdI26M49TikayAXqs2Ejl3rMH440kN7QJn4BFpedfuf4LIb0IPlhiWni31sSegxB2VqG3ufUwg1Pteb7nC65P35Vdy-94RJGjtiz3VL1y6OmHZL80E"/>
+</div>
+</div>
+</nav>
+<div class="flex flex-1 overflow-hidden relative">
+<!-- SideNavBar (Shared Component) -->
+<aside class="hidden md:flex flex-col h-full py-6 bg-surface-container-lowest/90 backdrop-blur-2xl text-primary fixed left-0 top-0 w-sidebar-width z-40 border-r border-outline-variant/30 mt-16 pb-20 overflow-y-auto">
+<div class="px-4 mb-8">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-variant flex items-center justify-center border border-outline-variant/50">
+<span class="material-symbols-outlined text-primary">memory</span>
+</div>
+<div>
+<div class="font-headline-analysis text-headline-analysis text-primary text-lg">Nexora Intelligence</div>
+<div class="font-label-mono text-label-mono text-on-surface-variant mt-1">v2.0.4-stable</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-2">
+<a class="flex items-center gap-4 text-on-surface-variant py-3 px-4 rounded hover:bg-surface-variant/20 hover:text-on-surface transition-all font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+                    Workspace
+                </a>
+<a class="flex items-center gap-4 text-on-surface-variant py-3 px-4 rounded hover:bg-surface-variant/20 hover:text-on-surface transition-all font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">fingerprint</span>
+                    Identity
+                </a>
+<a class="flex items-center gap-4 text-on-surface-variant py-3 px-4 rounded hover:bg-surface-variant/20 hover:text-on-surface transition-all font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+                    Craft
+                </a>
+<!-- Active Item: Flux (Mapped to Impact Analysis intent) -->
+<a class="flex items-center gap-4 bg-primary/10 text-primary border-r-2 border-primary py-3 px-4 rounded-l translate-x-1 duration-150 font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">waves</span>
+                    Flux
+                </a>
+<a class="flex items-center gap-4 text-on-surface-variant py-3 px-4 rounded hover:bg-surface-variant/20 hover:text-on-surface transition-all font-label-mono text-label-mono" href="#">
+<span class="material-symbols-outlined">polyline</span>
+                    Vectors
+                </a>
+</nav>
+<div class="mt-auto px-4 pt-4 border-t border-outline-variant/30 flex flex-col gap-2">
+<button class="w-full py-2 border border-outline-variant text-on-surface font-label-mono text-label-mono rounded hover:border-primary hover:text-primary transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                    New Vector
+                </button>
+</div>
+<div class="mt-4 px-2 flex flex-col gap-1">
+<a class="flex items-center gap-4 text-on-surface-variant py-2 px-4 rounded hover:bg-surface-variant/20 hover:text-on-surface transition-all font-label-mono text-label-mono text-xs" href="#">
+<span class="material-symbols-outlined text-sm">analytics</span>
+                    Diagnostics
+                </a>
+<a class="flex items-center gap-4 text-on-surface-variant py-2 px-4 rounded hover:bg-surface-variant/20 hover:text-on-surface transition-all font-label-mono text-label-mono text-xs" href="#">
+<span class="material-symbols-outlined text-sm">memory</span>
+                    Kernel
+                </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 ml-0 md:ml-[280px] flex flex-col relative bg-[#0F1115]">
+<!-- Header -->
+<header class="p-gutter border-b border-outline-variant/20 glass-panel z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<h1 class="font-headline-analysis text-headline-analysis text-on-surface">Impact Analysis: Auth Migration</h1>
+<div class="flex gap-4 mt-2 font-label-mono text-label-mono text-secondary">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-error"></span> 3 Affected Tasks</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> 2 Docs Requiring Updates</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-[#fbbf24]"></span> 1 Milestone Shift</span>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="px-3 py-1.5 border border-outline-variant rounded font-label-mono text-label-mono hover:border-primary hover:text-primary transition-colors">Export Report</button>
+<button class="px-3 py-1.5 bg-primary text-on-primary rounded font-label-mono text-label-mono hover:bg-primary-container transition-colors">Acknowledge Risk</button>
+</div>
+</header>
+<div class="flex-1 flex overflow-hidden">
+<!-- Center Graph Area -->
+<div class="flex-1 relative overflow-hidden bg-surface-container-lowest flex items-center justify-center p-8">
+<!-- Subtle background grid -->
+<div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px;"></div>
+<!-- SVG Lines (Beneath Nodes) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: 0;">
+<defs>
+<lineargradient id="primaryGlow" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#7832d9" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#d6baff" stop-opacity="0.2"></stop>
+</lineargradient>
+<lineargradient id="amberGlow" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#fbbf24" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#fbbf24" stop-opacity="0.2"></stop>
+</lineargradient>
+</defs>
+<!-- Conceptual paths connecting nodes (absolute positioning would normally be handled by a graph library like D3, hardcoded for visual here) -->
+<path class="pulse-line" d="M 400 250 L 250 400" fill="none" stroke="url(#primaryGlow)" stroke-width="2"></path>
+<path class="pulse-line" d="M 400 250 L 550 400" fill="none" stroke="url(#primaryGlow)" stroke-width="2"></path>
+<path class="pulse-line" d="M 250 400 L 150 550" fill="none" stroke="url(#amberGlow)" stroke-width="2"></path>
+<path d="M 250 400 L 300 550" fill="none" stroke="rgba(255,255,255,0.1)" stroke-dasharray="4" stroke-width="1.5"></path>
+<path d="M 550 400 L 500 550" fill="none" stroke="rgba(255,255,255,0.1)" stroke-dasharray="4" stroke-width="1.5"></path>
+<path class="pulse-line" d="M 550 400 L 650 550" fill="none" stroke="url(#primaryGlow)" stroke-width="2"></path>
+</svg>
+<!-- Nodes Container (Relative positioning for visual mockup) -->
+<div class="relative w-full max-w-4xl h-[600px] z-10 flex flex-col items-center">
+<!-- Level 1: Decision -->
+<div class="glass-panel p-4 rounded-lg border-2 border-primary shadow-[0_0_15px_rgba(214,186,255,0.2)] w-64 absolute top-10 left-1/2 -translate-x-1/2">
+<div class="font-label-mono text-label-mono text-primary mb-1">DECISION</div>
+<div class="font-headline-analysis-mobile text-headline-analysis-mobile text-on-surface">Auth Migration</div>
+<div class="mt-3 flex justify-between items-center border-t border-outline-variant/30 pt-2">
+<span class="font-label-mono text-label-mono text-secondary text-[10px]">INITIATOR: SYSTEM</span>
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded-full font-label-mono text-[10px]">ACTIVE</span>
+</div>
+</div>
+<!-- Level 2: Features -->
+<div class="absolute top-[200px] left-1/4 -translate-x-1/2 glass-panel p-4 rounded border border-outline-variant w-56 node-high-risk">
+<div class="font-label-mono text-label-mono text-secondary mb-1">FEATURE</div>
+<div class="font-body-technical text-body-technical text-on-surface font-semibold">User Login Flow</div>
+<div class="mt-2 flex gap-1">
+<span class="bg-[#fbbf24]/20 text-[#fbbf24] px-2 py-0.5 rounded-full font-label-mono text-[10px]">HIGH RISK</span>
+</div>
+</div>
+<div class="absolute top-[200px] left-3/4 -translate-x-1/2 glass-panel p-4 rounded border border-outline-variant w-56">
+<div class="font-label-mono text-label-mono text-secondary mb-1">FEATURE</div>
+<div class="font-body-technical text-body-technical text-on-surface font-semibold">API Access Tokens</div>
+<div class="mt-2 flex gap-1">
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded-full font-label-mono text-[10px]">98% MATCH</span>
+</div>
+</div>
+<!-- Level 3: Tasks & People -->
+<div class="absolute top-[400px] left-[15%] -translate-x-1/2 glass-panel p-3 rounded border border-outline-variant w-48 node-high-risk">
+<div class="font-label-mono text-label-mono text-secondary mb-1 text-[10px]">TASK</div>
+<div class="font-body-technical text-body-technical text-on-surface text-sm">Refactor Login UI</div>
+</div>
+<div class="absolute top-[400px] left-[35%] -translate-x-1/2 glass-panel p-3 rounded border border-outline-variant w-48">
+<div class="font-label-mono text-label-mono text-secondary mb-1 text-[10px]">PERSONNEL</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant overflow-hidden">
+<img alt="Sarah J Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a female engineer, subtly lit with cold, technical blue and purple light against a dark background, fitting a cyberpunk or advanced technical dashboard theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD03oep3pS_uaPgCR22PUVdiT2KQBvrPH1KwvCxcuabqeOM5upSMmfTt8JX-ykp0YT7P9MPSMEFzfrnI5Ysus1W8Qrk0U53g650D_78YHhjyWG10RvTYkkk81RVATYVVSdan13fp1G27Kxb144r_3DhokEjpi7M4ZwPfpg8Ne3GNEcptMYFtH-FVGGFJ7McsU64oIidsgrpzefKK29jlReTIAWZzKF02dblvp9dvc35dbArk7vsX-Az4LUFs52GiZrIR9Qor2P1sARL"/>
+</div>
+<div class="font-body-technical text-body-technical text-on-surface text-sm">Sarah J.</div>
+</div>
+</div>
+<div class="absolute top-[400px] left-[65%] -translate-x-1/2 glass-panel p-3 rounded border border-outline-variant w-48 node-low-risk">
+<div class="font-label-mono text-label-mono text-secondary mb-1 text-[10px]">TASK</div>
+<div class="font-body-technical text-body-technical text-on-surface text-sm">Update JWT Logic</div>
+<div class="mt-1 flex gap-1">
+<span class="bg-[#34d399]/20 text-[#34d399] px-2 py-0.5 rounded-full font-label-mono text-[10px]">LOW RISK</span>
+</div>
+</div>
+<div class="absolute top-[400px] left-[85%] -translate-x-1/2 glass-panel p-3 rounded border border-outline-variant w-48">
+<div class="font-label-mono text-label-mono text-secondary mb-1 text-[10px]">PERSONNEL</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-surface-variant overflow-hidden">
+<img alt="David C Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a male analyst, illuminated by stark, bright screen glow reflecting off his glasses in a dark room. The lighting suggests deep focus in a high-tech control center environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXk9KO8hloE9nDDO54cBRJ4ZjnWE8dODazJ6QkYUIgwLCrjJhJG8TSpXNDwyrDosr_2egQ8lgHxsljUwnzWLrXU3I2eEwlUA2aUc6UHw0a8rhP8ekafEbiXTW33GvNlNVYMnJr1sHdhXlCI8c97LgUIB4SVgmZANbanozUdK8rgIBlOHT0TZS2rK5f-_xiug1--TrrDo3qWj40ji_q7ZUXIZoD4vngUdAhQ0qxY9mU6b-S-Sra1H1B4YhlX8SrcNKqunyHHtDMeIqk"/>
+</div>
+<div class="font-body-technical text-body-technical text-on-surface text-sm">David C.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Intelligence Feed -->
+<aside class="w-80 border-l border-outline-variant/20 glass-panel flex flex-col z-10 bg-surface-container-lowest/50 overflow-y-auto">
+<div class="p-4 border-b border-outline-variant/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">psychology</span>
+<h2 class="font-label-mono text-label-mono text-primary">INTELLIGENCE FEED</h2>
+</div>
+<div class="p-4 flex flex-col gap-6">
+<!-- Risk Assessment -->
+<div>
+<h3 class="font-headline-analysis-mobile text-headline-analysis-mobile text-on-surface mb-3 text-sm">Risk Assessment</h3>
+<div class="mb-3">
+<div class="flex justify-between font-label-mono text-label-mono text-xs mb-1">
+<span class="text-secondary">Complexity</span>
+<span class="text-[#fbbf24]">High</span>
+</div>
+<div class="h-1.5 bg-surface-variant rounded overflow-hidden">
+<div class="h-full bg-[#fbbf24] w-[85%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-label-mono text-label-mono text-xs mb-1">
+<span class="text-secondary">Timeline Risk</span>
+<span class="text-[#f97316]">Medium</span>
+</div>
+<div class="h-1.5 bg-surface-variant rounded overflow-hidden">
+<div class="h-full bg-[#f97316] w-[60%]"></div>
+</div>
+</div>
+</div>
+<div class="h-[1px] w-full bg-outline-variant/30"></div>
+<!-- Smart Suggestions -->
+<div>
+<h3 class="font-headline-analysis-mobile text-headline-analysis-mobile text-on-surface mb-3 text-sm">Smart Suggestions</h3>
+<div class="flex flex-col gap-3">
+<div class="glass-panel p-3 rounded ai-insight-glow border-l-2 border-l-primary">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">lightbulb</span>
+<p class="font-ai-insight-italic text-ai-insight-italic text-on-surface-variant">Consider updating API v2 docs. Migration touches 3 endpoints documented in <span class="font-label-mono text-primary">/docs/api/auth.md</span>.</p>
+</div>
+<button class="mt-2 text-primary font-label-mono text-[10px] hover:underline ml-6">VIEW DOCS</button>
+</div>
+<div class="glass-panel p-3 rounded border border-outline-variant/50">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-sm mt-0.5">event</span>
+<p class="font-body-technical text-body-technical text-on-surface-variant text-xs">Schedule sync with SecOps. High risk flag detected on <span class="font-label-mono">User Login Flow</span>.</p>
+</div>
+<button class="mt-2 text-primary font-label-mono text-[10px] hover:underline ml-6">DRAFT INVITE</button>
+</div>
+</div>
+</div>
+<!-- Team Awareness -->
+<div class="mt-4">
+<h3 class="font-headline-analysis-mobile text-headline-analysis-mobile text-on-surface mb-3 text-sm">Affected Personnel</h3>
+<div class="flex flex-col gap-2">
+<div class="flex items-center justify-between p-2 rounded hover:bg-surface-variant/20 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="Sarah J" class="w-full h-full object-cover" data-alt="A professional headshot of a female engineer, subtly lit with cold, technical blue and purple light against a dark background, fitting a cyberpunk or advanced technical dashboard theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkc4c6tfpkqdF1fZ39vhC58QMCJNw5UrMRaEMXVWhi3bWOxZpljTvkdbc7Loy7iNQ2hqd4I-aWzBTh_RX7ZL9IqSRYlGlBivOZeqrhiE0-1DRDAjZ-XDCKEj30jLUd9_SLXl0zYQcEyJLO9SVG_UyPL0tGapWXRUN7OdATuXTZGWJgY-PUL6ccfGOwTSvUug04USIHfgvCH7N39LAzsNUH5gqs5n09h9Q90AUteQ0oh-G3zbovHeLqNyFHKWekjft_VRIOCS0Pubbx"/>
+</div>
+<div>
+<div class="font-body-technical text-body-technical text-on-surface text-sm">Sarah J.</div>
+<div class="font-label-mono text-[10px] text-secondary">Frontend Lead</div>
+</div>
+</div>
+<span class="bg-error/20 text-error px-2 py-0.5 rounded font-label-mono text-[9px]">IMPACTED</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded hover:bg-surface-variant/20 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="David C" class="w-full h-full object-cover" data-alt="A professional headshot of a male analyst, illuminated by stark, bright screen glow reflecting off his glasses in a dark room. The lighting suggests deep focus in a high-tech control center environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVw8J9oOcXy2-Sx_8SoD-niHXAqHX_d2QHWghu-84NKqvvsmGs27s0RKSf97TZ-NeYKy2_PjMzJ7Mf_Ugit5HWSCBsGjBHVJo6dc3LIcsSNs0xDxMg3hcLwehHrP0DRNjDG-pjjxDl8SRFXR-9MT3d6RSNxTiCVM_XYa7aO2_1Cmad4T_AMo0EdB3MKbbWuGXyH709D3z9G-KjhSndr2yYIxdVtjwTNyhNSqGlRoVbpfUoOxsK9qqkx1Y4ntGlx13yGCzJ42MkVzyD"/>
+</div>
+<div>
+<div class="font-body-technical text-body-technical text-on-surface text-sm">David C.</div>
+<div class="font-label-mono text-[10px] text-secondary">Backend Dev</div>
+</div>
+</div>
+<span class="bg-primary/20 text-primary px-2 py-0.5 rounded font-label-mono text-[9px]">AWARE</span>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+<!-- Bottom Panel: Impact Ledger -->
+<div class="h-48 border-t border-outline-variant/30 glass-panel bg-surface-container-lowest/80 z-10 flex flex-col">
+<div class="px-4 py-2 border-b border-outline-variant/20 flex justify-between items-center">
+<span class="font-label-mono text-label-mono text-secondary">AFFECTED ARTIFACTS LEDGER</span>
+<button class="text-primary font-label-mono text-xs hover:underline">View All (12)</button>
+</div>
+<div class="flex-1 overflow-auto p-0">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="font-label-mono text-[10px] text-secondary border-b border-outline-variant/20 bg-surface-variant/10">
+<th class="py-2 px-4 font-normal">TYPE</th>
+<th class="py-2 px-4 font-normal">ARTIFACT</th>
+<th class="py-2 px-4 font-normal">RISK</th>
+<th class="py-2 px-4 font-normal">OWNER</th>
+<th class="py-2 px-4 font-normal text-right">ACTION</th>
+</tr>
+</thead>
+<tbody class="font-body-technical text-xs text-on-surface-variant">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors">
+<td class="py-2 px-4"><span class="font-label-mono text-[10px] bg-surface-variant px-1.5 py-0.5 rounded">REPO</span></td>
+<td class="py-2 px-4 text-on-surface font-mono">core-auth-service</td>
+<td class="py-2 px-4"><span class="text-[#fbbf24] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#fbbf24]"></span> High</span></td>
+<td class="py-2 px-4">David C.</td>
+<td class="py-2 px-4 text-right"><button class="text-primary hover:underline font-label-mono text-[10px]">CREATE TICKET</button></td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors">
+<td class="py-2 px-4"><span class="font-label-mono text-[10px] bg-surface-variant px-1.5 py-0.5 rounded">DOC</span></td>
+<td class="py-2 px-4 text-on-surface font-mono">/docs/api/auth.md</td>
+<td class="py-2 px-4"><span class="text-[#f97316] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#f97316]"></span> Medium</span></td>
+<td class="py-2 px-4">Tech Writing</td>
+<td class="py-2 px-4 text-right"><button class="text-primary hover:underline font-label-mono text-[10px]">FLAG FOR REVIEW</button></td>
+</tr>
+<tr class="hover:bg-surface-variant/20 transition-colors">
+<td class="py-2 px-4"><span class="font-label-mono text-[10px] bg-surface-variant px-1.5 py-0.5 rounded">UI</span></td>
+<td class="py-2 px-4 text-on-surface font-mono">login-modal-component</td>
+<td class="py-2 px-4"><span class="text-[#34d399] flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#34d399]"></span> Low</span></td>
+<td class="py-2 px-4">Sarah J.</td>
+<td class="py-2 px-4 text-right"><button class="text-primary hover:underline font-label-mono text-[10px]">VIEW DIFF</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</body></html>

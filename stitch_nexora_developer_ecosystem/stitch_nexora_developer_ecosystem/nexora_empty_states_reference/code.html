@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Empty States</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#d2bbff",
+                      "outline-variant": "#4a4455",
+                      "surface-dim": "#131313",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "primary-container": "#7c3aed",
+                      "on-tertiary-container": "#ffe0cd",
+                      "on-secondary": "#00344d",
+                      "inverse-primary": "#732ee4",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary-fixed": "#25005a",
+                      "surface-variant": "#353534",
+                      "primary-fixed": "#eaddff",
+                      "on-primary": "#3f008e",
+                      "border-subtle": "rgba(255, 255, 255, 0.08)",
+                      "inverse-on-surface": "#313030",
+                      "background": "#131313",
+                      "on-secondary-container": "#00344e",
+                      "tertiary": "#ffb784",
+                      "tertiary-fixed": "#ffdcc6",
+                      "silver-text": "#E2E2E2",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-background": "#e5e2e1",
+                      "surface-tint": "#d2bbff",
+                      "on-tertiary-fixed": "#301400",
+                      "on-surface": "#e5e2e1",
+                      "primary-fixed-dim": "#d2bbff",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "surface-glass": "#1A1A1A",
+                      "secondary-fixed": "#c9e6ff",
+                      "tertiary-container": "#a15100",
+                      "surface": "#131313",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-primary-container": "#ede0ff",
+                      "deep-obsidian": "#050505",
+                      "surface-container-low": "#1c1b1b",
+                      "secondary": "#89ceff",
+                      "outline": "#958da1",
+                      "inverse-surface": "#e5e2e1",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#353534",
+                      "error": "#ffb4ab",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "surface-container": "#201f1f",
+                      "on-surface-variant": "#ccc3d8",
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary-container": "#00a2e6",
+                      "surface-bright": "#3a3939",
+                      "error-container": "#93000a",
+                      "on-tertiary": "#4f2500",
+                      "on-error": "#690005",
+                      "electric-purple": "#A855F7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "label-xs": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "label-xs": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+        }
+        .radial-bloom {
+            box-shadow: 0 0 40px 10px rgba(168, 85, 247, 0.15);
+        }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+      </style>
+</head>
+<body class="font-body-md text-body-md bg-deep-obsidian min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-white">
+<!-- TopNavBar (Shared Component) - Suppressed per rules: Showcase/Empty States are sub-views often within a dashboard layout. However, since the prompt specifies a "Showcase variant" of Empty States, we'll assume a structural layout where the side nav is present. We will use the SideNavBar as the primary navigation anchor for this "Projects/Dashboard" view. -->
+<div class="flex flex-1 w-full max-w-container-max mx-auto h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col py-6 px-4 space-y-2 bg-deep-obsidian text-primary font-label-xs text-label-xs border-r border-border-subtle w-64 fixed left-0 top-0 h-screen z-40">
+<div class="mb-8 px-2 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-glass border border-border-subtle flex items-center justify-center overflow-hidden">
+<img alt="Developer Profile" class="w-full h-full object-cover" data-alt="A close-up studio portrait of a young developer with a futuristic aesthetic. They are lit by subtle purple and blue neon lights against a deep obsidian background, wearing minimalist dark clothing. The mood is focused and professional, matching a high-end tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnknxzK9g2UIKyo4FYctBqf6UmVQMU3PYXO5qa4Sno81FIBGtQ1GDHNtgn5PKegwIvxLlcb6vrRmQPuy_l5dIE88SCKHbFSAm1Ya5Cy0iGR5sK5Wwl9qohcIwjoOE5PSLhbcNVlzd_egpdPVgq7jpULuEVmueX-46rZ3NYF0cthWPjbPF22M4-loVGwAno87ApcIstF4dnSj3-Xv1rofd8MFMP5a6MaVOzd2DOwHQ-SSFw4_9RZVS3GnDngiwMp1FJac3oG_HrRdp1"/>
+</div>
+<div>
+<div class="font-body-md text-body-md font-bold text-on-surface">Nexora Dev</div>
+<div class="text-outline">Premium Tier</div>
+</div>
+</div>
+</div>
+<button class="w-full mb-6 bg-gradient-to-r from-primary-container to-secondary-container p-[1px] rounded-lg overflow-hidden group">
+<div class="bg-deep-obsidian w-full py-2 px-4 rounded-[7px] flex items-center justify-center gap-2 group-hover:bg-transparent transition-colors duration-300">
+<span class="material-symbols-outlined text-primary text-sm">add</span>
+<span class="font-label-xs text-label-xs text-on-surface group-hover:text-white transition-colors">New Project</span>
+</div>
+</button>
+<div class="space-y-1 flex-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">home</span>
+<span>Home</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-primary bg-primary/10 border-r-2 border-primary active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span>My Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">apps</span>
+<span>Applications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">trending_up</span>
+<span>Growth</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="mt-auto space-y-1 pt-6 border-t border-border-subtle">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span>Support</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 relative overflow-y-auto w-full">
+<div class="px-margin-mobile md:px-gutter py-12 max-w-5xl mx-auto space-y-24">
+<!-- Header -->
+<div class="space-y-4">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Empty States Showcase</h1>
+<p class="text-silver-text font-body-md text-body-md max-w-2xl">High-fidelity, visually encouraging empty states designed for the Obsidian Flux aesthetic. These states are engineered to turn dead-ends into starting points.</p>
+</div>
+<!-- Showcase: No Projects -->
+<section class="space-y-6">
+<div class="flex items-center justify-between border-b border-border-subtle pb-2">
+<h2 class="font-label-xs text-label-xs text-primary uppercase tracking-widest">Scenario 01: Initial State</h2>
+<span class="font-code-sm text-code-sm text-outline">/projects/empty</span>
+</div>
+<div class="glass-panel rounded-xl p-12 md:p-24 flex flex-col items-center justify-center text-center relative overflow-hidden group">
+<!-- Abstract Background Element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary-container/20 rounded-full blur-[80px] pointer-events-none group-hover:bg-primary-container/30 transition-all duration-700"></div>
+<!-- 3D Placeholder Graphic -->
+<div class="relative w-32 h-32 mb-8 radial-bloom rounded-full flex items-center justify-center bg-surface border border-border-subtle z-10">
+<span class="material-symbols-outlined text-6xl text-primary" style="font-variation-settings: 'FILL' 0, 'wght' 200;">view_in_ar</span>
+<!-- Orbit rings -->
+<div class="absolute inset-0 border border-border-subtle rounded-full animate-[spin_10s_linear_infinite] opacity-50"></div>
+<div class="absolute -inset-4 border border-border-subtle rounded-full animate-[spin_15s_linear_infinite_reverse] opacity-20"></div>
+</div>
+<h3 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-4 z-10">Be the first to build something meaningful</h3>
+<p class="text-silver-text max-w-md mb-8 z-10">Your workspace is currently a blank canvas. Initialize your first project to unlock the full potential of the Nexora ecosystem.</p>
+<button class="z-10 relative inline-flex items-center justify-center px-6 py-3 font-label-xs text-label-xs font-semibold text-white bg-gradient-to-r from-primary-container to-inverse-primary rounded-lg shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] transition-all duration-300 before:absolute before:inset-0 before:rounded-lg before:border before:border-white/10">
+<span class="material-symbols-outlined mr-2 text-sm">add</span>
+                            Initialize Project
+                        </button>
+</div>
+</section>
+<!-- Showcase: No Team -->
+<section class="space-y-6">
+<div class="flex items-center justify-between border-b border-border-subtle pb-2">
+<h2 class="font-label-xs text-label-xs text-secondary uppercase tracking-widest">Scenario 02: Collaboration</h2>
+<span class="font-code-sm text-code-sm text-outline">/team/empty</span>
+</div>
+<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-px bg-border-subtle rounded-xl overflow-hidden border border-border-subtle">
+<!-- Left: Visual -->
+<div class="bg-surface-glass p-12 flex items-center justify-center relative min-h-[300px]">
+<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-secondary-container/10 via-background to-background"></div>
+<div class="relative flex -space-x-4 z-10">
+<div class="w-16 h-16 rounded-full border border-dashed border-secondary/50 bg-surface flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-secondary">person_add</span>
+</div>
+<div class="w-16 h-16 rounded-full border border-dashed border-outline-variant bg-surface flex items-center justify-center opacity-50">
+<span class="material-symbols-outlined text-outline">person_add</span>
+</div>
+<div class="w-16 h-16 rounded-full border border-dashed border-outline-variant bg-surface flex items-center justify-center opacity-25">
+<span class="material-symbols-outlined text-outline">person_add</span>
+</div>
+</div>
+</div>
+<!-- Right: Content -->
+<div class="bg-surface-glass p-12 flex flex-col justify-center">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-4">Your next collaboration starts here</h3>
+<p class="text-outline mb-8">Software is better built together. Invite developers, designers, and stakeholders to your workspace to accelerate delivery.</p>
+<div class="space-y-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">mail</span>
+<input class="w-full bg-deep-obsidian border border-border-subtle rounded-lg py-2 pl-10 pr-4 text-on-surface focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none transition-colors font-code-sm text-code-sm" placeholder="colleague@example.com" type="email"/>
+</div>
+<button class="w-full py-2 bg-transparent border border-border-subtle hover:border-secondary hover:bg-secondary/5 rounded-lg text-secondary font-label-xs text-label-xs transition-colors duration-200">
+                                    Send Invitations
+                                </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Showcase: No Applications -->
+<section class="space-y-6">
+<div class="flex items-center justify-between border-b border-border-subtle pb-2">
+<h2 class="font-label-xs text-label-xs text-tertiary uppercase tracking-widest">Scenario 03: Deployment</h2>
+<span class="font-code-sm text-code-sm text-outline">/apps/empty</span>
+</div>
+<div class="glass-panel rounded-xl p-8 relative overflow-hidden">
+<!-- Abstract Grid Pattern -->
+<div class="absolute inset-0" style="background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="relative z-10 flex flex-col items-center text-center py-12">
+<div class="w-20 h-20 bg-surface border border-border-subtle rounded-2xl flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(255,183,132,0.1)]">
+<span class="material-symbols-outlined text-4xl text-tertiary">rocket_launch</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-3">No Active Deployments</h3>
+<p class="text-outline max-w-sm mb-8">Connect a repository or upload an artifact to begin routing traffic to your application.</p>
+<div class="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+<button class="flex-1 py-3 bg-white/5 border border-border-subtle hover:border-tertiary hover:bg-tertiary/10 rounded-lg text-tertiary font-label-xs text-label-xs transition-colors duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">link</span>
+                                    Connect Repo
+                                </button>
+<button class="flex-1 py-3 bg-transparent border border-border-subtle hover:border-white/20 hover:bg-white/5 rounded-lg text-silver-text font-label-xs text-label-xs transition-colors duration-200 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">upload</span>
+                                    Manual Upload
+                                </button>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="relative w-full border-t border-border-subtle bg-deep-obsidian text-primary font-body-md text-body-md mt-24">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-lg text-headline-lg text-primary mb-4">Nexora</div>
+<p class="text-outline text-sm">© 2024 Nexora Ecosystem. Built for high-performance.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-8 md:justify-end">
+<a class="text-outline hover:text-primary transition-colors" href="#">Resources</a>
+<a class="text-outline hover:text-primary transition-colors" href="#">API Reference</a>
+<a class="text-outline hover:text-primary transition-colors" href="#">Status</a>
+<a class="text-outline hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="text-outline hover:text-primary transition-colors" href="#">Terms</a>
+</div>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

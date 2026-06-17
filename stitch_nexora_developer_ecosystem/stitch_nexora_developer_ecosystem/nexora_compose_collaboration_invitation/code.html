@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Deploy Invitation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-high": "#2a2a2a",
+                      "electric-purple": "#A855F7",
+                      "surface": "#131313",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "on-tertiary-container": "#ffe0cd",
+                      "on-tertiary-fixed": "#301400",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "inverse-surface": "#e5e2e1",
+                      "on-primary-fixed": "#25005a",
+                      "surface-tint": "#d2bbff",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-primary": "#3f008e",
+                      "surface-container": "#201f1f",
+                      "error-container": "#93000a",
+                      "background": "#131313",
+                      "on-secondary-fixed": "#001e2f",
+                      "surface-container-low": "#1c1b1b",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "tertiary-fixed": "#ffdcc6",
+                      "secondary-fixed": "#c9e6ff",
+                      "inverse-primary": "#732ee4",
+                      "secondary": "#89ceff",
+                      "error": "#ffb4ab",
+                      "deep-obsidian": "#050505",
+                      "on-error-container": "#ffdad6",
+                      "on-error": "#690005",
+                      "on-surface": "#e5e2e1",
+                      "primary-fixed-dim": "#d2bbff",
+                      "on-secondary-container": "#00344e",
+                      "surface-dim": "#131313",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-primary-container": "#ede0ff",
+                      "primary-container": "#7c3aed",
+                      "surface-glass": "#1A1A1A",
+                      "on-tertiary": "#4f2500",
+                      "border-subtle": "rgba(255, 255, 255, 0.08)",
+                      "primary": "#d2bbff",
+                      "on-secondary": "#00344d",
+                      "surface-bright": "#3a3939",
+                      "inverse-on-surface": "#313030",
+                      "on-surface-variant": "#ccc3d8",
+                      "outline-variant": "#4a4455",
+                      "tertiary-container": "#a15100",
+                      "on-background": "#e5e2e1",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "outline": "#958da1",
+                      "surface-variant": "#353534",
+                      "tertiary": "#ffb784",
+                      "surface-container-highest": "#353534",
+                      "primary-fixed": "#eaddff",
+                      "silver-text": "#E2E2E2",
+                      "secondary-container": "#00a2e6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "base": "4px",
+                      "container-max": "1280px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px"
+              },
+              "fontFamily": {
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "label-xs": [
+                              "Geist"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-xs": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+            font-family: 'Geist', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glow-button {
+            position: relative;
+        }
+
+        .glow-button::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, #A855F7, #89ceff);
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+        }
+
+        .glow-button:hover::before {
+            opacity: 0.5;
+        }
+
+        .pulse-border {
+            animation: pulse-border-animation 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+
+        @keyframes pulse-border-animation {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(168, 85, 247, 0);
+            }
+        }
+
+        .bg-radial-gradient {
+            background: radial-gradient(circle at top left, rgba(168, 85, 247, 0.15), transparent 40%);
+        }
+        
+        .code-input-focus:focus-within {
+             border-color: #A855F7;
+             box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- Top Navigation (Contextual departure, simplified shell) -->
+<header class="w-full flex items-center px-gutter py-4 justify-between bg-deep-obsidian border-b border-subtle backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center p-2 rounded-lg hover:bg-white/5" onclick="history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-electric-purple tracking-tighter">Nexora</h1>
+<p class="font-label-xs text-label-xs text-on-surface-variant uppercase mt-1">Invitation Composer</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 bg-surface-container-low px-3 py-1.5 rounded-full border border-subtle">
+<div class="w-2 h-2 rounded-full bg-electric-purple animate-pulse"></div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Secure Session</span>
+</div>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-margin-desktop grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Developer Preview & Rationale -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Developer Preview Card -->
+<div class="glass-panel rounded-xl overflow-hidden relative">
+<div class="bg-radial-gradient absolute inset-0 z-0 pointer-events-none"></div>
+<div class="relative z-10 p-6 flex flex-col gap-6">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full border-2 border-electric-purple/30 overflow-hidden relative shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+<img alt="Developer Portrait" class="w-full h-full object-cover" data-alt="A striking portrait of a male software developer in a dimly lit, futuristic workspace. The lighting is moody with subtle cyan and purple neon rim lights reflecting off his face, embodying the deep obsidian and electric aesthetic. He has a focused expression, representing high technical synergy and reliability. The overall mood is intense, modern, and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh6ssN1ziDK1LvMSaNs96bqLODHLeRnLOYA4MoBnptNPcH7jX3J357Yo7x0JeZPU1jRhgc-wLCyecOKDeaO3ZBCeHsQzsbOk3xX7EZar6iFFp_TYaD2vOuy4pqE6yRTNlGCDFPmM0l5wi8QnaaNzcIrQwzFpfi1uOmpe1BdUF7oDVR4pftiShwEnokbIdKeDNv-2B681Td-ayObwLUunVjFl7hWDI3v4gPWo7PbH_AgCdrAw_9o3Li-q-BIfjQn9wkIdlf8hHjcJmr"/>
+</div>
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Alex Dev</h2>
+<p class="font-code-sm text-code-sm text-electric-purple mt-1">Level 42 Architect</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">radar</span>
+<span class="font-display-lg text-display-lg text-secondary" style="font-size: 32px; line-height: 1;">82%</span>
+</div>
+<p class="font-label-xs text-label-xs text-on-surface-variant uppercase mt-1">Smart Match</p>
+</div>
+</div>
+<div class="space-y-3 pt-4 border-t border-subtle">
+<p class="font-label-xs text-label-xs text-on-surface-variant uppercase">Key Vectors</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container rounded-lg border border-subtle font-code-sm text-code-sm text-silver-text">Angular</span>
+<span class="px-3 py-1 bg-surface-container rounded-lg border border-subtle font-code-sm text-code-sm text-silver-text">TypeScript</span>
+<span class="px-3 py-1 bg-surface-container rounded-lg border border-subtle font-code-sm text-code-sm text-silver-text">UI Architecture</span>
+<span class="px-3 py-1 bg-surface-container rounded-lg border border-subtle font-code-sm text-code-sm text-silver-text">RxJS</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Matching Rationale Section -->
+<div class="rounded-xl border border-subtle bg-surface-container-lowest p-6">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-on-surface-variant">analytics</span>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Matching Rationale</h3>
+</div>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<div class="mt-0.5 w-5 h-5 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/30 shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-size: 14px;">check</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">High Technical Synergy</p>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1">Matches required stack exactly.</p>
+</div>
+</li>
+<li class="flex gap-3">
+<div class="mt-0.5 w-5 h-5 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/30 shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-size: 14px;">check</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Relevant Healthcare Domain</p>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1">Previous experience in MedTech vectors.</p>
+</div>
+</li>
+<li class="flex gap-3">
+<div class="mt-0.5 w-5 h-5 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/30 shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-size: 14px;">check</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Strong Collaboration Reliability</p>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1">98% completion rate on past nodes.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Right Column: Invitation Composer -->
+<div class="lg:col-span-7 flex flex-col gap-6">
+<div class="glass-panel rounded-xl border border-subtle p-6 flex flex-col h-full">
+<div class="flex items-center gap-2 mb-8 border-b border-subtle pb-4">
+<span class="material-symbols-outlined text-electric-purple">edit_document</span>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Invitation Parameters</h2>
+</div>
+<form class="space-y-6 flex-grow">
+<!-- Role Input -->
+<div class="space-y-2">
+<label class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">work</span> Target Role
+                        </label>
+<div class="relative code-input-focus rounded-lg transition-colors">
+<input class="w-full bg-[#0A0A0A] border border-subtle rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-0" type="text" value="Lead Frontend Architect"/>
+</div>
+</div>
+<!-- Expected Contribution -->
+<div class="space-y-2">
+<label class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">target</span> Expected Contribution
+                        </label>
+<div class="relative code-input-focus rounded-lg transition-colors">
+<textarea class="w-full bg-[#0A0A0A] border border-subtle rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-0 resize-none" rows="2">Architecting the Real-time Dashboard and establishing UI core patterns.</textarea>
+</div>
+</div>
+<!-- Commitment Dropdown -->
+<div class="space-y-2">
+<label class="font-code-sm text-code-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-size: 16px;">schedule</span> Commitment Vector
+                        </label>
+<div class="relative code-input-focus rounded-lg transition-colors">
+<select class="w-full bg-[#0A0A0A] border border-subtle rounded-lg px-4 py-3 font-body-md text-body-md text-on-surface focus:outline-none focus:ring-0 appearance-none">
+<option>10-15 hrs/week</option>
+<option>20-30 hrs/week</option>
+<option>Full-time (40+ hrs/week)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Personalized Message Preview -->
+<div class="mt-8 pt-6 border-t border-subtle">
+<label class="font-label-xs text-label-xs text-on-surface-variant uppercase mb-3 block">Generated Protocol Message Preview</label>
+<div class="bg-surface-container-highest rounded-lg p-4 font-code-sm text-code-sm text-silver-text border border-subtle relative">
+<div class="absolute top-2 right-2 flex gap-2">
+<button class="p-1 hover:bg-white/10 rounded text-on-surface-variant transition-colors" title="Regenerate" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">autorenew</span>
+</button>
+<button class="p-1 hover:bg-white/10 rounded text-on-surface-variant transition-colors" title="Edit" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
+</button>
+</div>
+<p class="pr-12">
+                                System Notice: You have been identified as a high-synergy match (82%) for the 'Lead Frontend Architect' node.<br/><br/>
+                                We require your expertise for Architecting the Real-time Dashboard.<br/><br/>
+                                Proposed Allocation: 10-15 hrs/week.<br/>
+                                Awaiting your handshake confirmation.
+                            </p>
+</div>
+</div>
+</form>
+<!-- Action Area -->
+<div class="mt-8 flex justify-end gap-4 pt-6 border-t border-subtle">
+<button class="px-6 py-3 rounded-lg border border-subtle font-body-md text-body-md text-silver-text hover:bg-white/5 transition-colors">
+                        Save as Draft
+                    </button>
+<button class="glow-button pulse-border px-8 py-3 rounded-lg bg-gradient-to-r from-electric-purple to-secondary border border-white/10 font-body-md text-body-md font-bold text-deep-obsidian flex items-center gap-2 hover:opacity-90 transition-opacity shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+<span class="material-symbols-outlined text-deep-obsidian">send</span>
+                        Deploy Invitation
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

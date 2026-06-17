@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Project Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#d2bbff",
+                        "outline-variant": "#4a4455",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "primary-container": "#7c3aed",
+                        "on-tertiary-container": "#ffe0cd",
+                        "on-secondary": "#00344d",
+                        "inverse-primary": "#732ee4",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#25005a",
+                        "surface-variant": "#353534",
+                        "primary-fixed": "#eaddff",
+                        "on-primary": "#3f008e",
+                        "border-subtle": "rgba(255, 255, 255, 0.08)",
+                        "inverse-on-surface": "#313030",
+                        "background": "#131313",
+                        "on-secondary-container": "#00344e",
+                        "tertiary": "#ffb784",
+                        "tertiary-fixed": "#ffdcc6",
+                        "silver-text": "#E2E2E2",
+                        "secondary-fixed-dim": "#89ceff",
+                        "on-background": "#e5e2e1",
+                        "surface-tint": "#d2bbff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-surface": "#e5e2e1",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-glass": "#1A1A1A",
+                        "secondary-fixed": "#c9e6ff",
+                        "tertiary-container": "#a15100",
+                        "surface": "#131313",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-primary-container": "#ede0ff",
+                        "deep-obsidian": "#050505",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary": "#89ceff",
+                        "outline": "#958da1",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "surface-container": "#201f1f",
+                        "on-surface-variant": "#ccc3d8",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-container": "#00a2e6",
+                        "surface-bright": "#3a3939",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#4f2500",
+                        "on-error": "#690005",
+                        "electric-purple": "#A855F7",
+                        "success": "#4ade80",
+                        "warning": "#facc15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-xs": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-md": ["Geist"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-xs": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "code-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+        }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: linear-gradient(145deg, rgba(35, 35, 35, 0.6) 0%, rgba(20, 20, 20, 0.4) 100%);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 0 8px 32px -4px rgba(124, 58, 237, 0.15);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #7c3aed, #00a2e6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+            transform: translateY(-1px);
+        }
+        .magnetic-btn {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(74, 222, 128, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+        .status-indicator {
+            position: absolute;
+            bottom: -2px;
+            right: -2px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid #050505;
+        }
+        .status-online { background-color: #4ade80; }
+        .status-busy { background-color: #facc15; }
+        
+        #health-canvas-container canvas {
+            display: block;
+            outline: none;
+        }
+        
+        .code-snippet {
+            font-family: 'JetBrains Mono', monospace;
+            background: #0e0e0e;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            padding: 8px 12px;
+            font-size: 11px;
+            line-height: 1.5;
+            color: #ccc3d8;
+        }
+        .code-keyword { color: #A855F7; }
+        .code-string { color: #89ceff; }
+        .code-comment { color: #958da1; font-style: italic; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md bg-deep-obsidian">
+<!-- TopNavBar -->
+<nav class="bg-surface-glass backdrop-blur-xl docked full-width top-0 sticky z-50 border-b border-border-subtle">
+<div class="flex justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-8">
+<div class="font-headline-lg text-headline-lg font-bold text-primary">Nexora</div>
+<div class="hidden md:flex space-x-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md active:scale-95 duration-100" href="#">Projects</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 transition-all duration-200 font-body-md text-body-md active:scale-95 duration-100 rounded px-2 py-1" href="#">Discover</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 transition-all duration-200 font-body-md text-body-md active:scale-95 duration-100 rounded px-2 py-1" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-silver-text hover:text-primary transition-colors font-label-xs text-label-xs px-4 py-2 uppercase tracking-widest magnetic-btn">Login</button>
+<button class="btn-primary text-white font-label-xs text-label-xs px-4 py-2 rounded uppercase tracking-widest magnetic-btn">Join</button>
+</div>
+</div>
+</nav>
+<div class="flex flex-1 relative w-full max-w-container-max mx-auto">
+<!-- SideNavBar -->
+<aside class="hidden md:flex bg-deep-obsidian fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col py-6 px-4 space-y-2 z-40 border-r border-border-subtle">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-border-subtle">
+<img alt="Developer Profile" class="w-full h-full object-cover" data-alt="A stylized, high-contrast portrait of a software developer. The lighting is moody with subtle purple and blue accents reflecting the premium dark-mode aesthetic. The individual appears focused and professional, fitting for a high-end SaaS dashboard profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc0QRR7-qyrxCHVJ3kiyaqzO1xiajAuHtIxWtoHx2QhgG56lHle6dfm2sVF1HUCwukzNQKzSeNK6qKBJJ4qKRh4VDCigZZZNY0VZv8byfbH_LdyRCyA0Q6pxCgLRUOhj4xuYmWv5HdvuzEg3ePJjdDkbT8kVGcpBiGRYfIk58oQsVtvhIN4V_rMwV60SJzf6nvN9agLTZyWco7mAjCnddUq66GODWSNO2yQkLHbBCF78MfNK1dGiTkfH64DzP8YG9TRuRy6j8hVz4G"/>
+</div>
+<div>
+<div class="font-label-xs text-label-xs text-on-surface">Nexora Dev</div>
+<div class="font-code-sm text-code-sm text-outline text-[10px]">Premium Tier</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]">home</span>Home
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-primary bg-primary/10 border-r-2 border-primary font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">account_tree</span>My Projects
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]">apps</span>Applications
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>Growth
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>Settings
+                </a>
+</nav>
+<div class="mt-auto space-y-1 pt-4 border-t border-border-subtle">
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs uppercase" href="#">
+<span class="material-symbols-outlined text-[16px]">description</span>Documentation
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs uppercase" href="#">
+<span class="material-symbols-outlined text-[16px]">help</span>Support
+                </a>
+<button class="w-full mt-4 btn-primary text-white font-label-xs text-label-xs py-2 rounded uppercase tracking-widest magnetic-btn">New Project</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 w-full p-margin-mobile md:p-gutter lg:p-margin-desktop min-h-[calc(100vh-64px)] overflow-y-auto custom-scrollbar relative">
+<!-- Project Header Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="w-2 h-2 rounded-full bg-success pulse-dot"></span>
+<span class="font-code-sm text-code-sm text-success uppercase tracking-wider text-[11px]">Active</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Project Nexus</h1>
+<p class="font-body-md text-body-md text-outline">Core infrastructure rewrite and microservices migration.</p>
+</div>
+<div class="flex flex-col items-end gap-4">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<div class="relative">
+<img alt="Team member" class="w-8 h-8 rounded-full border border-surface-dim" data-alt="A small avatar portrait of a software engineer. Deep shadows, sleek professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOSCkjoS761SKgMyNioeTNq0C8tg4TWecBhAoHB7WZBknHG_0xIs_8MGdzWyNJFw4eGBgp0BeTz19XPeyCJRSPdpydljSgTiGqBE4vT0XiJRGBuwcb94t1Mtv1pO08s-lyJ3Te4fkO_r80NKlB2JLvoU2GRqRqQTO7QM_M3V8jkE6B6SLwwwIxfW0bmp1wPexTi_FsVnT_1Q0sPeEthbcLdrcNyNBF6nscVXCvc9-GoqebziISpG0DYCpWtaZnaHgwnldsObFCObFp"/>
+<div class="status-indicator status-online"></div>
+</div>
+<div class="relative">
+<img alt="Team member" class="w-8 h-8 rounded-full border border-surface-dim" data-alt="A small avatar portrait of a UI designer. Deep shadows, sleek professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOEdksUKfEyYB0WFUXpIr5egYnq4KUcD2S-022lb8uZ_GamluiZEBRz-n-D9d6mqqAXc-iujN2oKYzNPSf9u3Hez_1dUFgJ2DX-ip0PA0aMGh0l1vc6JII6dEgQKawVsCx6brU9IWXhD1vyfYkPXGARrwv864qQcp5R6UH7T46UVNCZd1riSWWZLT7dsMjP9usrwSEyifqasulzXHyS2ow7DbnvoHj3afPLdgblMs5VMTk2bKV2rfPJTr7zOse7krwCd-q3f8ZqEwg"/>
+<div class="status-indicator status-online"></div>
+</div>
+<div class="relative">
+<img alt="Team member" class="w-8 h-8 rounded-full border border-surface-dim" data-alt="A small avatar portrait of a product manager. Deep shadows, sleek professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJsR-aDJ4GFox-qGPFRToxniudaanNmVntopJUZ4l2gK47VYTRty7VEVATCWex_AIcwLFAPbM5iV1l23UZXeUQLx2unddo-oQi9vnz70Va-Ia9dzRUR9ktPCrHkAYRMremHzOv7rsUpSsT6BRbe2hr_szVuhTth4mZp1kVz45SmEbzhrTiUZdFfd9aPLAx9BCeRn2cu1lXyRcsfsfdcfcVrR_hd6SkVqxTIpKxhGX9hqs2N-v29Hq1QAWj1q3mCGgd3vsTvtXXEdmm"/>
+<div class="status-indicator status-busy"></div>
+</div>
+<div class="w-8 h-8 rounded-full border border-surface-dim bg-surface-variant flex items-center justify-center font-label-xs text-label-xs text-silver-text z-10">+3</div>
+</div>
+<button class="bg-transparent border border-border-subtle text-white font-label-xs text-label-xs px-4 py-2 rounded uppercase tracking-widest hover:bg-white/5 transition-colors magnetic-btn">Manage</button>
+</div>
+</div>
+</div>
+<!-- Interactive 3D Health Visualization & Stats -->
+<div class="glass-panel rounded-xl p-6 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container/5 to-transparent pointer-events-none"></div>
+<div class="w-32 h-32 relative z-10 shrink-0 flex items-center justify-center bg-surface-container-low rounded-full border border-border-subtle shadow-[0_0_30px_rgba(124,58,237,0.15)]" id="health-canvas-container">
+<!-- Three.js canvas injected here -->
+</div>
+<div class="flex-1 w-full z-10">
+<div class="flex justify-between items-center mb-4">
+<div>
+<span class="font-label-xs text-label-xs text-silver-text uppercase tracking-widest">Project Core Health</span>
+<div class="text-xs text-outline mt-1 font-code-sm">System Stability: Optimal</div>
+</div>
+<div class="text-right">
+<span class="font-display-lg text-[40px] leading-none text-primary font-bold">88<span class="text-xl">%</span></span>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-border-subtle pt-4">
+<div>
+<div class="font-code-sm text-code-sm text-outline mb-1">Sprint Tasks</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">124</div>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-outline mb-1">Completed</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-success">81</div>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-outline mb-1">Velocity (pts)</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-secondary">42</div>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-outline mb-1">Overdue</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-error">3</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Three Column Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Col 1: Team & Analytics (3 cols) -->
+<div class="lg:col-span-3 space-y-gutter">
+<div class="glass-panel rounded-xl p-5 h-full">
+<h2 class="font-label-xs text-label-xs text-silver-text uppercase mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">group</span> Team Commits
+                        </h2>
+<div class="space-y-6">
+<div class="flex items-start gap-3">
+<img alt="Sarah J." class="w-10 h-10 rounded bg-surface-variant object-cover border border-border-subtle" data-alt="A close up portrait of a female technical lead. Dark background with subtle glowing highlights reflecting off her face, suggesting a high-tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2QiBIrnM3dZuGk8D_5SHA4iN6vXIYaynkK9KpbSjzqC0uYRkGFRrD_W0AaSkH30nDjoh1qmVw8tr14OAvd_u8L4H5y-wn9-CF-blaopj2wOqAwcyCsJ3qNVHrLSw7g6FQfOH682cAAwFovS20rTMdGS1hsxi9jDt2ZaZj0AYoGePJ60cHQlhZ_4zCMePSvbpqyNLVSGlgJfR_zKPn8vmZFY5zHBV2POCyuU489yXoGfl2nMPkkoGAfliUz-f3_EVtL_AiZiSP5Dag"/>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<div class="font-label-xs text-label-xs text-on-surface">Sarah J.</div>
+<div class="text-[10px] font-code-sm text-primary">Impact 92</div>
+</div>
+<div class="font-code-sm text-code-sm text-outline text-[11px] mb-2">Backend Architecture</div>
+<div class="flex gap-1 h-3 items-end">
+<div class="w-full bg-primary/20 rounded-sm h-[40%]"></div>
+<div class="w-full bg-primary/40 rounded-sm h-[60%]"></div>
+<div class="w-full bg-primary/80 rounded-sm h-[90%]"></div>
+<div class="w-full bg-primary rounded-sm h-full shadow-[0_0_8px_#7c3aed]"></div>
+<div class="w-full bg-surface-variant rounded-sm h-[20%]"></div>
+<div class="w-full bg-primary/60 rounded-sm h-[70%]"></div>
+<div class="w-full bg-primary/30 rounded-sm h-[50%]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<img alt="Mike R." class="w-10 h-10 rounded bg-surface-variant object-cover border border-border-subtle" data-alt="A portrait of a male frontend developer. Modern, minimalist dark mode style portrait. Deep shadows with a hint of purple illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAKnb4IQnvu89e813G6UkF2RS161ByZPAeQed0yOlfNVSqlscNEG9_6XwnlB075XZTMgjaShHbTCaE4MSiSpwr9zmojxvztA_k1Rf6_m7NAOlz7m9jvSUMTZFk5NM3n17pRjA9G7Hc0m6gFEhSK2_BsIRN8AVxEOdU5zJue8eAo8qbTT0O9kvvsN1x3sqAAVXjFddg5khbc90tsUNfZ8oiegDx-qVHaTzo7x__YZDSW75PzdWMR7S9en9yEqvl5_bb1RHdcnZlNPYO"/>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<div class="font-label-xs text-label-xs text-on-surface">Mike R.</div>
+<div class="text-[10px] font-code-sm text-secondary">Impact 78</div>
+</div>
+<div class="font-code-sm text-code-sm text-outline text-[11px] mb-2">UI Implementation</div>
+<div class="flex gap-1 h-3 items-end">
+<div class="w-full bg-secondary/20 rounded-sm h-[30%]"></div>
+<div class="w-full bg-secondary/60 rounded-sm h-[80%]"></div>
+<div class="w-full bg-secondary rounded-sm h-full shadow-[0_0_8px_#00a2e6]"></div>
+<div class="w-full bg-surface-variant rounded-sm h-[10%]"></div>
+<div class="w-full bg-surface-variant rounded-sm h-[15%]"></div>
+<div class="w-full bg-secondary/40 rounded-sm h-[50%]"></div>
+<div class="w-full bg-secondary/80 rounded-sm h-[90%]"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<img alt="Elena V." class="w-10 h-10 rounded bg-surface-variant object-cover border border-border-subtle" data-alt="A sleek portrait of a UI/UX designer. Dark, sophisticated lighting. The aesthetic is extremely polished and minimal, suited for a premium SaaS product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCprmCgzsPzpLL8ixpMxzY8wVwou-C18-8LtWYVx5XeRINRGMGp_vXKxVd9zGI3ITdDbLUwSzMkvtIB8R8tur6hzFXutQmUyu3MAqaU1-AdBp3odM7wevM9543zQXcZlSokP-mYK5lpGVCKudkvCkdhoWME27QyYlbpM_fLWWr8f8oi39_EDzAF4tG3Hnu_ZwQ7ql-sc4IW-48HBB7f2O7B3y-20f9bvPD2DXHSbHkldkWztNr4ukVrCx8LdHZiczyn7ILmAGs173bt"/>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<div class="font-label-xs text-label-xs text-on-surface">Elena V.</div>
+<div class="text-[10px] font-code-sm text-tertiary">Impact 85</div>
+</div>
+<div class="font-code-sm text-code-sm text-outline text-[11px] mb-2">Design System</div>
+<div class="flex gap-1 h-3 items-end">
+<div class="w-full bg-tertiary/40 rounded-sm h-[50%]"></div>
+<div class="w-full bg-tertiary/80 rounded-sm h-[85%]"></div>
+<div class="w-full bg-tertiary rounded-sm h-full shadow-[0_0_8px_#ffb784]"></div>
+<div class="w-full bg-surface-variant rounded-sm h-[20%]"></div>
+<div class="w-full bg-tertiary/50 rounded-sm h-[60%]"></div>
+<div class="w-full bg-surface-variant rounded-sm h-[30%]"></div>
+<div class="w-full bg-tertiary/70 rounded-sm h-[75%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Col 2: Tasks (5 cols) -->
+<div class="lg:col-span-5 space-y-gutter">
+<div class="glass-panel rounded-xl p-5 h-full relative overflow-hidden">
+<div class="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[60px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+<div class="flex justify-between items-center mb-6 relative z-10">
+<h2 class="font-label-xs text-label-xs text-silver-text uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">view_kanban</span> Current Sprint Tasks
+                            </h2>
+<button class="text-primary hover:text-white transition-colors font-label-xs text-[10px] uppercase">View Board</button>
+</div>
+<div class="space-y-3 relative z-10">
+<!-- Task Item -->
+<div class="glass-card p-4 rounded-xl cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded border border-error/30 bg-error/10 text-error font-code-sm text-[9px] uppercase tracking-wider">High Priority</span>
+<span class="px-2 py-0.5 rounded border border-primary/30 bg-primary/10 text-primary font-code-sm text-[9px] uppercase tracking-wider">Backend</span>
+</div>
+<span class="text-outline font-code-sm text-[10px]">NEX-1042</span>
+</div>
+<h3 class="font-body-md text-on-surface text-[15px] font-semibold mb-3 leading-snug">Setup Authentication Service &amp; JWT Verification Middleware</h3>
+<div class="flex justify-between items-center mt-auto">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-secondary font-code-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 4h est
+                                        </div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 rounded bg-secondary/10 text-secondary font-code-sm text-[10px] uppercase flex items-center gap-1 border border-secondary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> In Progress
+                                        </span>
+<img alt="Assigned to Sarah" class="w-6 h-6 rounded-full border border-surface-dim shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdHZ4vclbZatNw9Fr4hx-QEwgq2hIULgi1i3VpyTLXc-b30xZxDN5vuTWyFeFVqiCt_RrfMSWkehFUs1dvxjqguNkHGlub_0L6QRMcPtLaikc5DDkY5kmHwVqJth4NGkG-WJWoTBTLdeWdYzczwFK4wJF-UtUkNF2ZI4LqaZ5Ke3-cX8a_tM08aVL8XQmNByq0dW0W1Vx6sgXnsAvZwMiZJZsCSnXb16DAyEpL_EXAwEKvAHHmrf8UcC9cpKK_A5xB6yrlZrg6m85K"/>
+</div>
+</div>
+</div>
+<!-- Task Item -->
+<div class="glass-card p-4 rounded-xl cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded border border-warning/30 bg-warning/10 text-warning font-code-sm text-[9px] uppercase tracking-wider">Med Priority</span>
+<span class="px-2 py-0.5 rounded border border-secondary/30 bg-secondary/10 text-secondary font-code-sm text-[9px] uppercase tracking-wider">Frontend</span>
+</div>
+<span class="text-outline font-code-sm text-[10px]">NEX-1045</span>
+</div>
+<h3 class="font-body-md text-on-surface text-[15px] font-semibold mb-3 leading-snug">Build Glassmorphic Dashboard UI Components</h3>
+<div class="flex justify-between items-center mt-auto">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-outline font-code-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 6h est
+                                        </div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-2 py-1 rounded bg-surface-variant text-silver-text font-code-sm text-[10px] uppercase flex items-center gap-1 border border-border-subtle">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> To Do
+                                        </span>
+<img alt="Assigned to Mike" class="w-6 h-6 rounded-full border border-surface-dim shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ3rBnPYAJ9F5kna0AQP0fnBzLD_rkZtjleALyyxrUOJhx-YSYEzLkV6eyXq58PZ3sP4cuuoxE1hyE8h89pLJ1_v9s28zV9NLgVG04gJGAAADIGoKRR_34vfXRLR7AIPa1tsMZugosNOpAnHOiz3qdwAQ2XRrTW5j5qtOOEx3mMjw7FRDuvd-e5B3fJF2TIUQt8yuqCaP-GkTeCV7Da1MCS1T3kA1vRqzsXXyX3v1JkS7hEZRKHJTn8YMb8RaDkhZ3iv2-de2I-1yP"/>
+</div>
+</div>
+</div>
+<!-- Task Item (Completed) -->
+<div class="glass-card p-4 rounded-xl opacity-70 cursor-pointer">
+<div class="flex justify-between items-start mb-3">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded border border-success/30 bg-success/10 text-success font-code-sm text-[9px] uppercase tracking-wider">Done</span>
+<span class="px-2 py-0.5 rounded border border-outline/30 bg-surface-variant text-outline font-code-sm text-[9px] uppercase tracking-wider">Database</span>
+</div>
+<span class="text-outline font-code-sm text-[10px] line-through">NEX-1039</span>
+</div>
+<h3 class="font-body-md text-outline text-[15px] font-semibold mb-3 leading-snug line-through decoration-outline/50">Database Schema Migration to PostgreSQL 15</h3>
+<div class="flex justify-between items-center mt-auto">
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1 text-success/70 font-code-sm text-[11px]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> 8h logged
+                                        </div>
+</div>
+<div class="flex items-center gap-3">
+<img alt="Assigned to Sarah" class="w-6 h-6 rounded-full border border-surface-dim shadow-sm grayscale opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEo80w5Fwif6Ajdi3vaRRl423lA8VdUp6lxBUujOYdkbMswRq1AXCM8FmuwDDS0bpANXqq-x-y1g8wE_2X7LddvFWbMEdTNemr-t1K8l2chlnjr44cD0k9Ik4bfeUKCVIUlVvFzzGvTDAjbIZjiJObOikwugAHNg8wEbxNEUPGY4wGxYZC_DRjqtU3IAmSd9aWEgI3sB7UU_7VCPeHf_xssBSsY6yi0XuenrBOAbiOcrpmxguLdgjJiq6qkY4SHmst_LTsoi5T8eU8"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Col 3: Live Pulse (4 cols) -->
+<div class="lg:col-span-4 space-y-gutter">
+<div class="glass-panel rounded-xl p-5 h-full flex flex-col relative">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 rounded-full blur-[40px] pointer-events-none"></div>
+<h2 class="font-label-xs text-label-xs text-silver-text uppercase mb-6 flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined text-[16px]">pulse</span> Live Pulse
+                            <span class="w-1.5 h-1.5 rounded-full bg-error pulse-dot ml-auto"></span>
+</h2>
+<div class="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-7 relative z-10">
+<!-- Code Snippet Comment Event -->
+<div class="relative pl-8 before:content-[''] before:absolute before:left-[15px] before:top-8 before:bottom-[-28px] before:w-px before:bg-border-subtle last:before:hidden">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle overflow-hidden z-10 flex items-center justify-center">
+<img alt="Sarah J." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2QiBIrnM3dZuGk8D_5SHA4iN6vXIYaynkK9KpbSjzqC0uYRkGFRrD_W0AaSkH30nDjoh1qmVw8tr14OAvd_u8L4H5y-wn9-CF-blaopj2wOqAwcyCsJ3qNVHrLSw7g6FQfOH682cAAwFovS20rTMdGS1hsxi9jDt2ZaZj0AYoGePJ60cHQlhZ_4zCMePSvbpqyNLVSGlgJfR_zKPn8vmZFY5zHBV2POCyuU489yXoGfl2nMPkkoGAfliUz-f3_EVtL_AiZiSP5Dag"/>
+</div>
+<div class="bg-surface-container-low border border-border-subtle rounded-lg p-3">
+<div class="mb-2 flex justify-between items-start">
+<div class="font-code-sm text-code-sm text-silver-text text-[12px]"><span class="font-semibold text-primary">Sarah J.</span> referenced code in <span class="text-secondary hover:underline cursor-pointer">auth_service.ts</span></div>
+<div class="font-code-sm text-outline text-[10px]">Just now</div>
+</div>
+<div class="code-snippet mb-2">
+<span class="code-keyword">export const</span> <span class="code-string">verifyToken</span> = (req, res, next) =&gt; {
+  <span class="code-keyword">const</span> token = req.header(<span class="code-string">'auth-token'</span>);
+  <span class="code-comment">// TODO: Handle expired tokens gracefully</span>
+<span class="code-keyword">if</span> (!token) <span class="code-keyword">return</span> res.status(<span class="code-string">401</span>).send();
+};
+                                    </div>
+<div class="font-body-md text-silver-text text-[13px]">
+                                        Added the basic JWT middleware. I left a TODO for the refresh token flow, let's discuss in the sync.
+                                    </div>
+</div>
+</div>
+<!-- Deployment Event -->
+<div class="relative pl-8 before:content-[''] before:absolute before:left-[15px] before:top-8 before:bottom-[-28px] before:w-px before:bg-border-subtle last:before:hidden">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-success/10 border border-success/30 flex items-center justify-center z-10 shadow-[0_0_10px_rgba(74,222,128,0.2)]">
+<span class="material-symbols-outlined text-[16px] text-success">rocket_launch</span>
+</div>
+<div class="mb-1 flex justify-between items-start">
+<div class="font-code-sm text-code-sm text-silver-text text-[12px]"><span class="font-bold text-success">Deployment Successful</span></div>
+<div class="font-code-sm text-outline text-[10px]">15m ago</div>
+</div>
+<div class="font-body-md text-outline text-[13px] mt-1">
+                                    Production build <span class="font-code-sm text-secondary bg-secondary/10 px-1 rounded">v2.4.1</span> deployed to <span class="text-white">aws-us-east-1</span>.
+                                </div>
+</div>
+<!-- Threaded Comment -->
+<div class="relative pl-8 before:content-[''] before:absolute before:left-[15px] before:top-8 before:bottom-[-28px] before:w-px before:bg-border-subtle last:before:hidden">
+<div class="absolute left-0 top-1 w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle overflow-hidden z-10 flex items-center justify-center">
+<img alt="Elena V." class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCprmCgzsPzpLL8ixpMxzY8wVwou-C18-8LtWYVx5XeRINRGMGp_vXKxVd9zGI3ITdDbLUwSzMkvtIB8R8tur6hzFXutQmUyu3MAqaU1-AdBp3odM7wevM9543zQXcZlSokP-mYK5lpGVCKudkvCkdhoWME27QyYlbpM_fLWWr8f8oi39_EDzAF4tG3Hnu_ZwQ7ql-sc4IW-48HBB7f2O7B3y-20f9bvPD2DXHSbHkldkWztNr4ukVrCx8LdHZiczyn7ILmAGs173bt"/>
+</div>
+<div class="mb-1 flex justify-between items-start">
+<div class="font-code-sm text-code-sm text-silver-text text-[12px]"><span class="font-semibold text-tertiary">Elena V.</span> commented on <span class="text-primary hover:underline cursor-pointer">NEX-1045</span></div>
+<div class="font-code-sm text-outline text-[10px]">1h ago</div>
+</div>
+<div class="font-body-md text-silver-text text-[13px] mt-1 p-2 bg-surface-container-low rounded border border-border-subtle">
+                                    I've updated the Figma tokens for the new card layouts. Make sure to use the <span class="font-code-sm text-[11px] bg-black/50 px-1 rounded">border-subtle</span> variable for the 1px stroke.
+                                </div>
+<!-- Reply -->
+<div class="mt-3 pl-6 relative">
+<div class="absolute left-0 top-0 w-4 h-4 border-l border-b border-border-subtle rounded-bl-lg"></div>
+<div class="flex gap-2 items-start pt-2">
+<img alt="Mike R." class="w-5 h-5 rounded-full border border-border-subtle mt-0.5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAKnb4IQnvu89e813G6UkF2RS161ByZPAeQed0yOlfNVSqlscNEG9_6XwnlB075XZTMgjaShHbTCaE4MSiSpwr9zmojxvztA_k1Rf6_m7NAOlz7m9jvSUMTZFk5NM3n17pRjA9G7Hc0m6gFEhSK2_BsIRN8AVxEOdU5zJue8eAo8qbTT0O9kvvsN1x3sqAAVXjFddg5khbc90tsUNfZ8oiegDx-qVHaTzo7x__YZDSW75PzdWMR7S9en9yEqvl5_bb1RHdcnZlNPYO"/>
+<div class="font-body-md text-outline text-[12px] bg-surface-variant/50 p-2 rounded-lg flex-1">
+                                            Got it, pulling the latest tokens now.
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+        // Three.js Health Core Visualization
+        function initHealthVis() {
+            const container = document.getElementById('health-canvas-container');
+            if (!container) return;
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            renderer.setSize(120, 120);
+            container.appendChild(renderer.domElement);
+
+            // Create Geometric Core
+            const geometry = new THREE.IcosahedronGeometry(1.2, 1);
+            
+            // Wireframe outer shell
+            const wireframeMaterial = new THREE.LineBasicMaterial({ 
+                color: 0x7c3aed, 
+                transparent: true, 
+                opacity: 0.6 
+            });
+            const wireframe = new THREE.LineSegments(
+                new THREE.EdgesGeometry(geometry), 
+                wireframeMaterial
+            );
+            scene.add(wireframe);
+
+            // Inner glowing solid
+            const solidMaterial = new THREE.MeshPhongMaterial({
+                color: 0x7c3aed,
+                emissive: 0x3f008e,
+                shininess: 100,
+                transparent: true,
+                opacity: 0.8
+            });
+            const core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.8, 0), solidMaterial);
+            scene.add(core);
+
+            // Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+            scene.add(ambientLight);
+            
+            const pointLight = new THREE.PointLight(0xa855f7, 2, 10);
+            pointLight.position.set(2, 2, 2);
+            scene.add(pointLight);
+
+            camera.position.z = 4;
+
+            // Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                wireframe.rotation.x += 0.005;
+                wireframe.rotation.y += 0.01;
+                
+                core.rotation.x -= 0.01;
+                core.rotation.y -= 0.005;
+                
+                // Subtle pulse
+                const scale = 1 + Math.sin(Date.now() * 0.003) * 0.05;
+                core.scale.set(scale, scale, scale);
+
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', initHealthVis);
+    </script>
+</body></html>

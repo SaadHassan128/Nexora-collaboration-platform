@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Healthcare Platform Product Story</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-variant": "#353534",
+                        "inverse-on-surface": "#313030",
+                        "tertiary-container": "#a15100",
+                        "background": "#131313",
+                        "primary-fixed": "#eaddff",
+                        "secondary": "#89ceff",
+                        "surface-dim": "#131313",
+                        "on-error": "#690005",
+                        "outline": "#958da1",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-error-container": "#ffdad6",
+                        "inverse-primary": "#732ee4",
+                        "surface-tint": "#d2bbff",
+                        "inverse-surface": "#e5e2e1",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-glass": "#1A1A1A",
+                        "secondary-fixed": "#c9e6ff",
+                        "electric-purple": "#A855F7",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-container-highest": "#353534",
+                        "surface-container": "#201f1f",
+                        "silver-text": "#E2E2E2",
+                        "primary": "#d2bbff",
+                        "outline-variant": "#4a4455",
+                        "error": "#ffb4ab",
+                        "surface": "#131313",
+                        "error-container": "#93000a",
+                        "on-surface": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary-container": "#ffe0cd",
+                        "on-secondary-container": "#00344e",
+                        "on-tertiary": "#4f2500",
+                        "on-primary-container": "#ede0ff",
+                        "primary-container": "#7c3aed",
+                        "border-subtle": "rgba(255, 255, 255, 0.08)",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "surface-container-high": "#2a2a2a",
+                        "secondary-container": "#00a2e6",
+                        "on-surface-variant": "#ccc3d8",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "on-background": "#e5e2e1",
+                        "tertiary-fixed": "#ffdcc6",
+                        "on-secondary": "#00344d",
+                        "tertiary": "#ffb784",
+                        "on-tertiary-fixed": "#301400",
+                        "on-primary": "#3f008e",
+                        "surface-bright": "#3a3939",
+                        "primary-fixed-dim": "#d2bbff",
+                        "deep-obsidian": "#050505",
+                        "on-primary-fixed": "#25005a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "base": "4px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Geist"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "label-xs": ["Geist"],
+                        "display-lg": ["Geist"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "code-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "label-xs": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+            font-family: 'Geist', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .glow-border {
+            position: relative;
+        }
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(135deg, rgba(210, 187, 255, 0.2) 0%, transparent 50%, rgba(137, 206, 255, 0.2) 100%);
+            border-radius: inherit;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        .glow-border:hover::before {
+            opacity: 1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #d2bbff 0%, #89ceff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .radial-bloom {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .timeline-line {
+            width: 2px;
+            background: linear-gradient(to bottom, #7c3aed 0%, #00a2e6 100%);
+        }
+        
+        .bg-grid-pattern {
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Nav Hide on Scroll */
+        .nav-hidden {
+            transform: translateY(-100%);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-glass/80 backdrop-blur-xl shadow-sm transition-transform duration-300" id="top-nav">
+<div class="flex justify-between items-center px-margin-desktop h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<div class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent cursor-pointer">
+                    Nexora
+                </div>
+<nav aria-label="Main Navigation" class="hidden md:flex space-x-6">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Growth</a>
+<a class="font-body-md text-body-md text-primary font-bold border-b-2 border-primary pb-1" href="#">Timeline</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Network</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Notifications" class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+<button aria-label="Settings" class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-subtle ml-2 cursor-pointer relative glow-border">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary opacity-20"></div>
+<!-- Placeholder avatar -->
+<div class="w-full h-full bg-surface-variant flex items-center justify-center text-label-xs text-on-surface">AD</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow pt-24 pb-32">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Header -->
+<section class="relative py-16 md:py-24 flex flex-col items-center text-center overflow-hidden border-b border-border-subtle mb-16">
+<div class="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none"></div>
+<div class="radial-bloom top-0 left-1/2 -translate-x-1/2 w-96 h-96 opacity-40"></div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border-subtle bg-surface-container/50 backdrop-blur-sm mb-8">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-xs text-label-xs text-silver-text uppercase tracking-wider">Built with Nexora</span>
+</div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg font-bold text-on-surface mb-6 relative z-10 max-w-4xl">
+                    Healthcare Platform
+                </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    A comprehensive, high-security data synchronization ecosystem engineered to redefine how medical professionals access and share critical patient records in real-time.
+                </p>
+<div class="flex flex-wrap justify-center gap-4 mb-12 relative z-10">
+<div class="glass-panel px-6 py-4 rounded-xl flex flex-col items-center min-w-[120px]">
+<span class="material-symbols-outlined text-primary mb-2" style="font-variation-settings: 'FILL' 0;">group</span>
+<span class="font-headline-lg text-headline-lg-mobile font-bold text-on-surface">5</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase mt-1">Contributors</span>
+</div>
+<div class="glass-panel px-6 py-4 rounded-xl flex flex-col items-center min-w-[120px]">
+<span class="material-symbols-outlined text-secondary mb-2" style="font-variation-settings: 'FILL' 0;">schedule</span>
+<span class="font-headline-lg text-headline-lg-mobile font-bold text-on-surface">3m</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase mt-1">Duration</span>
+</div>
+<div class="glass-panel px-6 py-4 rounded-xl flex flex-col items-center min-w-[120px]">
+<span class="material-symbols-outlined text-primary-container mb-2" style="font-variation-settings: 'FILL' 0;">commit</span>
+<span class="font-headline-lg text-headline-lg-mobile font-bold text-on-surface">428</span>
+<span class="font-label-xs text-label-xs text-on-surface-variant uppercase mt-1">Commits</span>
+</div>
+</div>
+<!-- Tech Stack Badges -->
+<div class="flex flex-wrap justify-center gap-2 z-10">
+<span class="font-code-sm text-code-sm px-3 py-1 rounded border border-border-subtle bg-surface-container-low text-on-surface">React</span>
+<span class="font-code-sm text-code-sm px-3 py-1 rounded border border-border-subtle bg-surface-container-low text-on-surface">Go</span>
+<span class="font-code-sm text-code-sm px-3 py-1 rounded border border-border-subtle bg-surface-container-low text-on-surface">AWS</span>
+<span class="font-code-sm text-code-sm px-3 py-1 rounded border border-border-subtle bg-surface-container-low text-on-surface">GraphQL</span>
+<span class="font-code-sm text-code-sm px-3 py-1 rounded border border-border-subtle bg-surface-container-low text-on-surface">PostgreSQL</span>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-border-subtle bg-deep-obsidian mt-auto relative z-10">
+<div class="max-w-container-max mx-auto flex justify-between items-center px-margin-desktop">
+<div class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                Nexora
+            </div>
+<div class="flex space-x-6">
+<a class="font-label-xs text-label-xs text-on-surface-variant hover:text-secondary transition-colors uppercase" href="#">Documentation</a>
+<a class="font-label-xs text-label-xs text-on-surface-variant hover:text-secondary transition-colors uppercase" href="#">Privacy</a>
+<a class="font-label-xs text-label-xs text-on-surface-variant hover:text-secondary transition-colors uppercase" href="#">API Status</a>
+</div>
+<div class="font-label-xs text-label-xs text-on-surface-variant">
+                © 2024 Nexora Protocol. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        // Simple nav hide on scroll down for immersive reading
+        let lastScroll = 0;
+        const nav = document.getElementById('top-nav');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                nav.classList.remove('nav-hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && !nav.classList.contains('nav-hidden')) {
+                // Scroll down
+                nav.classList.add('nav-hidden');
+            } else if (currentScroll < lastScroll && nav.classList.contains('nav-hidden')) {
+                // Scroll up
+                nav.classList.remove('nav-hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body></html>

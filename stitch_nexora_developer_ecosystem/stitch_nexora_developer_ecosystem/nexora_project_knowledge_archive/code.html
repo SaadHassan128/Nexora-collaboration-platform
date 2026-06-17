@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora Project Knowledge Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-on-surface": "#313030",
+                      "surface-container-high": "#2a2a2a",
+                      "on-tertiary-container": "#ffe0cd",
+                      "tertiary-container": "#a15100",
+                      "on-error": "#690005",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-glass": "#1A1A1A",
+                      "surface-container": "#201f1f",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-secondary": "#00344d",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "primary-fixed-dim": "#d2bbff",
+                      "primary-container": "#7c3aed",
+                      "silver-text": "#E2E2E2",
+                      "primary-fixed": "#eaddff",
+                      "tertiary": "#ffb784",
+                      "deep-obsidian": "#050505",
+                      "secondary-fixed": "#c9e6ff",
+                      "on-secondary-container": "#00344e",
+                      "electric-purple": "#A855F7",
+                      "surface-dim": "#131313",
+                      "background": "#131313",
+                      "primary": "#d2bbff",
+                      "outline": "#958da1",
+                      "surface-variant": "#353534",
+                      "on-background": "#e5e2e1",
+                      "secondary-container": "#00a2e6",
+                      "surface": "#131313",
+                      "on-surface-variant": "#ccc3d8",
+                      "surface-tint": "#d2bbff",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-surface": "#e5e2e1",
+                      "outline-variant": "#4a4455",
+                      "on-secondary-fixed": "#001e2f",
+                      "surface-container-highest": "#353534",
+                      "inverse-primary": "#732ee4",
+                      "on-tertiary-fixed": "#301400",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "tertiary-fixed": "#ffdcc6",
+                      "border-subtle": "rgba(255, 255, 255, 0.08)",
+                      "secondary": "#89ceff",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-primary-fixed": "#25005a",
+                      "error": "#ffb4ab",
+                      "surface-bright": "#3a3939",
+                      "on-tertiary": "#4f2500",
+                      "on-primary": "#3f008e",
+                      "on-primary-container": "#ede0ff",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#1c1b1b",
+                      "error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "base": "4px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ],
+                      "label-xs": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-xs": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+        }
+        
+        .glass-panel {
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-primary-glow {
+            background: linear-gradient(135deg, #A855F7 0%, #00a2e6 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-primary-glow::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            background: inherit;
+            filter: blur(20px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-primary-glow:hover::before {
+            opacity: 0.2;
+        }
+
+        .feature-card-gradient {
+            position: relative;
+        }
+        .feature-card-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        /* Hide scrollbar for clean UI */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md min-h-screen flex">
+<!-- SideNavBar (Web Only) -->
+<nav class="hidden md:flex bg-deep-obsidian dark:bg-deep-obsidian h-screen w-64 fixed left-0 top-0 border-r border-subtle flex-col py-8 z-40">
+<div class="px-6 mb-12">
+<h1 class="font-display-lg text-headline-lg text-electric-purple font-bold tracking-tighter">Nexora</h1>
+<p class="font-code-sm text-code-sm text-on-surface-variant mt-1">Developer OS</p>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full btn-primary-glow rounded px-4 py-2 font-label-xs text-label-xs text-on-primary flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                New Project
+            </button>
+</div>
+<ul class="flex-1 flex flex-col gap-1 px-2">
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/20 hover:text-on-surface transition-all rounded" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span>Workspace</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/20 hover:text-on-surface transition-all rounded" href="#">
+<span class="material-symbols-outlined" data-icon="fingerprint">fingerprint</span>
+<span>Identity</span>
+</a>
+</li>
+<li>
+<a class="bg-primary-container/10 text-primary border-r-2 border-primary px-4 py-3 flex items-center gap-3 rounded-l" href="#">
+<span class="material-symbols-outlined" data-icon="terminal" data-weight="fill" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<span class="font-bold">Craft</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/20 hover:text-on-surface transition-all rounded" href="#">
+<span class="material-symbols-outlined" data-icon="waves">waves</span>
+<span>Flux</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/20 hover:text-on-surface transition-all rounded" href="#">
+<span class="material-symbols-outlined" data-icon="polyline">polyline</span>
+<span>Vectors</span>
+</a>
+</li>
+</ul>
+<div class="mt-auto px-2">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/20 hover:text-on-surface transition-all rounded font-code-sm text-code-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="menu_book">menu_book</span>
+<span>Documentation</span>
+</a>
+</li>
+<li>
+<a class="text-on-surface-variant px-4 py-3 flex items-center gap-3 hover:bg-surface-variant/20 hover:text-on-surface transition-all rounded font-code-sm text-code-sm" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen bg-background">
+<!-- TopNavBar -->
+<header class="bg-surface-glass/80 dark:bg-surface-glass/80 backdrop-blur-md w-full h-16 sticky top-0 border-b border-subtle shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop z-50">
+<!-- Mobile Brand (Hidden on Desktop as SideNav handles it) -->
+<div class="md:hidden flex items-center gap-2">
+<span class="font-display-lg text-headline-lg-mobile font-bold tracking-tighter text-primary">Nexora</span>
+</div>
+<!-- Search (Left aligned as per JSON) -->
+<div class="flex-1 max-w-md hidden md:flex items-center">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full bg-[#0A0A0A] border border-subtle rounded py-2 pl-10 pr-4 font-code-sm text-code-sm text-on-surface focus:outline-none focus:border-electric-purple focus:ring-1 focus:ring-electric-purple/50 transition-all placeholder:text-on-surface-variant/50" placeholder="Search archive..." type="text"/>
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-subtle cursor-pointer ml-2">
+<img alt="User profile avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ0tGRx7q0ZMPTVlxDUM0RLj_tAmQpJgzkZUqvLmQYmiYoIKkk7ruITgJJqwVK6UUYom2ERljCFZz42uHR2wx_9vyOTPba-GV749O7poCyetzit-egS6UUKsmhsUHa-u1ruIUQ_BpSTAQToD9dEFPowq0hg8aturdPpNFLSX3xXf4Lpdht5ZaUZvq-paC7W7nhx3h7dWb1__pORW3mUkPMU5psiPhlG8qA46708L-WBeQpJr0xMvmsgcRm7DzYMmP9qVSIEthTlNSx"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 p-margin-mobile md:p-gutter max-w-container-max mx-auto w-full flex flex-col gap-8">
+<!-- Page Header -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-electric-purple shadow-[0_0_10px_rgba(168,85,247,0.5)]"></div>
+<h2 class="font-display-lg text-headline-lg text-on-surface">Knowledge Archive</h2>
+</div>
+<p class="text-on-surface-variant">Centralized intelligence, architectural decisions, and product DNA.</p>
+</div>
+<!-- 1. Intelligence Search & Discovery -->
+<section class="glass-panel rounded-xl p-6 flex flex-col gap-4">
+<div class="flex flex-col md:flex-row gap-4 items-center">
+<div class="relative flex-1 w-full">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-[24px]">troubleshoot</span>
+<input class="w-full bg-[#0A0A0A] border border-subtle rounded-lg py-4 pl-12 pr-4 font-body-md text-body-md text-on-surface focus:outline-none focus:border-electric-purple focus:ring-2 focus:ring-electric-purple/20 transition-all placeholder:text-on-surface-variant/50" placeholder="Query intelligence..." type="text"/>
+</div>
+<div class="flex gap-2 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
+<button class="bg-[#0A0A0A] border border-electric-purple text-primary px-4 py-2 rounded-lg font-label-xs text-label-xs whitespace-nowrap flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">code</span> Technical
+                         </button>
+<button class="bg-[#0A0A0A] border border-subtle text-on-surface-variant px-4 py-2 rounded-lg font-label-xs text-label-xs whitespace-nowrap hover:border-outline-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">category</span> Product
+                         </button>
+<button class="bg-[#0A0A0A] border border-subtle text-on-surface-variant px-4 py-2 rounded-lg font-label-xs text-label-xs whitespace-nowrap hover:border-outline-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">gavel</span> Decision
+                         </button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Main Column -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<!-- 2. Decision Ledger (ADRs) -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between items-end border-b border-subtle pb-2">
+<h3 class="font-display-lg text-headline-lg-mobile text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">history_edu</span>
+                                Decision Ledger
+                            </h3>
+<a class="font-code-sm text-code-sm text-primary hover:text-electric-purple transition-colors" href="#">View All →</a>
+</div>
+<div class="flex flex-col gap-3">
+<!-- ADR Item 1 -->
+<div class="bg-[#0A0A0A] border border-subtle rounded-lg p-5 hover:border-primary/50 transition-colors group">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-silver-text px-2 py-0.5 rounded font-label-xs text-label-xs">ADR-042</span>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Main Database: MongoDB to PostgreSQL</h4>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant/60">Oct 24, 2023</span>
+</div>
+<p class="text-on-surface-variant text-sm mb-4">Migrating primary data store to handle complex relational queries and improve transaction integrity across services.</p>
+<div class="flex items-center justify-between">
+<div class="flex gap-2">
+<span class="bg-primary-container/10 text-primary border border-primary/20 px-2 py-1 rounded font-label-xs text-[10px]">Context: Scaling</span>
+<span class="bg-secondary-container/10 text-secondary border border-secondary/20 px-2 py-1 rounded font-label-xs text-[10px]">Final Choice: Postgres 15</span>
+</div>
+<div class="flex items-center gap-2">
+<img alt="Author avatar" class="w-5 h-5 rounded-full border border-subtle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByTUdVTgtl_wfareAdfMlS-OTGo3qw2kWiJSXX5NqVc8JgVEzagpI_9SK2Ee9kTMsPlkrlUeJ5r4hDPpEtk_umjGJL9dpr6H3HtP60-r6PBlAQBAaHh2Xr62Q2nWhadEio3DkRTH17focDV1JQGKxgZeuzo5j7XbV2vS5i2CO9A3_SJk1BLt4mMteAw1fC2q-X-ZGoLpkRLV8Ad5l5thwp-pAt9tkt7VcYd03du2Aw2JEg7hmbGXPDZcVEU67e1D7Z33rk6s9Oi42D"/>
+<span class="font-code-sm text-[12px] text-on-surface-variant">Alex Chen</span>
+</div>
+</div>
+</div>
+<!-- ADR Item 2 -->
+<div class="bg-[#0A0A0A] border border-subtle rounded-lg p-5 hover:border-primary/50 transition-colors group opacity-80">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<span class="bg-surface-variant text-silver-text px-2 py-0.5 rounded font-label-xs text-label-xs">ADR-041</span>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Implement Redis Caching Layer</h4>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant/60">Sep 12, 2023</span>
+</div>
+<div class="flex items-center justify-between mt-4">
+<div class="flex gap-2">
+<span class="bg-primary-container/10 text-primary border border-primary/20 px-2 py-1 rounded font-label-xs text-[10px]">Context: API Latency</span>
+</div>
+<div class="flex items-center gap-2">
+<img alt="Author avatar" class="w-5 h-5 rounded-full border border-subtle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDym5w2bFe6WC5LOfXCF8TgquRQWFpKXKJzyNThjj7qPdo8Gm8TmJZnsEgRL1K2Q2D_zb6YUu8X6-6LV4gG6lJwRGR3eglSaDJIxNC0WLZVd6fuvtYqVkougvSaFIo04bouUPmsKqMSlNYGcqRpCgiPeZG8KBJCX7_jAZKhaiWC7spAj7JxfVsRMIU0lDreT83Z6fiRAqiHUv8JxKLlr5hJb7ngU5MRi0TY3FZC6obPEGMFMaJxmkQx0sLjlcE8aZb5RiT3BYqs0OCk"/>
+<span class="font-code-sm text-[12px] text-on-surface-variant">Sarah J.</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Knowledge Hub Grid -->
+<section class="flex flex-col gap-4 mt-4">
+<div class="flex justify-between items-end border-b border-subtle pb-2">
+<h3 class="font-display-lg text-headline-lg-mobile text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">hub</span>
+                                Knowledge Hub
+                            </h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Technical Archives -->
+<div class="glass-panel feature-card-gradient rounded-xl p-5 flex flex-col gap-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded bg-[#0A0A0A] border border-subtle flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+</div>
+<h4 class="font-bold text-on-surface">Technical Archives</h4>
+</div>
+<ul class="flex flex-col gap-2 flex-1">
+<li><a class="text-on-surface-variant hover:text-primary text-sm flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">arrow_right</span> Architecture Diagrams</a></li>
+<li><a class="text-on-surface-variant hover:text-primary text-sm flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">arrow_right</span> API Specifications (OpenAPI)</a></li>
+<li><a class="text-on-surface-variant hover:text-primary text-sm flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">arrow_right</span> Global Dev Rules &amp; Linting</a></li>
+</ul>
+</div>
+<!-- Product DNA -->
+<div class="glass-panel feature-card-gradient rounded-xl p-5 flex flex-col gap-4" style="--tw-gradient-from: rgba(0, 162, 230, 0.15);">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded bg-[#0A0A0A] border border-subtle flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">extension</span>
+</div>
+<h4 class="font-bold text-on-surface">Product DNA</h4>
+</div>
+<ul class="flex flex-col gap-2 flex-1">
+<li><a class="text-on-surface-variant hover:text-secondary text-sm flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">arrow_right</span> Core Requirements (PRDs)</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-sm flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">arrow_right</span> Feature Specs Q4</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-sm flex items-center gap-2" href="#"><span class="material-symbols-outlined text-[14px]">arrow_right</span> User Story Map</a></li>
+</ul>
+</div>
+<!-- Lessons & Solutions (Full width in grid) -->
+<div class="md:col-span-2 bg-[#0A0A0A] border border-subtle rounded-xl p-5">
+<h4 class="font-bold text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-error">lightbulb</span>
+                                    Lessons &amp; Solutions
+                                </h4>
+<div class="bg-surface-container-low rounded border border-subtle p-3 flex items-center gap-4">
+<div class="flex-1">
+<span class="font-code-sm text-[12px] text-error mb-1 block">Problem</span>
+<p class="text-sm text-on-surface-variant">High latency on user profile API endpoint during peak hours.</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant">arrow_forward</span>
+<div class="flex-1">
+<span class="font-code-sm text-[12px] text-secondary mb-1 block">Solution</span>
+<p class="text-sm text-on-surface">Implemented Redis caching layer for static profile fields.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Sidebar Column -->
+<div class="lg:col-span-4 flex flex-col gap-8">
+<!-- 4. Contribution & Reputation -->
+<div class="glass-panel rounded-xl p-5">
+<h3 class="font-display-lg text-headline-lg-mobile text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-electric-purple">military_tech</span>
+                            Top Contributors
+                        </h3>
+<div class="flex flex-col gap-4">
+<!-- Contributor 1 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Top contributor avatar" class="w-10 h-10 rounded-full border-2 border-[#0A0A0A]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRHwN9s05XOVM97g9CzxTO61Pnnjw8Nieu0zAo1MuMQSC90IG-yHeO0bTdyOXB3H4PRrYt8_tSGSuqdXxNKZVrIWw3N5zyDauZs1mFxs26L-L1qogNHDLiF6WKgKVp14wUpz0JFgukxPYDWyqSEMoTso21gwFFrIYs6jvF8CvGSYlyLmioO5__38RHqmfiy-5CgZI2AN5mgdFaG6ymsR6i8UnWwF_syDnN6pNjj7SflWeAHblgF38XD98aGPRd4DPAYUKQIEkkaSvx"/>
+<span class="absolute -bottom-1 -right-1 bg-[#0A0A0A] text-electric-purple text-[10px] font-bold px-1 rounded border border-subtle">1</span>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Maya K.</p>
+<p class="font-code-sm text-[10px] text-on-surface-variant">Lead Architect</p>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-primary-container/20 text-primary px-2 py-1 rounded font-code-sm text-xs border border-primary/20">+142 pts</span>
+</div>
+</div>
+<!-- Contributor 2 -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Contributor avatar" class="w-10 h-10 rounded-full border-2 border-[#0A0A0A]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn6srZx3wtO4pfia5gn9z9me5GqqlJ1wdnN84oZ2Obudd-KG2k7-y3_gkU5xwMKL30MlOBWi9ULhSmofOec52li3BvnRi2EgRXcF-n30fnOfpbbq1NG4TYPSei2HkUfTnUVU95VXlBRe9gbOi_Tjo5jhExUwCeRI1gqTPUh9d8bLMqyagqYzlKOMLHXBEuYXoF8apj-VI-LqUXP83yzuiVGGPJmwp9jV2FE77wNKsvQ6WSICRIZGahsxDm8xpTOMDB7DN8vg5FiqKr"/>
+<span class="absolute -bottom-1 -right-1 bg-[#0A0A0A] text-secondary text-[10px] font-bold px-1 rounded border border-subtle">2</span>
+</div>
+<div>
+<p class="font-bold text-sm text-on-surface">Alex Chen</p>
+<p class="font-code-sm text-[10px] text-on-surface-variant">Backend Eng</p>
+</div>
+</div>
+<div class="text-right">
+<span class="bg-surface-variant text-silver-text px-2 py-1 rounded font-code-sm text-xs border border-subtle">+85 pts</span>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-subtle">
+<p class="font-code-sm text-xs text-on-surface-variant mb-2">Recent Impact</p>
+<div class="flex items-center gap-2 text-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span>Alex documented <strong>ADR-042</strong></span>
+<span class="text-secondary text-xs ml-auto">+15</span>
+</div>
+</div>
+</div>
+<!-- System Status Widget (Atmospheric extra) -->
+<div class="bg-[#0A0A0A] border border-subtle rounded-xl p-5">
+<h4 class="font-code-sm text-code-sm text-on-surface-variant mb-4 uppercase tracking-widest">Archive Status</h4>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full border-2 border-primary/30 flex items-center justify-center relative">
+<div class="absolute inset-0 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+<span class="material-symbols-outlined text-primary text-[20px]">sync</span>
+</div>
+<div>
+<p class="text-sm text-on-surface">Index Synced</p>
+<p class="font-code-sm text-xs text-on-surface-variant">Last update: 2m ago</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora Networking Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#25005a",
+                        "on-tertiary-fixed": "#301400",
+                        "surface-container-highest": "#353534",
+                        "on-error": "#690005",
+                        "border-subtle": "rgba(255, 255, 255, 0.08)",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "tertiary-container": "#a15100",
+                        "secondary-fixed": "#c9e6ff",
+                        "on-tertiary": "#4f2500",
+                        "on-background": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "outline-variant": "#4a4455",
+                        "on-secondary": "#00344d",
+                        "surface-container": "#201f1f",
+                        "on-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "silver-text": "#E2E2E2",
+                        "on-surface-variant": "#ccc3d8",
+                        "primary": "#d2bbff",
+                        "surface-variant": "#353534",
+                        "primary-fixed": "#eaddff",
+                        "secondary-fixed-dim": "#89ceff",
+                        "on-secondary-container": "#00344e",
+                        "surface-container-high": "#2a2a2a",
+                        "surface": "#131313",
+                        "inverse-primary": "#732ee4",
+                        "error": "#ffb4ab",
+                        "primary-container": "#7c3aed",
+                        "outline": "#958da1",
+                        "background": "#131313",
+                        "on-secondary-fixed": "#001e2f",
+                        "secondary": "#89ceff",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-tint": "#d2bbff",
+                        "deep-obsidian": "#050505",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "on-primary": "#3f008e",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "surface-glass": "#1A1A1A",
+                        "primary-fixed-dim": "#d2bbff",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#00a2e6",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "on-primary-container": "#ede0ff",
+                        "surface-bright": "#3a3939",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "on-tertiary-container": "#ffe0cd",
+                        "electric-purple": "#A855F7",
+                        "tertiary": "#ffb784"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "container-max": "1280px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Geist"],
+                        "label-xs": ["Geist"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-md": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-xs": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "code-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.background'); color: theme('colors.on-background'); }
+        .glass-card {
+            background-color: theme('colors.surface-glass');
+            backdrop-filter: blur(4px);
+            border: 1px solid theme('colors.border-subtle');
+        }
+        .glow-accent {
+            position: relative;
+        }
+        .glow-accent::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: inherit;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
+            pointer-events: none;
+            z-index: -1;
+        }
+        .verified-glow {
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: inset 0 0 10px rgba(124, 58, 237, 0.1), 0 0 10px rgba(124, 58, 237, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen overflow-x-hidden selection:bg-electric-purple selection:text-white">
+<!-- TopNavBar -->
+<nav class="bg-surface-glass/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm border-b border-border-subtle">
+<div class="flex items-center justify-between px-margin-desktop h-16 w-full max-w-container-max mx-auto md:px-gutter px-margin-mobile">
+<!-- Brand -->
+<div class="flex items-center gap-gutter">
+<span class="font-headline-lg text-headline-lg font-bold tracking-tighter text-electric-purple md:text-headline-lg text-headline-lg-mobile">Nexora</span>
+</div>
+<!-- Links (Desktop) -->
+<div class="hidden md:flex items-center gap-gutter h-full">
+<a class="font-code-sm text-code-sm text-electric-purple border-b-2 border-electric-purple pb-1 h-full flex items-center pt-1" href="#">Discovery</a>
+<a class="font-code-sm text-code-sm text-silver-text hover:text-on-surface-variant transition-colors hover:bg-white/5 transition-all duration-200 h-full flex items-center px-2" href="#">Collaborations</a>
+<a class="font-code-sm text-code-sm text-silver-text hover:text-on-surface-variant transition-colors hover:bg-white/5 transition-all duration-200 h-full flex items-center px-2" href="#">My Network</a>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-base">
+<button class="p-2 text-silver-text hover:text-on-surface-variant hover:bg-white/5 rounded-full transition-all duration-200 active:scale-95 transition-transform" data-icon="notifications">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-silver-text hover:text-on-surface-variant hover:bg-white/5 rounded-full transition-all duration-200 active:scale-95 transition-transform" data-icon="chat_bubble">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle ml-2 overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A futuristic professional portrait of a developer, sharp lighting, neon subtle reflections, obsidian background. Highly detailed, 8k resolution, cinematic lighting, cyberpunk aesthetic. The subject looks confident and technical." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6gJE0UhPEwjc_nFySKmVC51Hn8rjA4MSUWSIECOtsBQmPDM0Ama4EaO_xxJa0j1mVhfW3OuSCRDjkCOwe8-uGP0EwSdXVe8UdvtA5sO2kk51uzE7RXvNyoH_tUYHoDXadG-YZ5rFI65Snf36utwNhwRkJ_d5Y-CiDNLY9a8vTC1TaKHInggr0RpVz7C-IsyNzCM23DLMGiMTVUWcoJDQPqFyST3A8JO4Kvs3C3Qd_On1hWwv5AzIqTd2MLItkpNmV4XhqLyts4XFy"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col p-margin-mobile gap-base bg-deep-obsidian fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-border-subtle z-40">
+<div class="mb-gutter mt-base">
+<h2 class="font-headline-lg text-headline-lg text-on-surface text-lg">Skill Domains</h2>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Filter discovery</p>
+</div>
+<nav class="flex-1 flex flex-col gap-2">
+<a class="flex items-center gap-3 p-3 rounded text-on-primary-container bg-primary-container/20 border-r-4 border-electric-purple font-code-sm text-code-sm hover:bg-surface-container-highest transition-colors active:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined text-electric-purple">code</span>
+<span>Frontend</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded text-on-surface-variant hover:text-silver-text font-code-sm text-code-sm hover:bg-surface-container-highest transition-colors active:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">database</span>
+<span>Backend</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded text-on-surface-variant hover:text-silver-text font-code-sm text-code-sm hover:bg-surface-container-highest transition-colors active:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span>DevOps</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded text-on-surface-variant hover:text-silver-text font-code-sm text-code-sm hover:bg-surface-container-highest transition-colors active:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Web3</span>
+</a>
+<a class="flex items-center gap-3 p-3 rounded text-on-surface-variant hover:text-silver-text font-code-sm text-code-sm hover:bg-surface-container-highest transition-colors active:translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">memory</span>
+<span>AI/ML</span>
+</a>
+</nav>
+<button class="mt-auto mb-gutter w-full py-2 bg-gradient-to-r from-electric-purple to-secondary-container text-white font-code-sm text-code-sm rounded border border-white/10 glow-accent hover:opacity-90 transition-opacity">
+            Apply Filters
+        </button>
+<div class="flex flex-col gap-2 border-t border-border-subtle pt-4">
+<a class="flex items-center gap-3 p-2 rounded text-on-surface-variant hover:text-silver-text font-code-sm text-code-sm hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 p-2 rounded text-on-surface-variant hover:text-silver-text font-code-sm text-code-sm hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="pt-24 pb-16 md:pl-[18rem] md:pr-margin-desktop px-margin-mobile max-w-container-max mx-auto w-full min-h-screen">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left Column: Discovery Feed -->
+<div class="lg:col-span-2 flex flex-col gap-gutter">
+<!-- Complementary Connections (Horizontal Scroll) -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-electric-purple">hub</span>
+<h3 class="font-body-md text-body-md font-semibold text-silver-text">Complementary Connections</h3>
+<span class="text-on-surface-variant text-sm ml-2">As a Frontend expert, connect with these Backend Architects</span>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 snap-x hide-scrollbar">
+<!-- Mini Card 1 -->
+<div class="glass-card rounded-lg p-4 min-w-[240px] snap-start flex flex-col items-center text-center relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary-container to-transparent opacity-50 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-12 h-12 rounded-full mb-3 border border-border-subtle overflow-hidden">
+<img alt="Dev" class="w-full h-full object-cover" data-alt="A high-end portrait of a software engineer. Deep obsidian background, soft blue rim light. Minimalist, professional, sharp focus. Cyperbunk tech aesthetic. High resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl59rfRKbtzTvZNZpeevEn6qvTNmRMUJecSYVinC34ClM4dwjz6tUTCGyQuHG7yr1zC5BONAw-cG4AJZWTw3NFm8iWvsW97BZR7YPEL6P0GCRc6KQl2KLvqgCBssPwZBdEij5mBj2RlYlO_lQRIs1JPn8A658QJblyz5o7zKHkZZmbhdNiwGQilvQQta2wrvE_isaW676Nxmhlo5zbdi5TowzowQjUZD97hj1s1819jXKNKn9VmiYlOMqocRinYFERgLziUcGthYfP"/>
+</div>
+<span class="font-code-sm text-code-sm font-bold text-silver-text">Marcus T.</span>
+<span class="font-label-xs text-label-xs text-secondary-fixed-dim">L5 Backend Eng</span>
+<button class="mt-3 px-3 py-1 bg-white/5 border border-white/10 rounded text-xs font-code-sm hover:bg-white/10 transition-colors">Connect</button>
+</div>
+<!-- Mini Card 2 -->
+<div class="glass-card rounded-lg p-4 min-w-[240px] snap-start flex flex-col items-center text-center relative overflow-hidden group verified-glow">
+<div class="absolute top-2 right-2 text-electric-purple" title="Verified Contributor">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="w-12 h-12 rounded-full mb-3 border border-electric-purple/30 overflow-hidden">
+<img alt="Dev" class="w-full h-full object-cover" data-alt="A high-end portrait of a female software architect. Deep obsidian background, soft purple rim light. Minimalist, professional, sharp focus. Tech startup aesthetic. High resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcUOkbL8-JAxO5FzfvCwNGaYzCpAgFiCL3lqu93DZVtNVrsqWWSzjaeXkRNGzQxnPKluRO8WIUUQtTJq5Rd8HPlgkWGK1SguuZmCGfPpb_WsfPeW6miR4NAUpbY1Hpcci7fIx504swRAAqXvr7E_xld4ScHQEo0kzBwbNyujmUGAvikyglDsUcQzqwPKwIoPg7OEkqg1GzKxgKmfaawgpHhhzswBG1BxdUPvASse-s2Kf0Ao3Txl_NNF0BEfgliB_ukqizylM0xugn"/>
+</div>
+<span class="font-code-sm text-code-sm font-bold text-silver-text">Sarah J.</span>
+<span class="font-label-xs text-label-xs text-secondary-fixed-dim">Systems Architect</span>
+<button class="mt-3 px-3 py-1 bg-gradient-to-r from-electric-purple to-secondary-container text-white border border-white/10 rounded text-xs font-code-sm hover:opacity-90 transition-opacity">Connect</button>
+</div>
+</div>
+</section>
+<!-- Feed Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Proof of Craft Card 1 -->
+<article class="glass-card rounded-xl p-6 relative overflow-hidden group hover:border-electric-purple/50 transition-colors duration-300 flex flex-col h-full">
+<div class="absolute top-0 left-0 w-32 h-32 bg-electric-purple/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container-high border border-border-subtle overflow-hidden">
+<img alt="Dev Profile" class="w-full h-full object-cover" data-alt="A detailed headshot of a male developer in a dark room. Code reflections in his glasses. Cinematic lighting, deep shadows, bright white rim light. Professional and intense." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbBsItYhi0vA3gW19y5TcvSbBX7UN-8laSqxn8616X06HDCeiPfHwsKWQXkHPcMnx1BExEH713ICm9s7Axb0CNgeyBJbcpFV2GX9rSwkiS5ejDBq0uPS-9jIdgd-YjtM9SCO77DZDkyFmwRUPdH2jX7ViFLsj6pgGC_lSpHI0A6cogJOJZTWVRIGbCbp6FdQzkyDUcIzbCW9NkGYI3gmYgQKmvvW6iJQxiCc5-Fz2tbnBITP-JT85dMBdSesRhGmXf9sWJbUiZVPkl"/>
+</div>
+<div>
+<h3 class="font-body-md text-body-md font-bold text-silver-text flex items-center gap-2">
+                                        Alex Chen
+                                        <span class="material-symbols-outlined text-electric-purple text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant text-xs">Level 42 Architect</p>
+</div>
+</div>
+<div class="text-right">
+<div class="font-code-sm text-code-sm text-electric-purple font-bold text-lg">98<span class="text-xs text-on-surface-variant ml-1">TRST</span></div>
+</div>
+</div>
+<div class="mb-6 relative z-10 flex-1">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-surface-container-high border border-border-subtle rounded font-code-sm text-[10px] text-silver-text">React</span>
+<span class="px-2 py-1 bg-surface-container-high border border-border-subtle rounded font-code-sm text-[10px] text-silver-text">TypeScript</span>
+<span class="px-2 py-1 bg-surface-container-high border border-border-subtle rounded font-code-sm text-[10px] text-silver-text">WebGL</span>
+</div>
+<div class="bg-deep-obsidian rounded-lg p-4 border border-border-subtle">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-sm">bolt</span>
+<span class="font-label-xs text-label-xs text-silver-text">Contribution Highlight</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Optimized rendering engine pipeline, reducing TTI by 40% across 3 enterprise applications.</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-border-subtle mt-auto relative z-10">
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-on-surface-variant">Impact Metric</span>
+<span class="font-code-sm text-code-sm text-silver-text">12 Shipped Products</span>
+</div>
+<button class="px-4 py-2 bg-white/5 border border-border-subtle rounded font-code-sm text-sm hover:bg-white/10 hover:border-electric-purple/50 transition-all">View Craft</button>
+</div>
+</article>
+<!-- Proof of Craft Card 2 -->
+<article class="glass-card rounded-xl p-6 relative overflow-hidden group hover:border-secondary-container/50 transition-colors duration-300 flex flex-col h-full">
+<div class="absolute top-0 left-0 w-32 h-32 bg-secondary-container/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+<div class="flex justify-between items-start mb-6 relative z-10">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container-high border border-border-subtle overflow-hidden">
+<img alt="Dev Profile" class="w-full h-full object-cover" data-alt="A portrait of a non-binary developer in a studio setting. Dark mode aesthetic. Minimalist clothing, sharp focus, obsidian background with subtle cyan lighting. High quality SaaS imagery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs9vWXJcBbWYSAdK19MpqxI3xosHT5PdMqDaVT1xyIt7kHodcu44GGf6BawIJfHV1RiXZSQItTnC3E-tnEfrJQg3HVV0HpG86agWuXeNR6w-VuyxG7JJpCnsYL-AN0a1g3mr2lBxykexe0kpCJePhIw4fDCPOQY6ztPyHfGax7r1cq0bll3-PNQZt-lcWVXwW8buoHjY7gVuXWy6EVucMf4DydaGIuMME4mRVwSE7KBfNZ74sHPcp-4bNSKEYbBavL6gZPvyfKNBsP"/>
+</div>
+<div>
+<h3 class="font-body-md text-body-md font-bold text-silver-text flex items-center gap-2">
+                                        Jordan Reyes
+                                    </h3>
+<p class="font-code-sm text-code-sm text-on-surface-variant text-xs">Senior UI Engineer</p>
+</div>
+</div>
+<div class="text-right">
+<div class="font-code-sm text-code-sm text-silver-text font-bold text-lg">84<span class="text-xs text-on-surface-variant ml-1">TRST</span></div>
+</div>
+</div>
+<div class="mb-6 relative z-10 flex-1">
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="px-2 py-1 bg-surface-container-high border border-border-subtle rounded font-code-sm text-[10px] text-silver-text">Vue</span>
+<span class="px-2 py-1 bg-surface-container-high border border-border-subtle rounded font-code-sm text-[10px] text-silver-text">Tailwind</span>
+<span class="px-2 py-1 bg-surface-container-high border border-border-subtle rounded font-code-sm text-[10px] text-silver-text">Figma</span>
+</div>
+<div class="bg-deep-obsidian rounded-lg p-4 border border-border-subtle">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary-fixed-dim text-sm">bolt</span>
+<span class="font-label-xs text-label-xs text-silver-text">Contribution Highlight</span>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant">Architected design system adopted by 50+ internal developers, zero breaking changes in 2 years.</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-border-subtle mt-auto relative z-10">
+<div class="flex flex-col">
+<span class="font-label-xs text-label-xs text-on-surface-variant">Impact Metric</span>
+<span class="font-code-sm text-code-sm text-silver-text">5 Design Systems</span>
+</div>
+<button class="px-4 py-2 bg-white/5 border border-border-subtle rounded font-code-sm text-sm hover:bg-white/10 hover:border-secondary-container/50 transition-all">View Craft</button>
+</div>
+</article>
+</div>
+</div>
+<!-- Right Column: Sidebar -->
+<aside class="flex flex-col gap-6">
+<!-- Smart Match Widget -->
+<div class="glass-card rounded-xl p-6 border-t-2 border-t-electric-purple">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-electric-purple">join</span>
+<h3 class="font-body-md text-body-md font-bold text-silver-text">Smart Match</h3>
+</div>
+<p class="font-body-md text-sm text-on-surface-variant mb-4">Based on your active project 'Nexus Core v2'</p>
+<div class="flex flex-col gap-4">
+<div class="bg-surface-container-high/50 p-4 rounded-lg border border-border-subtle">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-deep-obsidian border border-border-subtle overflow-hidden">
+<img alt="Dev" class="w-full h-full object-cover" data-alt="A portrait of a male data scientist. Cinematic lighting, deep shadows, bright white rim light. Professional and intense. Dark mode aesthetic. Obsidian background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq-RF-K6UZ4nG598M6uRCEoGfUyQXOCnH8vcNr5pknxgYRjrZ4hqMBSVCE1PeeksCi8hN5fLEvwJDdbP-3uY9eop0kqCu3QMbLLYQiA_bnM4vO6_zbUhv1n8HMuDnO4er3wCoR3UzNUHHFO6X6hZwsc7HwY7dCIHrnEJ_I52f0JrNGVH2DYFMTKS1h4WasjRlwe3d0T8eQZ5TphN9peDHwTqYQWxBGSOEJMpS6ndmHZUS-ZdjlOIYPOA4d71UmwKzYyX-KszZ6G5WJ"/>
+</div>
+<div>
+<h4 class="font-code-sm text-code-sm font-semibold text-silver-text text-sm">David Kim</h4>
+<p class="font-label-xs text-label-xs text-secondary-fixed-dim">Data Engineer</p>
+</div>
+</div>
+<span class="font-code-sm text-electric-purple text-sm font-bold">92%</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">done_all</span>
+<span>High Skill Alignment (Kafka, Spark)</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">history</span>
+<span>Previously Shipped v1.0 with Elena R.</span>
+</div>
+</div>
+<button class="w-full mt-4 py-1.5 bg-white/5 border border-white/10 rounded font-code-sm text-xs text-silver-text hover:bg-white/10 transition-colors">Invite to Project</button>
+</div>
+</div>
+</div>
+<!-- Network Telemetry -->
+<div class="glass-card rounded-xl p-6">
+<h3 class="font-body-md text-body-md font-bold text-silver-text mb-4">Network Telemetry</h3>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between font-code-sm text-xs mb-1">
+<span class="text-on-surface-variant">Graph Density</span>
+<span class="text-secondary-fixed-dim">Optimum</span>
+</div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-fixed-dim w-[75%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between font-code-sm text-xs mb-1">
+<span class="text-on-surface-variant">Skill Overlap</span>
+<span class="text-electric-purple">High</span>
+</div>
+<div class="h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-electric-purple w-[88%]"></div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<style>
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

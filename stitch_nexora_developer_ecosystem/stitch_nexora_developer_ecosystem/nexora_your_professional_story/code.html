@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora | Share Story</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "silver-text": "#E2E2E2",
+                    "on-tertiary-fixed-variant": "#713700",
+                    "surface-dim": "#131313",
+                    "secondary": "#89ceff",
+                    "surface-variant": "#353534",
+                    "surface-container-lowest": "#0e0e0e",
+                    "tertiary": "#ffb784",
+                    "on-error": "#690005",
+                    "tertiary-container": "#a15100",
+                    "on-primary": "#3f008e",
+                    "error": "#ffb4ab",
+                    "inverse-surface": "#e5e2e1",
+                    "secondary-container": "#00a2e6",
+                    "on-background": "#e5e2e1",
+                    "surface-bright": "#3a3939",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "surface-container": "#201f1f",
+                    "inverse-primary": "#732ee4",
+                    "primary": "#d2bbff",
+                    "surface": "#131313",
+                    "on-tertiary-container": "#ffe0cd",
+                    "border-subtle": "rgba(255, 255, 255, 0.08)",
+                    "electric-purple": "#A855F7",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary-fixed": "#301400",
+                    "outline": "#958da1",
+                    "on-primary-fixed": "#25005a",
+                    "on-tertiary": "#4f2500",
+                    "surface-container-low": "#1c1b1b",
+                    "primary-fixed-dim": "#d2bbff",
+                    "on-secondary-container": "#00344e",
+                    "background": "#131313",
+                    "surface-tint": "#d2bbff",
+                    "surface-container-high": "#2a2a2a",
+                    "secondary-fixed-dim": "#89ceff",
+                    "on-surface-variant": "#ccc3d8",
+                    "deep-obsidian": "#050505",
+                    "primary-fixed": "#eaddff",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-surface": "#e5e2e1",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "surface-glass": "#1A1A1A",
+                    "on-primary-container": "#ede0ff",
+                    "on-secondary": "#00344d",
+                    "on-secondary-fixed-variant": "#004c6e",
+                    "tertiary-fixed": "#ffdcc6",
+                    "outline-variant": "#4a4455",
+                    "on-error-container": "#ffdad6",
+                    "error-container": "#93000a",
+                    "primary-container": "#7c3aed",
+                    "surface-container-highest": "#353534",
+                    "secondary-fixed": "#c9e6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "base": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-xs": [
+                            "Geist"
+                    ],
+                    "headline-lg-mobile": [
+                            "Geist"
+                    ],
+                    "code-sm": [
+                            "JetBrains Mono"
+                    ],
+                    "body-md": [
+                            "Geist"
+                    ],
+                    "display-lg": [
+                            "Geist"
+                    ],
+                    "headline-lg": [
+                            "Geist"
+                    ]
+            },
+            "fontSize": {
+                    "label-xs": [
+                            "12px",
+                            {
+                                    "lineHeight": "1",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "code-sm": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "letterSpacing": "0em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.04em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #A855F7, #00a2e6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 24px rgba(168, 85, 247, 0.2);
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #d2bbff, #89ceff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-deep-obsidian text-on-surface font-body-md antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface-glass/80 backdrop-blur-md border-b border-subtle shadow-none">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg md:font-headline-lg md:text-headline-lg font-bold tracking-tighter text-primary">
+                Nexora
+            </div>
+<div class="hidden md:flex space-x-8">
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-md font-code-sm text-code-sm" href="#">Experience</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-md font-code-sm text-code-sm" href="#">Projects</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-md font-code-sm text-code-sm" href="#">Stack</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 transition-all duration-300 px-3 py-2 rounded-md font-code-sm text-code-sm" href="#">Contact</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="btn-primary text-on-primary-container px-6 py-2 rounded-lg font-label-xs text-label-xs active:scale-95 transition-transform">
+                    Resume
+                </button>
+<button class="text-silver-text hover:text-primary transition-colors hidden md:block">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">terminal</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="flex-grow pt-32 pb-24 px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto space-y-[64px]">
+<!-- Hero Section -->
+<section class="relative rounded-2xl overflow-hidden glass-panel flex flex-col md:flex-row items-center p-8 md:p-12 min-h-[500px]">
+<div class="absolute inset-0 z-0 opacity-40">
+<!-- STITCH_THREEJS_START:ANIMATION_38 class="absolute inset-0 w-full h-full" -->
+<div class="absolute inset-0 w-full h-full" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_38" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_38');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  (function() {
+  const container = document.getElementById('threejs-container-PORTFOLIO_CORE');
+  if (!container) return;
+
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
+
+  const pointLight = new THREE.PointLight(0x7c3aed, 2, 15);
+  pointLight.position.set(5, 5, 5);
+  scene.add(pointLight);
+
+  // The "Portfolio Core" - A radiant, multi-faceted prism representing the "Complete Story"
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const geometry = new THREE.IcosahedronGeometry(1.5, 1);
+  const material = new THREE.MeshPhongMaterial({
+    color: 0x7c3aed,
+    emissive: 0x2e1065,
+    flatShading: true,
+    transparent: true,
+    opacity: 0.8,
+    shininess: 100
+  });
+  const core = new THREE.Mesh(geometry, material);
+  group.add(core);
+
+  // Outer wireframe for "Product Network"
+  const wireGeom = new THREE.IcosahedronGeometry(1.8, 1);
+  const wireMat = new THREE.MeshBasicMaterial({
+    color: 0x7c3aed,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.1
+  });
+  const wire = new THREE.Mesh(wireGeom, wireMat);
+  group.add(wire);
+
+  // Floating achievement nodes (Project completions)
+  const nodeCount = 5;
+  const nodes = [];
+  const nodeGeom = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+  const nodeMat = new THREE.MeshStandardMaterial({ 
+    color: 0x10b981, 
+    emissive: 0x10b981, 
+    emissiveIntensity: 1 
+  });
+
+  for (let i = 0; i < nodeCount; i++) {
+    const node = new THREE.Mesh(nodeGeom, nodeMat);
+    const angle = (i / nodeCount) * Math.PI * 2;
+    const dist = 2.5;
+    node.position.set(
+      Math.cos(angle) * dist,
+      Math.sin(angle) * dist,
+      (Math.random() - 0.5) * 2
+    );
+    node.userData = { angle: angle, speed: 0.005 + Math.random() * 0.01, dist: dist };
+    nodes.push(node);
+    group.add(node);
+  }
+
+  camera.position.z = 6;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    group.rotation.y += 0.002;
+    core.rotation.x += 0.005;
+    
+    const time = Date.now() * 0.001;
+    core.scale.setScalar(1 + Math.sin(time) * 0.05);
+
+    nodes.forEach(n => {
+      n.userData.angle += n.userData.speed;
+      n.position.x = Math.cos(n.userData.angle) * n.userData.dist;
+      n.position.z = Math.sin(n.userData.angle) * n.userData.dist;
+      n.rotation.y += 0.02;
+    });
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+})();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_38 -->
+</div>
+<div class="relative z-10 md:w-1/2 space-y-6">
+<div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">Alex Dev</h1>
+<p class="font-headline-lg text-headline-lg-mobile md:text-headline-lg gradient-text">Level 42 Architect | Full-Stack Product Builder</p>
+</div>
+<div class="flex flex-col space-y-3 font-code-sm text-code-sm text-silver-text">
+<div class="flex items-center space-x-3 bg-surface-variant/30 p-3 rounded-lg border border-subtle inline-block w-fit">
+<span class="material-symbols-outlined text-secondary">group_work</span>
+<span>Built 5 real products through collaboration</span>
+</div>
+<div class="flex items-center space-x-3 bg-surface-variant/30 p-3 rounded-lg border border-subtle inline-block w-fit">
+<span class="material-symbols-outlined text-electric-purple">analytics</span>
+<span>Contribution Score: 84</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Career Journey Timeline -->
+<section>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8">Career Journey</h2>
+<div class="relative border-l border-subtle ml-4 space-y-12 pb-4">
+<div class="relative pl-8">
+<div class="absolute w-3 h-3 bg-electric-purple rounded-full -left-[6.5px] top-1.5 shadow-[0_0_10px_#A855F7]"></div>
+<p class="font-code-sm text-code-sm text-secondary mb-1">Phase 1</p>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Learning Frontend</h3>
+<p class="text-on-surface-variant mt-2">Mastered HTML, CSS, JavaScript fundamentals.</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute w-3 h-3 bg-primary rounded-full -left-[6.5px] top-1.5 shadow-[0_0_10px_#d2bbff]"></div>
+<p class="font-code-sm text-code-sm text-secondary mb-1">Phase 2</p>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Joined Nexora</h3>
+<p class="text-on-surface-variant mt-2">Integrated into a high-performance engineering team.</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute w-3 h-3 bg-secondary rounded-full -left-[6.5px] top-1.5 shadow-[0_0_10px_#89ceff]"></div>
+<p class="font-code-sm text-code-sm text-secondary mb-1">Phase 3</p>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Built First Project</h3>
+<p class="text-on-surface-variant mt-2">Shipped initial MVP focusing on user authentication.</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute w-3 h-3 bg-tertiary rounded-full -left-[6.5px] top-1.5 shadow-[0_0_10px_#ffb784]"></div>
+<p class="font-code-sm text-code-sm text-secondary mb-1">Phase 4</p>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Contributed to Production</h3>
+<p class="text-on-surface-variant mt-2">Delivered critical features for enterprise clients.</p>
+</div>
+<div class="relative pl-8">
+<div class="absolute w-3 h-3 bg-electric-purple rounded-full -left-[6.5px] top-1.5 shadow-[0_0_10px_#A855F7]"></div>
+<p class="font-code-sm text-code-sm text-secondary mb-1">Phase 5</p>
+<h3 class="font-body-md text-body-md text-on-surface font-semibold">Completed Multiple Products</h3>
+<p class="text-on-surface-variant mt-2">Architected and deployed 5 end-to-end solutions.</p>
+</div>
+</div>
+</section>
+<!-- Project Showcase -->
+<section>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8">Proof of Craft</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Card 1 -->
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-32 h-32 bg-electric-purple/15 rounded-br-full blur-2xl"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Healthcare Platform</h3>
+<span class="bg-surface-container text-silver-text px-2 py-1 rounded text-[10px] uppercase font-bold tracking-wider border border-subtle">Frontend Lead</span>
+</div>
+<div class="font-code-sm text-code-sm text-secondary mb-4 flex flex-wrap gap-2">
+<span class="bg-white/5 px-2 py-1 rounded">Angular</span>
+<span class="bg-white/5 px-2 py-1 rounded">RxJS</span>
+<span class="bg-white/5 px-2 py-1 rounded">SignalR</span>
+</div>
+<p class="text-on-surface-variant">"Architected real-time dashboard for 10k+ concurrent users."</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel rounded-xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-32 h-32 bg-secondary/15 rounded-br-full blur-2xl"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Nexora Live Center</h3>
+<span class="bg-surface-container text-silver-text px-2 py-1 rounded text-[10px] uppercase font-bold tracking-wider border border-subtle">State Management</span>
+</div>
+<div class="font-code-sm text-code-sm text-secondary mb-4 flex flex-wrap gap-2">
+<span class="bg-white/5 px-2 py-1 rounded">NgRx</span>
+<span class="bg-white/5 px-2 py-1 rounded">Three.js</span>
+</div>
+<p class="text-on-surface-variant">"Engineered high-performance data streams for real-time deployment monitoring."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Skill Growth Visualization -->
+<section>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-8">Skill Growth</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between">
+<div>
+<h4 class="font-code-sm text-code-sm text-primary mb-2">Angular</h4>
+<div class="flex items-center space-x-2 text-silver-text font-label-xs text-label-xs">
+<span>Beginner</span>
+<span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+<span class="text-electric-purple">Advanced</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-subtle text-on-surface-variant font-code-sm text-[12px]">
+                        via 3 projects
+                    </div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between">
+<div>
+<h4 class="font-code-sm text-code-sm text-primary mb-2">UI Architecture</h4>
+<div class="flex items-center space-x-2 text-silver-text font-label-xs text-label-xs">
+<span>Intermediate</span>
+<span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+<span class="text-electric-purple">Expert</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-subtle text-on-surface-variant font-code-sm text-[12px]">
+                        via 12 major PRs
+                    </div>
+</div>
+<div class="glass-panel p-6 rounded-xl flex flex-col justify-between">
+<div>
+<h4 class="font-code-sm text-code-sm text-primary mb-2">Node.js</h4>
+<div class="flex items-center space-x-2 text-silver-text font-label-xs text-label-xs">
+<span>Novice</span>
+<span class="material-symbols-outlined text-[16px]">arrow_right_alt</span>
+<span class="text-electric-purple">Intermediate</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-subtle text-on-surface-variant font-code-sm text-[12px]">
+                        via 2 backend modules
+                    </div>
+</div>
+</div>
+</section>
+<!-- Export & Share -->
+<section class="glass-panel p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between mt-12 border-electric-purple/30">
+<div class="mb-6 md:mb-0">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Share Story</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Distribute this professional narrative.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<button class="bg-surface-variant border border-subtle hover:bg-surface-bright text-silver-text px-6 py-3 rounded-lg font-label-xs text-label-xs transition-colors flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined text-[18px]">link</span>
+<span>Public Profile Link</span>
+</button>
+<button class="bg-surface-variant border border-subtle hover:bg-surface-bright text-silver-text px-6 py-3 rounded-lg font-label-xs text-label-xs transition-colors flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+<span>Export PDF Portfolio</span>
+</button>
+<button class="btn-primary text-on-primary-container px-6 py-3 rounded-lg font-label-xs text-label-xs flex items-center justify-center space-x-2">
+<span class="material-symbols-outlined text-[18px]">share</span>
+<span>Share to LinkedIn</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-deep-obsidian border-t border-subtle w-full py-12 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-6 md:mb-0">
+                Nexora
+            </div>
+<div class="text-on-surface-variant font-code-sm text-code-sm mb-6 md:mb-0">
+                © 2024 Nexora. Engineered with Illuminated Depth.
+            </div>
+<div class="flex space-x-6">
+<a class="text-on-surface-variant hover:text-electric-purple transition-colors duration-300 font-code-sm text-code-sm" href="#">Github</a>
+<a class="text-on-surface-variant hover:text-electric-purple transition-colors duration-300 font-code-sm text-code-sm" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-electric-purple transition-colors duration-300 font-code-sm text-code-sm" href="#">Documentation</a>
+</div>
+</div>
+</footer>
+</body></html>

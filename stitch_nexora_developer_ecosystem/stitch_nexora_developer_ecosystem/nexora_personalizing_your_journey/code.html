@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#d2bbff",
+                      "outline-variant": "#4a4455",
+                      "surface-dim": "#131313",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "primary-container": "#7c3aed",
+                      "on-tertiary-container": "#ffe0cd",
+                      "on-secondary": "#00344d",
+                      "inverse-primary": "#732ee4",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary-fixed": "#25005a",
+                      "surface-variant": "#353534",
+                      "primary-fixed": "#eaddff",
+                      "on-primary": "#3f008e",
+                      "border-subtle": "rgba(255, 255, 255, 0.08)",
+                      "inverse-on-surface": "#313030",
+                      "background": "#131313",
+                      "on-secondary-container": "#00344e",
+                      "tertiary": "#ffb784",
+                      "tertiary-fixed": "#ffdcc6",
+                      "silver-text": "#E2E2E2",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-background": "#e5e2e1",
+                      "surface-tint": "#d2bbff",
+                      "on-tertiary-fixed": "#301400",
+                      "on-surface": "#e5e2e1",
+                      "primary-fixed-dim": "#d2bbff",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "surface-glass": "#1A1A1A",
+                      "secondary-fixed": "#c9e6ff",
+                      "tertiary-container": "#a15100",
+                      "surface": "#131313",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-primary-container": "#ede0ff",
+                      "deep-obsidian": "#050505",
+                      "surface-container-low": "#1c1b1b",
+                      "secondary": "#89ceff",
+                      "outline": "#958da1",
+                      "inverse-surface": "#e5e2e1",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#353534",
+                      "error": "#ffb4ab",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "surface-container": "#201f1f",
+                      "on-surface-variant": "#ccc3d8",
+                      "surface-container-lowest": "#0e0e0e",
+                      "secondary-container": "#00a2e6",
+                      "surface-bright": "#3a3939",
+                      "error-container": "#93000a",
+                      "on-tertiary": "#4f2500",
+                      "on-error": "#690005",
+                      "electric-purple": "#A855F7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "margin-desktop": "64px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "label-xs": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ]
+              },
+              "fontSize": {
+                      "label-xs": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .skill-tag.active {
+            background-color: theme('colors.primary-container');
+            color: theme('colors.on-primary-container');
+            border-color: theme('colors.primary-container');
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+        }
+        .skill-tag {
+            transition: all 0.3s ease;
+        }
+        .level-card.active {
+            border-color: theme('colors.primary');
+            background-color: rgba(210, 187, 255, 0.1);
+            box-shadow: 0 0 20px rgba(210, 187, 255, 0.15) inset;
+        }
+      </style>
+</head>
+<body class="bg-deep-obsidian text-on-surface font-body-md text-body-md min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- Header -->
+<header class="w-full flex justify-between items-center px-margin-mobile md:px-margin-desktop py-6 absolute top-0 left-0 z-50">
+<div class="flex items-center gap-3">
+<img alt="Nexora Logo" class="w-10 h-10 rounded-lg object-cover border border-border-subtle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe53t9f6KLOOcvhAQHKf4ZqgsNbZiGyvK_3i_tOaTV5ErEJiAMrrrefVNWo3NZP2YfC_xR6GwwtSWZz35NH5cxT8wzYvbagpMwdqiE9m5OlzHj-9VkaWLVI7DUE_PHNzIGzu11Q8KdtyEUfOl0akDWpyvvxI6dIvSK8bbNlBCeQQBVhVsN4hIqTkCeu4xYTp488elKqzBPiJXrIlDJfIQxgwK0a3ulb-kjO-FZeJXmeK0d_gPAZDDzt0-mnM-8GD48-t63A_B680MW"/>
+<span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold text-primary tracking-tight">Nexora</span>
+</div>
+<div>
+<button class="text-silver-text hover:text-primary transition-colors text-body-md font-body-md flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">close</span>
+                Skip
+            </button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col justify-center items-center w-full max-w-container-max mx-auto px-margin-mobile md:px-gutter pt-24 pb-12 relative z-10">
+<!-- Progress Stepper -->
+<div class="w-full max-w-2xl mb-12 flex items-center justify-between relative">
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[1px] bg-border-subtle -z-10"></div>
+<div class="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 h-[1px] bg-primary shadow-[0_0_10px_rgba(210,187,255,0.5)] -z-10"></div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-xs text-label-xs shadow-[0_0_15px_rgba(210,187,255,0.4)]">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="font-label-xs text-label-xs text-primary">Skills</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-primary text-primary flex items-center justify-center font-label-xs text-label-xs shadow-[0_0_15px_rgba(210,187,255,0.1)]">
+                    2
+                </div>
+<span class="font-label-xs text-label-xs text-primary">Experience</span>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container border border-border-subtle text-outline flex items-center justify-center font-label-xs text-label-xs">
+                    3
+                </div>
+<span class="font-label-xs text-label-xs text-outline">Profile</span>
+</div>
+</div>
+<!-- Content Area -->
+<div class="w-full max-w-2xl bg-surface-glass backdrop-blur-xl border border-border-subtle rounded-xl p-8 md:p-12 shadow-[0_4px_30px_rgba(0,0,0,0.5)] relative overflow-hidden">
+<!-- Subtle Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-1/2 bg-gradient-to-b from-primary/5 to-transparent pointer-events-none"></div>
+<div class="hidden" id="step-1">
+<h1 class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">What are your core skills?</h1>
+<p class="text-silver-text font-body-md text-body-md mb-8">Select the technologies and domains you work with most frequently. We'll tailor your environment accordingly.</p>
+<div class="flex flex-wrap gap-3 mb-10" id="skill-tags">
+<!-- Interactive Tags generated via JS -->
+</div>
+</div>
+<div class="block" id="step-2">
+<h1 class="font-display-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">What is your experience level?</h1>
+<p class="text-silver-text font-body-md text-body-md mb-8">This helps us calibrate the complexity of tools and documentation presented to you.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+<button class="level-card group relative p-6 bg-surface-dim border border-border-subtle rounded-lg text-left transition-all duration-300 hover:border-outline-variant hover:bg-surface-variant flex flex-col gap-4">
+<span class="material-symbols-outlined text-silver-text group-hover:text-primary transition-colors text-[32px]" style="font-variation-settings: 'FILL' 0;">school</span>
+<div>
+<h3 class="font-label-xs text-label-xs text-on-surface mb-1 group-hover:text-primary transition-colors">Beginner</h3>
+<p class="font-body-md text-[13px] text-outline leading-tight">Just starting out or learning the ropes.</p>
+</div>
+</button>
+<button class="level-card active group relative p-6 bg-surface-dim border border-primary rounded-lg text-left transition-all duration-300 flex flex-col gap-4">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<div>
+<h3 class="font-label-xs text-label-xs text-primary mb-1">Intermediate</h3>
+<p class="font-body-md text-[13px] text-outline leading-tight">Comfortable building and deploying projects.</p>
+</div>
+</button>
+<button class="level-card group relative p-6 bg-surface-dim border border-border-subtle rounded-lg text-left transition-all duration-300 hover:border-outline-variant hover:bg-surface-variant flex flex-col gap-4">
+<span class="material-symbols-outlined text-silver-text group-hover:text-primary transition-colors text-[32px]" style="font-variation-settings: 'FILL' 0;">psychology</span>
+<div>
+<h3 class="font-label-xs text-label-xs text-on-surface mb-1 group-hover:text-primary transition-colors">Advanced</h3>
+<p class="font-body-md text-[13px] text-outline leading-tight">Architecting complex, high-scale systems.</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Navigation Controls -->
+<div class="flex justify-between items-center mt-4 border-t border-border-subtle pt-6">
+<button class="px-6 py-3 border border-border-subtle bg-transparent text-silver-text hover:bg-white/5 rounded-DEFAULT font-label-xs text-label-xs transition-all duration-200">
+                    Back
+                </button>
+<button class="px-6 py-3 bg-gradient-to-r from-primary-container to-inverse-primary text-on-primary-container rounded-DEFAULT font-label-xs text-label-xs hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] transition-all duration-300 border border-white/10 relative overflow-hidden group">
+<span class="relative z-10 flex items-center gap-2">
+                        Continue <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</span>
+</button>
+</div>
+</div>
+</main>
+<script>
+        // Simulate skill tags
+        const skills = ['Angular', 'React', 'Node.js', 'Backend', 'Frontend', 'UI/UX', 'Database', 'DevOps', 'Python', 'Go'];
+        const container = document.getElementById('skill-tags');
+        
+        // This is just to show how step 1 would look if it was visible
+        skills.forEach(skill => {
+            const btn = document.createElement('button');
+            btn.className = 'skill-tag px-4 py-2 rounded-full border border-border-subtle bg-surface-dim text-silver-text font-code-sm text-code-sm hover:border-outline-variant hover:bg-surface-variant';
+            btn.textContent = skill;
+            btn.onclick = () => btn.classList.toggle('active');
+            container.appendChild(btn);
+        });
+
+        // Level selection logic
+        const levelCards = document.querySelectorAll('.level-card');
+        levelCards.forEach(card => {
+            card.addEventListener('click', () => {
+                levelCards.forEach(c => {
+                    c.classList.remove('active', 'border-primary');
+                    c.classList.add('border-border-subtle');
+                    const icon = c.querySelector('.material-symbols-outlined');
+                    const title = c.querySelector('h3');
+                    icon.classList.remove('text-primary');
+                    icon.classList.add('text-silver-text');
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                    title.classList.remove('text-primary');
+                    title.classList.add('text-on-surface');
+                });
+                
+                card.classList.add('active', 'border-primary');
+                card.classList.remove('border-border-subtle');
+                const activeIcon = card.querySelector('.material-symbols-outlined');
+                const activeTitle = card.querySelector('h3');
+                activeIcon.classList.remove('text-silver-text');
+                activeIcon.classList.add('text-primary');
+                activeIcon.style.fontVariationSettings = "'FILL' 1";
+                activeTitle.classList.remove('text-on-surface');
+                activeTitle.classList.add('text-primary');
+            });
+        });
+    </script>
+</body></html>

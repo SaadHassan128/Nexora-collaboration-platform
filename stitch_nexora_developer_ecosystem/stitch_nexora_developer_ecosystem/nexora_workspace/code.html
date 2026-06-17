@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Project Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#d2bbff",
+                        "outline-variant": "#4a4455",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed-variant": "#713700",
+                        "primary-container": "#7c3aed",
+                        "on-tertiary-container": "#ffe0cd",
+                        "on-secondary": "#00344d",
+                        "inverse-primary": "#732ee4",
+                        "surface-container-high": "#2a2a2a",
+                        "on-primary-fixed": "#25005a",
+                        "surface-variant": "#353534",
+                        "primary-fixed": "#eaddff",
+                        "on-primary": "#3f008e",
+                        "border-subtle": "rgba(255, 255, 255, 0.08)",
+                        "inverse-on-surface": "#313030",
+                        "background": "#131313",
+                        "on-secondary-container": "#00344e",
+                        "tertiary": "#ffb784",
+                        "tertiary-fixed": "#ffdcc6",
+                        "silver-text": "#E2E2E2",
+                        "secondary-fixed-dim": "#89ceff",
+                        "on-background": "#e5e2e1",
+                        "surface-tint": "#d2bbff",
+                        "on-tertiary-fixed": "#301400",
+                        "on-surface": "#e5e2e1",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "tertiary-fixed-dim": "#ffb784",
+                        "surface-glass": "#1A1A1A",
+                        "secondary-fixed": "#c9e6ff",
+                        "tertiary-container": "#a15100",
+                        "surface": "#131313",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-primary-container": "#ede0ff",
+                        "deep-obsidian": "#050505",
+                        "surface-container-low": "#1c1b1b",
+                        "secondary": "#89ceff",
+                        "outline": "#958da1",
+                        "inverse-surface": "#e5e2e1",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-highest": "#353534",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "surface-container": "#201f1f",
+                        "on-surface-variant": "#ccc3d8",
+                        "surface-container-lowest": "#0e0e0e",
+                        "secondary-container": "#00a2e6",
+                        "surface-bright": "#3a3939",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#4f2500",
+                        "on-error": "#690005",
+                        "electric-purple": "#A855F7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "label-xs": ["Geist"],
+                        "display-lg": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-md": ["Geist"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-xs": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+                        "code-sm": ["14px", { "lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #050505;
+            color: #e5e2e1;
+        }
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #7c3aed, #00a2e6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.2s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(168, 85, 247, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0); }
+        }
+        .progress-bar-fill {
+            background: linear-gradient(90deg, #7c3aed, #A855F7);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<nav class="bg-surface-glass backdrop-blur-xl docked full-width top-0 sticky z-50 shadow-sm">
+<div class="flex justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-8">
+<div class="font-headline-lg text-headline-lg font-bold text-primary">Nexora</div>
+<div class="hidden md:flex space-x-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md active:scale-95 duration-100" href="#">Projects</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 transition-all duration-200 font-body-md text-body-md active:scale-95 duration-100 rounded px-2 py-1" href="#">Discover</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 transition-all duration-200 font-body-md text-body-md active:scale-95 duration-100 rounded px-2 py-1" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-silver-text hover:text-primary transition-colors font-label-xs text-label-xs px-4 py-2 uppercase tracking-widest">Login</button>
+<button class="btn-primary text-white font-label-xs text-label-xs px-4 py-2 rounded uppercase tracking-widest">Join</button>
+</div>
+</div>
+</nav>
+<div class="flex flex-1 relative w-full max-w-container-max mx-auto">
+<!-- SideNavBar -->
+<aside class="hidden md:flex bg-deep-obsidian fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col py-6 px-4 space-y-2 z-40 border-r border-border-subtle">
+<div class="mb-8 px-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-border-subtle">
+<img alt="Developer Profile" class="w-full h-full object-cover" data-alt="A stylized, high-contrast portrait of a software developer. The lighting is moody with subtle purple and blue accents reflecting the premium dark-mode aesthetic. The individual appears focused and professional, fitting for a high-end SaaS dashboard profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc0QRR7-qyrxCHVJ3kiyaqzO1xiajAuHtIxWtoHx2QhgG56lHle6dfm2sVF1HUCwukzNQKzSeNK6qKBJJ4qKRh4VDCigZZZNY0VZv8byfbH_LdyRCyA0Q6pxCgLRUOhj4xuYmWv5HdvuzEg3ePJjdDkbT8kVGcpBiGRYfIk58oQsVtvhIN4V_rMwV60SJzf6nvN9agLTZyWco7mAjCnddUq66GODWSNO2yQkLHbBCF78MfNK1dGiTkfH64DzP8YG9TRuRy6j8hVz4G"/>
+</div>
+<div>
+<div class="font-label-xs text-label-xs text-on-surface">Nexora Dev</div>
+<div class="font-code-sm text-code-sm text-outline text-[10px]">Premium Tier</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]">home</span>Home
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-primary bg-primary/10 border-r-2 border-primary font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">account_tree</span>My Projects
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]">apps</span>Applications
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>Growth
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200 uppercase" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>Settings
+                </a>
+</nav>
+<div class="mt-auto space-y-1 pt-4 border-t border-border-subtle">
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs uppercase" href="#">
+<span class="material-symbols-outlined text-[16px]">description</span>Documentation
+                </a>
+<a class="flex items-center gap-3 px-4 py-2 rounded text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs uppercase" href="#">
+<span class="material-symbols-outlined text-[16px]">help</span>Support
+                </a>
+<button class="w-full mt-4 btn-primary text-white font-label-xs text-label-xs py-2 rounded uppercase tracking-widest">New Project</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 w-full p-margin-mobile md:p-gutter lg:p-margin-desktop min-h-[calc(100vh-64px)] overflow-y-auto custom-scrollbar">
+<!-- Project Header Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-6">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="w-2 h-2 rounded-full bg-electric-purple pulse-dot"></span>
+<span class="font-code-sm text-code-sm text-electric-purple uppercase tracking-wider text-[11px]">Building</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Project Nexus</h1>
+<p class="font-body-md text-body-md text-outline">Core infrastructure rewrite and microservices migration.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<img alt="Team member" class="w-8 h-8 rounded-full border border-surface-dim" data-alt="A small avatar portrait of a software engineer. Deep shadows, sleek professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOSCkjoS761SKgMyNioeTNq0C8tg4TWecBhAoHB7WZBknHG_0xIs_8MGdzWyNJFw4eGBgp0BeTz19XPeyCJRSPdpydljSgTiGqBE4vT0XiJRGBuwcb94t1Mtv1pO08s-lyJ3Te4fkO_r80NKlB2JLvoU2GRqRqQTO7QM_M3V8jkE6B6SLwwwIxfW0bmp1wPexTi_FsVnT_1Q0sPeEthbcLdrcNyNBF6nscVXCvc9-GoqebziISpG0DYCpWtaZnaHgwnldsObFCObFp"/>
+<img alt="Team member" class="w-8 h-8 rounded-full border border-surface-dim" data-alt="A small avatar portrait of a UI designer. Deep shadows, sleek professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOEdksUKfEyYB0WFUXpIr5egYnq4KUcD2S-022lb8uZ_GamluiZEBRz-n-D9d6mqqAXc-iujN2oKYzNPSf9u3Hez_1dUFgJ2DX-ip0PA0aMGh0l1vc6JII6dEgQKawVsCx6brU9IWXhD1vyfYkPXGARrwv864qQcp5R6UH7T46UVNCZd1riSWWZLT7dsMjP9usrwSEyifqasulzXHyS2ow7DbnvoHj3afPLdgblMs5VMTk2bKV2rfPJTr7zOse7krwCd-q3f8ZqEwg"/>
+<img alt="Team member" class="w-8 h-8 rounded-full border border-surface-dim" data-alt="A small avatar portrait of a product manager. Deep shadows, sleek professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJsR-aDJ4GFox-qGPFRToxniudaanNmVntopJUZ4l2gK47VYTRty7VEVATCWex_AIcwLFAPbM5iV1l23UZXeUQLx2unddo-oQi9vnz70Va-Ia9dzRUR9ktPCrHkAYRMremHzOv7rsUpSsT6BRbe2hr_szVuhTth4mZp1kVz45SmEbzhrTiUZdFfd9aPLAx9BCeRn2cu1lXyRcsfsfdcfcVrR_hd6SkVqxTIpKxhGX9hqs2N-v29Hq1QAWj1q3mCGgd3vsTvtXXEdmm"/>
+<div class="w-8 h-8 rounded-full border border-surface-dim bg-surface-variant flex items-center justify-center font-label-xs text-label-xs text-silver-text">+3</div>
+</div>
+<button class="bg-transparent border border-border-subtle text-white font-label-xs text-label-xs px-4 py-2 rounded uppercase tracking-widest hover:bg-white/5 transition-colors">Manage</button>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-xs text-label-xs text-silver-text uppercase">Overall Progress</span>
+<span class="font-code-sm text-code-sm text-primary">65%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full progress-bar-fill rounded-full" style="width: 65%;"></div>
+</div>
+<div class="mt-4 grid grid-cols-3 gap-4 border-t border-border-subtle pt-4">
+<div>
+<div class="font-code-sm text-code-sm text-outline mb-1">Total Tasks</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">124</div>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-outline mb-1">Completed</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-secondary">81</div>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-outline mb-1">Overdue</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-error">3</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Three Column Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Col 1: Team & Roles (3 cols) -->
+<div class="lg:col-span-3 space-y-gutter">
+<div class="glass-panel rounded-xl p-5 h-full">
+<h2 class="font-label-xs text-label-xs text-silver-text uppercase mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">group</span> Team Commits
+                        </h2>
+<div class="space-y-5">
+<div class="flex items-start gap-3">
+<img alt="Sarah J." class="w-10 h-10 rounded bg-surface-variant object-cover" data-alt="A close up portrait of a female technical lead. Dark background with subtle glowing highlights reflecting off her face, suggesting a high-tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2QiBIrnM3dZuGk8D_5SHA4iN6vXIYaynkK9KpbSjzqC0uYRkGFRrD_W0AaSkH30nDjoh1qmVw8tr14OAvd_u8L4H5y-wn9-CF-blaopj2wOqAwcyCsJ3qNVHrLSw7g6FQfOH682cAAwFovS20rTMdGS1hsxi9jDt2ZaZj0AYoGePJ60cHQlhZ_4zCMePSvbpqyNLVSGlgJfR_zKPn8vmZFY5zHBV2POCyuU489yXoGfl2nMPkkoGAfliUz-f3_EVtL_AiZiSP5Dag"/>
+<div>
+<div class="font-label-xs text-label-xs text-on-surface mb-1">Sarah J. <span class="text-outline font-code-sm lowercase">@lead</span></div>
+<div class="font-code-sm text-code-sm text-outline text-[11px] mb-2">Backend Architecture</div>
+<div class="flex gap-1">
+<div class="w-2 h-4 bg-primary/20 rounded-sm"></div>
+<div class="w-2 h-4 bg-primary/40 rounded-sm"></div>
+<div class="w-2 h-4 bg-primary/80 rounded-sm"></div>
+<div class="w-2 h-4 bg-primary rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<img alt="Mike R." class="w-10 h-10 rounded bg-surface-variant object-cover" data-alt="A portrait of a male frontend developer. Modern, minimalist dark mode style portrait. Deep shadows with a hint of purple illumination." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAKnb4IQnvu89e813G6UkF2RS161ByZPAeQed0yOlfNVSqlscNEG9_6XwnlB075XZTMgjaShHbTCaE4MSiSpwr9zmojxvztA_k1Rf6_m7NAOlz7m9jvSUMTZFk5NM3n17pRjA9G7Hc0m6gFEhSK2_BsIRN8AVxEOdU5zJue8eAo8qbTT0O9kvvsN1x3sqAAVXjFddg5khbc90tsUNfZ8oiegDx-qVHaTzo7x__YZDSW75PzdWMR7S9en9yEqvl5_bb1RHdcnZlNPYO"/>
+<div>
+<div class="font-label-xs text-label-xs text-on-surface mb-1">Mike R. <span class="text-outline font-code-sm lowercase">@frontend</span></div>
+<div class="font-code-sm text-code-sm text-outline text-[11px] mb-2">UI Implementation</div>
+<div class="flex gap-1">
+<div class="w-2 h-4 bg-secondary/20 rounded-sm"></div>
+<div class="w-2 h-4 bg-secondary/60 rounded-sm"></div>
+<div class="w-2 h-4 bg-secondary rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<img alt="Elena V." class="w-10 h-10 rounded bg-surface-variant object-cover" data-alt="A sleek portrait of a UI/UX designer. Dark, sophisticated lighting. The aesthetic is extremely polished and minimal, suited for a premium SaaS product." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCprmCgzsPzpLL8ixpMxzY8wVwou-C18-8LtWYVx5XeRINRGMGp_vXKxVd9zGI3ITdDbLUwSzMkvtIB8R8tur6hzFXutQmUyu3MAqaU1-AdBp3odM7wevM9543zQXcZlSokP-mYK5lpGVCKudkvCkdhoWME27QyYlbpM_fLWWr8f8oi39_EDzAF4tG3Hnu_ZwQ7ql-sc4IW-48HBB7f2O7B3y-20f9bvPD2DXHSbHkldkWztNr4ukVrCx8LdHZiczyn7ILmAGs173bt"/>
+<div>
+<div class="font-label-xs text-label-xs text-on-surface mb-1">Elena V. <span class="text-outline font-code-sm lowercase">@design</span></div>
+<div class="font-code-sm text-code-sm text-outline text-[11px] mb-2">Design System</div>
+<div class="flex gap-1">
+<div class="w-2 h-4 bg-tertiary/40 rounded-sm"></div>
+<div class="w-2 h-4 bg-tertiary/80 rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+<div class="w-2 h-4 bg-surface-variant rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Col 2: Tasks (5 cols) -->
+<div class="lg:col-span-5 space-y-gutter">
+<div class="glass-panel rounded-xl p-5 h-full relative overflow-hidden">
+<!-- Subtle gradient decorative element -->
+<div class="absolute top-0 left-0 w-64 h-64 bg-primary/5 rounded-full blur-[60px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+<div class="flex justify-between items-center mb-6 relative z-10">
+<h2 class="font-label-xs text-label-xs text-silver-text uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">checklist</span> Current Sprint Tasks
+                            </h2>
+<button class="text-primary hover:text-white transition-colors font-label-xs text-[10px] uppercase">View All</button>
+</div>
+<div class="space-y-3 relative z-10">
+<!-- Task Item -->
+<div class="p-3 bg-surface-container-low border border-border-subtle rounded-lg hover:border-primary/30 transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded border border-outline flex items-center justify-center group-hover:border-primary transition-colors"></div>
+<span class="font-body-md text-body-md text-on-surface text-[14px]">Setup Authentication Service</span>
+</div>
+<span class="px-2 py-1 rounded bg-secondary/10 text-secondary font-code-sm text-[10px] uppercase">In Progress</span>
+</div>
+<div class="flex justify-between items-center pl-6">
+<div class="font-code-sm text-outline text-[11px]">NEX-1042</div>
+<img alt="Assigned" class="w-5 h-5 rounded-full border border-surface-dim" data-alt="Tiny avatar of female tech lead in deep dark shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdHZ4vclbZatNw9Fr4hx-QEwgq2hIULgi1i3VpyTLXc-b30xZxDN5vuTWyFeFVqiCt_RrfMSWkehFUs1dvxjqguNkHGlub_0L6QRMcPtLaikc5DDkY5kmHwVqJth4NGkG-WJWoTBTLdeWdYzczwFK4wJF-UtUkNF2ZI4LqaZ5Ke3-cX8a_tM08aVL8XQmNByq0dW0W1Vx6sgXnsAvZwMiZJZsCSnXb16DAyEpL_EXAwEKvAHHmrf8UcC9cpKK_A5xB6yrlZrg6m85K"/>
+</div>
+</div>
+<!-- Task Item -->
+<div class="p-3 bg-surface-container-low border border-border-subtle rounded-lg hover:border-primary/30 transition-colors group cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded border border-outline flex items-center justify-center group-hover:border-primary transition-colors"></div>
+<span class="font-body-md text-body-md text-on-surface text-[14px]">Build Dashboard UI Components</span>
+</div>
+<span class="px-2 py-1 rounded bg-surface-variant text-silver-text font-code-sm text-[10px] uppercase">To Do</span>
+</div>
+<div class="flex justify-between items-center pl-6">
+<div class="font-code-sm text-outline text-[11px]">NEX-1045</div>
+<img alt="Assigned" class="w-5 h-5 rounded-full border border-surface-dim" data-alt="Tiny avatar of male frontend dev in deep dark shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQ3rBnPYAJ9F5kna0AQP0fnBzLD_rkZtjleALyyxrUOJhx-YSYEzLkV6eyXq58PZ3sP4cuuoxE1hyE8h89pLJ1_v9s28zV9NLgVG04gJGAAADIGoKRR_34vfXRLR7AIPa1tsMZugosNOpAnHOiz3qdwAQ2XRrTW5j5qtOOEx3mMjw7FRDuvd-e5B3fJF2TIUQt8yuqCaP-GkTeCV7Da1MCS1T3kA1vRqzsXXyX3v1JkS7hEZRKHJTn8YMb8RaDkhZ3iv2-de2I-1yP"/>
+</div>
+</div>
+<!-- Task Item (Completed) -->
+<div class="p-3 bg-surface-container-low border border-border-subtle rounded-lg opacity-60">
+<div class="flex justify-between items-start mb-2">
+<div class="flex items-center gap-2">
+<div class="w-4 h-4 rounded bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-surface-dim" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-body-md text-body-md text-outline text-[14px] line-through">Database Schema Migration</span>
+</div>
+<span class="px-2 py-1 rounded bg-primary/10 text-primary font-code-sm text-[10px] uppercase">Done</span>
+</div>
+<div class="flex justify-between items-center pl-6">
+<div class="font-code-sm text-outline text-[11px]">NEX-1039</div>
+<img alt="Assigned" class="w-5 h-5 rounded-full border border-surface-dim" data-alt="Tiny avatar of female tech lead in deep dark shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEo80w5Fwif6Ajdi3vaRRl423lA8VdUp6lxBUujOYdkbMswRq1AXCM8FmuwDDS0bpANXqq-x-y1g8wE_2X7LddvFWbMEdTNemr-t1K8l2chlnjr44cD0k9Ik4bfeUKCVIUlVvFzzGvTDAjbIZjiJObOikwugAHNg8wEbxNEUPGY4wGxYZC_DRjqtU3IAmSd9aWEgI3sB7UU_7VCPeHf_xssBSsY6yi0XuenrBOAbiOcrpmxguLdgjJiq6qkY4SHmst_LTsoi5T8eU8"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Col 3: Activity Feed (4 cols) -->
+<div class="lg:col-span-4 space-y-gutter">
+<div class="glass-panel rounded-xl p-5 h-full flex flex-col">
+<h2 class="font-label-xs text-label-xs text-silver-text uppercase mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">history</span> Activity Feed
+                        </h2>
+<div class="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-6">
+<!-- Activity Item -->
+<div class="relative pl-6 before:content-[''] before:absolute before:left-[11px] before:top-6 before:bottom-[-24px] before:w-px before:bg-border-subtle last:before:hidden">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-surface-container-highest border border-border-subtle flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[12px] text-secondary">commit</span>
+</div>
+<div class="mb-1 flex justify-between items-start">
+<div class="font-code-sm text-code-sm text-silver-text text-[12px]">Pushed to <span class="text-secondary">main</span></div>
+<div class="font-code-sm text-outline text-[10px]">10m ago</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded border border-border-subtle font-code-sm text-outline text-[11px]">
+                                    feat: integrate real-time webhooks for status updates
+                                </div>
+</div>
+<!-- Activity Item -->
+<div class="relative pl-6 before:content-[''] before:absolute before:left-[11px] before:top-6 before:bottom-[-24px] before:w-px before:bg-border-subtle last:before:hidden">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[12px] text-primary">forum</span>
+</div>
+<div class="mb-1 flex justify-between items-start">
+<div class="font-code-sm text-code-sm text-silver-text text-[12px]">Elena commented on <span class="text-primary">NEX-1045</span></div>
+<div class="font-code-sm text-outline text-[10px]">1h ago</div>
+</div>
+<div class="font-body-md text-outline text-[13px] mt-1 italic border-l-2 border-surface-variant pl-2">
+                                    "I've updated the Figma tokens for the new card layouts. Please review before implementing."
+                                </div>
+</div>
+<!-- Activity Item Milestone -->
+<div class="relative pl-6 before:content-[''] before:absolute before:left-[11px] before:top-6 before:bottom-[-24px] before:w-px before:bg-border-subtle last:before:hidden">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-tertiary/20 border border-tertiary/30 flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[12px] text-tertiary">flag</span>
+</div>
+<div class="mb-1 flex justify-between items-start">
+<div class="font-code-sm text-code-sm text-tertiary text-[12px] font-bold">Milestone Reached</div>
+<div class="font-code-sm text-outline text-[10px]">Yesterday</div>
+</div>
+<div class="font-body-md text-silver-text text-[13px] mt-1">
+                                    Phase 1: Foundation completed.
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

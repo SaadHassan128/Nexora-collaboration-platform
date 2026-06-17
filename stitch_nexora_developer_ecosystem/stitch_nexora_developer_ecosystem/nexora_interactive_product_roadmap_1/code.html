@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Project Roadmap</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-container": "#93000a",
+                      "on-primary-container": "#ede0ff",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-low": "#1c1b1b",
+                      "on-primary": "#3f008e",
+                      "on-tertiary": "#4f2500",
+                      "surface-bright": "#3a3939",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-primary-fixed": "#25005a",
+                      "error": "#ffb4ab",
+                      "secondary": "#89ceff",
+                      "tertiary-fixed": "#ffdcc6",
+                      "border-subtle": "rgba(255, 255, 255, 0.08)",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "on-tertiary-fixed": "#301400",
+                      "inverse-primary": "#732ee4",
+                      "surface-container-highest": "#353534",
+                      "outline-variant": "#4a4455",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-surface": "#e5e2e1",
+                      "surface-tint": "#d2bbff",
+                      "surface-container-lowest": "#0e0e0e",
+                      "surface": "#131313",
+                      "on-surface-variant": "#ccc3d8",
+                      "secondary-container": "#00a2e6",
+                      "surface-variant": "#353534",
+                      "on-background": "#e5e2e1",
+                      "background": "#131313",
+                      "surface-dim": "#131313",
+                      "primary": "#d2bbff",
+                      "outline": "#958da1",
+                      "on-secondary-container": "#00344e",
+                      "electric-purple": "#A855F7",
+                      "secondary-fixed": "#c9e6ff",
+                      "tertiary": "#ffb784",
+                      "deep-obsidian": "#050505",
+                      "silver-text": "#E2E2E2",
+                      "primary-fixed": "#eaddff",
+                      "primary-fixed-dim": "#d2bbff",
+                      "primary-container": "#7c3aed",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-secondary": "#00344d",
+                      "surface-container": "#201f1f",
+                      "tertiary-container": "#a15100",
+                      "on-error": "#690005",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-glass": "#1A1A1A",
+                      "on-tertiary-container": "#ffe0cd",
+                      "surface-container-high": "#2a2a2a",
+                      "inverse-on-surface": "#313030"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "base": "4px",
+                      "margin-mobile": "16px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Geist"],
+                      "code-sm": ["JetBrains Mono"],
+                      "body-md": ["Geist"],
+                      "headline-lg-mobile": ["Geist"],
+                      "headline-lg": ["Geist"],
+                      "label-xs": ["Geist"]
+              },
+              "fontSize": {
+                      "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "code-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-xs": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              },
+              "animation": {
+                "fade-up": "fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
+                "progress": "progress 1.5s ease-out forwards",
+                "typewriter": "typewriter 2s steps(40) 1s forwards, blink 1s step-end infinite",
+                "pulse-glow": "pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite"
+              },
+              "keyframes": {
+                "fadeUp": {
+                  "0%": { opacity: "0", transform: "translateY(20px)" },
+                  "100%": { opacity: "1", transform: "translateY(0)" }
+                },
+                "progress": {
+                  "0%": { strokeDasharray: "0, 100" },
+                  "100%": { strokeDasharray: "70, 100" }
+                },
+                "typewriter": {
+                  "0%": { width: "0%" },
+                  "100%": { width: "100%" }
+                },
+                "blink": {
+                  "50%": { borderColor: "transparent" }
+                },
+                "pulseGlow": {
+                  "0%, 100%": { opacity: "1", boxShadow: "0 0 20px rgba(137,206,255,0.3)" },
+                  "50%": { opacity: ".5", boxShadow: "0 0 30px rgba(137,206,255,0.6)" }
+                }
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.deep-obsidian'); color: theme('colors.on-surface'); }
+        .glass-panel { 
+            background: rgba(26, 26, 26, 0.4); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid theme('colors.border-subtle'); 
+            transition: all 0.3s ease;
+        }
+        .glass-panel:hover {
+            border-color: rgba(210, 187, 255, 0.3);
+            box-shadow: 0 0 30px rgba(210, 187, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        .glow-primary { box-shadow: 0 0 24px rgba(210, 187, 255, 0.15); }
+        .text-gradient { background: linear-gradient(90deg, theme('colors.primary'), theme('colors.secondary')); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Custom Scrollbar for sleekness */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: theme('colors.surface-variant'); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.outline'); }
+
+        .typewriter-text {
+            overflow: hidden;
+            white-space: nowrap;
+            display: inline-block;
+            vertical-align: bottom;
+            border-right: 2px solid theme('colors.secondary');
+        }
+
+        .node-interactive {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .node-interactive:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(210, 187, 255, 0.6);
+        }
+
+        .mouse-glow-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .mouse-glow-wrapper::before {
+            content: '';
+            position: absolute;
+            top: var(--y, 0);
+            left: var(--x, 0);
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(210, 187, 255, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .mouse-glow-wrapper:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="font-body-md min-h-screen overflow-x-hidden flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-surface-glass backdrop-blur-xl border-b border-border-subtle shadow-sm docked full-width top-0 sticky z-50 h-16">
+<div class="flex justify-between items-center px-margin-desktop w-full max-w-container-max mx-auto h-full">
+<div class="flex items-center gap-8">
+<span class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">Nexora</span>
+<div class="hidden md:flex items-center gap-6 font-body-md text-body-md pt-1">
+<a class="text-primary font-bold border-b-2 border-primary pb-1" href="#">Projects</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 duration-200 px-2 py-1 rounded-DEFAULT active:scale-95" href="#">Discover</a>
+<a class="text-silver-text hover:text-primary transition-colors hover:bg-white/5 duration-200 px-2 py-1 rounded-DEFAULT active:scale-95" href="#">About</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-silver-text hover:text-primary transition-colors font-body-md text-body-md px-4 py-2 rounded-DEFAULT hover:bg-white/5">Login</button>
+<button class="bg-gradient-to-r from-primary-container to-secondary-container text-on-primary-container font-body-md text-body-md px-5 py-2 rounded-lg border border-white/10 hover:shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-all active:scale-95">Join</button>
+</div>
+</div>
+</nav>
+<div class="flex flex-1">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-deep-obsidian border-r border-border-subtle flex-col py-6 px-4 space-y-2 hidden md:flex z-40">
+<!-- Header -->
+<div class="flex items-center gap-3 mb-6 px-2">
+<div class="w-10 h-10 rounded-full bg-surface-variant border border-border-subtle overflow-hidden flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a young professional developer with a focused expression, warm cinematic lighting, dark background, highly detailed." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf7wUtDmPIZc4b5JBlCGSapVG7fW2ypsc8uytjZH9su7Q8ZjPpASpcTHTRebELyyWb5t-DEKxN1MQEW5Wcq5_7HKiQZXnuoH5cE41qOHCS0iQj8B-8gy2DIX2MWWuY0vq3TCqlxVVa2zjFFiMFV0_IxnXtFtkDOsEtD-Eb4tJG9hg2GoqsJs2GsqO1GTL3rLj-oti-u_K8e9qditKpHPAU-SBd4x8_rsnpC_rge8Eh2NBtvETvaGKTqLi6-Z4SKwQUhE0EQLdRBZOP"/>
+</div>
+<div>
+<div class="font-body-md text-body-md font-semibold text-silver-text">Nexora Dev</div>
+<div class="font-label-xs text-label-xs text-outline">Premium Tier</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-primary bg-primary/10 border-r-2 border-primary font-label-xs text-label-xs active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+<span>My Projects</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">apps</span>
+<span>Applications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span>Growth</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs active:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<!-- Footer Links -->
+<div class="pt-4 mt-4 border-t border-border-subtle space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs" href="#">
+<span class="material-symbols-outlined text-[18px]">description</span>
+<span>Documentation</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-outline hover:text-silver-text hover:bg-white/5 transition-colors font-label-xs text-label-xs" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span>Support</span>
+</a>
+</div>
+<!-- CTA -->
+<div class="mt-4">
+<button class="w-full bg-surface-variant hover:bg-surface-bright text-on-surface font-label-xs text-label-xs py-2.5 rounded-lg border border-border-subtle transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    New Project
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 w-full">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 space-y-16">
+<!-- Header -->
+<header class="space-y-4 opacity-0 animate-fade-up" style="animation-delay: 0.1s;">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary font-label-xs text-label-xs mb-4">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+                        Q3 Active Roadmap
+                    </div>
+<h1 class="font-display-lg text-display-lg text-on-surface">Core Infrastructure <br/><span class="text-gradient">Evolution</span></h1>
+<p class="font-body-md text-body-md text-outline-variant max-w-2xl">Tracking the primary milestones for the new unified API gateway and edge-computing rollout. Current focus is on load-balancer optimization.</p>
+</header>
+<!-- 1. Interactive Product Timeline -->
+<section class="relative pt-8 pb-12 overflow-x-auto hide-scrollbar opacity-0 animate-fade-up" style="animation-delay: 0.2s;">
+<div class="min-w-[800px] flex items-center justify-between relative px-4">
+<!-- Connecting Line Base -->
+<div class="absolute left-10 right-10 top-1/2 -translate-y-1/2 h-[2px] bg-border-subtle z-0"></div>
+<!-- Connecting Line Progress -->
+<div class="absolute left-10 w-[55%] top-1/2 -translate-y-1/2 h-[2px] bg-gradient-to-r from-primary to-secondary z-0 glow-primary transition-all duration-1000 ease-out" id="timeline-progress" style="width: 0%;"></div>
+<!-- Nodes -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="node-interactive w-6 h-6 rounded-full bg-primary flex items-center justify-center shadow-[0_0_15px_rgba(210,187,255,0.4)] cursor-pointer">
+<span class="material-symbols-outlined text-[14px] text-deep-obsidian" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-xs text-label-xs text-silver-text">Idea</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="node-interactive w-6 h-6 rounded-full bg-primary flex items-center justify-center shadow-[0_0_15px_rgba(210,187,255,0.4)] cursor-pointer">
+<span class="material-symbols-outlined text-[14px] text-deep-obsidian" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<span class="font-label-xs text-label-xs text-silver-text">Planning</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="node-interactive w-8 h-8 rounded-full bg-surface-glass border-2 border-secondary flex items-center justify-center shadow-[0_0_20px_rgba(137,206,255,0.3)] animate-pulse-glow cursor-pointer">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+</div>
+<span class="font-label-xs text-label-xs text-secondary font-bold">Development</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="node-interactive w-6 h-6 rounded-full bg-surface-variant border border-border-subtle flex items-center justify-center cursor-pointer">
+</div>
+<span class="font-label-xs text-label-xs text-outline-variant">Testing</span>
+</div>
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="node-interactive w-6 h-6 rounded-full bg-surface-variant border border-border-subtle flex items-center justify-center cursor-pointer">
+</div>
+<span class="font-label-xs text-label-xs text-outline-variant">Launch</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout for Sections 2, 3, 4 -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- 2. Expandable Milestone (Main Focus) -->
+<section class="lg:col-span-8 glass-panel mouse-glow-wrapper rounded-xl p-8 relative overflow-hidden group opacity-0 animate-fade-up" onmousemove="handleMouseMove(event, this)" style="animation-delay: 0.3s;">
+<!-- Decorative gradient blob -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700 pointer-events-none"></div>
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">MVP Release</h2>
+<p class="font-body-md text-body-md text-outline">Target: <span class="text-silver-text">Oct 15, 2024</span></p>
+</div>
+<!-- Circular Progress -->
+<div class="relative w-16 h-16">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-variant stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-primary stroke-current drop-shadow-[0_0_4px_rgba(210,187,255,0.5)] animate-progress" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="0, 100" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-code-sm text-code-sm text-primary font-bold">70%</div>
+</div>
+</div>
+<div class="space-y-4 relative z-10">
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-container/50 border border-border-subtle hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-silver-text">Database Schema Migration</span>
+</div>
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="Portrait of a female software engineer smiling, dark moody background, studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx191Xkwkhf4EImN43S4Ew88YcsJIXkbK--EOCK3c9yrxkgq-Mh7vs2jZ46pNAIh0D4OCbo2Snhw27XKscJQ7BZJJTZEG2ITS_QtePbZgrd4dsjmEjPvXXVO86DK61Kw60clFeUSPPnA2vWNYavHv9lezMRoDh7Qvl9k0V3vIvYKIGCMJjm9N-v_36rByc2EYc62eqaoOPR9YdN9SbaW-LsUce0VYtNeco73n5erTFXfz_klxxtCIk0qV1F26siA0sgzQYuzrIh3KD"/>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-container/50 border border-border-subtle hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-5 h-5 rounded-full border-2 border-secondary flex items-center justify-center">
+<div class="w-2 h-2 bg-secondary rounded-full"></div>
+</div>
+<span class="font-body-md text-body-md text-on-surface">Backend APIs (Gateway)</span>
+</div>
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="Portrait of a male developer with glasses, serious expression, cyberpunk color tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv9uNLdTewUT6PyvNrwRHrb-TMLp0zUcdngse-9eUcp01vRl7LORwfiKzBaIB1ywXDiUq_-Vbfw6wk2scY_o6jF5pO_sJDyrESgY0o3thc_NNgyXWeK4Zueqch7iHqLUDkl1ERlZl9wJUmGJvimWcoU2KOBTYTyMRQaPoRy8JxBD-TTWs64oirbs2tAUqtV_oK96h5I0SxQtJL8RC-zW2hrOLU6kdqk1M1xG0cwbf1SCR4Hl-MGXktJNDfGNANF0bzbljC-WsQlULK"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container" data-alt="Portrait of a young professional developer, warm cinematic lighting, dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqH8BUMm-fFXYgudQcuLe9Dh1NALVnBhp74YlRSVkBYPWtuxBfGJLJ4zWXj-jQz_CW8odtliV2huTRmw68E1KU84ki3XkQKbGih4ED8mmauGgCZaNZRkhaSQNTHjGJGeLxXPlUGe_kzZ6MEZL_bVJyDtJeBwPdtE_znZc7IsqcTXYjPUM1VESIkyUt2EK643m4_CoKFCx3oT6FCANTDNPcvbJJvzqffzTSV-67CAIw-Ivzf0Yj0eAa_0sYnZCxs2gRerM6UvUxBY8I"/>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 rounded-lg bg-surface-container/50 border border-border-subtle hover:bg-surface-container transition-colors opacity-60">
+<div class="flex items-center gap-4">
+<div class="w-5 h-5 rounded-full border-2 border-outline-variant"></div>
+<span class="font-body-md text-body-md text-outline">Frontend Client Integration</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline-variant px-2 py-1 bg-surface-variant rounded">Pending</span>
+</div>
+</div>
+</section>
+<!-- 4. Team Contribution (Side Panel) -->
+<section class="lg:col-span-4 glass-panel mouse-glow-wrapper rounded-xl p-6 flex flex-col justify-between opacity-0 animate-fade-up" onmousemove="handleMouseMove(event, this)" style="animation-delay: 0.4s;">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-silver-text mb-6 flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined text-[18px] text-primary">group_work</span>
+                                Team Velocity
+                            </h3>
+<div class="space-y-6 relative z-10">
+<div>
+<div class="flex justify-between font-label-xs text-label-xs mb-2">
+<span class="text-outline">Features Merged</span>
+<span class="text-primary font-bold">24 / 30</span>
+</div>
+<div class="h-1.5 w-full bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[80%] glow-primary"></div>
+</div>
+</div>
+<div class="pt-4 border-t border-border-subtle">
+<div class="text-display-lg font-display-lg text-on-surface mb-1">8.4</div>
+<div class="font-label-xs text-label-xs text-outline">Avg Deployments / Day</div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-border-subtle relative z-10">
+<div class="font-label-xs text-label-xs text-outline mb-3">Top Contributors</div>
+<div class="flex gap-3">
+<div class="relative">
+<img class="w-10 h-10 rounded-full border border-primary p-0.5" data-alt="Portrait of female engineer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvBDCLAw_U9U2Lmue2FaL82lh7UqHYGojdPN8lXb9XQYW3QpnG7m_2VZZDv9MelyPau2PKPJ5ZjIfdxR8r2BC__CotgmS1W_dFhOCNSrblPU-yhuq2-t12SZ9VzG3Zl74JdC-SAY67fqrFlRtw4Iccpgp0p73ElnryU8dtCNQp5wrNdwk7A6-pELsjzEG8xz2LDa3-gUdEHqSHWf5T9rA59CKIZcBmn3pzi5ID6UszlMnKmLABj54VNBa76tIkenqsGAPmE4w09fZx"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-primary text-deep-obsidian rounded-full flex items-center justify-center font-code-sm text-[8px] font-bold">1</div>
+</div>
+<div class="relative">
+<img class="w-10 h-10 rounded-full border border-surface-variant" data-alt="Portrait of male developer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClpHAxfgXAoRYBNTOpXOu4fqUzmQt0JrWE01nQZcj45wINO_n6D4XRJ_DkzAh6OhKUV5XuXGs6X05VwO8AzSDYpMujLk3KrSt7DgHAufKrWPZPoRlkup0OsSIT_YsCYl8E0jobAnayI8ntguEg2bIO3_UmuxWzbnrFjN3rkCIzCsiOslJccb89mSr27Z6cxFT0BaX4_rLlpUhxAIdsCKEBPrdZoBn-67T12s5HO1WdpAdeSPhnxpEr0rMJMRYdGuDq47oSA5q5E3RM"/>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Feature Roadmap View (Full Width Bottom) -->
+<section class="lg:col-span-12 glass-panel mouse-glow-wrapper rounded-xl p-8 mt-4 opacity-0 animate-fade-up" onmousemove="handleMouseMove(event, this)" style="animation-delay: 0.5s;">
+<div class="flex justify-between items-center mb-6 relative z-10">
+<h3 class="font-body-md text-body-md font-semibold text-silver-text">Upcoming Queue</h3>
+<button class="font-label-xs text-label-xs text-outline hover:text-primary transition-colors">View All Items</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
+<!-- Column 1: In Progress -->
+<div class="space-y-3">
+<div class="flex items-center gap-2 mb-4">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-xs text-label-xs text-outline">In Progress (2)</span>
+</div>
+<div class="bg-surface-container-low border border-border-subtle rounded-lg p-4 hover:border-secondary/50 transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-code-sm text-code-sm text-secondary typewriter-text animate-typewriter inline-block max-w-[fit-content]">NEX-401</span>
+<img class="w-5 h-5 rounded-full" data-alt="Small avatar of developer." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfOj0gQ-WOTF430g8xYs6qRUA-ZtICCUNEFL9nlxsCDnzuQtVGTfRYELbDgjAA2JtWta6HlvcAhj1J_TDi9x2LjTAXKmtaBWPilwEeAA2s0EQmKsqdLHdnNQYkPzDXAF1c5KT4XfkSnGMLelB3hP9Pl4lN-F_PwJHrwhaivtP8dL12ZwYJ7JS2VNb2LXzRFs_nXVjpFiwpd8G2yx7gwDqoPBW-22ph3mkhr-v-8w7yrp7t4DVUjeikQERe8ou62ef0FZn0m2u59gUb"/>
+</div>
+<div class="font-body-md text-body-md text-silver-text mb-3">Implement Redis caching layer for user sessions</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-outline font-label-xs text-[10px]">Backend</span>
+<span class="px-2 py-0.5 rounded bg-error-container/20 text-error font-label-xs text-[10px]">High Priority</span>
+</div>
+</div>
+</div>
+<!-- Column 2: Up Next -->
+<div class="space-y-3">
+<div class="flex items-center gap-2 mb-4">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-label-xs text-label-xs text-outline">Up Next (3)</span>
+</div>
+<div class="bg-surface-container-lowest border border-border-subtle rounded-lg p-4 hover:border-border-subtle/80 transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer opacity-70 hover:opacity-100">
+<div class="flex justify-between items-start mb-2">
+<span class="font-code-sm text-code-sm text-outline typewriter-text animate-typewriter inline-block max-w-[fit-content]">NEX-405</span>
+</div>
+<div class="font-body-md text-body-md text-silver-text mb-3">Design system token synchronization</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-outline font-label-xs text-[10px]">Frontend</span>
+</div>
+</div>
+</div>
+<!-- Column 3: Backlog -->
+<div class="space-y-3">
+<div class="flex items-center gap-2 mb-4">
+<span class="w-2 h-2 rounded-full bg-surface-variant"></span>
+<span class="font-label-xs text-label-xs text-outline">Backlog (12)</span>
+</div>
+<div class="bg-surface-container-lowest border border-border-subtle border-dashed rounded-lg p-4 transition-all hover:-translate-y-1 hover:shadow-lg cursor-pointer opacity-50 hover:opacity-80">
+<div class="flex justify-between items-start mb-2">
+<span class="font-code-sm text-code-sm text-outline typewriter-text animate-typewriter inline-block max-w-[fit-content]">NEX-412</span>
+</div>
+<div class="font-body-md text-body-md text-silver-text">Dark mode toggle refactor</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<script>
+    // Trigger timeline progress animation
+    setTimeout(() => {
+        document.getElementById('timeline-progress').style.width = '55%';
+    }, 500);
+
+    // Mouse glow effect for glass panels
+    function handleMouseMove(e, element) {
+        const rect = element.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        element.style.setProperty('--x', `${x}px`);
+        element.style.setProperty('--y', `${y}px`);
+    }
+</script>
+</body></html>

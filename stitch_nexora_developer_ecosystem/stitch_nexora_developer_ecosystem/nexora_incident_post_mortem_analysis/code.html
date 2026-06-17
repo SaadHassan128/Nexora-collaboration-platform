@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora Incident Post-Mortem</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#1c1b1b",
+                        "inverse-surface": "#e5e2e1",
+                        "tertiary-fixed-dim": "#ffb95a",
+                        "on-primary": "#313030",
+                        "surface-dim": "#141313",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "surface-tint": "#c9c6c5",
+                        "background": "#141313",
+                        "surface-container-lowest": "#0e0e0e",
+                        "tertiary-fixed": "#ffddb6",
+                        "primary": "#c9c6c5",
+                        "on-primary-fixed-variant": "#474646",
+                        "primary-container": "#0d0d0d",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-bright": "#3a3939",
+                        "on-error": "#690005",
+                        "tertiary-container": "#160a00",
+                        "on-tertiary": "#462a00",
+                        "on-primary-container": "#7c7a7a",
+                        "on-tertiary-container": "#aa6d00",
+                        "secondary": "#c7c6c6",
+                        "surface-container-highest": "#353434",
+                        "on-tertiary-fixed-variant": "#643f00",
+                        "on-surface": "#e5e2e1",
+                        "on-secondary-fixed-variant": "#464747",
+                        "surface-container": "#201f1f",
+                        "inverse-on-surface": "#313030",
+                        "outline-variant": "#444748",
+                        "outline": "#8e9192",
+                        "secondary-container": "#464747",
+                        "surface-container-high": "#2b2a2a",
+                        "error-container": "#93000a",
+                        "surface-variant": "#353434",
+                        "on-surface-variant": "#c4c7c7",
+                        "tertiary": "#ffb95a",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#b6b5b5",
+                        "surface": "#141313",
+                        "on-background": "#e5e2e1",
+                        "on-secondary": "#303031",
+                        "inverse-primary": "#5f5e5e",
+                        "primary-fixed-dim": "#c9c6c5",
+                        "surface-container-low": "#1c1b1b",
+                        "primary-fixed": "#e5e2e1",
+                        "on-tertiary-fixed": "#2a1800",
+                        "secondary-fixed": "#e4e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "timeline-track-width": "2px",
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "margin-desktop": "48px",
+                        "node-offset": "32px"
+                    },
+                    "fontFamily": {
+                        "technical-timestamp": ["JetBrains Mono"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "label-caps": ["JetBrains Mono"],
+                        "technical-code": ["JetBrains Mono"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "technical-timestamp": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-caps": ["11px", { "lineHeight": "16px", "fontWeight": "700" }],
+                        "technical-code": ["13px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #050505; color: #e5e2e1; }
+        .amber-accent { color: #ffb95a; border-color: #ffb95a; }
+        .emerald-accent { color: #10b981; border-color: #10b981; }
+        .bg-amber-tint { background-color: rgba(255, 185, 90, 0.1); }
+        .bg-emerald-tint { background-color: rgba(16, 185, 129, 0.1); }
+        
+        .timeline-container { position: relative; padding-left: 32px; margin-left: 16px; border-left: 2px solid #333333; }
+        .timeline-node { position: absolute; left: -9px; width: 16px; height: 16px; border-radius: 50%; background: #050505; border: 2px solid; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md h-screen flex overflow-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant bg-surface-container-lowest">
+<div class="flex items-center gap-4">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface dark:text-on-surface">Nexora Intelligence</span>
+</div>
+<div class="flex-1 max-w-md mx-8 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border border-outline-variant rounded-lg py-2 pl-10 pr-4 font-technical-code text-technical-code text-on-surface focus:outline-none focus:border-primary placeholder-on-surface-variant/50" placeholder="Search Post-Mortems..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIdmwDN3RKUNf040yUL7n7mdvQa2ypVN_h1ufFFsb3aSg7SW8lnsaH_0L8g2X8MlfLPPBc2A2DC1SS76LuLrJ9L59_tRtmW3F2Sa1-2UlxXcmS-IXp_ZiCmkhjRVTNVJ2bryHe7qgX0CA1JlrZrD3ihS_K21vX3HazPTjDys-CqMhd_Ollvyok-V5cT9D0KpRUGLG-9_k0W_4fJSj2TNNHM_O8rMWD0u83Zk3g8qG6I_hpG_8T6QmN1MHUV710USl7Qs0slffoCXY0"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden md:flex fixed left-0 top-16 h-[calc(100vh-64px)] w-64 z-40 flex-col py-4 bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline-variant">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center text-primary font-bold">N</div>
+<div>
+<h2 class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface">Post-Mortem</h2>
+<p class="font-technical-code text-technical-code text-tertiary dark:text-tertiary">Incident #8421-B</p>
+</div>
+</div>
+<button class="w-full mt-4 py-2 border border-outline-variant rounded text-on-surface font-body-sm hover:bg-surface-container transition-all">New Analysis</button>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 bg-secondary-container dark:bg-secondary-container text-on-secondary-container dark:text-on-secondary-container rounded-lg mx-2 px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider Active: scale-95 duration-200" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">assignment_late</span>
+                Incident Briefing
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container dark:hover:bg-surface-container transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined text-[18px]">timeline</span>
+                Timeline
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container dark:hover:bg-surface-container transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+                Root Cause
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container dark:hover:bg-surface-container transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined text-[18px]">task_alt</span>
+                Preventative Actions
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container dark:hover:bg-surface-container transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+                Knowledge Pulse
+            </a>
+</nav>
+<div class="mt-auto px-4 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container dark:hover:bg-surface-container transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined text-[18px]">inventory_2</span>
+                Archive
+            </a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-on-surface-variant hover:text-on-surface px-4 py-3 font-label-caps text-label-caps uppercase tracking-wider hover:bg-surface-container dark:hover:bg-surface-container transition-all rounded-lg mx-2" href="#">
+<span class="material-symbols-outlined text-[18px]">contact_support</span>
+                Support
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 mt-16 p-6 md:p-margin-desktop overflow-y-auto h-[calc(100vh-64px)]">
+<div class="max-w-5xl mx-auto space-y-12 pb-24">
+<!-- 1. Incident Briefing -->
+<section class="bg-surface-container-lowest border border-outline-variant p-8 rounded-xl shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-error to-tertiary"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="flex items-center gap-3 mb-3">
+<span class="px-2 py-1 text-xs font-technical-timestamp bg-error-container text-on-error-container border border-error rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> SEV-1
+                            </span>
+<span class="font-technical-timestamp text-on-surface-variant">Auth-V2 / Impact: 12k Users</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">Authentication Service Outage</h1>
+</div>
+<div class="text-right">
+<div class="font-technical-timestamp text-on-surface-variant mb-1">Time to Resolution</div>
+<div class="font-technical-code text-2xl text-on-surface">01:30:00</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-outline-variant pt-6 mt-6">
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase">Incident Commanders</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 bg-surface-container px-3 py-2 rounded border border-outline-variant">
+<img alt="Marcus T." class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAc5IA8hhRtOTJiQXAu_v8hdqBcvF6XGphD9yJTb9jfUllLklBYueP6a7cmVhdpurjA8EJeTbeVxFetfleOlzf9SFSRBQkkU7m-WKMHJOcOt02cUin94JUXUfkdqf9cIWZZAmf_gsOGVCwbo6-CCPh4Q-aUzc8C7Kt-5YeFGvXrOZftTfEqunZgLQVnGQrteX-A5DX5KLcNANO26pg2RkD50oNemEkEE_157P09EXmQh090sjPzi_fHggXKkyhb4-ZSaA1Ep_HH6KHD"/>
+<span class="font-body-sm text-on-surface">Marcus T. <span class="text-on-surface-variant">(Lead)</span></span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container px-3 py-2 rounded border border-outline-variant">
+<img alt="Elena Y." class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHU8HfFbTseaaHdnsFznkZUyDeF0B_gghEvtMAoVaRjl7vpEmm2p5Y70WRZQCwdk8iujlcJ1iEet7weW1d27mEWwlRrqj5jB4AnJXntUjHEs31_yX8HLRNX_0QsrVJrPB_kg0-GhjbgFidaUuh7Uz84FN8w59cdNMWFMhxM_KYWxEjlEK6jiJIJZdJx8y3VZSRd3lAhLDyW9C3x94_LNgj0wP8cTO3L9Mx78NUnhHahc07cg4gD96hpwNPT7Rb_av70uxWvTq5Le1w"/>
+<span class="font-body-sm text-on-surface">Elena Y. <span class="text-on-surface-variant">(Comms)</span></span>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-4 uppercase">Executive Summary</h3>
+<p class="font-body-sm text-on-surface-variant">A saturation event in the Redis Session Cluster led to cascading timeouts in the Auth-V2 service, preventing user logins across NA-EAST regions.</p>
+</div>
+</div>
+</section>
+<!-- 2. Timeline Reconstruction -->
+<section>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">timeline</span> Timeline Reconstruction
+                </h2>
+<div class="timeline-container space-y-12">
+<!-- Node 1 -->
+<div class="relative">
+<div class="timeline-node amber-accent"></div>
+<div class="bg-[#1A1A1A] border border-[#333333] rounded-lg p-5 hover:bg-[#202020] transition-colors group">
+<div class="flex items-start justify-between mb-2">
+<div class="font-technical-timestamp text-tertiary">14:00 UTC</div>
+<span class="font-technical-timestamp px-2 py-0.5 rounded bg-amber-tint amber-accent border">Detection</span>
+</div>
+<h4 class="font-body-md font-medium text-on-surface mb-2">Issue Detected (Anomaly in Auth-V2)</h4>
+<div class="bg-[#0D0D0D] p-3 rounded border border-[#333333] font-technical-code text-on-surface-variant mt-3 text-xs overflow-x-auto">
+<code>[WARN] auth-v2-deployment-5c4d9f: connection timeout to redis-session-master (duration &gt; 5000ms)</code>
+</div>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="relative">
+<div class="timeline-node border-outline-variant"></div>
+<div class="bg-[#1A1A1A] border border-[#333333] rounded-lg p-5 hover:bg-[#202020] transition-colors group">
+<div class="flex items-start justify-between mb-2">
+<div class="font-technical-timestamp text-on-surface-variant">14:12 UTC</div>
+<span class="font-technical-timestamp px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-on-surface">Response</span>
+</div>
+<h4 class="font-body-md font-medium text-on-surface mb-2">War Room Active</h4>
+<p class="font-body-sm text-on-surface-variant">Incident declared. Investigation started by SRE team focusing on database metrics.</p>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="relative">
+<div class="timeline-node border-outline-variant"></div>
+<div class="bg-[#1A1A1A] border border-[#333333] rounded-lg p-5 hover:bg-[#202020] transition-colors group">
+<div class="flex items-start justify-between mb-2">
+<div class="font-technical-timestamp text-on-surface-variant">14:45 UTC</div>
+<span class="font-technical-timestamp px-2 py-0.5 rounded bg-surface-container border border-outline-variant text-on-surface">Analysis</span>
+</div>
+<h4 class="font-body-md font-medium text-on-surface mb-2">Root Cause Identified</h4>
+<p class="font-body-sm text-on-surface-variant">Identified Redis shard saturation due to uneaven distribution of session keys after morning deployment.</p>
+</div>
+</div>
+<!-- Node 4 -->
+<div class="relative">
+<div class="timeline-node emerald-accent bg-[#000000]"></div>
+<div class="bg-[#1A1A1A] border border-[#333333] rounded-lg p-5 hover:bg-[#202020] transition-colors group">
+<div class="flex items-start justify-between mb-2">
+<div class="font-technical-timestamp text-[#10b981]">15:30 UTC</div>
+<span class="font-technical-timestamp px-2 py-0.5 rounded bg-emerald-tint emerald-accent border">Resolution</span>
+</div>
+<h4 class="font-body-md font-medium text-on-surface mb-2">Resolution Deployed</h4>
+<p class="font-body-sm text-on-surface-variant">Shard rebalancing executed manually. Patch applied to hashing algorithm to ensure even distribution.</p>
+<div class="bg-[#0D0D0D] p-3 rounded border border-[#333333] font-technical-code text-[#10b981] mt-3 text-xs overflow-x-auto">
+<code>[INFO] redis-cluster-admin: REBALANCE OK. Nodes healthy. Latency &lt; 5ms.</code>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Root Cause Analysis -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-3">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">psychology</span> Root Cause Analysis
+                    </h2>
+</div>
+<div class="lg:col-span-2 bg-[#1A1A1A] border border-[#333333] rounded-xl p-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase border-b border-[#333333] pb-2">Technical Breakdown</h3>
+<div class="space-y-4">
+<p class="font-body-md text-on-surface">The primary contributing factor was an unexpected saturation of <code class="font-technical-code text-tertiary bg-surface-container px-1 rounded">shard-03</code> in the Redis cluster.</p>
+<ul class="list-disc list-inside font-body-sm text-on-surface-variant space-y-2 ml-2">
+<li>A recent update to the session ID generation logic inadvertently clustered hashes, causing a "hot key" scenario.</li>
+<li>The Auth-V2 service lacked a fast-fail circuit breaker, leading to queue build-up when Redis responded slowly.</li>
+<li>Monitoring alerts were configured for overall cluster CPU, missing the localized shard saturation until timeouts occurred.</li>
+</ul>
+</div>
+</div>
+<div class="lg:col-span-1 bg-[#1A1A1A] border border-[#333333] rounded-xl p-6">
+<h3 class="font-label-caps text-label-caps text-on-surface-variant mb-6 uppercase border-b border-[#333333] pb-2">The 'Why' Flow</h3>
+<div class="space-y-4 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-[#333333] before:to-transparent">
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+<div class="font-technical-code text-xs text-on-surface bg-[#0D0D0D] border border-[#333333] p-2 rounded z-10 w-full ml-6">Why did users fail to login? <br/><span class="text-on-surface-variant">Auth timeouts.</span></div>
+</div>
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+<div class="font-technical-code text-xs text-on-surface bg-[#0D0D0D] border border-[#333333] p-2 rounded z-10 w-full ml-6">Why timeouts? <br/><span class="text-on-surface-variant">Redis slow response.</span></div>
+</div>
+<div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+<div class="font-technical-code text-xs text-on-surface bg-[#0D0D0D] border border-[#333333] p-2 rounded z-10 w-full ml-6">Why slow? <br/><span class="text-on-surface-variant">Shard-03 saturated.</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Action Items & 5. Knowledge Pulse Bento Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Action Items -->
+<div class="bg-[#1A1A1A] border border-[#333333] rounded-xl p-6">
+<h2 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">task_alt</span> Preventative Measures
+                    </h2>
+<div class="space-y-3">
+<div class="bg-[#0D0D0D] border border-[#333333] p-4 rounded-lg flex items-center justify-between group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary mt-0.5 text-[20px]">radio_button_unchecked</span>
+<div>
+<h4 class="font-body-md text-on-surface">Upgrade Redis Sharding Policy</h4>
+<div class="font-technical-timestamp text-on-surface-variant mt-1 flex gap-2">
+<span class="bg-surface-container px-2 rounded">Backend Team</span>
+<span class="text-error">High Priority</span>
+</div>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+<div class="bg-[#0D0D0D] border border-[#333333] p-4 rounded-lg flex items-center justify-between group">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline mt-0.5 text-[20px]">radio_button_unchecked</span>
+<div>
+<h4 class="font-body-md text-on-surface">Implement Circuit Breaker for Auth</h4>
+<div class="font-technical-timestamp text-on-surface-variant mt-1 flex gap-2">
+<span class="bg-surface-container px-2 rounded">SRE Team</span>
+<span>Planning</span>
+</div>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-on-surface"><span class="material-symbols-outlined">arrow_forward</span></button>
+</div>
+</div>
+</div>
+<!-- Knowledge Pulse -->
+<div class="bg-gradient-to-br from-[#1A1A1A] to-[#0D0D0D] border border-[#333333] rounded-xl p-6 relative overflow-hidden">
+<div class="absolute right-0 top-0 opacity-10 pointer-events-none w-1/2 h-full">
+
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-2 flex items-center gap-2 relative z-10">
+<span class="material-symbols-outlined text-outline">auto_awesome</span> Knowledge Pulse
+                    </h2>
+<p class="font-body-sm text-on-surface-variant mb-6 relative z-10">Incident Artifacts Generated &amp; System Impact</p>
+<div class="grid grid-cols-2 gap-4 relative z-10 mb-6">
+<div class="bg-[#0D0D0D]/50 backdrop-blur-sm border border-[#333333] p-4 rounded-lg">
+<div class="font-technical-timestamp text-on-surface-variant mb-1 uppercase">Backend Synergy</div>
+<div class="font-technical-code text-2xl text-[#10b981] flex items-center gap-1">
+                                +12 <span class="material-symbols-outlined text-[16px]">trending_up</span>
+</div>
+</div>
+<div class="bg-[#0D0D0D]/50 backdrop-blur-sm border border-[#333333] p-4 rounded-lg">
+<div class="font-technical-timestamp text-on-surface-variant mb-1 uppercase">Resilience Score</div>
+<div class="font-technical-code text-2xl text-[#10b981] flex items-center gap-1">
+                                +8 <span class="material-symbols-outlined text-[16px]">trending_up</span>
+</div>
+</div>
+</div>
+<a class="inline-flex items-center justify-center gap-2 w-full py-3 bg-surface-container hover:bg-surface-container-high border border-[#333333] rounded-lg text-on-surface font-body-sm transition-colors relative z-10" href="{{DATA:SCREEN:SCREEN_18}}">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+                        View in Project Knowledge Archive
+                    </a>
+</div>
+</section>
+</div>
+</main>
+</body></html>

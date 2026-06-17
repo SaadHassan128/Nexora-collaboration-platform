@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Sign Up</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap');
+        
+        .glass-panel {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .input-glow {
+            transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .input-glow:focus-within {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+        }
+        
+        .input-glow:focus-within .material-symbols-outlined {
+            color: #7c3aed;
+        }
+
+        .btn-primary-glow {
+            background: linear-gradient(135deg, #A855F7, #00a2e6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+            transform-style: preserve-3d;
+        }
+
+        .btn-primary-glow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-primary-glow:hover::after {
+            opacity: 1;
+        }
+        
+        .btn-primary-glow:hover {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .bg-grid {
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+
+        .pwd-strength-fill {
+            transition: width 400ms cubic-bezier(0.16, 1, 0.3, 1), background-color 400ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#ede0ff",
+                      "primary-container": "#7c3aed",
+                      "on-secondary": "#00344d",
+                      "on-primary": "#3f008e",
+                      "on-tertiary-container": "#ffe0cd",
+                      "secondary-fixed": "#c9e6ff",
+                      "surface-bright": "#3a3939",
+                      "secondary": "#89ceff",
+                      "inverse-on-surface": "#313030",
+                      "tertiary-fixed": "#ffdcc6",
+                      "surface-container-low": "#1c1b1b",
+                      "on-secondary-container": "#00344e",
+                      "outline": "#958da1",
+                      "border-subtle": "rgba(255, 255, 255, 0.08)",
+                      "silver-text": "#E2E2E2",
+                      "surface-tint": "#d2bbff",
+                      "surface-container-lowest": "#0e0e0e",
+                      "background": "#131313",
+                      "on-tertiary": "#4f2500",
+                      "surface-dim": "#131313",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary-fixed": "#25005a",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "secondary-container": "#00a2e6",
+                      "error": "#ffb4ab",
+                      "tertiary": "#ffb784",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "deep-obsidian": "#050505",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#732ee4",
+                      "on-error": "#690005",
+                      "electric-purple": "#A855F7",
+                      "surface-container": "#201f1f",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-surface-variant": "#ccc3d8",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#353534",
+                      "on-background": "#e5e2e1",
+                      "primary-fixed-dim": "#d2bbff",
+                      "tertiary-container": "#a15100",
+                      "surface-glass": "#1A1A1A",
+                      "outline-variant": "#4a4455",
+                      "inverse-surface": "#e5e2e1",
+                      "primary-fixed": "#eaddff",
+                      "primary": "#d2bbff",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "surface": "#131313",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-surface": "#e5e2e1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "label-xs": [
+                              "Geist"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-xs": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-deep-obsidian text-on-surface min-h-screen flex flex-col font-body-md relative overflow-x-hidden">
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute inset-0 bg-grid opacity-20"></div>
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-electric-purple/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary-container/10 rounded-full blur-[120px]"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center p-margin-mobile md:p-margin-desktop relative z-10 w-full max-w-container-max mx-auto my-12 md:my-24">
+<div class="w-full max-w-md glass-panel rounded-xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+<!-- decorative top edge glow -->
+<div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+<div class="flex flex-col items-center mb-8">
+<div class="w-16 h-16 rounded-xl overflow-hidden mb-6 border border-border-subtle bg-surface-container-high/50 flex items-center justify-center p-1">
+<img alt="Nexora Brand Logo" class="w-full h-full object-cover rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCHT0f0eb8YVfuxsDEXaJIKYinsh7hySeg_Sx9tZQll0ZNBVpZp0ikPMuQjiyhg2dmlSUtNZsskjleAzSmZNAa6mmt7LCbNEO5PB8qoxh_GngDBkHBXzOxvW9lFbunukz-WZqrI59my8G1lKL3ZgieZvIGvZsV_hrBe3tdWSRJidMuYQJdZu9duvn_vppGO0ES3v6Zm-aVjvVL6caMJ6MFzeUafhe2LE9lXMU6ODJRUrX-on17Bgu5GSn2BONr4W0js52FJp5WbKZS"/>
+</div>
+<h1 class="font-headline-lg text-headline-lg md:hidden text-center text-primary mb-2">Join Nexora</h1>
+<h1 class="font-headline-lg text-headline-lg hidden md:block text-center text-primary mb-2">Join Nexora</h1>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">Architect the future of code.</p>
+</div>
+<div class="flex bg-surface-container-low rounded-lg p-1 mb-8 border border-border-subtle">
+<button class="flex-1 py-2 text-center rounded-md bg-surface-container-high text-primary font-code-sm text-code-sm shadow-sm transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] border border-border-subtle">Join</button>
+<button class="flex-1 py-2 text-center rounded-md text-on-surface-variant hover:text-silver-text font-code-sm text-code-sm transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)]">Build</button>
+</div>
+<form class="space-y-5">
+<div class="space-y-1">
+<div class="relative input-glow rounded-lg border border-border-subtle bg-[#0A0A0A]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none transition-colors duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)]">person</span>
+<input class="peer w-full bg-transparent border-none text-on-surface font-body-md text-body-md pt-6 pb-2 pl-10 pr-4 rounded-lg focus:ring-0 placeholder-transparent" id="fullName" placeholder="Jane Doe" type="text"/>
+<label class="absolute left-10 top-1/2 -translate-y-1/2 text-on-surface-variant/50 font-body-md text-body-md transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none peer-focus:top-3 peer-focus:-translate-y-0 peer-focus:text-[10px] peer-focus:text-primary-container peer-focus:font-semibold peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:-translate-y-0 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-on-surface-variant" for="fullName">Full Name</label>
+</div>
+</div>
+<div class="space-y-1">
+<div class="relative input-glow rounded-lg border border-border-subtle bg-[#0A0A0A]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none transition-colors duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)]">mail</span>
+<input class="peer w-full bg-transparent border-none text-on-surface font-body-md text-body-md pt-6 pb-2 pl-10 pr-4 rounded-lg focus:ring-0 placeholder-transparent" id="email" placeholder="jane@example.com" type="email"/>
+<label class="absolute left-10 top-1/2 -translate-y-1/2 text-on-surface-variant/50 font-body-md text-body-md transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none peer-focus:top-3 peer-focus:-translate-y-0 peer-focus:text-[10px] peer-focus:text-primary-container peer-focus:font-semibold peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:-translate-y-0 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-on-surface-variant" for="email">Email Address</label>
+</div>
+</div>
+<div class="space-y-1">
+<div class="relative input-glow rounded-lg border border-border-subtle bg-[#0A0A0A]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none transition-colors duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)]">lock</span>
+<input class="peer w-full bg-transparent border-none text-on-surface font-body-md text-body-md pt-6 pb-2 pl-10 pr-10 rounded-lg focus:ring-0 placeholder-transparent" id="password" placeholder="••••••••" type="password"/>
+<label class="absolute left-10 top-1/2 -translate-y-1/2 text-on-surface-variant/50 font-body-md text-body-md transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none peer-focus:top-3 peer-focus:-translate-y-0 peer-focus:text-[10px] peer-focus:text-primary-container peer-focus:font-semibold peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:-translate-y-0 peer-[:not(:placeholder-shown)]:text-[10px] peer-[:not(:placeholder-shown)]:text-on-surface-variant" for="password">Password</label>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-silver-text transition-colors duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)]" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility_off</span>
+</button>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden mt-2">
+<div class="h-full w-0 pwd-strength-fill bg-error" id="pwd-fill"></div>
+</div>
+</div>
+<button class="btn-magnetic w-full btn-primary-glow text-white font-body-md text-body-md py-3 rounded-lg flex items-center justify-center gap-2 mt-6" type="button">
+                    Create Account
+                    <span class="material-symbols-outlined text-[20px] transition-transform duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1">arrow_forward</span>
+</button>
+</form>
+<div class="my-8 flex items-center gap-4">
+<div class="h-[1px] flex-1 bg-border-subtle"></div>
+<span class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">or</span>
+<div class="h-[1px] flex-1 bg-border-subtle"></div>
+</div>
+<button class="btn-magnetic w-full btn-secondary text-white font-body-md text-body-md py-3 rounded-lg flex items-center justify-center gap-3" type="button">
+<svg aria-hidden="true" class="w-5 h-5 fill-current" viewbox="0 0 24 24">
+<path clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.379.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z" fill-rule="evenodd"></path>
+</svg>
+                Continue with GitHub
+            </button>
+<div class="mt-8 text-center space-y-4">
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    Already have an account? <a class="text-primary hover:text-electric-purple transition-colors duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] font-medium" href="#">Sign In</a>
+</p>
+<p class="font-label-xs text-label-xs text-on-surface-variant/70 max-w-xs mx-auto leading-relaxed">
+                    By signing up, you agree to our <a class="text-silver-text hover:underline" href="#">Terms of Service</a> and <a class="text-silver-text hover:underline" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer Component from JSON -->
+<footer class="w-full bg-deep-obsidian border-t border-border-subtle z-10 relative mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 max-w-container-max mx-auto gap-8 md:gap-0">
+<div class="font-headline-lg text-headline-lg text-primary text-center md:text-left">Nexora</div>
+<div class="font-label-xs text-label-xs text-on-surface-variant hover:text-silver-text hover:underline transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] opacity-80 hover:opacity-100 text-center">
+                © 2024 Nexora Ecosystem. Built for the future of code.
+            </div>
+<nav class="flex flex-wrap justify-center gap-6">
+<a class="font-label-xs text-label-xs text-on-surface-variant hover:text-silver-text hover:underline transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] opacity-80 hover:opacity-100" href="#">Privacy</a>
+<a class="font-label-xs text-label-xs text-on-surface-variant hover:text-silver-text hover:underline transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] opacity-80 hover:opacity-100" href="#">Terms</a>
+<a class="font-label-xs text-label-xs text-on-surface-variant hover:text-silver-text hover:underline transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] opacity-80 hover:opacity-100" href="#">Security</a>
+<a class="font-label-xs text-label-xs text-on-surface-variant hover:text-silver-text hover:underline transition-all duration-[300ms] ease-[cubic-bezier(0.16,1,0.3,1)] opacity-80 hover:opacity-100" href="#">Status</a>
+</nav>
+</div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Magnetic Button Effect
+        const magneticBtns = document.querySelectorAll('.btn-magnetic');
+        
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                // Scale down the movement for a subtle effect
+                btn.style.transform = `perspective(1000px) rotateX(${-y * 0.15}deg) rotateY(${x * 0.15}deg) translateZ(10px)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)`;
+            });
+        });
+
+        // Password Strength Indicator
+        const pwdInput = document.getElementById('password');
+        const pwdFill = document.getElementById('pwd-fill');
+        
+        if (pwdInput && pwdFill) {
+            pwdInput.addEventListener('input', (e) => {
+                const val = e.target.value;
+                let strength = 0;
+                
+                if (val.length > 0) strength += 25;
+                if (val.length >= 8) strength += 25;
+                if (/[A-Z]/.test(val) || /[a-z]/.test(val)) strength += 25;
+                if (/[0-9!@#$%^&*]/.test(val)) strength += 25;
+                
+                pwdFill.style.width = `${strength}%`;
+                
+                // Color progression
+                if (strength <= 25) {
+                    pwdFill.style.backgroundColor = '#ffb4ab'; // Error
+                } else if (strength <= 50) {
+                    pwdFill.style.backgroundColor = '#ffb784'; // Tertiary
+                } else if (strength <= 75) {
+                    pwdFill.style.backgroundColor = '#89ceff'; // Secondary
+                } else {
+                    pwdFill.style.backgroundColor = '#7c3aed'; // Primary Container
+                }
+            });
+        }
+    });
+</script>
+</body></html>

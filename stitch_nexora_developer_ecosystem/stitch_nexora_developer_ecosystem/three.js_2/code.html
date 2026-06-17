@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_35 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_35" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_35');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  (function() {
+  const container = document.getElementById('threejs-container-SKILL_CORE');
+  if (!container) return;
+
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+  scene.add(ambientLight);
+
+  const pointLight = new THREE.PointLight(0x7c3aed, 2, 10);
+  pointLight.position.set(2, 2, 2);
+  scene.add(pointLight);
+
+  // The "Skill Core" - A multifaceted crystal structure representing diverse expertise
+  const group = new THREE.Group();
+  scene.add(group);
+
+  // Inner Core (Expertise)
+  const coreGeom = new THREE.IcosahedronGeometry(1.2, 0);
+  const coreMat = new THREE.MeshPhongMaterial({
+    color: 0x7c3aed,
+    emissive: 0x2e1065,
+    flatShading: true,
+    transparent: true,
+    opacity: 0.9,
+    shininess: 100
+  });
+  const core = new THREE.Mesh(coreGeom, coreMat);
+  group.add(core);
+
+  // Connection web (Neural/Knowledge network)
+  const shellGeom = new THREE.SphereGeometry(2, 16, 16);
+  const shellMat = new THREE.MeshBasicMaterial({
+    color: 0x7c3aed,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.15
+  });
+  const shell = new THREE.Mesh(shellGeom, shellMat);
+  group.add(shell);
+
+  // Floating nodes (Individual Tech Stacks)
+  const nodesCount = 8;
+  const nodes = [];
+  const nodeGeom = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+  const nodeMat = new THREE.MeshStandardMaterial({ 
+    color: 0x10b981, 
+    emissive: 0x10b981, 
+    emissiveIntensity: 0.8 
+  });
+
+  for (let i = 0; i < nodesCount; i++) {
+    const node = new THREE.Mesh(nodeGeom, nodeMat);
+    const phi = Math.acos(-1 + (2 * i) / nodesCount);
+    const theta = Math.sqrt(nodesCount * Math.PI) * phi;
+    const dist = 1.8;
+    
+    node.position.set(
+      dist * Math.cos(theta) * Math.sin(phi),
+      dist * Math.sin(theta) * Math.sin(phi),
+      dist * Math.cos(phi)
+    );
+    
+    node.userData = { 
+      basePos: node.position.clone(),
+      floatOffset: Math.random() * Math.PI * 2 
+    };
+    nodes.push(node);
+    group.add(node);
+  }
+
+  camera.position.z = 5;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    group.rotation.y += 0.003;
+    core.rotation.x += 0.005;
+    
+    const time = Date.now() * 0.001;
+    core.scale.setScalar(1 + Math.sin(time * 2) * 0.03);
+
+    nodes.forEach(n => {
+      const offset = Math.sin(time + n.userData.floatOffset) * 0.1;
+      n.position.copy(n.userData.basePos).multiplyScalar(1 + offset);
+      n.rotation.x += 0.01;
+      n.rotation.y += 0.01;
+    });
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+})();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_35 -->
+</body>
+</html>

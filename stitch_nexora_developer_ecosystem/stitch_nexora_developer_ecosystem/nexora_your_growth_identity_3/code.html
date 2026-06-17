@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora | Your Growth Identity</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<!-- Tailwind CSS & Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#00344d",
+                    "surface-bright": "#3a3939",
+                    "on-tertiary": "#4f2500",
+                    "border-subtle": "rgba(255, 255, 255, 0.08)",
+                    "primary": "#d2bbff",
+                    "on-primary-container": "#ede0ff",
+                    "primary-container": "#7c3aed",
+                    "surface-glass": "#1A1A1A",
+                    "primary-fixed-dim": "#d2bbff",
+                    "on-secondary-container": "#00344e",
+                    "surface-dim": "#131313",
+                    "secondary-fixed-dim": "#89ceff",
+                    "surface-container-highest": "#353534",
+                    "primary-fixed": "#eaddff",
+                    "silver-text": "#E2E2E2",
+                    "secondary-container": "#00a2e6",
+                    "outline": "#958da1",
+                    "surface-variant": "#353534",
+                    "tertiary": "#ffb784",
+                    "tertiary-container": "#a15100",
+                    "on-background": "#e5e2e1",
+                    "tertiary-fixed-dim": "#ffb784",
+                    "inverse-on-surface": "#313030",
+                    "on-surface-variant": "#ccc3d8",
+                    "outline-variant": "#4a4455",
+                    "surface-tint": "#d2bbff",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-primary": "#3f008e",
+                    "surface-container": "#201f1f",
+                    "on-tertiary-fixed": "#301400",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "inverse-surface": "#e5e2e1",
+                    "on-primary-fixed": "#25005a",
+                    "surface": "#131313",
+                    "on-secondary-fixed-variant": "#004c6e",
+                    "on-tertiary-container": "#ffe0cd",
+                    "surface-container-high": "#2a2a2a",
+                    "electric-purple": "#A855F7",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "on-surface": "#e5e2e1",
+                    "secondary": "#89ceff",
+                    "error": "#ffb4ab",
+                    "deep-obsidian": "#050505",
+                    "tertiary-fixed": "#ffdcc6",
+                    "secondary-fixed": "#c9e6ff",
+                    "inverse-primary": "#732ee4",
+                    "error-container": "#93000a",
+                    "background": "#131313",
+                    "on-secondary-fixed": "#001e2f",
+                    "surface-container-low": "#1c1b1b",
+                    "on-tertiary-fixed-variant": "#713700"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "base": "4px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "code-sm": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Geist"],
+                    "body-md": ["Geist"],
+                    "label-xs": ["Geist"],
+                    "headline-lg": ["Geist"],
+                    "display-lg": ["Geist"]
+            },
+            "fontSize": {
+                    "code-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                    "label-xs": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-deep-obsidian text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex">
+<!-- JSON: SideNavBar -->
+<nav class="hidden md:flex bg-deep-obsidian text-primary font-code-sm text-code-sm fixed left-0 h-full w-64 border-r border-border-subtle flex-col py-8 px-4 space-y-6 z-40">
+<div class="px-4 pb-6 border-b border-border-subtle">
+<h2 class="font-headline-lg text-headline-lg text-primary">Alex Dev</h2>
+<p class="text-on-surface-variant font-body-md text-body-md mt-1">Level 42 Architect</p>
+</div>
+<ul class="flex-1 space-y-2 mt-6">
+<li>
+<a class="flex items-center px-4 py-3 text-primary bg-primary/10 rounded-lg transition-all duration-300" href="#">
+<span class="material-symbols-outlined mr-3 text-primary" data-icon="dashboard">dashboard</span>
+                    Overview
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant" data-icon="account_tree">account_tree</span>
+                    Skill Tree
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant" data-icon="timeline">timeline</span>
+                    Career Path
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant" data-icon="verified_user">verified_user</span>
+                    Reputation
+                </a>
+</li>
+<li>
+<a class="flex items-center px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all duration-300 rounded-lg" href="#">
+<span class="material-symbols-outlined mr-3 text-on-surface-variant" data-icon="auto_awesome">auto_awesome</span>
+                    Share Story
+                </a>
+</li>
+</ul>
+<div class="px-4 mt-auto">
+<button class="w-full py-3 px-4 bg-gradient-to-r from-primary-container to-electric-purple text-on-primary-container rounded-lg font-label-xs text-label-xs hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] transition-all duration-300 border border-white/10">
+                Build Portfolio
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 relative min-h-screen flex flex-col">
+<!-- JSON: TopNavBar -->
+<header class="bg-surface-glass/80 backdrop-blur-xl text-primary font-body-md text-body-md fixed top-0 w-full z-50 border-b border-border-subtle shadow-sm flex justify-between items-center px-margin-desktop h-16 transition-all duration-300 md:w-[calc(100%-16rem)]">
+<div class="flex items-center gap-8">
+<span class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Nexora</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 active:scale-95 transition-transform" href="#">Growth</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">Timeline</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform" href="#">Network</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-border-subtle overflow-hidden">
+<div class="w-full h-full bg-gradient-to-tr from-primary/20 to-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="person">person</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="flex-1 mt-16 p-margin-mobile md:p-margin-desktop max-w-container-max mx-auto w-full space-y-gutter">
+<!-- 1. Growth Overview Header -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+<div>
+<p class="font-code-sm text-code-sm text-primary mb-2 tracking-widest">IDENTITY VECTOR / ACTIVE</p>
+<h1 class="font-display-lg text-display-lg text-on-surface font-bold">Growth Core</h1>
+</div>
+<div class="flex gap-8">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Contribution Score</span>
+<span class="font-headline-lg text-headline-lg text-primary">84</span>
+</div>
+<div class="flex flex-col border-l border-border-subtle pl-8">
+<span class="font-code-sm text-code-sm text-on-surface-variant">Projects Shipped</span>
+<span class="font-headline-lg text-headline-lg text-secondary">5</span>
+</div>
+</div>
+</section>
+<!-- 2. Identity Core Section (Glassmorphism + 3D) -->
+<section class="w-full bg-surface-glass backdrop-blur-2xl border border-border-subtle rounded-xl overflow-hidden relative shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+<!-- Subtle Top Glow -->
+<div class="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+<div class="grid grid-cols-1 lg:grid-cols-2 min-h-[400px]">
+<!-- Data Side -->
+<div class="p-8 md:p-12 flex flex-col justify-center relative z-10">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Impact Resonance</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md leading-relaxed">
+                            Your architectural decisions have directly influenced the core stability of the Nexora ecosystem.
+                        </p>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-background/50 border border-border-subtle rounded-lg">
+<span class="font-code-sm text-code-sm text-silver-text">Features Deployed</span>
+<span class="font-code-sm text-code-sm text-primary">120+</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-background/50 border border-border-subtle rounded-lg">
+<span class="font-code-sm text-code-sm text-silver-text">Tasks Resolved</span>
+<span class="font-code-sm text-code-sm text-secondary">450+</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-background/50 border border-border-subtle rounded-lg">
+<span class="font-code-sm text-code-sm text-silver-text">System Architectures</span>
+<span class="font-code-sm text-code-sm text-electric-purple">5</span>
+</div>
+</div>
+</div>
+<!-- 3D Visualization Side -->
+<div class="relative bg-background flex items-center justify-center min-h-[300px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-border-subtle overflow-hidden">
+<!-- Abstract glow behind 3D object -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent pointer-events-none"></div>
+<div class="absolute w-[300px] h-[300px] bg-primary-container/20 rounded-full blur-[80px] pointer-events-none"></div>
+<!-- STITCH_THREEJS_START:ANIMATION_32 class="w-full h-full absolute inset-0 z-10" -->
+<div class="w-full h-full absolute inset-0 z-10" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_32" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_32');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  (function() {
+  const container = document.getElementById('threejs-container-GROWTH_CORE');
+  if (!container) return;
+
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+  scene.add(ambientLight);
+
+  const pointLight = new THREE.PointLight(0x7c3aed, 2, 10);
+  pointLight.position.set(2, 2, 2);
+  scene.add(pointLight);
+
+  // The "Identity Core" - An evolving geometric structure
+  const group = new THREE.Group();
+  scene.add(group);
+
+  // Inner Core (Experience)
+  const coreGeom = new THREE.OctahedronGeometry(1, 0);
+  const coreMat = new THREE.MeshPhongMaterial({
+    color: 0x7c3aed,
+    emissive: 0x2e1065,
+    flatShading: true,
+    transparent: true,
+    opacity: 0.9
+  });
+  const core = new THREE.Mesh(coreGeom, coreMat);
+  group.add(core);
+
+  // Wireframe shell (Network/Collaboration)
+  const shellGeom = new THREE.IcosahedronGeometry(1.6, 1);
+  const shellMat = new THREE.MeshBasicMaterial({
+    color: 0x7c3aed,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.2
+  });
+  const shell = new THREE.Mesh(shellGeom, shellMat);
+  group.add(shell);
+
+  // Orbiting "Skill" points
+  const pointsCount = 6;
+  const points = [];
+  const dotGeom = new THREE.SphereGeometry(0.08, 16, 16);
+  const dotMat = new THREE.MeshStandardMaterial({ color: 0x10b981, emissive: 0x10b981, emissiveIntensity: 0.5 });
+
+  for (let i = 0; i < pointsCount; i++) {
+    const point = new THREE.Mesh(dotGeom, dotMat);
+    const angle = (i / pointsCount) * Math.PI * 2;
+    point.userData = { angle: angle, speed: 0.01 + Math.random() * 0.01, dist: 1.8 };
+    points.push(point);
+    group.add(point);
+  }
+
+  camera.position.z = 4;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    group.rotation.y += 0.005;
+    core.rotation.x += 0.01;
+    
+    const time = Date.now() * 0.001;
+    core.scale.setScalar(1 + Math.sin(time) * 0.05);
+
+    points.forEach(p => {
+      p.userData.angle += p.userData.speed;
+      p.position.x = Math.cos(p.userData.angle) * p.userData.dist;
+      p.position.z = Math.sin(p.userData.angle) * p.userData.dist;
+      p.position.y = Math.sin(p.userData.angle * 2) * 0.5;
+    });
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+})();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_32 -->
+</div>
+</div>
+</section>
+<!-- 3. Skill Evolution Grid & 4/5. Timeline/Reputation -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-gutter pt-8">
+<!-- Left Column: Skills & Reputation -->
+<div class="xl:col-span-2 space-y-gutter">
+<!-- Skill Evolution (Bento Grid) -->
+<section>
+<h3 class="font-code-sm text-code-sm text-primary mb-6 flex items-center">
+<span class="w-2 h-2 rounded-full bg-primary mr-3 shadow-[0_0_8px_rgba(210,187,255,0.8)]"></span>
+                            TECHNICAL EVOLUTION
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Skill Card 1 -->
+<div class="bg-surface-glass border border-border-subtle rounded-lg p-6 relative overflow-hidden group hover:border-primary/30 transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent opacity-50"></div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">TypeScript</h4>
+<span class="font-label-xs text-label-xs bg-primary/10 text-primary px-2 py-1 rounded">Expert</span>
+</div>
+<div class="flex items-center text-on-surface-variant font-code-sm text-code-sm mb-4">
+<span>Intermediate</span>
+<span class="material-symbols-outlined mx-2 text-[16px]" data-icon="arrow_right_alt">arrow_right_alt</span>
+<span class="text-on-surface">Expert</span>
+</div>
+<p class="font-label-xs text-label-xs text-silver-text opacity-70 font-code-sm">Impact: 3 projects, 12 major PRs</p>
+</div>
+<!-- Skill Card 2 -->
+<div class="bg-surface-glass border border-border-subtle rounded-lg p-6 relative overflow-hidden group hover:border-secondary/30 transition-colors">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-transparent opacity-50"></div>
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-body-md text-body-md font-semibold text-on-surface">System Architecture</h4>
+<span class="font-label-xs text-label-xs bg-secondary/10 text-secondary px-2 py-1 rounded">Advanced</span>
+</div>
+<div class="flex items-center text-on-surface-variant font-code-sm text-code-sm mb-4">
+<span>Core</span>
+<span class="material-symbols-outlined mx-2 text-[16px]" data-icon="arrow_right_alt">arrow_right_alt</span>
+<span class="text-on-surface">Advanced</span>
+</div>
+<p class="font-label-xs text-label-xs text-silver-text opacity-70 font-code-sm">Impact: 1 project, Lead role</p>
+</div>
+</div>
+</section>
+<!-- Professional Reputation -->
+<section class="mt-8">
+<div class="bg-surface-container-low border border-border-subtle rounded-xl p-8 relative">
+<h3 class="font-code-sm text-code-sm text-on-surface-variant mb-6 uppercase tracking-wider">Proof of Craft</h3>
+<div class="flex flex-wrap gap-8 mb-8 pb-8 border-b border-border-subtle/50">
+<div>
+<p class="font-label-xs text-label-xs text-on-surface-variant mb-1">RELIABILITY METRIC</p>
+<p class="font-headline-lg text-headline-lg text-on-surface font-bold">99<span class="text-primary">%</span></p>
+</div>
+<div>
+<p class="font-label-xs text-label-xs text-on-surface-variant mb-1">CODE QUALITY</p>
+<p class="font-headline-lg text-headline-lg text-on-surface font-bold">A<span class="text-secondary">+</span></p>
+</div>
+</div>
+<blockquote class="relative pl-6 border-l-2 border-primary/40">
+<span class="material-symbols-outlined absolute -left-3 -top-3 text-surface-variant text-[32px] opacity-50 z-[-1]" data-icon="format_quote">format_quote</span>
+<p class="font-body-md text-body-md text-silver-text italic leading-relaxed">
+                                    "Invaluable architect with a high focus on performance. Their recent refactor of the rendering engine reduced load times by 40% across the board."
+                                </p>
+<footer class="mt-4 font-code-sm text-code-sm text-primary">— Engineering Lead, Platform Team</footer>
+</blockquote>
+</div>
+</section>
+</div>
+<!-- Right Column: Timeline -->
+<div class="xl:col-span-1 relative">
+<h3 class="font-code-sm text-code-sm text-on-surface-variant mb-6 uppercase tracking-wider sticky top-24">Career Journey</h3>
+<div class="relative border-l border-border-subtle ml-3 space-y-10 py-4">
+<!-- Timeline Item 1 -->
+<div class="relative pl-8 group">
+<div class="absolute -left-[5px] top-1.5 w-[9px] h-[9px] rounded-full bg-background border-2 border-secondary group-hover:bg-secondary transition-colors shadow-[0_0_10px_rgba(137,206,255,0.5)]"></div>
+<span class="font-code-sm text-code-sm text-secondary block mb-1">Q4 2024</span>
+<h4 class="font-body-md text-body-md text-on-surface font-semibold mb-2">Shipped Nexora 1.0</h4>
+<p class="font-label-xs text-label-xs text-on-surface-variant font-code-sm">Led the final architecture stabilization phase.</p>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative pl-8 group">
+<div class="absolute -left-[5px] top-1.5 w-[9px] h-[9px] rounded-full bg-background border-2 border-primary group-hover:bg-primary transition-colors"></div>
+<span class="font-code-sm text-code-sm text-primary block mb-1">Q2 2024</span>
+<h4 class="font-body-md text-body-md text-on-surface font-semibold mb-2">Architectural Lead on Nexus</h4>
+<p class="font-label-xs text-label-xs text-on-surface-variant font-code-sm">Promoted to drive system-level decisions.</p>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative pl-8 group">
+<div class="absolute -left-[5px] top-1.5 w-[9px] h-[9px] rounded-full bg-background border-2 border-outline-variant group-hover:border-primary transition-colors"></div>
+<span class="font-code-sm text-code-sm text-outline mb-1 block">Q1 2024</span>
+<h4 class="font-body-md text-body-md text-silver-text mb-2">First Production Merge</h4>
+<p class="font-label-xs text-label-xs text-surface-variant font-code-sm">Core auth module deployment.</p>
+</div>
+<!-- Timeline Item 4 -->
+<div class="relative pl-8 group opacity-60">
+<div class="absolute -left-[5px] top-1.5 w-[9px] h-[9px] rounded-full bg-background border-2 border-outline-variant"></div>
+<span class="font-code-sm text-code-sm text-outline mb-1 block">Q3 2023</span>
+<h4 class="font-body-md text-body-md text-silver-text mb-2">Joined Nexora Ecosystem</h4>
+<p class="font-label-xs text-label-xs text-surface-variant font-code-sm">Initial onboarding &amp; setup.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

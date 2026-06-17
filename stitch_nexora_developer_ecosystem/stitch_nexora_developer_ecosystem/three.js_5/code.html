@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_27 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_27" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_27');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  (function() {
+  const container = document.getElementById('threejs-container-TEST_CORE');
+  if (!container) return;
+
+  const width = container.clientWidth || window.innerWidth;
+  const height = container.clientHeight || window.innerHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(width, height);
+  renderer.setPixelRatio(window.devicePixelRatio);
+  container.appendChild(renderer.domElement);
+
+  // Lights
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+  scene.add(ambientLight);
+
+  const pointLight = new THREE.PointLight(0x7c3aed, 2, 10);
+  pointLight.position.set(2, 2, 2);
+  scene.add(pointLight);
+
+  // Geometry: A central core with orbiting fragments representing "tests"
+  const coreGeometry = new THREE.IcosahedronGeometry(1.2, 1);
+  const coreMaterial = new THREE.MeshPhongMaterial({
+    color: 0x7c3aed,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.8
+  });
+  const core = new THREE.Mesh(coreGeometry, coreMaterial);
+  scene.add(core);
+
+  const innerCoreGeometry = new THREE.SphereGeometry(0.6, 32, 32);
+  const innerCoreMaterial = new THREE.MeshStandardMaterial({
+    color: 0x7c3aed,
+    emissive: 0x7c3aed,
+    emissiveIntensity: 1,
+    roughness: 0.1,
+    metalness: 0.8
+  });
+  const innerCore = new THREE.Mesh(innerCoreGeometry, innerCoreMaterial);
+  scene.add(innerCore);
+
+  const fragments = [];
+  const fragmentCount = 12;
+  const fragGeom = new THREE.BoxGeometry(0.15, 0.15, 0.15);
+  const fragMat = new THREE.MeshPhongMaterial({ color: 0x10b981 }); // Green for "passed"
+
+  for (let i = 0; i < fragmentCount; i++) {
+    const frag = new THREE.Mesh(fragGeom, fragMat);
+    const angle = (i / fragmentCount) * Math.PI * 2;
+    const distance = 2.2;
+    frag.position.set(
+      Math.cos(angle) * distance,
+      (Math.random() - 0.5) * 1.5,
+      Math.sin(angle) * distance
+    );
+    frag.userData = { 
+      orbitSpeed: 0.01 + Math.random() * 0.02,
+      angle: angle,
+      distance: distance
+    };
+    fragments.push(frag);
+    scene.add(frag);
+  }
+
+  camera.position.z = 5;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    
+    core.rotation.y += 0.005;
+    core.rotation.x += 0.003;
+    innerCore.scale.setScalar(1 + Math.sin(Date.now() * 0.002) * 0.05);
+
+    fragments.forEach(frag => {
+      frag.userData.angle += frag.userData.orbitSpeed;
+      frag.position.x = Math.cos(frag.userData.angle) * frag.userData.distance;
+      frag.position.z = Math.sin(frag.userData.angle) * frag.userData.distance;
+      frag.rotation.x += 0.02;
+      frag.rotation.y += 0.02;
+    });
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  });
+})();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_27 -->
+</body>
+</html>

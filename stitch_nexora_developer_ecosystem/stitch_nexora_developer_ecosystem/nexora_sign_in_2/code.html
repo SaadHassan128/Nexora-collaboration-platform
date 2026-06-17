@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexora - Sign In</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-container": "#ede0ff",
+                      "primary-container": "#7c3aed",
+                      "on-secondary": "#00344d",
+                      "on-primary": "#3f008e",
+                      "on-tertiary-container": "#ffe0cd",
+                      "secondary-fixed": "#c9e6ff",
+                      "surface-bright": "#3a3939",
+                      "secondary": "#89ceff",
+                      "inverse-on-surface": "#313030",
+                      "tertiary-fixed": "#ffdcc6",
+                      "surface-container-low": "#1c1b1b",
+                      "on-secondary-container": "#00344e",
+                      "outline": "#958da1",
+                      "border-subtle": "rgba(255, 255, 255, 0.08)",
+                      "silver-text": "#E2E2E2",
+                      "surface-tint": "#d2bbff",
+                      "surface-container-lowest": "#0e0e0e",
+                      "background": "#131313",
+                      "on-tertiary": "#4f2500",
+                      "surface-dim": "#131313",
+                      "on-tertiary-fixed": "#301400",
+                      "surface-container-high": "#2a2a2a",
+                      "on-primary-fixed": "#25005a",
+                      "on-primary-fixed-variant": "#5a00c6",
+                      "secondary-container": "#00a2e6",
+                      "error": "#ffb4ab",
+                      "tertiary": "#ffb784",
+                      "tertiary-fixed-dim": "#ffb784",
+                      "deep-obsidian": "#050505",
+                      "error-container": "#93000a",
+                      "inverse-primary": "#732ee4",
+                      "on-error": "#690005",
+                      "electric-purple": "#A855F7",
+                      "surface-container": "#201f1f",
+                      "secondary-fixed-dim": "#89ceff",
+                      "on-surface-variant": "#ccc3d8",
+                      "on-tertiary-fixed-variant": "#713700",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#353534",
+                      "on-background": "#e5e2e1",
+                      "primary-fixed-dim": "#d2bbff",
+                      "tertiary-container": "#a15100",
+                      "surface-glass": "#1A1A1A",
+                      "outline-variant": "#4a4455",
+                      "inverse-surface": "#e5e2e1",
+                      "primary-fixed": "#eaddff",
+                      "primary": "#d2bbff",
+                      "on-secondary-fixed-variant": "#004c6e",
+                      "surface": "#131313",
+                      "surface-variant": "#353534",
+                      "on-secondary-fixed": "#001e2f",
+                      "on-surface": "#e5e2e1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "margin-mobile": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Geist"
+                      ],
+                      "headline-lg": [
+                              "Geist"
+                      ],
+                      "body-md": [
+                              "Geist"
+                      ],
+                      "display-lg": [
+                              "Geist"
+                      ],
+                      "label-xs": [
+                              "Geist"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-xs": [
+                              "12px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "code-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "letterSpacing": "0em",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.deep-obsidian');
+            color: theme('colors.on-background');
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glass-card {
+            background-color: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid theme('colors.border-subtle');
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .primary-glow {
+            box-shadow: 0 0 20px 0 rgba(168, 85, 247, 0.15);
+        }
+        
+        .input-field {
+            background-color: #0A0A0A;
+            border: 1px solid theme('colors.border-subtle');
+            color: theme('colors.on-background');
+            transition: all 0.2s ease;
+        }
+        
+        .input-field:focus {
+            border-color: theme('colors.electric-purple');
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, theme('colors.electric-purple'), theme('colors.secondary-container'));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            box-shadow: 0 0 20px 0 rgba(168, 85, 247, 0.25);
+        }
+
+        .btn-ghost {
+            background-color: transparent;
+            color: theme('colors.silver-text');
+            transition: all 0.2s ease;
+        }
+
+        .btn-ghost:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Abstract Background Glow */
+        .bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, rgba(5, 5, 5, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+      </style>
+</head>
+<body class="relative overflow-x-hidden font-body-md text-body-md">
+<!-- Background Elements -->
+<div class="fixed inset-0 z-[-1] pointer-events-none">
+<div class="bg-glow"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex items-center justify-center p-margin-mobile md:p-margin-desktop relative z-10">
+<div class="w-full max-w-[440px] glass-card rounded-xl p-8 primary-glow relative overflow-hidden">
+<!-- Decorative Top Edge Glow -->
+<div class="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+<!-- Header -->
+<div class="text-center mb-8">
+<img alt="Nexora Logo" class="w-16 h-16 mx-auto mb-6 rounded-lg opacity-90 shadow-sm border border-border-subtle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCHT0f0eb8YVfuxsDEXaJIKYinsh7hySeg_Sx9tZQll0ZNBVpZp0ikPMuQjiyhg2dmlSUtNZsskjleAzSmZNAa6mmt7LCbNEO5PB8qoxh_GngDBkHBXzOxvW9lFbunukz-WZqrI59my8G1lKL3ZgieZvIGvZsV_hrBe3tdWSRJidMuYQJdZu9duvn_vppGO0ES3v6Zm-aVjvVL6caMJ6MFzeUafhe2LE9lXMU6ODJRUrX-on17Bgu5GSn2BONr4W0js52FJp5WbKZS"/>
+<h1 class="font-headline-lg text-headline-lg md:font-headline-lg md:text-headline-lg text-on-background mb-2">Welcome Back</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Sign in to continue to Nexora.</p>
+</div>
+<!-- Form -->
+<form action="#" class="space-y-6" method="POST">
+<div>
+<label class="block font-code-sm text-code-sm text-on-surface-variant mb-2" for="email">Email or Username</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[18px]">person</span>
+<input class="input-field w-full rounded-lg pl-10 pr-4 py-3 font-body-md text-body-md" id="email" name="email" placeholder="developer@nexora.dev" required="" type="text"/>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="block font-code-sm text-code-sm text-on-surface-variant" for="password">Password</label>
+<a class="font-label-xs text-label-xs text-electric-purple hover:underline opacity-80 hover:opacity-100 transition-opacity" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[18px]">lock</span>
+<input class="input-field w-full rounded-lg pl-10 pr-4 py-3 font-body-md text-body-md" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<button class="btn-primary w-full rounded-lg py-3 font-body-md text-body-md text-white font-semibold shadow-sm flex items-center justify-center gap-2" type="submit">
+                    Sign In
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</form>
+<div class="my-6 flex items-center before:flex-1 before:border-t before:border-border-subtle after:flex-1 after:border-t after:border-border-subtle">
+<span class="px-4 font-label-xs text-label-xs text-outline-variant uppercase tracking-widest">Or</span>
+</div>
+<!-- Social Logins -->
+<div class="space-y-3">
+<button class="btn-ghost w-full rounded-lg py-3 font-body-md text-body-md flex items-center justify-center gap-3 border border-border-subtle relative overflow-hidden group" type="button">
+<div class="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors"></div>
+<span class="material-symbols-outlined text-[20px] relative z-10">code</span>
+<span class="relative z-10">Sign in with GitHub</span>
+</button>
+<button class="btn-ghost w-full rounded-lg py-3 font-body-md text-body-md flex items-center justify-center gap-3 border border-border-subtle relative overflow-hidden group" type="button">
+<div class="absolute inset-0 bg-white/0 group-hover:bg-white/5 transition-colors"></div>
+<span class="material-symbols-outlined text-[20px] relative z-10">mail</span>
+<span class="relative z-10">Sign in with Google</span>
+</button>
+</div>
+<p class="mt-8 text-center font-body-md text-body-md text-on-surface-variant">
+                Don't have an account? 
+                <a class="text-electric-purple hover:underline font-semibold transition-colors" href="#">Sign Up</a>
+</p>
+</div>
+</main>
+<!-- Shared Footer -->
+<footer class="bg-deep-obsidian w-full border-t border-border-subtle flat no shadows flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 max-w-container-max mx-auto z-20">
+<div class="font-headline-lg text-headline-lg text-primary mb-4 md:mb-0">
+            Nexora
+        </div>
+<div class="text-on-surface-variant hover:text-silver-text font-label-xs text-label-xs mb-4 md:mb-0 text-center md:text-left">
+            © 2024 Nexora Ecosystem. Built for the future of code.
+        </div>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-silver-text hover:underline transition-all opacity-80 hover:opacity-100 font-label-xs text-label-xs" href="#">Privacy</a>
+<a class="text-on-surface-variant hover:text-silver-text hover:underline transition-all opacity-80 hover:opacity-100 font-label-xs text-label-xs" href="#">Terms</a>
+<a class="text-on-surface-variant hover:text-silver-text hover:underline transition-all opacity-80 hover:opacity-100 font-label-xs text-label-xs" href="#">Security</a>
+<a class="text-on-surface-variant hover:text-silver-text hover:underline transition-all opacity-80 hover:opacity-100 font-label-xs text-label-xs" href="#">Status</a>
+</div>
+</footer>
+</body></html>

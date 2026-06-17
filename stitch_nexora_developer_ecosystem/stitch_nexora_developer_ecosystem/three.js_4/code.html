@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_16 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_16" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_16');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  
+const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+const pointLight = new THREE.PointLight(0x7c3aed, 2);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// Skill Network Visualization
+// Nodes represent skills, connected by lines
+const nodes = [];
+const nodeCount = 8;
+const connections = [];
+
+const geometry = new THREE.SphereGeometry(0.1, 16, 16);
+const material = new THREE.MeshPhongMaterial({ 
+    color: 0xd2bbff, 
+    emissive: 0x7c3aed,
+    emissiveIntensity: 0.5,
+    shininess: 100 
+});
+
+for (let i = 0; i < nodeCount; i++) {
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4
+    );
+    mesh.userData = {
+        velocity: new THREE.Vector3(
+            (Math.random() - 0.5) * 0.01,
+            (Math.random() - 0.5) * 0.01,
+            (Math.random() - 0.5) * 0.01
+        )
+    };
+    nodes.push(mesh);
+    scene.add(mesh);
+}
+
+// Create lines for connections
+const lineMaterial = new THREE.LineBasicMaterial({ color: 0x7c3aed, transparent: true, opacity: 0.3 });
+for (let i = 0; i < nodeCount; i++) {
+    for (let j = i + 1; j < nodeCount; j++) {
+        if (Math.random() > 0.6) {
+            const points = [nodes[i].position, nodes[j].position];
+            const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
+            const line = new THREE.Line(lineGeometry, lineMaterial);
+            connections.push({ line, start: nodes[i], end: nodes[j] });
+            scene.add(line);
+        }
+    }
+}
+
+camera.position.z = 5;
+
+// Mouse interaction
+let mouseX = 0, mouseY = 0;
+window.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX - window.innerWidth / 2) / 100;
+    mouseY = (e.clientY - window.innerHeight / 2) / 100;
+});
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    // Subtle drift
+    nodes.forEach(node => {
+        node.position.add(node.userData.velocity);
+        if (Math.abs(node.position.x) > 2) node.userData.velocity.x *= -1;
+        if (Math.abs(node.position.y) > 2) node.userData.velocity.y *= -1;
+        if (Math.abs(node.position.z) > 2) node.userData.velocity.z *= -1;
+    });
+
+    // Update lines
+    connections.forEach(conn => {
+        const positions = conn.line.geometry.attributes.position.array;
+        positions[0] = conn.start.position.x;
+        positions[1] = conn.start.position.y;
+        positions[2] = conn.start.position.z;
+        positions[3] = conn.end.position.x;
+        positions[4] = conn.end.position.y;
+        positions[5] = conn.end.position.z;
+        conn.line.geometry.attributes.position.needsUpdate = true;
+    });
+
+    // Camera follow mouse
+    camera.position.x += (mouseX - camera.position.x) * 0.05;
+    camera.position.y += (-mouseY - camera.position.y) * 0.05;
+    camera.lookAt(scene.position);
+
+    renderer.render(scene, camera);
+}
+
+animate();
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_16 -->
+</body>
+</html>
