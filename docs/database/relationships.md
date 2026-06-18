@@ -151,6 +151,64 @@ Project stores:
 ```
 
 ---
+# Users ↔ Applications
+
+## Relationship Type
+
+One-to-Many (1:N)
+
+```text
+User
+
+1
+
+↓
+
+N
+
+Applications
+Description
+
+A user can apply to multiple projects.
+
+Each application belongs to one user.
+
+Projects ↔ Applications
+Relationship Type
+
+One-to-Many (1:N)
+
+Project
+
+1
+
+↓
+
+N
+
+Applications
+
+Description
+
+A project can receive multiple applications.
+
+Each application belongs to one project.
+
+Applications ↔ Teams
+Relationship Type
+
+Application can create Team Membership
+
+Accepted Application
+
+↓
+
+Team Member
+
+Description
+
+When an application is accepted, the user can be added to the project team with a specific position.
+
 
 # Users ↔ Teams
 
@@ -618,19 +676,18 @@ User
  │
  ├── N:N → Teams
  │
- ├── 1:N → Missions
+ ├── 1:1 → Profile
  │
- ├── 1:N → Contributions
+ ├── 1:N → Projects
  │
- ├── 1:N → Reviews
+ ├── 1:N → Applications
  │
- ├── 1:N → Reputation Events
- │
- ├── 1:N → Notifications
- │
- └── 1:N → Portfolio Stories
+ ├── N:N → Teams
 
+ 
 Project
+ │
+ ├── 1:N → Applications
  │
  ├── 1:1 → Team
  │

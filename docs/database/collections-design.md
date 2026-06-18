@@ -12,27 +12,17 @@ Each collection represents a business domain and owns its related data.
 
 Nexora database contains:
 users
-
 profiles
-
 skills
-
 projects
-
+applications
 teams
-
 missions
-
 contributions
-
 reviews
-
 reputation
-
 portfolioStories
-
 notifications
-
 documentation
 
 ---
@@ -185,31 +175,92 @@ Launch
 
 Completed
 
-5. Teams Collection
+# 5. Applications Collection
+
+## Responsibility
+
+Stores project join requests submitted by developers.
+
+Applications represent the approval flow before a user becomes part of a team.
+
+---
+
+## Example
+
+```json
+{
+  "_id": "application_id",
+
+  "projectId": "project_id",
+
+  "userId": "user_id",
+
+  "message": "I would like to join this project.",
+
+  "desiredPosition": "Frontend",
+
+  "status": "pending",
+
+  "createdAt": "date",
+
+  "reviewedAt": null,
+
+  "reviewedBy": null
+}
+
+Pending
+Accepted
+Rejected
+Withdrawn
+
+Rules
+
+Applications belong to both:
+
+User
+Project
+
+Accepted applications can create team membership.
+
+Applications should not be deleted after review because they are part of the project history.
+
+6. Teams Collection
 Responsibility
 
 Manages collaboration groups.
 
 Example
 {
- "_id": "team_id",
+  "_id": "team_id",
 
- "projectId": "project_id",
+  "projectId": "project_id",
 
- "members":[
+  "members": [
+    {
+      "userId": "user_id",
 
-  {
+      "position": "Frontend",
 
-   "userId":"user_id",
+      "status": "active",
 
-   "role":"frontend"
+      "joinedAt": "date"
+    }
+  ],
 
-  }
-
- ],
-
- "createdAt":"date"
+  "createdAt": "date"
 }
+
+## Team Positions
+
+Official positions:
+
+```text
+Owner
+Frontend
+Backend
+UI/UX
+Mobile Application
+QA
 
 Rules
 
@@ -219,7 +270,7 @@ Membership
 Roles
 Collaboration structure
 
-6. Missions Collection
+7. Missions Collection
 Responsibility
 
 Core execution unit in Nexora.
@@ -266,7 +317,7 @@ Reviewed
 
 Completed
 
-7. Contributions Collection
+8. Contributions Collection
 Responsibility
 
 Tracks actual user impact.
@@ -291,7 +342,7 @@ Reputation
 Portfolio
 Growth tracking
 
-8. Reviews Collection
+9. Reviews Collection
 Responsibility
 
 Peer review system.
@@ -312,7 +363,7 @@ Example
  "createdAt":"date"
 }
 
-9. Reputation Collection
+10. Reputation Collection
 Responsibility
 
 Stores user growth history.
@@ -320,18 +371,36 @@ Stores user growth history.
 Example
 
 {
- "_id":"reputation_id",
+  "_id": "reputation_event_id",
 
- "userId":"user_id",
+  "userId": "user_id",
 
- "event":"mission_completed",
+  "event": "mission_completed",
 
- "points":20,
+  "category": "technical",
 
- "sourceId":"mission_id",
+  "points": 20,
 
- "createdAt":"date"
+  "sourceType": "mission",
+
+  "sourceId": "mission_id",
+
+  "createdAt": "date"
 }
+
+## Reputation Categories
+
+Reputation is divided into:
+
+```text
+Technical Reputation
+Collaboration Reputation
+Leadership Reputation
+Review Reputation
+
+Every reputation event must belong to one category.
+
+Reputation should be calculated from events, not manually edited.
 
 Rules
 
@@ -343,7 +412,7 @@ Source
 Reason
 Timestamp
 
-10. Portfolio Stories Collection
+11. Portfolio Stories Collection
 Responsibility
 
 Stores professional growth stories.
@@ -351,26 +420,44 @@ Stores professional growth stories.
 Example
 
 {
- "_id":"story_id",
+  "_id": "story_id",
 
- "userId":"user_id",
+  "userId": "user_id",
 
- "projectId":"project_id",
+  "projectId": "project_id",
 
- "title":"Built collaboration platform",
+  "title": "Built a collaboration platform",
 
- "achievements":[
+  "challenges": [
+    "Designed project workflow",
+    "Handled team collaboration logic"
+  ],
 
-  "Created API",
+  "achievements": [
+    "Completed MVP",
+    "Built project workspace"
+  ],
 
-  "Improved performance"
+  "technologies": [
+    "Angular",
+    "Node.js",
+    "MongoDB"
+  ],
 
- ],
+  "contributions": [
+    "Built dashboard",
+    "Implemented missions flow"
+  ],
 
- "createdAt":"date"
+  "lessonsLearned": [
+    "Improved team communication",
+    "Learned scalable architecture"
+  ],
+
+  "createdAt": "date"
 }
 
-11. Notifications Collection
+12. Notifications Collection
 Responsibility
 
 Stores user communication events.
@@ -389,7 +476,7 @@ Example
  "createdAt":"date"
 }
 
-12. Documentation Collection
+13. Documentation Collection
 Responsibility
 
 Stores project knowledge.
