@@ -16,6 +16,41 @@ The ERD represents the business model of the platform and serves as the foundati
 # Core Domain Diagram
 
 ```text
+Users
+  │
+  ├── 1:1 → Profiles
+  │
+  ├── 1:N → Projects
+  │
+  ├── 1:N → Applications
+  │
+  ├── N:N → Teams
+  │
+  ├── 1:N → Missions
+  │
+  ├── 1:N → Contributions
+  │
+  ├── 1:N → Reviews
+  │
+  ├── 1:N → Reputation Events
+  │
+  └── 1:N → Portfolio Stories
+
+Projects
+  │
+  ├── 1:N → Applications
+  ├── 1:1 → Teams
+  ├── 1:N → Missions
+  └── 1:N → Documentation
+
+Applications
+  │
+  └── Accepted Application → Team Member
+
+Missions
+  │
+  ├── 1:1 → Contributions
+  └── 1:N → Reviews
 ┌─────────────┐
 │    Users    │
 └──────┬──────┘
@@ -124,6 +159,16 @@ Contains:
 * Growth information
 
 ---
+# Application Domain
+
+An Application:
+
+- Belongs to one User
+- Belongs to one Project
+- Represents a request to join a project
+- Can be accepted, rejected, withdrawn, or pending
+
+Accepted applications can create team membership.
 
 # Project Domain
 
@@ -161,6 +206,7 @@ Completed
 ```
 
 ---
+
 
 # Team Domain
 
