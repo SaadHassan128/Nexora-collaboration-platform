@@ -1,212 +1,363 @@
 # Nexora
 
-## Connect. Create. Evolve.
+> Connect. Create. Evolve.
 
-Nexora is a collaboration platform that helps developers build real products together, grow their skills, and create professional proof of experience through real-world contribution.
-
----
-
-# 🚀 Vision
-
-Developers should not only show what they learned.
-
-They should show what they built.
-
-Nexora transforms collaboration, learning, and project experience into a real growth journey where developers can:
-
-- Join meaningful projects
-- Collaborate with real teams
-- Build professional experience
-- Improve their skills
-- Create a portfolio based on real contributions
+Nexora is a real-world developer collaboration platform where developers build projects together, gain verified experience, grow their reputation, and create professional proof of work.
 
 ---
 
-# 🎯 The Problem
+## Vision
 
-Many developers, especially beginners and early professionals, struggle with:
+Nexora is not a job board.
 
-- Lack of real project experience
-- Difficulty finding serious collaborators
-- Weak portfolio proof
-- Limited exposure to teamwork workflows
-- Learning without building real products
+Nexora is not a social network.
 
-Nexora aims to solve this by creating an ecosystem where developers grow through building.
+Nexora is not a learning platform.
+
+Nexora is a real project collaboration engine that helps developers collaborate on real projects, grow their skills, and build a meaningful portfolio through practical experience.
 
 ---
 
-# 💡 The Idea
+## Problem
 
-Nexora connects:
+Many developers struggle to gain real-world experience before landing their first opportunity.
 
-- Developers
-- Project owners
-- Teams
+Most learning platforms focus on courses.
 
-Through a structured product-building journey.
+Most portfolio projects are built individually.
 
-A developer does not just complete tasks.
+Most junior developers lack collaboration experience.
 
-They contribute to products, receive feedback, improve, and build a reputation based on real work.
+Nexora solves this by providing a structured environment where developers can:
 
----
-
-# 👥 Target Users
-
-## Developers
-
-Who want to:
-
-- Gain practical experience
-- Work on real projects
-- Improve technical and collaboration skills
-- Build stronger portfolios
-
-
-## Project Owners
-
-Who want to:
-
-- Build products with talented contributors
-- Create structured teams
-- Track progress and contributions
+- Join real projects
+- Collaborate with other developers
+- Build practical experience
+- Demonstrate contributions
+- Grow a professional portfolio
 
 ---
 
-# ✨ Core Features
+## Core Concept
 
-## Smart Matching
+```text
+Match
+   ↓
+Build
+   ↓
+Collaborate
+   ↓
+Ship
+   ↓
+Grow
+```
 
-Connect developers with projects based on:
+---
 
-- Skills
+## MVP Features
+
+### Authentication & Authorization
+
+- Register
+- Login
+- JWT Authentication
+- Role-Based Access Control
+
+### Developer Profiles
+
+- Personal profile
+- Skills management
 - Experience level
-- Interests
-- Contribution history
+- Portfolio links
+- Project history
 
+### Projects
 
-## Project Workspace
+- Create projects
+- Manage projects
+- Browse project feed
+- Project lifecycle management
 
-A complete environment for teams to:
+### Applications
 
-- Plan
-- Build
-- Communicate
-- Track progress
+- Apply to projects
+- Application review process
+- Accept / Reject workflow
 
+### Team Formation
 
-## Mission System
+- Build project teams
+- Assign positions
+- Manage members
 
-Turn project work into meaningful contributions.
+### Basic Matching System
 
-Developers can:
+- Skills-based matching
+- Recommended projects
 
-- Complete missions
-- Receive feedback
-- Improve their skills
+### Portfolio Foundation
 
-
-## Peer Review
-
-A collaboration-based review system focused on:
-
-- Learning
-- Quality improvement
-- Team growth
-
-
-## Reputation System
-
-Build reputation through:
-
-- Real contributions
-- Reviews
-- Collaboration
-- Project achievements
-
-
-## Knowledge Archive
-
-Every project keeps its memory:
-
-- Decisions
-- Documentation
-- Lessons learned
-- Technical knowledge
+- Track completed projects
+- Showcase contributions
 
 ---
 
-# 🏗️ Project Status
+## Project Lifecycle
 
-Current Phase:
-
-**Product Design & UX Planning**
-
-The project is currently focused on:
-
-- User experience design
-- Product flows
-- Feature definition
-- Architecture planning
-
----
-
-# 🛠️ Planned Technology Stack
-
-## Frontend
-
-Angular
-
-## Backend
-
-Node.js + Express
-
-## Database
-
-MongoDB
+```text
+Draft
+↓
+Open
+↓
+Forming Team
+↓
+Ready
+↓
+In Progress
+↓
+Completed
+↓
+Archived
+```
 
 ---
 
-# 📂 Repository Structure
+## Core Flow
+
+```text
+Users
+↓
+Profiles
+↓
+Projects
+↓
+Applications
+↓
+Teams
+```
+
+---
+
+## User Journey
+
+```text
+1. Sign Up
+2. Complete Profile
+3. Add Skills
+4. Browse Projects
+5. Apply To Project
+6. Get Accepted
+7. Join Team
+8. Collaborate
+9. Complete Project
+10. Build Portfolio
+```
+
+---
+
+## User Roles
+
+### Developer
+
+- Browse projects
+- Apply to projects
+- Join teams
+- Build portfolio
+
+### Project Owner
+
+- Create projects
+- Manage projects
+- Review applications
+- Build teams
+- Lead project execution
+
+### Administrator
+
+- Manage platform
+- Moderate content
+- Manage users
+- Monitor platform activity
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- Angular
+- TypeScript
+- RxJS
+- Angular Router
+- Angular Signals
+
+### Backend
+
+- Node.js
+- Express.js
+- TypeScript
+- REST API
+
+### Database
+
+- MongoDB
+- Mongoose
+
+### Development Tools
+
+- Git
+- GitHub
+- Postman
+- MongoDB Compass
+- VS Code
+
+---
+
+## Project Structure
+
+```text
 Nexora/
-
-├── README.md
-
+│
 ├── docs/
-│ ├── product-vision.md
-│ ├── user-flows.md
-│ ├── features.md
-│ └── mvp-scope.md
-
-├── design/
-│ ├── screens/
-│ ├── assets/
-│ └── logo/
-
+│   ├── api/
+│   ├── database/
+│   ├── architecture-overview.md
+│   ├── development-standards.md
+│   ├── features.md
+│   ├── mvp-scope.md
+│   ├── product-vision.md
+│   └── user-flows.md
+│
+├── Design/
+│
+├── skills/
+│
 ├── frontend/
-
-├── backend/
-
-└── database/
-
----
-
-# 🌱 Future Vision
-
-Nexora aims to become a platform where developers can:
-
-Build.
-Collaborate.
-Grow.
-Get discovered.
-
-Based on what they actually create.
+│
+└── backend/
+```
 
 ---
 
-# 📌 Note
+## Documentation Status
 
-This repository is currently focused on product design and planning.
+### Product
 
-Implementation will start after completing the product foundation and architecture decisions.
+- ✅ Product Vision
+- ✅ User Flows
+- ✅ Feature Planning
+- ✅ MVP Scope
+
+### Architecture
+
+- ✅ Architecture Overview
+- ✅ Development Standards
+
+### Database
+
+- ✅ Database Design
+- ✅ ERD
+- ✅ Indexing Strategy
+
+### API
+
+- ✅ API Overview
+- ✅ Auth API
+- ✅ Users API
+- ✅ Projects API
+- ✅ Applications API
+- ✅ Teams API
+- ✅ Missions API
+- ✅ Reviews API
+- ✅ Reputation API
+- ✅ Portfolio API
+
+---
+
+## Current Development Phase
+
+```text
+Planning & Documentation
+          ✅
+Backend Development
+          🚧
+Frontend Development
+          ⏳
+Testing
+          ⏳
+MVP Launch
+          ⏳
+```
+
+---
+
+## Future Roadmap
+
+### Phase 1 — MVP
+
+- Authentication
+- Profiles
+- Projects
+- Applications
+- Teams
+- Basic Matching
+
+### Phase 2
+
+- Reputation System
+- Reviews
+- Contribution Tracking
+
+### Phase 3
+
+- Missions System
+- Knowledge Archive
+- Analytics
+
+### Phase 4
+
+- Portfolio Story Engine
+- Shareable Developer Profiles
+
+### Phase 5
+
+- AI Matching Engine
+- Advanced Insights
+- Smart Recommendations
+
+---
+
+## Design Principles
+
+- Clean Architecture
+- Feature-Based Structure
+- Scalable Modules
+- Security First
+- Maintainable Code
+- API-First Development
+- Real Product Mindset
+
+---
+
+## Author
+
+### Saad Hassan
+
+Full Stack Developer & Instructor
+
+Portfolio:
+https://saadhassan.vercel.app/
+
+GitHub:
+https://github.com/SaadHassan128
+
+LinkedIn:
+https://www.linkedin.com/in/saad-hassan-saad/
+
+---
+
+## License
+
+This project is currently under active development.
+
+All rights reserved © Nexora.
