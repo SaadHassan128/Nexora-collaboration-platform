@@ -2,7 +2,7 @@
 
 > Connect. Create. Evolve.
 
-Nexora is a real-world developer collaboration platform where developers build projects together, gain verified experience, grow their reputation, and create professional proof of work.
+Nexora is a real-world developer collaboration platform where developers discover projects, form teams, build practical experience, and create professional proof of work over time.
 
 ---
 
@@ -41,15 +41,15 @@ Nexora solves this by providing a structured environment where developers can:
 ## Core Concept
 
 ```text
+Discover
+   ↓
 Match
    ↓
-Build
+Apply
    ↓
-Collaborate
+Join Team
    ↓
-Ship
-   ↓
-Grow
+Build Portfolio Foundation
 ```
 
 ---
@@ -63,13 +63,21 @@ Grow
 - JWT Authentication
 - Role-Based Access Control
 
-### Developer Profiles
+### Users / Profiles
 
 - Personal profile
 - Skills management
 - Experience level
 - Portfolio links
-- Project history
+- Basic project participation history
+
+### Skills
+
+- Canonical skill definitions
+- Skill categories
+- Skill levels
+- Profile skills
+- Project required skills
 
 ### Projects
 
@@ -97,8 +105,8 @@ Grow
 
 ### Portfolio Foundation
 
-- Track completed projects
-- Showcase contributions
+- Connect profile to project participation
+- Prepare the data foundation for future portfolio stories
 
 ---
 
@@ -129,6 +137,8 @@ Users
 ↓
 Profiles
 ↓
+Skills
+↓
 Projects
 ↓
 Applications
@@ -148,9 +158,7 @@ Teams
 5. Apply To Project
 6. Get Accepted
 7. Join Team
-8. Collaborate
-9. Complete Project
-10. Build Portfolio
+8. Build Portfolio Foundation
 ```
 
 ---
@@ -221,6 +229,8 @@ Nexora/
 ├── docs/
 │   ├── api/
 │   ├── database/
+│   ├── reference/
+│   ├── workflows/
 │   ├── architecture-overview.md
 │   ├── development-standards.md
 │   ├── features.md
@@ -264,13 +274,22 @@ Nexora/
 - ✅ API Overview
 - ✅ Auth API
 - ✅ Users API
+- ✅ Skills API
 - ✅ Projects API
 - ✅ Applications API
 - ✅ Teams API
-- ✅ Missions API
-- ✅ Reviews API
-- ✅ Reputation API
 - ✅ Portfolio API
+- Future: Missions API
+- Future: Reviews API
+- Future: Reputation API
+
+### Reference & Workflows
+
+- ✅ Canonical Enums
+- ✅ Application Acceptance Flow
+- ✅ Team Formation Flow
+- ✅ Basic Matching Flow
+- ✅ Portfolio Foundation Flow
 
 ---
 
@@ -280,7 +299,7 @@ Nexora/
 Planning & Documentation
           ✅
 Backend Development
-          🚧
+          ⏳
 Frontend Development
           ⏳
 Testing
@@ -296,23 +315,27 @@ MVP Launch
 ### Phase 1 — MVP
 
 - Authentication
-- Profiles
+- Users / Profiles
+- Skills
 - Projects
 - Applications
 - Teams
 - Basic Matching
+- Basic Portfolio Foundation
 
 ### Phase 2
 
+- Missions System
 - Reputation System
 - Reviews
 - Contribution Tracking
+- Notifications
 
 ### Phase 3
 
-- Missions System
 - Knowledge Archive
 - Analytics
+- Collaboration Activity Feeds
 
 ### Phase 4
 

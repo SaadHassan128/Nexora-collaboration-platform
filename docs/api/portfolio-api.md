@@ -2,7 +2,12 @@
 
 ## Purpose
 
-The Portfolio API manages professional proof generated from real collaboration.
+The Portfolio API manages the MVP portfolio foundation and future professional proof generated from real collaboration.
+
+Status:
+
+- **MVP:** Basic Portfolio Foundation
+- **Future / Phase 4:** Portfolio Story Generation
 
 Portfolio stories answer:
 
@@ -51,16 +56,18 @@ unlisted
 
 | Method | Endpoint | Auth | Purpose |
 |---|---|---|---|
-| `POST` | `/portfolio/stories` | Protected | Create story |
-| `GET` | `/users/:userId/portfolio` | Protected/Public later | Get user portfolio |
-| `GET` | `/portfolio/stories/:storyId` | Protected/Public later | View story |
-| `PATCH` | `/portfolio/stories/:storyId` | Owner/Admin | Update story |
-| `DELETE` | `/portfolio/stories/:storyId` | Owner/Admin | Delete/archive story |
-| `POST` | `/portfolio/stories/generate-from-project/:projectId` | Protected | Generate story draft |
+| `GET` | `/users/:userId/portfolio` | Protected/Public later | Get MVP portfolio foundation |
+| `POST` | `/portfolio/stories` | Protected | Future: create story manually |
+| `GET` | `/portfolio/stories/:storyId` | Protected/Public later | Future: view story |
+| `PATCH` | `/portfolio/stories/:storyId` | Owner/Admin | Future: update story |
+| `DELETE` | `/portfolio/stories/:storyId` | Owner/Admin | Future: delete/archive story |
+| `POST` | `/portfolio/stories/generate-from-project/:projectId` | Protected | Future: generate story draft |
 
 ---
 
 ## POST /portfolio/stories
+
+Status: **Future / Phase 4**
 
 Creates a portfolio story manually.
 
@@ -90,6 +97,8 @@ Creates a portfolio story manually.
 ---
 
 ## POST /portfolio/stories/generate-from-project/:projectId
+
+Status: **Future / Phase 4**
 
 Generates a draft story from real project data.
 

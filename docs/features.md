@@ -2,360 +2,265 @@
 
 ## Overview
 
-Nexora is built as a developer collaboration ecosystem.
+Nexora is a developer collaboration ecosystem.
 
-Features are designed around the complete journey:
+The long-term journey is:
 
-Discover → Collaborate → Build → Learn → Grow → Get Recognized
+```text
+Discover -> Collaborate -> Build -> Learn -> Grow -> Get Recognized
+```
 
----
+The frozen MVP focuses on the first validated slice:
 
-# 1. Core Features (MVP)
-
-These features represent the first version of Nexora.
-
----
-
-# Authentication & User System
-
-## Purpose
-
-Provide a secure entry point for all users.
-
-Users:
-
-- Developers
-- Project Owners
-
-Capabilities:
-
-- Sign up
-- Sign in
-- Profile creation
-- User identity management
+```text
+Discover -> Match -> Apply -> Join Team -> Build Portfolio Foundation
+```
 
 ---
 
-# Developer Profile & Growth Identity
+# 1. MVP Features
 
-## Purpose
+These features are included in the first implementation phase.
 
-Create a professional identity based on skills and real contributions.
+## Authentication & User System
+
+Purpose:
+
+Provide secure account access and platform identity.
 
 Includes:
 
-- Personal information
+- Register
+- Login
+- JWT authentication
+- Role-based access control
+- Current user lookup
+- Password change
+
+MVP users:
+
+- Developer
+- Project Owner
+- Admin
+
+---
+
+## Users / Profiles
+
+Purpose:
+
+Create professional identity for developers and project owners.
+
+Includes:
+
+- Basic personal information
+- Display name
+- Headline
+- Bio
+- Location
 - Skills
+- Interests
 - Experience level
-- Interests
-- Growth progress
-- Reputation
+- Availability
+- Basic profile completion
 
-The profile should represent:
+Future:
 
-"What I built and how I grew"
-
----
-
-# Project Creation System
-
-## Purpose
-
-Allow project owners to create real product opportunities.
-
-Includes:
-
-- Project information
-- Description
-- Required skills
-- Experience requirements
-- Team needs
-
----
-
-# Project Discovery
-
-## Purpose
-
-Help developers find suitable opportunities.
-
-Includes:
-
-- Browse projects
-- View project details
-- Explore requirements
-- Understand team needs
-
----
-
-# Smart Matching
-
-## Purpose
-
-Connect developers with suitable projects.
-
-Matching factors:
-
-- Skills
-- Experience
-- Interests
-- Previous contributions
-
-Goal:
-
-Create better team compatibility.
-
----
-
-# Project Invitations
-
-## Purpose
-
-Enable structured collaboration requests.
-
-Includes:
-
-- Send invitation
-- Receive invitation
-- Accept / reject
-- Join project
-
----
-
-# Team Workspace
-
-## Purpose
-
-Provide a shared environment for building products.
-
-Includes:
-
-- Team information
-- Project overview
-- Progress tracking
-- Collaboration space
-
----
-
-# Mission System
-
-## Purpose
-
-Transform project work into structured growth opportunities.
-
-Each mission includes:
-
-- Goal
-- Description
-- Requirements
-- Progress
-- Completion state
-
-Missions connect:
-
-Work → Learning → Growth
-
----
-
-# Peer Review System
-
-## Purpose
-
-Improve quality through collaboration.
-
-Includes:
-
-- Contribution review
-- Feedback
-- Suggestions
-- Improvement points
-
-Focus:
-
-Learning, not judgment.
-
----
-
-# Reputation System
-
-## Purpose
-
-Build trust through real contribution.
-
-Reputation is influenced by:
-
-- Completed missions
-- Reviews
-- Collaboration
-- Project achievements
-
----
-
-# Knowledge Archive
-
-## Purpose
-
-Preserve project knowledge.
-
-Stores:
-
-- Decisions
-- Documentation
-- Technical notes
-- Lessons learned
-
-Every project keeps its memory.
-
----
-
-# Product Lifecycle
-
-## Purpose
-
-Support the full journey of building a product.
-
-Stages:
-
-- Planning
-- Development
-- Testing
-- Launch
-- Handover
-
----
-
-# Product Story Portfolio
-
-## Purpose
-
-Convert completed projects into professional proof.
-
-Includes:
-
-- Project story
-- Developer contribution
-- Technologies used
-- Challenges solved
-- Growth achieved
-
----
-
-# 2. Supporting Features
-
-Features that improve the experience.
-
----
-
-# Team Analytics
-
-Provides insights about:
-
-- Progress
-- Collaboration
-- Contribution
-- Team growth
-
----
-
-# Decision System
-
-Helps teams document important decisions.
-
-Includes:
-
-- Decision entry
-- Impact analysis
-- Risk handling
-- Post-mortem learning
-
----
-
-# Real-time Collaboration
-
-Supports:
-
-- Team communication
-- Updates
-- Collaboration signals
-
----
-
-# 3. Future Features
-
-These features are part of Nexora's long-term vision.
-
----
-
-# Recruiter Deep Dive
-
-Purpose:
-
-Allow recruiters to discover developers through real work.
-
-Includes:
-
+- Reputation history
+- Review history
 - Contribution history
-- Project experience
-- Growth journey
+- Verified growth profile
+
+---
+
+## Skills
+
+Purpose:
+
+Create the foundation for filtering, project requirements, and basic matching.
+
+Includes:
+
+- Canonical skills
+- Skill categories
+- Skill levels
+- Profile skills
+- Project required skills
+- Team need required skills
+
+Future:
+
 - Verified skills
+- Skill endorsements
+- Skill assessments
+- Skill marketplace
 
 ---
 
-# Skill Swap Marketplace
+## Projects
 
 Purpose:
 
-Help teams solve skill gaps through collaboration.
+Allow project owners to create collaboration opportunities.
+
+Includes:
+
+- Project creation
+- Project update
+- Project discovery
+- Project details
+- Required skills
+- Interests
+- Experience requirement
+- Team needs
+- Visibility
+- Lifecycle status
+
+Canonical lifecycle:
+
+```text
+Draft -> Open -> Forming Team -> Ready -> In Progress -> Completed -> Archived
+```
 
 ---
 
-# AI Product Assistant
+## Applications
 
 Purpose:
 
-Support teams with:
+Allow developers to request joining projects and owners to review applicants.
 
-- Suggestions
-- Documentation
-- Analysis
-- Productivity improvements
+Includes:
+
+- Apply to project
+- Desired position
+- Application message
+- Application status
+- Owner review
+- Accept
+- Reject
+- Withdraw
+
+Future:
+
+- Project invitations
+- Applicant ranking
+- Interview workflow
 
 ---
 
-# Premium Subscription
+## Teams
 
-Future monetization model.
+Purpose:
 
-Possible benefits:
+Represent formed project teams.
 
-- Advanced analytics
-- More visibility
-- Additional project capabilities
-- Professional features
+Includes:
+
+- One active team per project
+- Owner added automatically
+- Accepted applicants added as members
+- Team member position
+- Team member status
+- Owner/admin member management
+
+Future:
+
+- Multiple teams per project
+- Ownership transfer
+- Governance rules
+- Detailed collaboration workspace
 
 ---
 
-# Loyalty & Growth Program
+## Basic Matching
 
-Reward consistent contribution.
+Purpose:
 
-Possible rewards:
+Help developers understand project fit through simple explainable rules.
 
-- Reputation levels
-- Achievements
-- Community recognition
+Includes:
+
+- Skills overlap
+- Experience level comparison
+- Interest overlap
+- Match score
+- Matched skills
+- Missing skills
+
+Future:
+
+- AI matching
+- Contribution-based matching
+- Team compatibility analysis
+- Personalized recommendations
+
+---
+
+## Basic Portfolio Foundation
+
+Purpose:
+
+Prepare user profiles and project participation data for future professional proof.
+
+Includes:
+
+- Portfolio section connected to profile
+- Basic project participation references
+- Optional manual portfolio links
+- Visibility values where needed
+
+Future:
+
+- Portfolio Story Generation
+- Contribution evidence
+- Reviews and reputation in portfolio
+- Public share pages
+
+---
+
+# 2. Future / Phase 2+ Features
+
+These features are intentionally not included in the frozen MVP.
+
+## Phase 2 Candidates
+
+- Missions
+- Reviews
+- Contribution tracking
+- Reputation scoring
+- Notifications
+
+## Phase 3 Candidates
+
+- Knowledge Archive
+- Analytics
+- Collaboration activity feeds
+- Real-time collaboration
+- Decision system
+
+## Phase 4 Candidates
+
+- Portfolio Story Generation
+- Shareable developer profiles
+- Recruiter Deep Dive
+
+## Later Future Candidates
+
+- Skill Swap Marketplace
+- AI Product Assistant
+- Premium Subscription
+- Loyalty & Growth Program
 
 ---
 
 # Feature Philosophy
 
-Nexora features should always support:
+Every feature should support at least one of these outcomes:
 
-1. Real experience
-2. Meaningful collaboration
-3. Continuous growth
-4. Professional development
+1. Better project discovery.
+2. Better team formation.
+3. Better collaboration readiness.
+4. Stronger professional proof over time.
 
-Every feature should answer:
-
-"How does this help users build better products and become better professionals?"
+For the MVP, prioritize team formation over execution management.

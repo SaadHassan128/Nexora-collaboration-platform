@@ -6,6 +6,20 @@ This document defines the MongoDB collections structure for Nexora.
 
 Each collection represents a business domain and owns its related data.
 
+This document includes both MVP and future collections. The frozen MVP should focus on:
+
+```text
+users
+profiles
+skills
+projects
+applications
+teams
+portfolioStories
+```
+
+Missions, contributions, reviews, reputation, notifications, and documentation are Future / Phase 2+.
+
 ---
 
 # Collection Overview
@@ -147,33 +161,37 @@ Example
 
  ],
 
- "status": "active",
+ "status": "open",
 
  "createdAt": "date"
 }
 
 Project Lifecycle
-Idea
+Draft
 
 ↓
 
-Planning
+Open
 
 ↓
 
-Development
+Forming Team
 
 ↓
 
-Testing
+Ready
 
 ↓
 
-Launch
+In Progress
 
 ↓
 
 Completed
+
+↓
+
+Archived
 
 # 5. Applications Collection
 
@@ -197,7 +215,7 @@ Applications represent the approval flow before a user becomes part of a team.
 
   "message": "I would like to join this project.",
 
-  "desiredPosition": "Frontend",
+  "desiredPosition": "frontend",
 
   "status": "pending",
 
@@ -239,7 +257,7 @@ Example
     {
       "userId": "user_id",
 
-      "position": "Frontend",
+      "position": "frontend",
 
       "status": "active",
 
@@ -255,19 +273,19 @@ Example
 Official positions:
 
 ```text
-Owner
-Frontend
-Backend
-UI/UX
-Mobile Application
-QA
+owner
+frontend
+backend
+ui_ux
+mobile_application
+qa
 
 Rules
 
 Team owns:
 
 Membership
-Roles
+Positions
 Collaboration structure
 
 7. Missions Collection
@@ -356,6 +374,8 @@ Example
 
  "reviewerId":"user_id",
 
+ "targetUserId":"user_id",
+
  "rating":5,
 
  "feedback":"Great work",
@@ -375,7 +395,7 @@ Example
 
   "userId": "user_id",
 
-  "event": "mission_completed",
+  "eventType": "mission_completed",
 
   "category": "technical",
 

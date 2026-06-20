@@ -22,7 +22,7 @@ Projects are the core opportunities inside Nexora.
   "experienceLevel": "intermediate",
   "teamNeeds": [
     {
-      "position": "Frontend",
+      "position": "frontend",
       "count": 2,
       "requiredSkills": ["Angular", "TypeScript"]
     }
@@ -88,12 +88,12 @@ Creates a new project.
   "experienceLevel": "intermediate",
   "teamNeeds": [
     {
-      "position": "Frontend",
+      "position": "frontend",
       "count": 2,
       "requiredSkills": ["Angular", "TypeScript"]
     },
     {
-      "position": "Backend",
+      "position": "backend",
       "count": 1,
       "requiredSkills": ["Node.js", "MongoDB"]
     }

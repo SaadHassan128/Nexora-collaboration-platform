@@ -14,6 +14,14 @@ The goal is to maintain:
 
 Relationships should reflect real product behavior and collaboration workflows.
 
+This document describes the full target domain model. The frozen MVP uses the subset:
+
+```text
+Users -> Profiles -> Skills -> Projects -> Applications -> Teams -> Portfolio Foundation
+```
+
+Missions, contributions, reviews, reputation events, documentation, and notifications are Future / Phase 2+ unless explicitly pulled into a later implementation phase.
+
 ---
 
 # Relationship Overview
@@ -243,7 +251,7 @@ Team stores:
   "members": [
     {
       "userId": "user_id",
-      "role": "frontend"
+      "position": "frontend"
     }
   ]
 }

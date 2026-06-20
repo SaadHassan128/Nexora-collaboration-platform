@@ -168,6 +168,8 @@ Every project should preserve:
 
 ## Smart Matching
 
+Status: **MVP Basic Version**
+
 Connect developers and projects based on:
 
 - Skills
@@ -177,6 +179,8 @@ Connect developers and projects based on:
 
 
 ## Project Workspace
+
+Status: **Future / Phase 2+**
 
 A collaborative environment for:
 
@@ -188,12 +192,16 @@ A collaborative environment for:
 
 ## Mission System
 
+Status: **Future / Phase 2**
+
 Convert project work into structured growth opportunities.
 
 Developers complete meaningful missions that represent real contributions.
 
 
 ## Peer Review
+
+Status: **Future / Phase 2**
 
 A feedback system focused on:
 
@@ -203,6 +211,8 @@ A feedback system focused on:
 
 
 ## Reputation System
+
+Status: **Future / Phase 2**
 
 Build reputation through:
 
@@ -214,6 +224,8 @@ Build reputation through:
 
 ## Knowledge Archive
 
+Status: **Future / Phase 3**
+
 Capture project memory:
 
 - Decisions
@@ -223,6 +235,8 @@ Capture project memory:
 
 
 ## Product Story
+
+Status: **Future / Phase 4**
 
 Transform completed projects into professional portfolio stories.
 
@@ -246,7 +260,7 @@ But:
 
 Current Status:
 
-Product Design & Planning
+MVP Scope Frozen & Documentation Alignment
 
 Completed:
 
@@ -254,12 +268,12 @@ Completed:
 - UX flows
 - Product experience design
 - Feature exploration
+- Frozen MVP scope
+- Canonical enum reference
+- MVP workflow documentation
 
 Next:
 
-- MVP definition
-- System architecture
-- Database design
 - Application development
 
 ---

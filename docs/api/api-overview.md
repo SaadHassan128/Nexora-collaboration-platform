@@ -4,10 +4,10 @@
 
 This document defines the API design standards for the Nexora Collaboration Platform.
 
-Nexora APIs should support the core product journey:
+Nexora MVP APIs should support the core product journey:
 
 ```text
-Sign up → Complete profile → Discover projects → Apply → Join team → Complete missions → Receive reviews → Build reputation → Generate portfolio proof
+Sign up -> Complete profile -> Add skills -> Discover projects -> Apply -> Join team -> Build portfolio foundation
 ```
 
 The backend stack is:
@@ -62,13 +62,22 @@ GET /api/v1/projects
 ```text
 auth
 users
+skills
 projects
 applications
 teams
+portfolio
+```
+
+Future API modules:
+
+```text
 missions
 reviews
 reputation
-portfolio
+notifications
+documentation
+analytics
 ```
 
 Each module should contain:
@@ -202,8 +211,7 @@ Developer can:
 - Browse projects
 - Apply to projects
 - View joined teams
-- Work on assigned missions
-- Submit work for review
+- View basic portfolio foundation
 
 Project Owner can:
 
@@ -211,8 +219,7 @@ Project Owner can:
 - Manage own projects
 - Review applications
 - Build teams
-- Create missions
-- Review project progress
+- Manage project lifecycle
 
 Admin can:
 
@@ -312,19 +319,22 @@ All APIs must apply:
 MVP APIs should focus on:
 
 - Auth
-- Profiles
+- Users / Profiles
+- Skills
 - Projects
 - Applications
 - Teams
-- Missions
-- Reviews
-- Basic reputation
-- Portfolio stories
+- Basic matching
+- Basic portfolio foundation
 
 Future APIs may include:
 
+- Missions
+- Reviews
+- Reputation scoring
 - Chat
 - Notifications
+- Knowledge Archive
 - Advanced analytics
 - AI matching
 - Payments
