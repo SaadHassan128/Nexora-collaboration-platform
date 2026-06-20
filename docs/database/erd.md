@@ -11,6 +11,14 @@ The ERD represents the business model of the platform and serves as the foundati
 * API Design
 * Feature Development
 
+This ERD describes the full target domain model. The frozen MVP uses this subset:
+
+```text
+Users -> Profiles -> Skills -> Projects -> Applications -> Teams -> Portfolio Foundation
+```
+
+Missions, contributions, reviews, reputation events, documentation, and notifications are Future / Phase 2+.
+
 ---
 
 # Core Domain Diagram
@@ -182,27 +190,31 @@ A Project:
 Lifecycle:
 
 ```text
-Idea
+Draft
 
 ↓
 
-Planning
+Open
 
 ↓
 
-Development
+Forming Team
 
 ↓
 
-Testing
+Ready
 
 ↓
 
-Launch
+In Progress
 
 ↓
 
 Completed
+
+↓
+
+Archived
 ```
 
 ---

@@ -4,6 +4,8 @@
 
 The Missions API manages structured project work.
 
+Status: **Future / Phase 2**
+
 A mission is the core execution unit in Nexora.
 
 Missions connect:

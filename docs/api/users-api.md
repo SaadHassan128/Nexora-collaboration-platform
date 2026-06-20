@@ -130,6 +130,10 @@ Returns a user's public professional profile.
 - Bio
 - Skills
 - Experience level
+- Basic portfolio foundation
+
+Future profile fields:
+
 - Public reputation summary
 - Portfolio stories
 
@@ -187,4 +191,4 @@ Returns projects related to the authenticated user.
 - Create profile automatically after registration or during onboarding
 - Keep user account data separate from profile data
 - Do not store large contribution history inside profile document
-- Reputation and portfolio should be referenced from their own collections
+- Future reputation data and portfolio story data should be referenced from their own collections

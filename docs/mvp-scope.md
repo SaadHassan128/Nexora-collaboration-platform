@@ -2,13 +2,13 @@
 
 ## Overview
 
-The MVP (Minimum Viable Product) represents the first functional version of Nexora.
+This document freezes the Nexora MVP scope before application development starts.
 
-The goal is not to build every possible feature.
+The MVP should validate one core product assumption:
 
-The goal is to validate the core idea:
+> Developers and project owners will use Nexora to discover each other, form teams around real projects, and create an initial professional profile foundation.
 
-> Developers can build real products together, gain experience, and create proof of their growth.
+The MVP is not the full Nexora vision. It is the smallest coherent product slice that proves project discovery and team formation.
 
 ---
 
@@ -16,11 +16,13 @@ The goal is to validate the core idea:
 
 The first version of Nexora should enable:
 
-1. Developers to create professional identities
-2. Project owners to create opportunities
-3. Teams to collaborate on real projects
-4. Developers to complete meaningful work
-5. Contributions to become part of professional growth
+1. Developers to create professional profiles.
+2. Developers to define skills, interests, and experience level.
+3. Project owners to create project opportunities.
+4. Developers to discover and apply to projects.
+5. Project owners to review applications.
+6. Accepted developers to become team members.
+7. Developers to see a basic portfolio foundation connected to their profile and projects.
 
 ---
 
@@ -30,279 +32,242 @@ The first version of Nexora should enable:
 
 Main goal:
 
-Find opportunities, collaborate, build experience.
-
----
+Find suitable projects, apply to them, join teams, and start building a professional identity.
 
 ## Project Owner
 
 Main goal:
 
-Create projects, build teams, manage collaboration.
+Create projects, define team needs, review applicants, and form a project team.
+
+## Admin
+
+Main goal:
+
+Moderate users and projects at a basic platform level.
+
+Admin is supported as a system role, but admin dashboards and advanced moderation tooling are not required for the first MVP UI.
 
 ---
 
-# Included Features (V1)
+# Included Features
 
----
+## 1. Authentication
 
-# 1. Authentication System
-
-## Status
-
-MVP Required
+Status: **MVP Required**
 
 Includes:
 
-- Sign up
-- Sign in
-- User account creation
-- User type selection
+- Register
+- Login
+- JWT authentication
+- Authenticated user lookup
+- Password change
+- Basic role-based access control
 
 Supported roles:
 
 - Developer
 - Project Owner
+- Admin
+
+MVP boundary:
+
+- Public registration supports developer and project owner accounts only.
+- Admin accounts are not created through public registration.
+- Advanced account recovery, MFA, and organization accounts are future features.
 
 ---
 
-# 2. User Profile System
+## 2. Users / Profiles
 
-## Status
+Status: **MVP Required**
 
-MVP Required
+Includes:
 
-Developer profile includes:
-
-- Basic information
-- Skills
+- User account identity
+- Developer profile
+- Project owner profile
+- Display name
+- Headline
+- Bio
+- Location
 - Experience level
+- Availability
 - Interests
-- Profile progress
+- Profile completion basics
 
-Owner profile includes:
+MVP boundary:
 
-- Basic information
-- Created projects
-- Project activity
+- Profiles store professional identity only.
+- Reputation history, review history, contribution history, and generated portfolio stories are future features.
 
 ---
 
-# 3. Skills System
+## 3. Skills
 
-## Status
-
-MVP Required
-
-Purpose:
-
-Create a foundation for matching.
+Status: **MVP Required**
 
 Includes:
 
-- Add skills
-- Skill categories
-- Experience level
+- Canonical skill definitions
+- Skill name
+- Skill category
+- Skill level
+- Skills attached to profiles
+- Required skills attached to projects and team needs
+
+MVP boundary:
+
+- Skills are used for filtering and basic matching.
+- Skill endorsements, verified skills, assessments, and skill marketplace flows are future features.
 
 ---
 
-# 4. Project Creation
+## 4. Projects
 
-## Status
+Status: **MVP Required**
 
-MVP Required
+Includes:
 
-Project owners can:
-
-- Create projects
-- Define requirements
-- Add needed skills
-- Define team needs
-
----
-
-# 5. Project Discovery
-
-## Status
-
-MVP Required
-
-Developers can:
-
-- Browse projects
-- View project details
-- Understand requirements
-
----
-
-# 6. Smart Match (Basic Version)
-
-## Status
-
-MVP Required
-
-Initial version:
-
-Rule-based matching.
-
-Based on:
-
-- Skills
-- Experience
+- Project creation
+- Project update
+- Project discovery feed
+- Project detail view
+- Required skills
 - Interests
+- Experience requirement
+- Team needs
+- Project visibility
+- Project lifecycle status
 
-Future versions can introduce AI.
+Canonical lifecycle:
+
+```text
+Draft -> Open -> Forming Team -> Ready -> In Progress -> Completed -> Archived
+```
+
+MVP boundary:
+
+- Projects represent collaboration opportunities and team formation.
+- Deep execution management, delivery tracking, knowledge archive, and analytics are future features.
 
 ---
 
-# 7. Project Invitation System
+## 5. Applications
 
-## Status
-
-MVP Required
+Status: **MVP Required**
 
 Includes:
 
-- Send invitation
-- Receive invitation
-- Accept / Reject
+- Developer applies to a project
+- Developer selects desired position
+- Developer adds an application message
+- Project owner lists applications
+- Project owner accepts or rejects applications
+- Developer withdraws pending application
+
+MVP boundary:
+
+- Applications are the primary team entry flow.
+- Invitations are not part of the frozen MVP unless implemented later as a Phase 2 feature.
+- Accepted applications create team membership.
 
 ---
 
-# 8. Team Workspace
+## 6. Teams
 
-## Status
-
-MVP Required
+Status: **MVP Required**
 
 Includes:
 
-- Project overview
-- Team members
-- Progress tracking
+- One active team per project
+- Owner added as team member automatically
+- Accepted applicants added as team members
+- Team member position
+- Team member status
+- Owner/admin member management
+- Current user's team list
+
+MVP boundary:
+
+- Team membership is required for collaboration readiness.
+- Advanced team governance, ownership transfer, multiple teams per project, and detailed collaboration workspace tools are future features.
 
 ---
 
-# 9. Mission System
+## 7. Basic Matching
 
-## Status
-
-MVP Required
-
-Core Nexora experience.
+Status: **MVP Required**
 
 Includes:
 
-- Create missions
-- Assign missions
-- Track completion
-- Mission status
+- Rule-based project match score
+- Skills overlap
+- Experience level match
+- Interest overlap
+- Matched and missing skills in API response
+
+MVP boundary:
+
+- Matching is deterministic and explainable.
+- AI matching, weighting personalization, recommendation learning, and recruiter-grade matching are future features.
 
 ---
 
-# 10. Basic Collaboration
+## 8. Basic Portfolio Foundation
 
-## Status
-
-MVP Required
+Status: **MVP Required**
 
 Includes:
 
-- Team communication
-- Updates
-- Collaboration activity
+- Portfolio section connected to a user profile
+- Basic project participation history
+- Basic project links or references
+- Manual portfolio story placeholder fields where needed
 
----
+MVP boundary:
 
-# 11. Basic Reputation
-
-## Status
-
-MVP Required
-
-Based on:
-
-- Completed missions
-- Contributions
-- Reviews
-
----
-
-# 12. Basic Project Completion Story
-
-## Status
-
-MVP Required
-
-After project completion:
-
-Generate:
-
-- Project summary
-- Team contribution overview
-- Technologies used
+- The MVP may expose a basic portfolio foundation, but it does not generate portfolio stories automatically.
+- Portfolio story generation from missions, reviews, reputation, and contributions is a future feature.
 
 ---
 
 # Not Included in MVP
 
-These features are part of future versions.
+The following features are explicitly moved to Future / Phase 2+.
 
----
+## Phase 2 Candidates
 
-# Advanced AI Features
+- Missions
+- Reviews
+- Contribution tracking
+- Reputation scoring
+- Notifications
 
-Examples:
+## Phase 3 Candidates
+
+- Knowledge Archive
+- Team analytics
+- Advanced project analytics
+- Collaboration activity feeds
+- Real-time collaboration
+
+## Phase 4 Candidates
+
+- Portfolio Story Generation
+- Shareable public portfolio pages
+- Recruiter-facing developer discovery
+
+## Later Future Candidates
 
 - AI matching
 - AI documentation
-- AI suggestions
-
----
-
-# Recruiter Platform
-
-Future:
-
-- Recruiter dashboard
-- Talent discovery
-- Hiring workflow
-
----
-
-# Advanced Analytics
-
-Examples:
-
-- Team performance intelligence
-- Growth analytics
-- Advanced insights
-
----
-
-# Subscription System
-
-Future monetization:
-
-- Premium plans
-- Extra visibility
-- Advanced tools
-
----
-
-# Skill Swap Marketplace
-
-Future:
-
-Help teams solve missing skill problems.
-
----
-
-# Real-Time Production Monitoring
-
-Future:
-
-System health dashboards.
+- AI project assistant
+- Subscription system
+- Skill Swap Marketplace
+- Real-time production monitoring
+- Organization accounts
 
 ---
 
@@ -310,51 +275,31 @@ System health dashboards.
 
 The MVP is successful if:
 
-A developer can:
+## Developer Flow
+
+```text
 Create account
+-> Build profile
+-> Add skills
+-> Browse projects
+-> View match score
+-> Apply to project
+-> Get accepted
+-> Join team
+-> See basic portfolio foundation
+```
 
-↓
+## Project Owner Flow
 
-Build profile
-
-↓
-
-Find project
-
-↓
-
-Join team
-
-↓
-
-Complete missions
-
-↓
-
-Gain reputation
-
-↓
-
-Create professional proof
-
-A project owner can:
-Create project
-
-↓
-
-Find contributors
-
-↓
-
-Build team
-
-↓
-
-Manage progress
-
-↓
-
-Complete product
+```text
+Create account
+-> Create project
+-> Define required skills and team needs
+-> Review applications
+-> Accept applicants
+-> Form team
+-> Move project through lifecycle
+```
 
 ---
 
@@ -363,27 +308,26 @@ Complete product
 Implementation order:
 
 1. Authentication
-2. User System
+2. Users / Profiles
 3. Skills
 4. Projects
-5. Matching
-6. Invitations
-7. Workspace
-8. Missions
-9. Reviews
-10. Reputation
-11. Portfolio Story
+5. Applications
+6. Teams
+7. Basic Matching
+8. Basic Portfolio Foundation
 
 ---
 
 # MVP Philosophy
 
-Build the smallest version that proves the Nexora idea.
+Build the smallest version that proves Nexora can form real project teams.
 
 Do not optimize for the number of features.
 
 Optimize for:
 
-Real collaboration.
-Real contribution.
-Real growth.
+- Clear onboarding
+- High-quality project discovery
+- Simple application review
+- Reliable team formation
+- A foundation for future proof-of-work features

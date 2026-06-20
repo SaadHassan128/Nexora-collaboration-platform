@@ -22,7 +22,7 @@ Applications are part of project history and should not be deleted after review.
   "projectId": "project_id",
   "userId": "user_id",
   "message": "I would like to join this project.",
-  "desiredPosition": "Frontend",
+  "desiredPosition": "frontend",
   "status": "pending",
   "createdAt": "date",
   "reviewedAt": null,
@@ -46,12 +46,12 @@ withdrawn
 ## Official Team Positions
 
 ```text
-Owner
-Frontend
-Backend
-UI/UX
-Mobile Application
-QA
+owner
+frontend
+backend
+ui_ux
+mobile_application
+qa
 ```
 
 ---
@@ -79,7 +79,7 @@ Creates a new application.
 ```json
 {
   "message": "I want to join because I can build Angular dashboards.",
-  "desiredPosition": "Frontend"
+  "desiredPosition": "frontend"
 }
 ```
 
@@ -117,7 +117,7 @@ Accepts an application and adds the user to the project team.
 
 ```json
 {
-  "position": "Frontend"
+  "position": "frontend"
 }
 ```
 
@@ -143,7 +143,7 @@ Accepts an application and adds the user to the project team.
     "projectId": "project_id",
     "userId": "user_id",
     "teamMember": {
-      "position": "Frontend",
+        "position": "frontend",
       "status": "active"
     }
   }

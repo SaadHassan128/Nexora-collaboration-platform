@@ -4,6 +4,8 @@
 
 The Reputation API manages reputation summaries and reputation history.
 
+Status: **Future / Phase 2**
+
 Reputation proves trust through real contribution.
 
 Important rule:
@@ -20,7 +22,7 @@ Reputation should be calculated from events, not manually edited.
 {
   "id": "reputation_event_id",
   "userId": "user_id",
-  "event": "mission_completed",
+  "eventType": "mission_completed",
   "category": "technical",
   "points": 20,
   "sourceType": "mission",
@@ -54,7 +56,7 @@ review
 
 ## Reputation Events
 
-Suggested MVP events:
+Suggested future events:
 
 ```text
 mission_completed
@@ -122,7 +124,7 @@ Returns reputation history.
   "data": [
     {
       "id": "event_id",
-      "event": "mission_completed",
+      "eventType": "mission_completed",
       "category": "technical",
       "points": 20,
       "sourceType": "mission",
@@ -154,7 +156,7 @@ It should be called internally by services such as:
 ```json
 {
   "userId": "user_id",
-  "event": "mission_completed",
+  "eventType": "mission_completed",
   "category": "technical",
   "points": 20,
   "sourceType": "mission",
@@ -168,7 +170,7 @@ It should be called internally by services such as:
 Every reputation event must have:
 
 - User
-- Event type
+- Event type (`eventType`)
 - Category
 - Points
 - Source type

@@ -2,192 +2,110 @@
 
 ## Overview
 
-Nexora is built around different user journeys.
+Nexora has a long-term product journey, but the frozen MVP focuses on discovery, matching, applications, and team formation.
 
-The main users are:
+Main users:
 
 - Developers
 - Project Owners
+- Admins
 - Recruiters (Future)
-
-Each user follows a different journey but they connect through the same product ecosystem.
 
 ---
 
-# 1. Developer Flow
+# 1. MVP Developer Flow
 
 ## Goal
 
-Help developers discover projects, collaborate with teams, build experience, and grow their professional identity.
-
----
+Help developers create a professional profile, discover suitable projects, apply, and join teams.
 
 ## Journey
-Create Account
-↓
-Complete Profile
-↓
-Define Skills & Interests
-↓
-Explore Projects
-↓
-Smart Matching
-↓
-Receive Invitation
-↓
-Join Team
-↓
-Start Missions
-↓
-Collaborate & Build
-↓
-Peer Review
-↓
-Gain Reputation
-↓
-Update Growth Profile
-↓
-Create Professional Story
 
----
+```text
+Create Account
+-> Complete Profile
+-> Define Skills & Interests
+-> Explore Projects
+-> View Basic Match Score
+-> Apply to Project
+-> Application Accepted
+-> Join Team
+-> Build Portfolio Foundation
+```
 
 ## Step Details
 
 ### 1. Create Account
 
-Developer creates an account and joins the Nexora ecosystem.
+Developer creates an account and selects the developer path.
 
-Actions:
+### 2. Complete Profile
 
-- Sign up
-- Choose developer path
-- Basic profile setup
+Developer adds:
 
----
-
-### 2. Developer Profile
-
-Developer builds their growth identity.
-
-Includes:
-
+- Display name
+- Headline
+- Bio
 - Skills
 - Experience level
 - Interests
-- Goals
-
----
+- Availability
 
 ### 3. Project Discovery
 
-Developer explores available opportunities.
+Developer explores available projects and can view:
 
-Can view:
-
-- Project idea
+- Project summary
 - Required skills
 - Team needs
+- Experience requirement
 - Project status
+- Visibility
 
----
+### 4. Basic Match Score
 
-### 4. Smart Match
+Nexora provides an explainable match score based on:
 
-Nexora analyzes compatibility.
-
-Based on:
-
-- Skills
-- Experience
+- Skills overlap
+- Experience level
 - Interests
-- Previous contributions
 
-Output:
+### 5. Apply to Project
 
-Suitable projects and opportunities.
+Developer submits:
 
----
+- Application message
+- Desired team position
 
-### 5. Team Collaboration
+### 6. Join Team
 
-After joining a project:
+When the owner accepts the application, the developer becomes an active team member.
 
-Developer can:
+### 7. Portfolio Foundation
 
-- Access workspace
-- Communicate with team
-- Receive missions
-- Track progress
+The developer profile can show basic project participation data.
 
 ---
 
-### 6. Mission Completion
-
-Developer completes meaningful work.
-
-Each mission contains:
-
-- Goal
-- Requirements
-- Progress
-- Review process
-
----
-
-### 7. Peer Review
-
-Team members review contributions.
-
-Focus:
-
-- Learning
-- Improvement
-- Quality
-
----
-
-### 8. Growth & Reputation
-
-Completed work improves:
-
-- Skills
-- Reputation
-- Professional identity
-
----
-
-# 2. Project Owner Flow
+# 2. MVP Project Owner Flow
 
 ## Goal
 
-Help owners create teams and build products with contributors.
-
----
+Help project owners create collaboration opportunities and form teams.
 
 ## Journey
-Create Account
-↓
-Create Project
-↓
-Define Requirements
-↓
-Find Contributors
-↓
-Build Team
-↓
-Manage Workspace
-↓
-Assign Missions
-↓
-Track Progress
-↓
-Review Contributions
-↓
-Launch Product
-↓
-Create Product Story
 
----
+```text
+Create Account
+-> Complete Profile
+-> Create Project
+-> Define Required Skills and Team Needs
+-> Open Project for Applications
+-> Review Applications
+-> Accept Applicants
+-> Form Team
+-> Move Project Through Lifecycle
+```
 
 ## Step Details
 
@@ -195,143 +113,111 @@ Create Product Story
 
 Owner defines:
 
-- Product idea
-- Goals
+- Project title
+- Summary
+- Description
 - Required skills
+- Interests
+- Experience requirement
 - Team needs
-
----
+- Visibility
 
 ### 2. Team Formation
 
-Owner discovers contributors through:
+Owner reviews applicants using:
 
-- Smart Match
-- Profiles
-- Reputation
+- Profile data
+- Skills
+- Desired position
+- Basic match context
 
----
+### 3. Application Review
 
-### 3. Project Workspace
+Owner can:
 
-Owner manages:
+- View applications
+- Accept applications
+- Reject applications
 
-- Tasks
-- Missions
-- Progress
-- Communication
+Accepted applications create team membership.
 
----
+### 4. Project Lifecycle
 
-### 4. Product Delivery
+Canonical lifecycle:
 
-Owner follows:
-
-- Testing
-- Launch
-- Handover
+```text
+Draft -> Open -> Forming Team -> Ready -> In Progress -> Completed -> Archived
+```
 
 ---
 
-# 3. Recruiter Flow (Future)
+# 3. Admin Flow
 
 ## Goal
 
-Allow recruiters to discover developers through real product experience.
+Support basic platform moderation and reference data management.
+
+MVP admin responsibilities:
+
+- Manage canonical skills
+- Moderate users where needed
+- Moderate projects where needed
+
+Advanced admin dashboards are future scope.
 
 ---
 
-## Journey
+# 4. Future Flows
+
+These flows are not part of the frozen MVP.
+
+## Mission Flow
+
+```text
+Create Mission
+-> Assign Mission
+-> Submit Work
+-> Review Work
+-> Complete Mission
+```
+
+## Review and Reputation Flow
+
+```text
+Mission Completed
+-> Review Submitted
+-> Reputation Event Created
+-> Reputation Summary Updated
+```
+
+## Portfolio Story Flow
+
+```text
+Project Completed
+-> Contributions Aggregated
+-> Reviews Included
+-> Story Draft Generated
+-> Developer Edits and Publishes
+```
+
+## Recruiter Flow
+
+```text
 Discover Developer
-↓
-View Growth Profile
-↓
-Explore Projects
-↓
-Review Contributions
-↓
-Understand Skills
-↓
-Contact Developer
+-> View Growth Profile
+-> Explore Projects
+-> Review Contributions
+-> Understand Skills
+-> Contact Developer
+```
 
 ---
 
-# 4. Project Lifecycle Flow
+# 5. Design Philosophy
 
-The complete Nexora product journey:
-Idea
+Every MVP flow should answer:
 
-↓
-
-Team Formation
-
-↓
-
-Planning
-
-↓
-
-Development
-
-↓
-
-Review
-
-↓
-
-Testing
-
-↓
-
-Launch
-
-↓
-
-Documentation
-
-↓
-
-Portfolio Story
-
-↓
-
-Future Growth
-
----
-
-# 5. Core Experience Loop
-
-Nexora creates a continuous growth cycle:
-Build
-
-↓
-
-Learn
-
-↓
-
-Improve
-
-↓
-
-Contribute
-
-↓
-
-Grow
-
-↓
-
-Build Again
-
----
-
-# 6. Design Philosophy
-
-Every flow should answer:
-
-- What is the user trying to achieve?
-- What value does Nexora provide?
-- How does this action improve the user's journey?
-
-Nexora is designed around progress, collaboration, and real-world experience.
+- Can the user complete onboarding?
+- Can the user discover or create relevant projects?
+- Can the platform form a team reliably?
+- Does the data foundation support future proof-of-work features?

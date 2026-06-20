@@ -4,6 +4,8 @@
 
 The Reviews API manages feedback on completed or submitted missions.
 
+Status: **Future / Phase 2**
+
 Reviews should support learning, quality improvement, and reputation.
 
 Focus:
@@ -22,7 +24,7 @@ Feedback, not judgment
   "missionId": "mission_id",
   "projectId": "project_id",
   "reviewerId": "user_id",
-  "revieweeId": "user_id",
+  "targetUserId": "user_id",
   "rating": 5,
   "feedback": "Great implementation and clean structure.",
   "improvementPoints": ["Add more tests"],
@@ -92,7 +94,7 @@ Creates a review for a mission.
     "id": "review_id",
     "missionId": "mission_id",
     "reviewerId": "user_id",
-    "revieweeId": "user_id",
+    "targetUserId": "user_id",
     "rating": 5,
     "feedback": "Clean implementation and good use of Angular components."
   }

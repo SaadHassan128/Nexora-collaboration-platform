@@ -112,17 +112,17 @@ features/
 
 ├── users
 
+├── skills
+
 ├── projects
+
+├── applications
 
 ├── teams
 
-├── missions
-
-├── reviews
-
-├── reputation
-
 └── portfolio
+
+Future features may add missions, reviews, reputation, notifications, documentation, and analytics modules.
 
 Each feature contains its own:
 
@@ -156,10 +156,10 @@ frontend/
 
 │ ├── authentication
 │ ├── dashboard
+│ ├── skills
 │ ├── projects
-│ ├── workspace
-│ ├── missions
-│ ├── analytics
+│ ├── applications
+│ ├── teams
 │ └── portfolio
 
 └── assets/
@@ -178,11 +178,10 @@ backend/
 
 │ ├── auth
 │ ├── users
+│ ├── skills
 │ ├── projects
+│ ├── applications
 │ ├── teams
-│ ├── missions
-│ ├── reviews
-│ ├── reputation
 │ └── portfolio
 
 ├── common/
@@ -198,7 +197,7 @@ backend/
 
 ---
 
-# Core System Modules
+# Core System Modules (MVP)
 
 ## Authentication Module
 
@@ -219,8 +218,18 @@ Handles:
 
 - Developer profiles
 - Owner profiles
-- Skills
 - Growth identity
+
+---
+
+## Skills Module
+
+Handles:
+
+- Canonical skills
+- Skill categories
+- Skill levels
+- Skill search and filtering
 
 
 ---
@@ -237,16 +246,39 @@ Handles:
 
 ---
 
+## Applications Module
+
+Handles:
+
+- Project applications
+- Application review
+- Accept / reject / withdraw flows
+
+
+---
+
 ## Team Module
 
 Handles:
 
 - Team members
-- Invitations
-- Collaboration
+- Team positions
+- Team formation
 
 
 ---
+
+## Portfolio Module
+
+Handles:
+
+- Basic portfolio foundation
+- Profile project participation references
+
+
+---
+
+# Future System Modules
 
 ## Mission Module
 
@@ -282,7 +314,7 @@ Handles:
 
 ---
 
-## Portfolio Module
+## Portfolio Story Generation Module
 
 Handles:
 
@@ -298,11 +330,19 @@ Handles:
 MongoDB collections:
 Users
 
+Profiles
+
+Skills
+
 Projects
+
+Applications
 
 Teams
 
-Skills
+PortfolioStories
+
+Future collections:
 
 Missions
 
@@ -326,9 +366,9 @@ A user can:
 
 - Create projects
 - Join teams
-- Complete missions
-- Receive reviews
-- Gain reputation
+- Apply to projects
+- Manage a profile
+- Build a basic portfolio foundation
 
 
 ---
@@ -339,9 +379,12 @@ A project contains:
 
 - Owner
 - Team members
-- Missions
-- Documentation
-- Progress
+- Required skills
+- Team needs
+- Applications
+- Lifecycle status
+
+Future project relationships may include missions, documentation, analytics, and progress tracking.
 
 
 ---
@@ -352,12 +395,13 @@ Teams connect:
 
 - Developers
 - Owners
-- Contributions
+- Project positions
+- Accepted applications
 
 
 ---
 
-## Missions
+## Missions (Future / Phase 2)
 
 Missions represent:
 
@@ -375,7 +419,7 @@ Developer
 
 Project Owner
 
-Admin (Future)
+Admin
 
 Authorization controls:
 

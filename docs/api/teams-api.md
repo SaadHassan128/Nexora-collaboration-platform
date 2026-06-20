@@ -23,7 +23,7 @@ Future versions may support multiple teams per project.
   "members": [
     {
       "userId": "user_id",
-      "position": "Frontend",
+      "position": "frontend",
       "status": "active",
       "joinedAt": "date"
     }
@@ -38,12 +38,12 @@ Future versions may support multiple teams per project.
 ## Team Positions
 
 ```text
-Owner
-Frontend
-Backend
-UI/UX
-Mobile Application
-QA
+owner
+frontend
+backend
+ui_ux
+mobile_application
+qa
 ```
 
 ---
@@ -88,7 +88,7 @@ Returns the active team for a project.
       {
         "userId": "user_id",
         "displayName": "Saad Hassan",
-        "position": "Frontend",
+        "position": "frontend",
         "status": "active",
         "joinedAt": "date"
       }
@@ -108,7 +108,7 @@ Adds a team member manually.
 ```json
 {
   "userId": "user_id",
-  "position": "Backend"
+  "position": "backend"
 }
 ```
 
@@ -123,13 +123,13 @@ Adds a team member manually.
 
 ## PATCH /projects/:projectId/team/members/:userId
 
-Updates a member's role or status.
+Updates a member's position or status.
 
 ### Request Body
 
 ```json
 {
-  "position": "QA",
+  "position": "qa",
   "status": "active"
 }
 ```
@@ -175,7 +175,7 @@ Returns teams where the authenticated user is a member.
       "teamId": "team_id",
       "projectId": "project_id",
       "projectTitle": "Nexora",
-      "position": "Frontend",
+      "position": "frontend",
       "status": "active"
     }
   ]

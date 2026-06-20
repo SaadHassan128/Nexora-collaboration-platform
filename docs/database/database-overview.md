@@ -8,10 +8,11 @@ The goal is to create a scalable and maintainable data foundation that supports:
 
 - Developer collaboration
 - Project management
-- Missions workflow
-- Reputation system
 - Portfolio growth
-- Team communication
+- Team formation
+- Future missions workflow
+- Future reputation system
+- Future team communication
 
 
 ---
@@ -51,24 +52,28 @@ Nexora database design follows:
 
 Data is organized around business domains.
 
-Main domains:
+MVP domains:
 Users
 
 Profiles
 
+Skills
+
 Projects
 
+Applications
+
 Teams
+
+Portfolio
+
+Future domains:
 
 Missions
 
 Reviews
 
 Contributions
-
-Reputation
-
-Portfolio
 
 Notifications
 
@@ -104,7 +109,7 @@ References are used for:
 
 ---
 
-# Core Business Flow
+# MVP Business Flow
 
 User
 
@@ -121,6 +126,16 @@ Skills
 Project Discovery
 
 ↓
+
+Team
+
+↓
+
+Portfolio Foundation
+
+---
+
+# Future Business Flow
 
 Team
 

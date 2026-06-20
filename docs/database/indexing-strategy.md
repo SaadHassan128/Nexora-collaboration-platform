@@ -135,10 +135,13 @@ status: 1
 
 Examples:
 
-* Planning
-* Development
-* Testing
-* Launch
+* draft
+* open
+* forming_team
+* ready
+* in_progress
+* completed
+* archived
 
 ---
 
